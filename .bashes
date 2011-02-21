@@ -1,0 +1,134 @@
+# Announces today's date
+today=`date "+%m.%d.%Y"`
+
+set -o vi
+
+export LANG="en_US"
+
+# Go language paths
+export GOROOT=$HOME/go
+export GOARCH=amd64
+export GOOS=darwin
+export GOBIN=$HOME/gobin
+export PATH=$PATH:$GOBIN
+export GOINTRO=/Users/timosand/Documents/Code/Go/go-helsinki-spring-2010
+
+# Scala paths
+export SCALA_HOME=/opt/local/share/scala
+export PATH=$PATH:$SCALA_HOME/bin
+
+# Programming paths
+export CABAL_HOME=$HOME/.cabal/bin
+export PATH=$PATH:$CABAL_HOME
+export MYSQL_PATH=/usr/local/mysql/bin
+export PATH=$PATH:$MYSQL_PATH
+export PYTHONSTARTUP=/Users/timosand/.pystartup
+export RAILS_ENV=development
+export POSTGRESQL_PATH=/opt/local/lib/postgresql84/bin
+export PATH=$PATH:$POSTGRESQL_PATH
+export PLAY_HOME=$HOME/play
+export PATH=$PATH:$PLAY_HOME
+
+# Other paths
+export VIM=/usr/share/vim/vim72/
+export HOME=/Users/timosand
+export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/depot_tools
+export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin
+export MANPATH=/opt/local/share/man:/user/local/man:$MANPATH
+export INFO=/usr/local/share/info:$INFO
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+export HISTCONTROL=ignoredups
+export EDITOR=vim
+export HISTTIMEFORMAT="%m/%d/%y - %H:%M:%S "
+
+# Bash tips and tricks for History related preferences
+# see http://richbradshaw.wordpress.com/2007/11/25/bash-tips-and-tricks/
+
+# == 1 Lost bash history ==
+# the bash history is only saved when you close the terminal, not after each command. fix it..
+shopt -s histappend
+PROMPT_COMMAND='history -a'
+
+# == 3. Duplicate entries in bash history ==
+# This will ignore duplicates, as well as ls, bg, fg and exit as well, making for a cleaner bash history.
+export HISTIGNORE="&:ls:[bf]g:exit"
+
+# == 4 Multiple line commands split up in history ==
+# this will change multiple line commands into single lines for easy editing.
+shopt -s cmdhist
+
+# Terminal colours (after installing GNU coreutils)
+NM="\[\033[0;38m\]" #means no background and white lines
+HI="\[\033[0;37m\]" #change this for letter colors
+HII="\[\033[0;31m\]" #change this for letter colors
+SI="\[\033[0;33m\]" #this is for the current directory
+IN="\[\033[0m\]"
+BR="\[\033[1;30m\]"
+
+# Command prompt "layout"
+export PS1="$BR[ $HI\u @ $HII\h $BR] $SI\w $BR\$ $IN"
+export PS2='>'
+
+# Setting color options for ls
+if [ "$TERM" != "dumb" ]; then
+        export LS_OPTIONS='--color=auto'
+        eval `/opt/local/bin/gdircolors ~/.dir_colors`
+fi
+
+# ls aliases
+alias ls='gls $LS_OPTIONS -hF'
+alias la='gls $LS_OPTIONS -lAhF'
+alias ll='gls $LS_OPTIONS -lhF'
+
+# cd typo fixes
+alias cd..="cd .."
+alias ..="cd .."
+
+# shorten aliases
+alias c="clear"
+alias e="exit"
+
+# open typo fixes
+alias opne="open"
+alias open.="open ."
+
+# added interactive and verbose mode for common file operations
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vi"
+
+#ssh aliases
+alias sshx="ssh -X"
+alias sshd="ssh -D 8080"
+
+alias top="top -cd"
+
+# Apache error log
+alias apaerr="less /private/var/log/apache2/error_log"
+
+# MySQL commands
+alias start-mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM start"
+alias stop-mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop"
+alias restart-mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM restart"
+
+alias latexmk="/Applications/TextMate.app/Contents/SharedSupport/Bundles/Latex.tmbundle/Support/bin/latexmk.pl -pdf -pvc"
+
+##
+# DELUXE-USR-LOCAL-BIN-INSERT
+# (do not remove this comment)
+##
+echo $PATH | grep -q -s "/usr/local/bin"
+if [ $? -eq 1 ] ; then
+            PATH=$PATH:/usr/local/bin
+            export PATH
+fi
+
+test -r /sw/bin/init.sh && . /sw/bin/init.sh
+
+# MacPorts Installer addition on 2009-09-08_at_12:47:55: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+

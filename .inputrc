@@ -1,0 +1,8 @@
+set editing-mode vi
+set show-all-if-ambiguous on
+set meta-flag on
+set convert-meta off
+set output-meta off
+set bell-style visible
+control-p: history-search-backward
+control-n: history-search-forward

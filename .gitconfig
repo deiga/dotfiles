@@ -1,0 +1,25 @@
+[user]
+	name = Timo Sand
+	email = timo.sand@kapsi.fi
+[github]
+	user = deiga
+[core]
+	excludesfile = $HOME/.gitignore
+	autocrlf = input
+	safecrlf = true
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+[merge]
+	tool = opendiff
+[apply]
+	whitespace = nowarn
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
