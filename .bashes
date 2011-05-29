@@ -120,7 +120,7 @@ alias stop-mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop"
 alias restart-mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM restart"
 
 alias latexmk="/Applications/TextMate.app/Contents/SharedSupport/Bundles/Latex.tmbundle/Support/bin/latexmk.pl -pdf -pvc"
-alias manpdf="man -t function | ps2pdf - - | open -f -a Preview"
+alias manpdf="man -t $0 | ps2pdf - - | open -f -a Preview"
 
 ##
 # DELUXE-USR-LOCAL-BIN-INSERT
