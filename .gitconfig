@@ -7,6 +7,7 @@
 	excludesfile = $HOME/.gitignore
 	autocrlf = input
 	safecrlf = true
+	editor = subl -w
 [color]
 	status = auto
 	diff = auto

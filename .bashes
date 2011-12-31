@@ -2,7 +2,7 @@
 today=`date "+%m.%d.%Y"`
 
 # Uses coreutils instead of OS X native's
-source /usr/local/Cellar/coreutils/8.7/aliases
+source /usr/local/Cellar/coreutils/8.12/aliases
 
 set -o vi
 
@@ -35,12 +35,13 @@ export PLAY_HOME=$HOME/play
 export PATH=$PATH:$PLAY_HOME
 
 # Other paths
-export VIM=/usr/share/vim/vim72/
+export VIM=/usr/share/vim/vim73/
 export HOME=/Users/timosand
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/depot_tools
 export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin
+export PATH=/usr/local/share/python:/usr/local/Cellar/PyPi/2.6/bin:$PATH
 export MANPATH=/opt/local/share/man:/user/local/man:$MANPATH
 export INFO=/usr/local/share/info:$INFO
 export HISTSIZE=10000
@@ -48,6 +49,11 @@ export HISTFILESIZE=10000
 export HISTCONTROL=ignoredups
 export EDITOR=vim
 export HISTTIMEFORMAT="%m/%d/%y - %H:%M:%S "
+
+[[ -s "/Users/timosand/.rvm/scripts/rvm" ]] && source "/Users/timosand/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
+# Homebrew fix
+export HOMEBREW_TEMP="/usr/local/tmp"
 
 # Bash tips and tricks for History related preferences
 # see http://richbradshaw.wordpress.com/2007/11/25/bash-tips-and-tricks/
