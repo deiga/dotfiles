@@ -1,31 +1,12 @@
 colorscheme desert
-set backspace=indent,eol,start
-set backspace=2
 "hi Comment ctermfg=darkcyan
 set history=50
-set wildmode=list:longest,full
-set shortmess+=r
 set showmode
-set mouse=a
-set smartcase
 set viminfo='50,\"1000,:20,n~/.viminfo
 set cpoptions=aABcFsmq
-filetype plugin indent on
-set directory=~/.vim/tmp
-set fileformats=unix,mac,dos
-set wildmenu
-set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png,*.class
-set wildmode=list:longest
 " Vim UI
-set cursorline
-set linespace=0
-set report=0
-set showmatch
 set statusline=%-20(%F%)\ [%1*%M%*%n%R%H]\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ %-20(%)%=\ l:\ %l,\ c:\ %c\ [%p%%]\ [LEN=%L]
 " Text Formatting
-set infercase
-set softtabstop=4
-set shiftround
 " Mappings
 
     " space / shift-space scroll in normal mode
@@ -42,44 +23,19 @@ set grepprg=grep\ -nH\ $*
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
-
-set nocompatible    " use vim defaults
-set ls=2            " allways show status line
-set tabstop=4       " numbers of spaces of tab character
-set shiftwidth=4    " numbers of spaces to (auto)indent
-set scrolloff=8     " keep 3 lines when scrolling
-set showcmd         " display incomplete commands
-set hlsearch        " highlight searches
-set incsearch       " do incremental searching
-set ruler           " show the cursor position all the time
-set visualbell t_vb=    " turn off error beep/flash
-set novisualbell    " turn off visual bell
-set nobackup        " do not keep a backup file
-set number          " show line numbers
-set ignorecase      " ignore case when searching
 set title           " show title in console title bar
 set ttyfast         " smoother changes
-"set ttyscroll=0        " turn off scrolling, didn't work well with PuTTY
 set modeline        " last lines in document sets vim mode
 set modelines=3     " number lines checked for modelines
-set shortmess=atI   " Abbreviate messages
-set nostartofline   " don't jump to first character when paging
 set whichwrap=b,s,h,l,<,>,[,]   " move freely between files
-"set viminfo='20,<50,s10,h
 
-"set autoindent     " always set autoindenting on
-"set smartindent        " smart indent
-"set cindent            " cindent
 set noautoindent
 set nosmartindent
 set nocindent   
 
 set autowrite      " auto saves changes when quitting and swiching buffer
-set expandtab      " tabs are converted to spaces, use only when required
 set sm             " show matching braces, somewhat annoying...
-set nowrap         " don't wrap lines
 
-syntax on           " syntax highlighing
 
 if has("autocmd")
     " Restore cursor position
@@ -120,3 +76,96 @@ map ,h :source $VIM/vim71/syntax/2html.vim<cr>:w<cr>:clo<cr>
 " Common command line typos
 cmap W w
 cmap Q q
+
+
+" Basics {
+    set nocompatible " explicitly get out of vi-compatible mode
+    set noexrc " don't use local version of .(g)vimrc, .exrc
+    set background=dark " we plan to use a dark background
+    syntax on " syntax highlighting on
+" }
+
+" General {
+    filetype plugin indent on " load filetype plugins/indent settings
+    set autochdir " always switch to the current file directory 
+    set backspace=indent,eol,start " make backspace a more flexible
+    set backup " make backup files
+    set backupdir=~/.vim/backup " where to put backup files
+    set clipboard+=unnamed " share windows clipboard
+    set directory=~/.vim/tmp " directory to place swap files in
+    set fileformats=unix,dos,mac " support all three, in this order
+    set hidden " you can change buffers without saving
+    set noerrorbells " don't make noise
+    set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png,*.class
+    set wildmenu " turn on command line completion wild style
+    set wildmode=list:longest,full " turn on wild mode huge list
+" }
+
+" Vim UI {
+    set cursorline " highlight current line
+    set incsearch " BUT do highlight as you type you 
+                   " search phrase
+    set laststatus=2 " always show the status line
+    set lazyredraw " do not redraw while running macros
+    set linespace=0 " don't insert any extra pixel lines 
+                     " betweens rows
+    set list " we do what to show tabs, to ensure we get them 
+              " out of my files
+    set listchars=tab:>-,trail:- " show tabs and trailing 
+    set matchtime=5 " how many tenths of a second to blink 
+                     " matching brackets for
+    set nohlsearch " do not highlight searched for phrases
+    set nostartofline " leave my cursor where it was
+    set novisualbell " don't blink
+    set number " turn on line numbers
+    set numberwidth=5 " We are good up to 99999 lines
+    set report=0 " tell us when anything is changed via :...
+    set ruler " Always show current positions along the bottom
+    set scrolloff=10 " Keep 10 lines (top/bottom) for scope
+    set shortmess=aOstT " shortens messages to avoid 
+                         " 'press a key' prompt
+    set showcmd " show the command being typed
+    set showmatch " show matching brackets
+    set sidescrolloff=10 " Keep 5 lines at the size
+    "set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+    "              | | | | |  |   |      |  |     |    |
+    "              | | | | |  |   |      |  |     |    + current 
+    "              | | | | |  |   |      |  |     |       column
+    "              | | | | |  |   |      |  |     +-- current line
+    "              | | | | |  |   |      |  +-- current % into file
+    "              | | | | |  |   |      +-- current syntax in 
+    "              | | | | |  |   |          square brackets
+    "              | | | | |  |   +-- current fileformat
+    "              | | | | |  +-- number of lines
+    "              | | | | +-- preview flag in square brackets
+    "              | | | +-- help flag in square brackets
+    "              | | +-- readonly flag in square brackets
+    "              | +-- rodified flag in square brackets
+    "              +-- full path to file in the buffer
+" }
+
+" Text Formatting/Layout {
+    set completeopt= " don't use a pop up menu for completions
+    set expandtab " no real tabs please!
+    set formatoptions=rq " Automatically insert comment leader on return, 
+                          " and let gq format comments
+    set ignorecase " case insensitive by default
+    set infercase " case inferred by default
+    set nowrap " do not wrap line
+    set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
+    set smartcase " if there are caps, go case-sensitive
+    set shiftwidth=4 " auto-indent amount when using cindent, 
+                      " >>, << and stuff like that
+    set softtabstop=4 " when hitting tab or backspace, how many spaces 
+                       "should a tab be (see expandtab)
+    set tabstop=8 " real tabs should be 8, and they will show with 
+                   " set list on
+" }
+
+" Autocommands {
+    " Ruby {
+        " ruby standard 2 spaces, always
+        au BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2 
+        au BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2 
+    " }
+" }
