@@ -1,47 +1,14 @@
 # Announces today's date
 today=`date "+%m.%d.%Y"`
 
-# Uses coreutils instead of OS X native's
-source /usr/local/Cellar/coreutils/8.12/aliases
-
 set -o vi
 
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+export LC_ALL="en_GB.UTF-8"
 
-# Go language paths
-export GOROOT=$HOME/go
-export GOARCH=amd64
-export GOOS=darwin
-export GOBIN=$HOME/gobin
-export PATH=$PATH:$GOBIN
-export GOINTRO=/Users/timosand/Documents/Code/Go/go-helsinki-spring-2010
-
-# Scala paths
-export SCALA_HOME=/opt/local/share/scala
-export PATH=$PATH:$SCALA_HOME/bin
-
-# Programming paths
-export CABAL_HOME=$HOME/.cabal/bin
-export PATH=$PATH:$CABAL_HOME
-export MYSQL_PATH=/usr/local/mysql/bin
-export PATH=$PATH:$MYSQL_PATH
-export PYTHONSTARTUP=/Users/timosand/.pystartup
-export PATH=$PATH:/usr/local/Cellar/python/2.7.1/bin
-export RAILS_ENV=development
-export POSTGRESQL_PATH=/opt/local/lib/postgresql84/bin
-export PATH=$PATH:$POSTGRESQL_PATH
-export PLAY_HOME=$HOME/play
-export PATH=$PATH:$PLAY_HOME
-
-# Other paths
-export VIM=/usr/share/vim/vim73/
-export HOME=/Users/timosand
+export HOME=~/
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/depot_tools
 export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin
-export PATH=/usr/local/share/python:/usr/local/Cellar/PyPi/2.6/bin:$PATH
 export MANPATH=/opt/local/share/man:/user/local/man:$MANPATH
 export INFO=/usr/local/share/info:$INFO
 export HISTSIZE=10000
@@ -49,11 +16,6 @@ export HISTFILESIZE=10000
 export HISTCONTROL=ignoredups
 export EDITOR=vim
 export HISTTIMEFORMAT="%m/%d/%y - %H:%M:%S "
-
-[[ -s "/Users/timosand/.rvm/scripts/rvm" ]] && source "/Users/timosand/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
-# Homebrew fix
-export HOMEBREW_TEMP="/usr/local/tmp"
 
 # Bash tips and tricks for History related preferences
 # see http://richbradshaw.wordpress.com/2007/11/25/bash-tips-and-tricks/
@@ -90,9 +52,9 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 # ls aliases
-alias ls='gls $LS_OPTIONS -hF'
-alias la='gls $LS_OPTIONS -lAhF'
-alias ll='gls $LS_OPTIONS -lhF'
+alias ls='ls $LS_OPTIONS -hF'
+alias la='ls $LS_OPTIONS -lAhF'
+alias ll='ls $LS_OPTIONS -lhF'
 
 # cd typo fixes
 alias cd..="cd .."
@@ -111,21 +73,6 @@ alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -vi"
 
-#ssh aliases
-alias sshx="ssh -X"
-alias sshd="ssh -D 8080"
-
-alias top="top -cd"
-
-# Apache error log
-alias apaerr="less /private/var/log/apache2/error_log"
-
-# MySQL commands
-alias start-mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM start"
-alias stop-mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop"
-alias restart-mysql="sudo /Library/StartupItems/MySQLCOM/MySQLCOM restart"
-
-alias latexmk="/Applications/TextMate.app/Contents/SharedSupport/Bundles/Latex.tmbundle/Support/bin/latexmk.pl -pdf -pvc"
 alias manpdf="man -t $0 | ps2pdf - - | open -f -a Preview"
 
 ##
