@@ -1,0 +1,116 @@
+Host melkki
+    User timosand
+    Port 22
+    HostName melkki.cs.helsinki.fi
+    IdentityFile ~/.ssh/laitos_rsa
+
+Host tix
+    User deiga
+    Port 22
+    HostName tix.tko-aly.fi
+    IdentityFile ~/.ssh/palvelin_rsa
+
+Host paasi
+    User timosand
+    Port 22
+    HostName melkinpaasi.cs.helsinki.fi
+    IdentityFile ~/.ssh/laitos_rsa
+
+Host kari
+    User timosand
+    Port 22
+    HostName melkinkari.cs.helsinki.fi
+    IdentityFile ~/.ssh/laitos_rsa
+
+Host myntti
+    User timosand
+    Port 22
+    HostName myntti.helsinki.fi
+    IdentityFile ~/.ssh/laitos_rsa
+
+Host ruuvi
+    User timosand
+    Port 22
+    HostName ruuvi.helsinki.fi
+    IdentityFile ~/.ssh/laitos_rsa
+
+Host vera
+    User timosand
+    Port 22
+    Hostname vera.cs.helsinki.fi
+    IdentityFile ~/.ssh/laitos_rsa
+
+Host hilla 
+    User deiga
+    Port 22
+    HostName hilla.kapsi.fi
+    IdentityFile ~/.ssh/palvelin_rsa
+
+Host lakka
+    User deiga
+    Port 22
+    HostName lakka.kapsi.fi
+    IdentityFile ~/.ssh/palvelin_rsa
+
+Host karvin
+    User deiga
+    Port 22
+    Hostname karviainen.kapsi.fi
+    IdentityFile ~/.ssh/palvelin_rsa
+
+Host kirsi
+    User deiga
+    Port 22
+    Hostname kirsikka.kapsi.fi
+    IdentityFile ~/.ssh/palvelin_rsa
+
+Host roydon
+    User roydonf
+    Port 22
+    HostName roydon.fi
+    IdentityFile ~/.ssh/roydon_rsa
+
+Host csdb
+    User timosand
+    Port 22
+    HostName db.cs.helsinki.fi
+    IdentityFile ~/.ssh/laitos_rsa
+
+Host trip
+    User tkt_trip
+    Port 22
+    HostName db.cs.helsinki.fi
+    IdentityFile ~/.ssh/rsa_id
+
+Host patch-tag
+    User deiga
+    Port 22
+    Hostname patch-tag.com
+    IdentityFile ~/.ssh/patchtag_rsa
+    TCPKeepAlive yes
+    IdentitiesOnly yes
+
+Host github
+    User git
+    Hostname github.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/github_rsa
+
+Host airedale
+    User airedale
+    Hostname airedalenterrieri.fi
+    IdentityFile ~/.ssh/airedale_rsa
+
+Host rapila
+    User rapilaco
+    Hostname rapila.com
+    IdentityFile ~/.ssh/rapila_rsa
+
+Host loa
+    User deiga
+    Hostname leftoutsidealone.net
+
+Host nethack
+    User nethack
+    HostName nethack.fi
+    PubkeyAuthentication false
