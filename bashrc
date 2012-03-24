@@ -90,3 +90,6 @@ test -r /sw/bin/init.sh && . /sw/bin/init.sh
 man () {
 /usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
 }
+. ~/.bashrc_private
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

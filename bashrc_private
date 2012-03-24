@@ -1,5 +1,5 @@
 # Uses coreutils instead of OS X native's
-source /usr/local/Cellar/coreutils/8.12/aliases
+PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
 # Go language paths
 export GOROOT=$HOME/go
@@ -35,7 +35,7 @@ export PATH=/usr/local/share/python:/usr/local/Cellar/PyPi/2.6/bin:$PATH
 export MANPATH=/opt/local/share/man:/user/local/man:$MANPATH
 export INFO=/usr/local/share/info:$INFO
 
-[[ -s "/Users/timosand/.rvm/scripts/rvm" ]] && source "/Users/timosand/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 # Homebrew fix
 export HOMEBREW_TEMP="/usr/local/tmp"
@@ -44,3 +44,8 @@ export HOMEBREW_TEMP="/usr/local/tmp"
 alias ls='gls $LS_OPTIONS -hF'
 alias la='gls $LS_OPTIONS -lAhF'
 alias ll='gls $LS_OPTIONS -lhF'
+
+# Mongo roydon aliases
+alias mongo_rp='mongo ds031277.mongolab.com:31277/roydon_prod -u roydon -p 8eza5re3e8wEthuT'
+alias mongo_rd='mongo ds029267.mongolab.com:29267/heroku_app2248510 -u roydon -p 6KCpfzrFExHTkdww'
+alias mongo_rt='mongo ds029277.mongolab.com:29277/roydon_test -u roydon -p 2GvUZBJrDEmwevZr'

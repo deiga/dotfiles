@@ -1,0 +1,5 @@
+rvm_gemset_create_on_use_flag=1
+export rvm_environments_path=$HOME/.rvm/environments
+export rvm_gems_path=$HOME/.rvm/gems
+export rvm_gems_cache_path=$HOME/.rvm/gems_cache
+export rvm_wrappers_path=$HOME/.rvm/wrappers

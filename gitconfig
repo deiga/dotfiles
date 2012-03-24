@@ -4,14 +4,17 @@
 [github]
 	user = deiga
 [core]
-	excludesfile = $HOME/.gitignore
+	excludesfile = ~/.gitignore
 	autocrlf = input
 	safecrlf = true
 	editor = subl -w
 [color]
-	status = auto
-	diff = auto
-	branch = auto
+	status = true
+	diff = true
+	branch = true
+        ui = true
+        grep = true
+        showbranch = true
 [merge]
 	tool = opendiff
 [apply]
