@@ -36,7 +36,6 @@ Thumbs.db
 
 .pystartup
 *.pyc
-.rvmrc*
 
 # Rails ignores #
 #################
