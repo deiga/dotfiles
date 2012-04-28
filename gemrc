@@ -7,4 +7,3 @@
 :sources: 
 - http://rubygems.org/
 - http://gems.github.com/
-gem: -n/usr/local/bin --no-ri --no-rdoc
