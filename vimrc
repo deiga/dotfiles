@@ -169,3 +169,8 @@ cmap Q q
         au BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2 
     " }
 " }
+
+" Pathogen
+" https://github.com/tpope/vim-pathogen
+
+call pathogen#infect()

@@ -1,4 +1,5 @@
 rvm_gemset_create_on_use_flag=1
+rvm_project_rvmrc_default=1
 export rvm_environments_path=$HOME/.rvm/environments
 export rvm_gems_path=$HOME/.rvm/gems
 export rvm_gems_cache_path=$HOME/.rvm/gems_cache
