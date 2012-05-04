@@ -1,2 +1,5 @@
 vim/backup/*~
+*.tmp
+*.swp
 vim/.netrwhist
+known_hosts
