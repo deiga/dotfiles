@@ -7,7 +7,7 @@
 	excludesfile = ~/.gitignore
 	autocrlf = input
 	safecrlf = true
-	editor = subl -w
+	editor = vim
 [color]
 	status = true
 	diff = true
