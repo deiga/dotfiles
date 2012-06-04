@@ -1,4 +1,4 @@
-ompiled source #
+# Compiled source #
 ###################
 *.com
 *.class
@@ -25,6 +25,7 @@ ompiled source #
 *.log
 *.sql
 *.sqlite
+*.LOG
 
 # OS generated files #
 ######################
@@ -34,6 +35,8 @@ ehthumbs.db
 Icon?
 Thumbs.db
 
+# Python ignores #
+##################
 .pystartup
 *.pyc
 
@@ -41,3 +44,12 @@ Thumbs.db
 #################
 coverage/*
 tmp/*
+
+# IDE ignores #
+###############
+*.prefs
+.classpath
+.project
+.settings/*
+MANIFEST.MF
+bin/*
