@@ -1,6 +1,6 @@
 [user]
 	name = Timo Sand
-	email = timo.sand@kapsi.fi
+	email = timo.j.sand@gmail.com
 [github]
 	user = deiga
 [core]
@@ -28,3 +28,9 @@
     type = cat-file -t
     dump = cat-file -p
     unstage = reset HEAD --
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

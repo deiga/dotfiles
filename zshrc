@@ -54,3 +54,34 @@ RPROMPT='%{$fg[white]%} $(~/.rvm/bin/rvm-prompt)$(~/bin/git-cwd-info)%{$reset_co
 # Show completion on first TAB
 setopt menucomplete
 
+# OS X specifics
+case `uname -a` in
+    *Darwin*)
+        alias manpdf="man -t $0 | ps2pdf - - | open -f -a Preview"
+        export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+        ;;
+    *)
+        echo "Darwin not found"
+        ;;
+esac
+
+# Setting color options for ls
+if [ "$TERM" != "dumb" ]; then
+        export LS_OPTIONS='--color=auto'
+        eval `dircolors ~/.dir_colors`
+fi
+
+# ls aliases
+alias ls='ls $LS_OPTIONS -hF'
+alias la='ls $LS_OPTIONS -lhAF'
+alias ll='ls $LS_OPTIONS -lhF'
+
+# added interactive and verbose mode for common file operations
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vi"
+
+# all-round man
+man () {
+/usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
+}
