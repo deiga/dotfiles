@@ -116,6 +116,7 @@ Host nethack
     PubkeyAuthentication false
 
 Host gitlab_cre8
-   Hostname gitlab.cre8.fi
-   User git
-   IdentityFile ~/.ssh/cre8_rsa
+    Hostname gitlab.cre8.fi
+    User git
+    IdentityFile ~/.ssh/cre8_rsa
+    IdentitiesOnly yes
