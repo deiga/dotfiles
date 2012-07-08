@@ -120,3 +120,6 @@ Host gitlab_cre8
     User git
     IdentityFile ~/.ssh/cre8_rsa
     IdentitiesOnly yes
+
+Host *
+    IdentitiesOnly yes
