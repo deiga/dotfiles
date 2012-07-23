@@ -15,7 +15,6 @@
 *.dmg
 *.gz
 *.iso
-*.jar
 *.rar
 *.tar
 *.zip
@@ -26,6 +25,7 @@
 *.sql
 *.sqlite
 *.LOG
+log/*
 
 # OS generated files #
 ######################
@@ -53,3 +53,8 @@ tmp/*
 .settings/*
 MANIFEST.MF
 bin/*
+target/*
+
+# Temporary files #
+###################
+*.swp

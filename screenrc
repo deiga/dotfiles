@@ -1,0 +1,29 @@
+# If terminal hangs up abruptly detach and keep screen running
+# in the background
+autodetach on
+
+# Don't display the copyright page
+startup_message off
+
+# Emulate .logout message
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
+
+# Set scrollback buffer for each screen to 1000 lines (default
+# # is 100)
+defscrollback 2000
+
+################
+##
+## Status lines
+##
+## Caption shows the active windows, date, time on last line of display
+##caption always "%{.bw}%-w%{.rw}%n %t%{-}%+w %=%{..y}%D %d-%M %c "
+caption always "%{.bw}%-w%{.rw}%n %t%{-}%+w %-18=%{..y}%D %d-%M %c"
+#
+# Hardstatus line shows as title bar in putty, so use host name
+defhstatus "^EH"
+# hardstatus alwaysignore
+# hardstatus alwayslastline "%w"
+
+ignorecase on
+term "screen-256color"
