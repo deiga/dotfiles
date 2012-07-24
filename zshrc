@@ -22,7 +22,6 @@ export LC_ALL="en_GB.UTF-8"
 # PATH settings
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Announces todays date
 today=`date "+%m.%d.%Y"`
@@ -32,7 +31,8 @@ bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 
 # RVM
-if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export RAILS_ENV="development"
 
 # Colors
 autoload -U colors
@@ -85,3 +85,5 @@ alias rm="rm -vi"
 man () {
 /usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
 }
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
