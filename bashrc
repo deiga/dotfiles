@@ -4,6 +4,7 @@ today=`date "+%m.%d.%Y"`
 set -o vi
 
 export LC_ALL="en_GB.UTF-8"
+. ~/.bashrc_private
 
 export HOME=~/
 export PATH=/usr/local/bin:$PATH
@@ -90,6 +91,7 @@ test -r /sw/bin/init.sh && . /sw/bin/init.sh
 man () {
 /usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
 }
-. ~/.bashrc_private
 
+## RVM
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
