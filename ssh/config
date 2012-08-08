@@ -201,6 +201,10 @@ Host roydon
     HostName roydon.fi
     IdentityFile ~/.ssh/roydon_rsa
 
+Host heroku.com
+    HostName heroku.com
+    IdentityFile ~/.ssh/roydon_rsa
+
 Host rapila
     User rapilaco
     Hostname rapila.com
@@ -218,7 +222,6 @@ Host *
     ExitOnForwardFailure yes
     Protocol 2
     ServerAliveInterval 400
-    PreferredAuthentications "password, publickey"
     Port 22
     Compression yes
     CompressionLevel 7
