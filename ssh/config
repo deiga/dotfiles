@@ -101,7 +101,7 @@ Host patch-tag
     IdentityFile ~/.ssh/patchtag_rsa
     TCPKeepAlive yes
 
-Host github
+Host github.com
     User git
     Hostname github.com
     PreferredAuthentications publickey
@@ -116,6 +116,12 @@ Host nethack
     User nethack
     HostName nethack.fi
     PubkeyAuthentication false
+
+Host heroku.com
+    User git
+    Hostname heroku.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/heroku_rsa
 
 ### END ###
 
