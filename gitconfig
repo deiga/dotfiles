@@ -5,8 +5,6 @@
 	user = deiga
 [core]
 	excludesfile = ~/.gitignore
-	autocrlf = input
-	safecrlf = true
 	editor = vim
 [color]
 	status = true
