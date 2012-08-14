@@ -1,11 +1,11 @@
 [user]
 	name = Timo Sand
-	email = timo.j.sand@gmail.com
+	email = timo.sand@ipss.fi
 [github]
 	user = deiga
 [core]
 	excludesfile = ~/.gitignore
-	editor = vim
+	editor = subl -w
 [color]
 	status = true
 	diff = true
@@ -15,6 +15,7 @@
         showbranch = true
 [merge]
 	tool = opendiff
+        conflictstyle = diff3
 [apply]
 	whitespace = nowarn
 [alias]
