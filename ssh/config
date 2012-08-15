@@ -117,6 +117,12 @@ Host nethack
     HostName nethack.fi
     PubkeyAuthentication false
 
+Host heroku.com
+    User git
+    Hostname heroku.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/heroku_rsa
+
 ### END ###
 
 ### CS ###
