@@ -71,24 +71,20 @@ bindkey '^R' history-incremental-search-backward
 export RAILS_ENV="development"
 
 # Colors
-autoload -U colors
-colors
+autoload -U colors && colors
 setopt prompt_subst
 
 # Prompt
-local smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
+#local smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
 
-PROMPT='
-%~
-${smiley} %{$reset_color%}$fg_bold[white]%n$fg[grey]@%{$fg[red]%}%m%{$reset_color%} %% '
+#PROMPT='
+#%~
+#${smiley} %{$reset_color%}$fg_bold[white]%n$fg[grey]@%{$fg[red]%}%m%{$reset_color%} %% '
 
-RPROMPT='%{$fg[white]%} $(~/.rvm/bin/rvm-prompt)$(~/bin/git-cwd-info)%{$reset_color%}'
+#RPROMPT='%{$fg[white]%} $(~/.rvm/bin/rvm-prompt)$(~/bin/git-cwd-info)%{$reset_color%}'
 
 # Replace the above with this if you use rbenv
 # RPROMPT='%{$fg[white]%} $(~/.rbenv/bin/rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
-
-# Show completion on first TAB
-setopt menucomplete
 
 # OS X specifics
 case `uname -a` in
@@ -121,5 +117,10 @@ alias rm="rm -vi"
 man () {
 /usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
 }
+
+# Brew Autojump installation
+if [ -f `brew --prefix`/etc/autojump ]; then
+    . `brew --prefix`/etc/autojump
+fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
