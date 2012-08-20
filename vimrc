@@ -74,9 +74,13 @@ map ,h :source $VIM/vim71/syntax/2html.vim<cr>:w<cr>:clo<cr>
 
 
 " Common command line typos
-cmap W w
-cmap Q q
+"cmap W w
+"cmap Q q
 
+" Commands
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command Wq :execute ':W' | :q
+command WQ :Wq
 
 " Basics {
     set nocompatible " explicitly get out of vi-compatible mode
