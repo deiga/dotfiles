@@ -1,11 +1,11 @@
 [user]
 	name = Timo Sand
-	email = timo.sand@ipss.fi
+	email = timo.j.sand@gmail.com
 [github]
 	user = deiga
 [core]
 	excludesfile = ~/.gitignore
-	editor = subl -w
+	editor = vim
 [color]
 	status = true
 	diff = true
