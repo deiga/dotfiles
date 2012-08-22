@@ -1,3 +1,8 @@
+" Pathogen
+" https://github.com/tpope/vim-pathogen
+
+call pathogen#infect()
+
 colorscheme desert
 "hi Comment ctermfg=darkcyan
 set history=50
@@ -174,7 +179,4 @@ command WQ :Wq
     " }
 " }
 
-" Pathogen
-" https://github.com/tpope/vim-pathogen
 
-call pathogen#infect()
