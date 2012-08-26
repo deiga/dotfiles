@@ -131,3 +131,5 @@ if [ -f ~/.zsh_nocorrect ]; then
         alias $COMMAND="nocorrect $COMMAND"
     done < ~/.zsh_nocorrect
 fi
+
+growl() { echo $'\e]9;'${1}'\007' ; return ; }
