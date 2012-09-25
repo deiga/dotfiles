@@ -45,7 +45,7 @@ plugins=(autojump bundler gem heroku rails3 rake ruby vi-mode git brew git-flow 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+export PATH=$PATH:/usr/local/share/npm/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:$HOME/bin
 
 # end oh-my-zsh
 
@@ -55,9 +55,6 @@ set -o vi
 
 # Locale settings
 export LC_ALL="en_GB.UTF-8"
-
-# PATH settings
-export PATH=$PATH:$HOME/bin
 
 # Announces todays date
 today=`date "+%m.%d.%Y"`
@@ -133,3 +130,9 @@ if [ -f ~/.zsh_nocorrect ]; then
 fi
 
 growl() { echo $'\e]9;'${1}'\007' ; return ; }
+
+# Make path system wide
+launchctl setenv PATH $PATH
+
+# RVM + iTerm2
+__rvm_project_rvmrc

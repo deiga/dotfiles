@@ -107,6 +107,12 @@ Host github.com
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/github_rsa
 
+Host bitbucket.org
+    User git
+    Hostname bitbucket.org
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/github_rsa
+
 Host loa
     User deiga
     Hostname leftoutsidealone.net
