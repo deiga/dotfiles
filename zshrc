@@ -45,7 +45,7 @@ plugins=(autojump bundler gem heroku rails3 rake ruby vi-mode git brew git-flow 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/usr/local/share/npm/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:$HOME/bin
+export PATH=/usr/local/sbin:/usr/local/share/npm/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:$HOME/bin:$PATH
 
 # end oh-my-zsh
 
@@ -114,11 +114,6 @@ alias rm="rm -vi"
 man () {
 /usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
 }
-
-# Brew Autojump installation
-if [ -f `brew --prefix`/etc/autojump ]; then
-    . `brew --prefix`/etc/autojump
-fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
