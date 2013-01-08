@@ -44,6 +44,7 @@ Thumbs.db
 #################
 coverage/*
 tmp/*
+bundler_stubs
 
 # IDE ignores #
 ###############
@@ -58,3 +59,4 @@ target/*
 # Temporary files #
 ###################
 *.swp
+*~
