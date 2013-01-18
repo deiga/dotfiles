@@ -130,6 +130,3 @@ growl() { echo $'\e]9;'${1}'\007' ; return ; }
 
 # Make path system wide
 launchctl setenv PATH $PATH
-
-# RVM + iTerm2
-__rvm_project_rvmrc
