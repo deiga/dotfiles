@@ -12,6 +12,8 @@ bindkey -v
 # compinit
 # End of lines added by compinstall
 
+export SHELL=/bin/zsh
+
 # oh-my-zsh
 
 # Path to your oh-my-zsh configuration.
@@ -27,7 +29,7 @@ export ZSH_THEME="random"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -40,7 +42,7 @@ export ZSH_THEME="random"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump bundler gem heroku rails3 rake ruby vi-mode git brew git-flow mvn osx svn command-coloring rvm)
+plugins=(autojump bundler gem heroku rails3 rake ruby vi-mode git brew git-flow osx svn command-coloring rvm)
 
 source $ZSH/oh-my-zsh.sh
 
