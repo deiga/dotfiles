@@ -1,6 +1,7 @@
 " Pathogen
 " https://github.com/tpope/vim-pathogen
 
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 colorscheme desert
