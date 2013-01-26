@@ -27,3 +27,4 @@ defhstatus "^EH"
 
 ignorecase on
 term "screen-256color"
+shell -/bin/zsh
