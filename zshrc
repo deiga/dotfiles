@@ -1,3 +1,6 @@
+# Profiling
+# zmodload zsh/zprof
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -5,14 +8,13 @@ SAVEHIST=10000
 setopt appendhistory autocd nomatch
 bindkey -v
 # End of lines configured by zsh-newuser-install
+
 # The following lines were added by compinstall
 # zstyle :compinstall filename '~/.zshrc'
 
 # autoload -Uz compinit
 # compinit
 # End of lines added by compinstall
-
-export SHELL=/bin/zsh
 
 # oh-my-zsh
 
@@ -130,3 +132,6 @@ growl() { echo $'\e]9;'${1}'\007' ; return ; }
 
 # Make path system wide
 launchctl setenv PATH $PATH
+
+# Profiling end
+# zprof
