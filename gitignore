@@ -60,3 +60,10 @@ target/*
 ###################
 *.swp
 *~
+
+# CTags files #
+###############
+.tags*
+.TAGS*
+tags*
+TAGS*
