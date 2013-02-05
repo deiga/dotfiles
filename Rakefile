@@ -31,6 +31,7 @@ task :install do
       link_file(file)
     end
   end
+  install_vim
 end
 
 def replace_file(file)
@@ -66,4 +67,8 @@ def switch_to_zsh
       puts "skipping zsh"
     end
   end
+end
+
+def install_vim
+   system %Q{cd $HOME; vim +BundleInstall +qall} 
 end
