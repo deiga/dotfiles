@@ -1,11 +1,14 @@
-" Pathogen
-" https://github.com/tpope/vim-pathogen
+" ===========================================
+" Who: Timo Sand (@deiga)
+" What: .vimrc
+" ===========================================
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+" All of the plugins are installed with Vundle from this file.
+source ~/.vim/vundle.vim
+"
+set tags=./.tags,./.TAGS,./tags,./TAGS,tags;~,TAGS;~,.tags:~,.TAGS;
 
-colorscheme desert
-"hi Comment ctermfg=darkcyan
+color molokai
 set history=50
 set showmode
 set viminfo='50,\"1000,:20,n~/.viminfo
@@ -13,11 +16,7 @@ set cpoptions=aABcFsmq
 " Vim UI
 set statusline=%-20(%F%)\ [%1*%M%*%n%R%H]\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ %-20(%)%=\ l:\ %l,\ c:\ %c\ [%p%%]\ [LEN=%L]
 " Text Formatting
-" Mappings
 
-    " space / shift-space scroll in normal mode
-    noremap <S-space> <C-b>
-    noremap <space> <C-f>
 " LaTeX Suite
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
@@ -40,52 +39,6 @@ set nosmartindent
 set nocindent
 
 set sm             " show matching braces, somewhat annoying...
-
-
-if has("autocmd")
-    " Restore cursor position
-    au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
-    " Filetypes (au = autocmd)
-    au FileType helpfile set nonumber      " no line numbers when viewing help
-    au FileType helpfile nnoremap <buffer><cr> <c-]>   " Enter selects subject
-    au FileType helpfile nnoremap <buffer><bs> <c-T>   " Backspace to go back
-
-    " When using mutt, text width=72
-    au FileType mail,tex set textwidth=72
-    au FileType cpp,c,java,sh,pl,php,asp  set autoindent
-    au FileType cpp,c,java,sh,pl,php,asp  set smartindent
-    au FileType cpp,c,java,sh,pl,php,asp  set cindent
-    "au BufRead mutt*[0-9] set tw=72
-
-    " Automatically chmod +x Shell and Perl scripts
-    "au BufWritePost   *.sh             !chmod +x %
-    "au BufWritePost   *.pl             !chmod +x %
-
-    " File formats
-    au BufNewFile,BufRead  *.pls    set syntax=dosini
-    au BufNewFile,BufRead  modprobe.conf    set syntax=modconf
-endif
-
-" Keyboard mappings
-map <F1> :previous<CR>  " map F1 to open previous buffer
-map <F2> :next<CR>      " map F2 to open next buffer
-map <silent> <C-N> :silent noh<CR> " turn off highlighted search
-map ,v :sp ~/.vimrc<cr> " edit my .vimrc file in a split
-map ,e :e ~/.vimrc<cr>      " edit my .vimrc file
-map ,u :source ~/.vimrc<cr> " update the system settings from my vimrc file
-"----- write out html file
-map ,h :source $VIM/vim71/syntax/2html.vim<cr>:w<cr>:clo<cr>
-
-
-" Common command line typos
-"cmap W w
-"cmap Q q
-
-" Commands
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-command Wq :execute ':W' | :q
-command WQ :Wq
 
 " Basics {
     set nocompatible " explicitly get out of vi-compatible mode
@@ -159,12 +112,8 @@ command WQ :Wq
                    " set list on
 " }
 
-" Autocommands {
-    " Ruby {
-        " ruby standard 2 spaces, always
-        au BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2
-        au BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2
-    " }
-" }
+" All hotkeys, not depedant on plugins, are bound here.
+source ~/.vim/bindings.vim
 
-
+" Auto commands.
+source ~/.vim/autocmds.vim
