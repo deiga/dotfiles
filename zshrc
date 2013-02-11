@@ -119,7 +119,7 @@ man () {
 /usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
 }
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$rvm_path:$rvm_bin_path:$PATH # Add RVM to PATH for scripting
 
 # Disable correct
 if [ -f ~/.zsh_nocorrect ]; then
