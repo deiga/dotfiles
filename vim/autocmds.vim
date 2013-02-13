@@ -31,4 +31,7 @@ if has("autocmd")
         au BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2
         au BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2
     " }
+    
+    " Crontab http://vim.wikia.com/wiki/Editing_crontab
+    au BufEnter /private/tmp/crontab.* setl backupcopy=yes
 endif
