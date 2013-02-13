@@ -92,6 +92,9 @@ case `uname -a` in
     *Darwin*)
         alias manpdf="man -t $0 | ps2pdf - - | open -f -a Preview"
         export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+
+        # Make path system wide
+        launchctl setenv PATH $PATH
         ;;
     *)
         echo "Darwin not found"
@@ -129,9 +132,6 @@ if [ -f ~/.zsh_nocorrect ]; then
 fi
 
 growl() { echo $'\e]9;'${1}'\007' ; return ; }
-
-# Make path system wide
-launchctl setenv PATH $PATH
 
 # Profiling end
 # zprof
