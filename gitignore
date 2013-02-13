@@ -45,6 +45,7 @@ Thumbs.db
 coverage/*
 tmp/*
 bundler_stubs
+rails_best_practices_output.html
 
 # IDE ignores #
 ###############
