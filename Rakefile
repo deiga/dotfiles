@@ -35,6 +35,7 @@ task :install do
 end
 
 def replace_file(file)
+  puts "Replacing ~/.#{file}"
   system %Q{rm -rf "$HOME/.#{file.sub(/\.erb$/, '')}"}
   link_file(file)
 end
