@@ -8,7 +8,7 @@ source ~/.vim/vundle.vim
 "
 set tags=./.tags,./.TAGS,./tags,./TAGS,tags;~,TAGS;~,.tags:~,.TAGS;
 
-color molokai
+" color molokai " Set in vundle.vim
 set history=50
 set showmode
 set viminfo='50,\"1000,:20,n~/.viminfo

@@ -26,7 +26,8 @@ Bundle 'tpope/vim-markdown'
 Bundle 'mutewinter/nginx.vim'
 
 "dark color scheme
-Bundle 'mrtazz/molokai.vim'
+Bundle 'tomasr/molokai'
+color molokai
 
 " Search helper
 Bundle 'henrik/vim-indexed-search'
