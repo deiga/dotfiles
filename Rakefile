@@ -31,7 +31,7 @@ task :install do
       link_file(file)
     end
   end
-  install_vim
+  setup_vim
 end
 
 def replace_file(file)
@@ -52,6 +52,24 @@ def link_file(file)
   end
 end
 
+def setup_vim
+  clone_vundle
+  install_vim_bundles
+end
+
+def clone_vundle
+  if File.exist?('vim/bundle/vundle/.git')
+    puts 'Vundle already installed'
+  else
+    not(system %Q{git clone https://github.com/gmarik/vundle.git vim/bundle/vundle}) && 'Could not clone Vundle'
+  end
+end
+
+def install_vim_bundles
+  puts 'Updating Vim Bundles'
+  not(system %Q{vim +BundleInstall +qall}) && 'Error installing bundles'
+end
+
 
 def switch_to_zsh
   if `ps -p #{Process::ppid}` =~ /zsh/
@@ -68,8 +86,4 @@ def switch_to_zsh
       puts "skipping zsh"
     end
   end
-end
-
-def install_vim
-   system %Q{cd $HOME; vim +BundleInstall +qall} 
 end
