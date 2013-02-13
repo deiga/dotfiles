@@ -95,9 +95,14 @@ case `uname -a` in
 
         # Make path system wide
         launchctl setenv PATH $PATH
+
+        # Use keychain for HTTPS git
+        git config --global credential.helper osxkeychain
         ;;
     *)
-        echo "Darwin not found"
+        # Cache credentials for 60min for HTTPS git
+        git config credential.helper 'cache --timeout=3600'
+        echo "This system is not Darwin"
         ;;
 esac
 
