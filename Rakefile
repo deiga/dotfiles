@@ -53,8 +53,8 @@ end
 
 
 def switch_to_zsh
-  if ENV["SHELL"] =~ /zsh/
-    puts "using zsh"
+  if `ps -p #{Process::ppid}` =~ /zsh/
+    puts "Already using ZSH"
   else
     print "switch to zsh? (recommended) [ynq] "
     case $stdin.gets.chomp
