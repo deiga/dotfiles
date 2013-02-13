@@ -27,7 +27,6 @@ Bundle 'mutewinter/nginx.vim'
 
 "dark color scheme
 Bundle 'tomasr/molokai'
-color molokai
 
 " Search helper
 Bundle 'henrik/vim-indexed-search'

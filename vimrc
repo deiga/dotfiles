@@ -8,7 +8,6 @@ source ~/.vim/vundle.vim
 "
 set tags=./.tags,./.TAGS,./tags,./TAGS,tags;~,TAGS;~,.tags:~,.TAGS;
 
-" color molokai " Set in vundle.vim
 set history=50
 set showmode
 set viminfo='50,\"1000,:20,n~/.viminfo
@@ -43,7 +42,9 @@ set sm             " show matching braces, somewhat annoying...
 " Basics {
     set nocompatible " explicitly get out of vi-compatible mode
     set noexrc " don't use local version of .(g)vimrc, .exrc
+    set t_Co=256
     set background=dark " we plan to use a dark background
+    colorscheme molokai
     syntax on " syntax highlighting on
 " }
 
