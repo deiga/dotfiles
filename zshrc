@@ -67,9 +67,6 @@ today=`date "+%m.%d.%Y"`
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 # Colors
 autoload -U colors && colors
 setopt prompt_subst
@@ -92,14 +89,14 @@ case `uname -a` in
         alias manpdf="man -t $0 | ps2pdf - - | open -f -a Preview"
         export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
+        # Set homebrew bin infront of PATH
+        export PATH=/usr/local/bin:$PATH
+
         # Make path system wide
         launchctl setenv PATH $PATH
 
         # Use keychain for HTTPS git
         git config --global credential.helper osxkeychain
-
-        # Set homebrew bin infront of PATH
-        export PATH=/usr/local/bin:$PATH
 
         ;;
     *)
