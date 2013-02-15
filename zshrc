@@ -44,7 +44,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump bundler gem heroku rails3 rake ruby vi-mode git brew git-flow osx svn command-coloring rvm)
+plugins=(autojump bundler gem heroku rails3 rake ruby vi-mode git brew git-flow osx command-coloring rvm ssh-agent screen python npm node)
 
 source $ZSH/oh-my-zsh.sh
 
