@@ -67,7 +67,7 @@ end
 
 def install_vim_bundles
   puts 'Updating Vim Bundles'
-  not(system %Q{vim +BundleInstall +qall}) && 'Error installing bundles'
+  not(system %Q{vim +BundleInstall! +qall}) && 'Error installing bundles'
 end
 
 
