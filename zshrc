@@ -49,7 +49,7 @@ plugins=(autojump bundler gem heroku rails3 rake ruby vi-mode git brew git-flow 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/sbin:/usr/local/share/npm/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:$HOME/bin:$PATH
+export PATH=$HOME/bin:$PATH # Add ~/bin to PATH
 
 # end oh-my-zsh
 
@@ -69,7 +69,6 @@ bindkey '^R' history-incremental-search-backward
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-export RAILS_ENV="development"
 
 # Colors
 autoload -U colors && colors
@@ -98,6 +97,10 @@ case `uname -a` in
 
         # Use keychain for HTTPS git
         git config --global credential.helper osxkeychain
+
+        # Set homebrew bin infront of PATH
+        export PATH=/usr/local/bin:$PATH
+
         ;;
     *)
         # Cache credentials for 60min for HTTPS git
@@ -127,7 +130,6 @@ man () {
 /usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
 }
 
-PATH=$rvm_path:$rvm_bin_path:$PATH # Add RVM to PATH for scripting
 
 # Disable correct
 if [ -f ~/.zsh_nocorrect ]; then
