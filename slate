@@ -1,0 +1,8 @@
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+
+alias hyper ctrl;shift;alt;cmd
+
+alias full      move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias lefthalf  move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
