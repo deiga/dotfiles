@@ -50,6 +50,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=$HOME/bin:$PATH # Add ~/bin to PATH
+export PATH=/usr/local/share/npm/bin:$PATH # Add npm packages to PATH
 
 # end oh-my-zsh
 
@@ -87,7 +88,7 @@ setopt prompt_subst
 case `uname -a` in
     *Darwin*)
         alias manpdf="man -t $0 | ps2pdf - - | open -f -a Preview"
-        export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+        export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
         # Set homebrew bin infront of PATH
         export PATH=/usr/local/bin:$PATH
