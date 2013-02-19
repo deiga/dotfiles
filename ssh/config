@@ -4,13 +4,13 @@ Host ipss
     User tsand
     HostName 10.0.151.10
     PreferredAuthentications publickey
-    IdentityFile /Users/timosand/.ssh/ipss_rsa
+    IdentityFile /Users/timosand/.ssh/keys/ipss_rsa
 
 Host sisu
     User isokarhu
     HostName sisu.isteer.net
     PreferredAuthentications publickey
-    IdentityFile /Users/timosand/.ssh/ipss_rsa
+    IdentityFile /Users/timosand/.ssh/keys/ipss_rsa
     LocalForward 6002 10.0.92.13:3389
     LocalForward 6003 10.0.92.13:1433
 
@@ -22,7 +22,7 @@ Host urho
     User isokarhu
     HostName urho.intelligrator.net
     PreferredAuthentications publickey
-    IdentityFile /Users/timosand/.ssh/ipss_rsa
+    IdentityFile /Users/timosand/.ssh/keys/ipss_rsa
 
 Host bogskar
     User root
@@ -71,7 +71,7 @@ Host gitosis-ipss
     User git
     HostName 10.0.151.66
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/ipss-git.id
+    IdentityFile ~/.ssh/keys/ipss-git.id
 
 Host ci
     User root
@@ -98,20 +98,20 @@ Host patch-tag
     User deiga
     Port 22
     Hostname patch-tag.com
-    IdentityFile ~/.ssh/patchtag_rsa
+    IdentityFile ~/.ssh/keys/patchtag_rsa
     TCPKeepAlive yes
 
 Host github.com
     User git
     Hostname github.com
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/github_rsa
+    IdentityFile ~/.ssh/keys/github_rsa
 
 Host bitbucket.org
     User git
     Hostname bitbucket.org
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/github_rsa
+    IdentityFile ~/.ssh/keys/github_rsa
 
 Host loa
     User deiga
@@ -127,7 +127,7 @@ Host heroku.com
     User git
     Hostname heroku.com
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/heroku_rsa
+    IdentityFile ~/.ssh/keys/heroku_rsa
 
 ### END ###
 
@@ -137,37 +137,37 @@ Host melkki
     User timosand
     Port 22
     HostName melkki.cs.helsinki.fi
-    IdentityFile ~/.ssh/laitos_rsa
+    IdentityFile ~/.ssh/keys/laitos_rsa
 
 Host paasi
     User timosand
     Port 22
     HostName melkinpaasi.cs.helsinki.fi
-    IdentityFile ~/.ssh/laitos_rsa
+    IdentityFile ~/.ssh/keys/laitos_rsa
 
 Host kari
     User timosand
     Port 22
     HostName melkinkari.cs.helsinki.fi
-    IdentityFile ~/.ssh/laitos_rsa
+    IdentityFile ~/.ssh/keys/laitos_rsa
 
 Host myntti
     User timosand
     Port 22
     HostName myntti.helsinki.fi
-    IdentityFile ~/.ssh/laitos_rsa
+    IdentityFile ~/.ssh/keys/laitos_rsa
 
 Host ruuvi
     User timosand
     Port 22
     HostName ruuvi.helsinki.fi
-    IdentityFile ~/.ssh/laitos_rsa
+    IdentityFile ~/.ssh/keys/laitos_rsa
 
 Host vera
     User timosand
     Port 22
     Hostname vera.cs.helsinki.fi
-    IdentityFile ~/.ssh/laitos_rsa
+    IdentityFile ~/.ssh/keys/laitos_rsa
 
 ### END ###
 
@@ -177,25 +177,25 @@ Host hilla
     User deiga
     Port 22
     HostName hilla.kapsi.fi
-    IdentityFile ~/.ssh/palvelin_rsa
+    IdentityFile ~/.ssh/keys/palvelin_rsa
 
 Host lakka
     User deiga
     Port 22
     HostName lakka.kapsi.fi
-    IdentityFile ~/.ssh/palvelin_rsa
+    IdentityFile ~/.ssh/keys/palvelin_rsa
 
 Host karvin
     User deiga
     Port 22
     Hostname karviainen.kapsi.fi
-    IdentityFile ~/.ssh/palvelin_rsa
+    IdentityFile ~/.ssh/keys/palvelin_rsa
 
 Host kirsi
     User deiga
     Port 22
     Hostname kirsikka.kapsi.fi
-    IdentityFile ~/.ssh/palvelin_rsa
+    IdentityFile ~/.ssh/keys/palvelin_rsa
 
 ### END ###
 
@@ -203,12 +203,12 @@ Host kirsi
 
 Host heroku.com
     HostName heroku.com
-    IdentityFile ~/.ssh/roydon_rsa
+    IdentityFile ~/.ssh/keys/roydon_rsa
 
 Host gitlab.cre8.fi
     Hostname gitlab.cre8.fi
     User git
-    IdentityFile ~/.ssh/cre8_rsa
+    IdentityFile ~/.ssh/keys/cre8_rsa
 
 ### END ###
 
