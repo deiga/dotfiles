@@ -27,8 +27,8 @@
     type = cat-file -t
     dump = cat-file -p
     unstage = reset HEAD --
-    clone = clone --recursive
     wc = whatchanged -p --abbrev-commit --pretty=medium
+    cl = clone --recursive
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
 	path = 
