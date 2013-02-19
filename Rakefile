@@ -5,7 +5,7 @@ desc "install the dotfiles"
 task :install do
   switch_to_zsh
   replace_all = false
-  files = Dir['*'] - %w[Rakefile README.md LICENSE TODO.md]
+  files = Dir['*'] - %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin]
   files.each do |file|
     # system %Q{mkdir -vputs "$HOME/.#{File.dirname(file)}"} if file =~ /\// # Created directries in homefolder? (DEPRECATED ?)
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
@@ -31,9 +31,15 @@ task :install do
       link_file(file)
     end
   end
+  link_kr4mb
   setup_vim
 end
 
+def link_kr4mb
+   file = Dir['KeyRemap4MacBook/*'][0]
+   puts "linking #{file}"
+   system %Q{ln -s "$PWD/#{file}" "$HOME/Library/Application Support/#{file}"}
+end
 def replace_file(file)
   puts "Replacing ~/.#{file}"
   system %Q{rm -rf "$HOME/.#{file.sub(/\.erb$/, '')}"}
