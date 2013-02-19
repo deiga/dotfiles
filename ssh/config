@@ -94,7 +94,7 @@ Host home
     User deiga
     HostName 89.27.99.220
 
-Host patch-tag
+Host patch-tag.com
     User deiga
     Port 22
     Hostname patch-tag.com
