@@ -5,7 +5,7 @@ desc "install the dotfiles"
 task :install do
   switch_to_zsh
   replace_all = false
-  files = Dir['*'] - %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin]
+  files = Dir['*'] - %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box]
   files.each do |file|
     # system %Q{mkdir -vputs "$HOME/.#{File.dirname(file)}"} if file =~ /\// # Created directries in homefolder? (DEPRECATED ?)
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))

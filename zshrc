@@ -51,6 +51,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=$HOME/bin:$PATH # Add ~/bin to PATH
 export PATH=/usr/local/share/npm/bin:$PATH # Add npm packages to PATH
+export PATH=$HOME/dotfiles/box/bin:$PATH # Add path for box
 
 # end oh-my-zsh
 
