@@ -139,12 +139,6 @@ Host melkki
     HostName melkki.cs.helsinki.fi
     IdentityFile ~/.ssh/laitos_rsa
 
-Host tix
-    User deiga
-    Port 22
-    HostName tix.tko-aly.fi
-    IdentityFile ~/.ssh/palvelin_rsa
-
 Host paasi
     User timosand
     Port 22
@@ -207,20 +201,9 @@ Host kirsi
 
 ### SANDSTONE ###
 
-Host roydon
-    User roydonf
-    Port 22
-    HostName roydon.fi
-    IdentityFile ~/.ssh/roydon_rsa
-
 Host heroku.com
     HostName heroku.com
     IdentityFile ~/.ssh/roydon_rsa
-
-Host rapila
-    User rapilaco
-    Hostname rapila.com
-    IdentityFile ~/.ssh/rapila_rsa
 
 Host gitlab.cre8.fi
     Hostname gitlab.cre8.fi
