@@ -1,0 +1,50 @@
+#!/usr/bin/perl
+# a little script to get your network status
+
+sub trim($);
+
+$output = '';
+$en0_info = `/sbin/ifconfig en0 | grep "inet" | grep -v 127.0.0.1`;
+$en1_info = `/sbin/ifconfig en1 | grep "inet" | grep -v 127.0.0.1`;
+$ext_info = `curl -s http://deiga.kapsi.fi/ip.php`;
+$airport_network = `/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -I | awk -F: '/ SSID/ {print $2}'`;
+
+if($ext_info)
+{
+    $output .= "External: $ext_info \n";
+}
+else
+{ $output .= "External: OFFLINE \n";}
+
+
+if($en0_info)
+{
+    $en0_info =~ /inet (.*) netmask/s;
+    $output .= "Ethernet: $1 \n";
+}
+else
+{ $output .= "Ethernet: INACTIVE \n";}
+
+
+if($en1_info)
+{
+    $en1_info =~ /inet (.*) netmask/s;
+    $en1_info = $1;
+    $output .= "Airport: $en1_info \n".trim($airport_network)." \n";
+}
+else
+{ $output .= "Airport: INACTIVE \n";}
+
+$output .= "Bluetooth ";
+$output .= `/usr/local/bin/blueutil power`;
+$output .= `date`;
+
+print "$output";
+
+sub trim($)
+{
+	my $string = shift;
+	$string =~ s/^\s+//;
+	$string =~ s/\s+$//;
+	return $string;
+}

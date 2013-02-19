@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'uri'
+
+def convert_currency(cli_params)
+  url = URI('http://www.google.com/finance/converter')
+  params = { a: cli_params[0], from: cli_params[1], to: cli_params[2]}
+  url.query = URI.encode_www_form(params)
+  res = Net::HTTP.get_response(url)
+
+  STDOUT.puts res.body.match(/(?:result>)(.*?)(?:<\/)/m)[1].gsub(/<[^>]*>/,'')
+end
+
+
+case ARGV.length
+  when 3
+    convert_currency(ARGV)
+  else
+    STDOUT.puts <<-EOF
+Please provide correct parameters
+
+Usage:
+  converter 5 usd eur
+  converter <amount> <from> <to>
+EOF
+end

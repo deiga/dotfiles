@@ -32,7 +32,13 @@ task :install do
     end
   end
   link_kr4mb
+  link_bin
   setup_vim
+end
+
+def link_bin
+    puts "linking ~/bin"
+    system %Q{ln -s "$PWD/bin" "$HOME/bin"}
 end
 
 def link_kr4mb
@@ -40,6 +46,7 @@ def link_kr4mb
    puts "linking #{file}"
    system %Q{ln -s "$PWD/#{file}" "$HOME/Library/Application Support/#{file}"}
 end
+
 def replace_file(file)
   puts "Replacing ~/.#{file}"
   system %Q{rm -rf "$HOME/.#{file.sub(/\.erb$/, '')}"}

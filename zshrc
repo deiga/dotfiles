@@ -98,6 +98,8 @@ case `uname -a` in
         # Use keychain for HTTPS git
         git config --global credential.helper osxkeychain
 
+        source ~/bin/osx_functions.sh
+
         ;;
     *)
         # Cache credentials for 60min for HTTPS git
