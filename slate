@@ -19,20 +19,17 @@ alias editor 'Sublime Text 2'
 alias browser 'Google Chrome'
 
 # Position Aliases
-alias 1-chat  move screenOriginX;screenOriginY                               screenSizeX/9;screenSizeY       ${mon-laptop}
-alias 1-main  move screenOriginX+screenSizeX/9;screenOriginY                 8*screenSizeX/9;screenSizeY     ${mon-laptop}
-
 alias full      move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias lefthalf  move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
 
 # 1 Monitor layout
-layout 1monitor 'iTerm':SORT_TITLE,REPEAT                ${1-main}
-layout 1monitor 'Google Chrome':REPEAT                   ${1-main}
-layout 1monitor 'Sublime Text 2':REPEAT                  ${1-main}
-layout 1monitor 'SourceTree':REPEAT                      ${1-main}
-layout 1monitor 'Firefox':REPEAT                         ${1-main}
-layout 1monitor 'Spotify':REPEAT                         ${1-main}
+layout 1monitor 'iTerm':SORT_TITLE,REPEAT                ${full}
+layout 1monitor 'Google Chrome':REPEAT                   ${full}
+layout 1monitor 'Sublime Text 2':REPEAT                  ${full}
+layout 1monitor 'SourceTree':REPEAT                      ${full}
+layout 1monitor 'Firefox':REPEAT                         ${full}
+layout 1monitor 'Spotify':REPEAT                         ${full}
 
 # Default Layouts
 default 1monitor  resolutions:${mon-laptop}
