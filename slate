@@ -1,8 +1,70 @@
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+config secondsBetweenRepeat 0.1
+config checkDefaultsOnLoad false
+config focusCheckWidthMax 3000
+
+# Shows app icons and background apps, spreads icons in the same place.
 config windowHintsShowIcons true
 config windowHintsIgnoreHiddenWindows false
+config windowHintsSpread true
 
-alias hyper ctrl;shift;alt;cmd
+# Monitor Aliases
+alias mon-laptop      1440x990
+
+alias showNormalHint QWERTASDFGZXCVB
+
+alias editor 'Sublime Text 2'
+alias browser 'Google Chrome'
+
+# Position Aliases
+alias 1-chat  move screenOriginX;screenOriginY                               screenSizeX/9;screenSizeY       ${mon-laptop}
+alias 1-main  move screenOriginX+screenSizeX/9;screenOriginY                 8*screenSizeX/9;screenSizeY     ${mon-laptop}
 
 alias full      move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias lefthalf  move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+
+# 1 Monitor layout
+layout 1monitor 'iTerm':SORT_TITLE,REPEAT                ${1-main}
+layout 1monitor 'Google Chrome':REPEAT                   ${1-main}
+layout 1monitor 'Sublime Text 2':REPEAT                  ${1-main}
+layout 1monitor 'SourceTree':REPEAT                      ${1-main}
+layout 1monitor 'Firefox':REPEAT                         ${1-main}
+layout 1monitor 'Spotify':REPEAT                         ${1-main}
+
+# Default Layouts
+default 1monitor  resolutions:${mon-laptop}
+
+# Window Hints
+bind esc:cmd hint ${showNormalHint}
+
+# Grid
+bind esc:alt grid padding:5 0:6,3
+
+# ====================================
+# The HYPER key
+# ====================================
+
+alias hyper ctrl;shift;alt;cmd
+
+# Location bindings
+bind h:${hyper} ${lefthalf}
+bind k:${hyper} ${full}
+bind l:${hyper} ${righthalf}
+# bind r:${hyper} throw next Moves windows to next screen
+
+# Focus Bindings
+bind right:${hyper}    focus right
+bind left:${hyper}     focus left
+bind up:${hyper}       focus up
+bind down:${hyper}     focus down
+
+# App bindings
+bind i:${hyper} focus 'iTerm'
+bind b:${hyper} focus ${browser}
+bind s:${hyper} focus ${editor}
+
+bind r:${hyper} relaunch
+bind d:${hyper} switch
