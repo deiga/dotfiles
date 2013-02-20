@@ -8,7 +8,7 @@ startup_message off
 # Emulate .logout message
 pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended."
 
-# Set scrollback buffer for each screen to 1000 lines (default
+# Set scrollback buffer for each screen to 2000 lines (default
 # # is 100)
 defscrollback 2000
 
@@ -24,6 +24,9 @@ caption always "%{.bw}%-w%{.rw}%n %t%{-}%+w %-18=%{..y}%D %d-%M %c"
 defhstatus "^EH"
 # hardstatus alwaysignore
 # hardstatus alwayslastline "%w"
+
+# bind the space key to the command that displays a list of windows
+bind ' ' windowlist -b
 
 ignorecase on
 term "screen-256color"
