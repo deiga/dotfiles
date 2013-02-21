@@ -1,8 +1,8 @@
 // Monitors
-var monLaptop = "1680x1050";
+var monLaptop = "1440x900";
 var monTbolt = "2560x1440";
 
-var hyper = "ctrl;shift;alt;cmd"
+var hyper = "ctrl;shift;alt;cmd";
 
 // Operations
 var lapMain = S.op("corner", {
@@ -48,9 +48,8 @@ var iTermHash = {
 };
 
 var lapiTermHash =  {
-    "operations" : [lapMain],
-    "ignore-fail" : true,
     "operations" : [lapTop],
+    "ignore-fail" : true,
     "repeat" : true
 };
 
@@ -96,7 +95,8 @@ S.bnda({
     "space:ctrl" : universalLayout,
 
     // Relaunch
-    "r:ctrl;shift;alt;cmd" : S.op("relaunch")
+    "r:"+hyper : S.op("relaunch");
+    // "d:"+hyper : S.op("switch");
 });
 
 // Log that we're done configuring
