@@ -23,10 +23,13 @@ Host bitbucket.org
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/keys/github_rsa
 
-Host loa
+Host leftoutsidealone.net loa
     User deiga
-    Hostname leftoutsidealone.net
     Port 2255
+    IdentityFile ~/.ssh/keys/loa_rsa
+
+Host loa
+    HostName leftoutsidealone.net
 
 Host nethack
     User nethack
@@ -43,70 +46,56 @@ Host heroku.com
 
 ### CS ###
 
-Host melkki
+Host *.bath.ac.uk bucs lcpu
+    User tjs43
+    Port 22
+    IdentityFile ~/.ssh/keys/bath_rsa
+
+Host bucs
+    Hostname bucs.bath.ac.uk
+
+Host lcpu
+    Hostname lcpu.bath.ac.uk
+
+Host *.helsinki.fi melkki paasi kari myntti ruuvi
     User timosand
     Port 22
-    HostName melkki.cs.helsinki.fi
     IdentityFile ~/.ssh/keys/laitos_rsa
+
+Host melkki
+    HostName melkki.cs.helsinki.fi
 
 Host paasi
-    User timosand
-    Port 22
     HostName melkinpaasi.cs.helsinki.fi
-    IdentityFile ~/.ssh/keys/laitos_rsa
 
 Host kari
-    User timosand
-    Port 22
     HostName melkinkari.cs.helsinki.fi
-    IdentityFile ~/.ssh/keys/laitos_rsa
 
 Host myntti
-    User timosand
-    Port 22
     HostName myntti.helsinki.fi
-    IdentityFile ~/.ssh/keys/laitos_rsa
 
 Host ruuvi
-    User timosand
-    Port 22
     HostName ruuvi.helsinki.fi
-    IdentityFile ~/.ssh/keys/laitos_rsa
-
-Host vera
-    User timosand
-    Port 22
-    Hostname vera.cs.helsinki.fi
-    IdentityFile ~/.ssh/keys/laitos_rsa
 
 ### END ###
-
 ### KAPSI ###
 
-Host hilla
+Host *.kapsi.fi hilla lakka karvin kirsi
     User deiga
     Port 22
-    HostName hilla.kapsi.fi
     IdentityFile ~/.ssh/keys/palvelin_rsa
+
+Host hilla
+    HostName hilla.kapsi.fi
 
 Host lakka
-    User deiga
-    Port 22
     HostName lakka.kapsi.fi
-    IdentityFile ~/.ssh/keys/palvelin_rsa
 
 Host karvin
-    User deiga
-    Port 22
     Hostname karviainen.kapsi.fi
-    IdentityFile ~/.ssh/keys/palvelin_rsa
 
 Host kirsi
-    User deiga
-    Port 22
     Hostname kirsikka.kapsi.fi
-    IdentityFile ~/.ssh/keys/palvelin_rsa
-
 ### END ###
 
 ### SANDSTONE ###
