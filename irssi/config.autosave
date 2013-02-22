@@ -1,0 +1,483 @@
+servers = (
+  {
+    address = "irc.saunalahti.fi";
+    chatnet = "IRCnet";
+    port = "6667";
+    own_host = "xob.kapsi.fi";
+    family = "inet";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.fi.quakenet.org";
+    chatnet = "QuakeNet";
+    port = "6667";
+    own_host = "xob.kapsi.fi";
+    family = "inet";
+  },
+  { 
+    address = "irc.quakenet.org";
+    chatnet = "QuakeNet";
+    port = "6667";
+  },
+  {
+    address = "localhost";
+    chatnet = "BitlBee";
+    port = "6668";
+    use_ssl = "no";
+    ssl_verify = "no";
+    own_host = "localhost";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.freenode.org";
+    chatnet = "Freenode";
+    port = "6667";
+    use_ssl = "no";
+    ssl_verify = "no";
+  }
+);
+
+chatnets = {
+  IRCnet = {
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "5";
+    max_whois = "4";
+    max_query_chans = "5";
+  };
+  QuakeNet = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  Freenode = { type = "IRC"; };
+  BitlBee = { type = "IRC"; };
+};
+
+channels = (
+  { name = "#kapsi.fi"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#bigwig"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#tkt-tix"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#leftoutsidealone"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#tkt-fuksit2010"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "überfinns"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "tko-äly"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#matrix-ry"; chatnet = "IRCnet"; autojoin = "yes"; }
+);
+
+aliases = {
+  J = "join";
+  WJOIN = "join -window";
+  WQUERY = "query -window";
+  LEAVE = "part";
+  BYE = "quit";
+  EXIT = "quit";
+  SIGNOFF = "quit";
+  DESCRIBE = "action";
+  DATE = "time";
+  HOST = "userhost";
+  LAST = "lastlog";
+  SAY = "msg *";
+  WI = "whois";
+  WII = "whois $0 $0";
+  WW = "whowas";
+  W = "who";
+  N = "names";
+  M = "msg";
+  T = "topic";
+  C = "clear";
+  CL = "clear";
+  K = "kick";
+  KB = "kickban";
+  KN = "knockout";
+  BANS = "ban";
+  B = "ban";
+  MUB = "unban *";
+  UB = "unban";
+  IG = "ignore";
+  UNIG = "unignore";
+  SB = "scrollback";
+  UMODE = "mode $N";
+  WC = "window close";
+  WN = "window new hide";
+  SV = "say Irssi $J ($V) - http://irssi.org/";
+  GOTO = "sb goto";
+  CHAT = "dcc chat";
+  RUN = "SCRIPT LOAD";
+  CALC = "exec - if which bc &>/dev/null\\; then echo '$*' | bc | awk '{print \"$*=\"$$1}'\\; else echo bc was not found\\; fi";
+  SBAR = "STATUSBAR";
+  INVITELIST = "mode $C +I";
+  Q = "QUERY";
+  "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
+  EXEMPTLIST = "mode $C +e";
+  ATAG = "WINDOW SERVER";
+  fu = " FFFFFFFFFUUUUUUUUUUUUUU-";
+  f = "/say __|__";
+  combo = "C-C-C-COMBO BREAKER!";
+  wl = "window move left";
+  wr = "window move right";
+  awg = "/away gone";
+  google = "say http://lmgtfy.com/?=$0+$1+$2";
+  urban = "say http://www.urbandictionary.com/define.php?term=$0";
+};
+
+statusbar = {
+  # formats:
+  # when using {templates}, the template is shown only if it's argument isn't
+  # empty unless no argument is given. for example {sb} is printed always,
+  # but {sb $T} is printed only if $T isn't empty.
+
+  items = {
+    # start/end text in statusbars
+    barstart = "{sbstart}";
+    barend = "{sbend}";
+
+    topicbarstart = "{topicsbstart}";
+    topicbarend = "{topicsbend}";
+
+    # treated "normally", you could change the time/user name to whatever
+    time = "{sb $Z}";
+    user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
+
+    # treated specially .. window is printed with non-empty windows,
+    # window_empty is printed with empty windows
+    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
+    window_empty = "{sb $winref{sbservertag $tag}}";
+    prompt = "{prompt $[.15]itemname}";
+    prompt_empty = "{prompt $winname}";
+    topic = " $topic";
+    topic_empty = " Irssi v$J - http://irssi.org/help/";
+
+    # all of these treated specially, they're only displayed when needed
+    lag = "{sb Lag: $0-}";
+    act = "{sb Act: $0-}";
+    more = "-- more --";
+  };
+
+  # there's two type of statusbars. root statusbars are either at the top
+  # of the screen or at the bottom of the screen. window statusbars are at
+  # the top/bottom of each split window in screen.
+  default = {
+    # the "default statusbar" to be displayed at the bottom of the window.
+    # contains all the normal items.
+    window = {
+      disabled = "no";
+
+      # window, root
+      type = "window";
+      # top, bottom
+      placement = "bottom";
+      # number
+      position = "1";
+      # active, inactive, always
+      visible = "active";
+
+      # list of items in statusbar in the display order
+      items = {
+        barstart = { priority = "100"; };
+        time = { };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+        usercunt = { };
+        usercount = { };
+      };
+    };
+
+    # statusbar to use in inactive split windows
+    window_inact = {
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "inactive";
+      items = {
+        barstart = { priority = "100"; };
+        window = { };
+        window_empty = { };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+
+    # we treat input line as yet another statusbar :) It's possible to
+    # add other items before or after the input line item.
+    prompt = {
+      type = "root";
+      placement = "bottom";
+      # we want to be at the bottom always
+      position = "100";
+      visible = "always";
+      items = {
+        prompt = { priority = "-1"; };
+        prompt_empty = { priority = "-1"; };
+        # treated specially, this is the real input line.
+        input = { priority = "10"; };
+      };
+    };
+
+    # topicbar
+    topic = {
+      type = "root";
+      placement = "top";
+      position = "1";
+      visible = "always";
+      items = {
+        topicbarstart = { priority = "100"; };
+        topic = { };
+        topic_empty = { };
+        topicbarend = { priority = "100"; alignment = "right"; };
+      };
+    };
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+    awl_1 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_1 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+  };
+};
+settings = {
+  core = {
+    real_name = "Timo Sand";
+    user_name = "deiga";
+    nick = "deiga";
+    recode_out_default_charset = "UTF-8";
+    recode_fallback = "ISO8859-15";
+    hostname = "timosand.com";
+  };
+  "fe-common/core" = {
+    term_charset = "UTF-8";
+    use_msgs_window = "yes";
+    reuse_unused_windows = "yes";
+    autocreate_own_query = "no";
+    autolog = "yes";
+    autocreate_query_level = "off";
+    window_check_level_first = "yes";
+    window_default_level = "PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS MSGS CLIENTCRAP";
+    beep_when_window_active = "yes";
+    beep_when_away = "yes";
+    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
+    bell_beeps = "yes";
+    use_status_window = "yes";
+    theme = "tonisepro";
+    hilight_color = "%C";
+    activity_hide_targets = "#kapsi.fi #herrasmiesliiga #tkt-fuksit2010 #matrix-ry #typo3 #tko-Ã¤ly";
+  };
+  "fe-text" = {
+    term_force_colors = "no";
+    scrollback_lines = "16000";
+    scrollback_time = "5day";
+    actlist_sort = "refnum";
+  };
+  "perl/core/scripts" = {
+    nicklist_automode = "OFF";
+    awl_display_key = "%n$Q%k|%n$H$C$S%k";
+    awl_block = "0";
+    awl_height_adjust = "2";
+    awl_maxlines = "9";
+    awl_sbar_maxlength = "no";
+    awl_columns = "0";
+    awl_separator = "\\ ";
+    awl_prefer_name = "yes";
+    awl_hide_data = "0";
+    awl_display_nokey = "%n$N%k|%n$H$C$S%k";
+    awl_display_key_active = "%k[%0%9$H$C$S%k]";
+    awl_display_nokey_active = "%k[%0%9$H$C$S%k]";
+  };
+  "irc/core" = { alternate_nick = "deiga__"; };
+};
+hilights = (
+  { text = "Deiga"; nick = "yes"; word = "yes"; },
+  { text = "timosand"; nick = "yes"; word = "yes"; },
+  { text = " Timo "; nick = "yes"; word = "yes"; },
+  { text = " Sand "; nick = "yes"; word = "yes"; },
+  { text = "l4d"; nick = "yes"; word = "yes"; },
+  { text = "pekoni"; nick = "yes"; word = "yes"; },
+  { text = "bacon"; nick = "yes"; word = "yes"; }
+);
+logs = { };
+keyboard = (
+  #  {  key = "\\033[5~"; id = "scroll_backward"; data = ""; },
+  #  { key = "\\033[6~"; id = "scroll_forward"; data = ""; }
+);
+conversions = { localhost = "UTF-8"; };
+windows = {
+  1 = {
+    immortal = "yes";
+    name = "hilight";
+    level = "MSGS ACTIONS DCCMSGS";
+    sticky = "yes";
+  };
+  2 = {
+    immortal = "yes";
+    name = "Stat";
+    level = "CRAP PUBLICS NOTICES SNOTES CTCPS ACTIONS KICKS MODES TOPICS WALLOPS INVITES NICKS DCC DCCMSGS CLIENTNOTICES CLIENTCRAP CLIENTERRORS HILIGHTS";
+    sticky = "yes";
+    parent = "9";
+  };
+  3 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#tkt-fuksit2010";
+        tag = "IRCnet";
+      }
+    );
+    sticky = "yes";
+    parent = "9";
+  };
+  4 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#tkt-tix";
+        tag = "IRCnet";
+      }
+    );
+    sticky = "yes";
+    parent = "9";
+  };
+  5 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#leftoutsidealone";
+        tag = "IRCnet";
+      }
+    );
+    sticky = "yes";
+    parent = "9";
+  };
+  6 = {
+    name = "Ã¼berfinns";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#überfinns";
+        tag = "IRCnet";
+      }
+    );
+    sticky = "yes";
+    parent = "9";
+  };
+  7 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#bigwig";
+        tag = "IRCnet";
+      }
+    );
+    sticky = "yes";
+    parent = "9";
+  };
+  8 = {
+    level = "MSGS PUBLICS NOTICES ACTIONS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#tkt-aktiivit";
+        tag = "IRCnet";
+      }
+    );
+    sticky = "yes";
+    parent = "9";
+  };
+  9 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#kapsi.fi";
+        tag = "IRCnet";
+      }
+    );
+    sticky = "yes";
+  };
+  10 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#tkt-hon";
+        tag = "IRCnet";
+      }
+    );
+    sticky = "yes";
+    parent = "9";
+  };
+  11 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#herrasmiesliiga";
+        tag = "IRCnet";
+      }
+    );
+    sticky = "yes";
+    parent = "9";
+  };
+  12 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "&bitlbee";
+        tag = "BitlBee";
+      }
+    );
+    sticky = "yes";
+    parent = "9";
+  };
+  13 = {
+    name = "JPQ";
+    level = "JOINS PARTS QUITS";
+    sticky = "yes";
+    parent = "9";
+  };
+  14 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#salainen_stawakanava";
+        tag = "IRCnet";
+      }
+    );
+    sticky = "yes";
+    parent = "9";
+  };
+};
+mainwindows = {
+  9 = { first_line = "9"; lines = "34"; };
+  1 = { first_line = "1"; lines = "8"; };
+};
