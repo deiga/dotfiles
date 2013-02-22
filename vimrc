@@ -44,7 +44,8 @@ set sm             " show matching braces, somewhat annoying...
     set noexrc " don't use local version of .(g)vimrc, .exrc
     set t_Co=256
     set background=dark " we plan to use a dark background
-    colorscheme molokai
+    " let g:solarized_termcolors=256
+    colorscheme solarized
     syntax on " syntax highlighting on
 " }
 

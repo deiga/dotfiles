@@ -25,8 +25,8 @@ Bundle 'tpope/vim-markdown'
 " Syntax for nginx
 Bundle 'mutewinter/nginx.vim'
 
-"dark color scheme
-Bundle 'tomasr/molokai'
+"Solarized
+Bundle 'altercation/vim-colors-solarized'
 
 " Search helper
 Bundle 'henrik/vim-indexed-search'
