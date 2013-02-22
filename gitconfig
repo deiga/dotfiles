@@ -39,3 +39,5 @@
 	default = matching
 [init]
 	templatedir = ~/.git_template
+[fetch]
+	recurseSubmodules = true
