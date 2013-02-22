@@ -33,7 +33,7 @@ def install_dotfile(file, target_file)
             when 'q'
                 exit
             else
-                puts "skipping #{replace_hom(target_file)}"
+                puts "skipping #{replace_home(target_file)}"
             end
         end
     else

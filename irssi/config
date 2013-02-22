@@ -311,9 +311,9 @@ settings = {
     beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
     bell_beeps = "yes";
     use_status_window = "yes";
-    activity_hide_targets = "#kapsi.fi #herrasmiesliiga #tkt-fuksit2011 #matrix-ry #typo3 #tko-äly";
+    activity_hide_targets = "#kapsi.fi #matrix-ry #typo3 #tko-äly";
     # Solarized
-    theme = "solarized-universal",;
+    theme = "solarized-universal";
     hilight_color = "%R";
   };
   "fe-text" = {
@@ -353,7 +353,7 @@ hilights = (
   { text = "timosand"; nick = "yes"; word = "yes"; },
   { text = "s+Sands+"; nick = "no"; word = "yes"; regexp = "yes"; },
   { text = "[\\w-][Tt]imo"; nick = "yes"; word = "yes"; regexp = "yes"; },
-  { text = "[Dd]eiga"; nick = "yes"; word = "yes"; regexp = "yes"; color = "%M"color = "%M";;},
+  { text = "[Dd]eiga"; nick = "yes"; word = "yes"; regexp = "yes"; color = "%M";},
   {
     # URL hilighting by Stig Gronroos, http://www.waino.org
     # Used with a terminal emulator that provides clickable URLs, this is a real sanity saver. 
