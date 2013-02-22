@@ -30,4 +30,4 @@ bind ' ' windowlist -b
 
 ignorecase on
 term "screen-256color"
-shell -/bin/zsh
+shell -${SHELL}
