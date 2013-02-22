@@ -42,7 +42,7 @@ def install_dotfile(file, target_file)
 end
 
 def install_common_dotfiles
-    files = Dir['*'] - %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box]
+    files = Dir['*'] - %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config]
     files.each do |file|
         install_dotfile(file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
     end
