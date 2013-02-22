@@ -203,10 +203,10 @@ statusbar = {
     topic = " $topic";
     topic_empty = " Irssi v$J - http://irssi.org/help/";
 
-    # all of these treated specially, they're only displayed when needed
-    lag = "{sb Lag: $0-}";
+    # Solarized
+    lag = "{sb Lag: %m$0-%n}";
     act = "{sb Act: $0-}";
-    more = "-- more --";
+    more = "%k%3-- more --%n";
   };
 
   # there's two type of statusbars. root statusbars are either at the top
@@ -311,9 +311,10 @@ settings = {
     beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
     bell_beeps = "yes";
     use_status_window = "yes";
-    theme = "tonisepro";
-    hilight_color = "%C";
     activity_hide_targets = "#kapsi.fi #herrasmiesliiga #tkt-fuksit2011 #matrix-ry #typo3 #tko-äly";
+    # Solarized
+    theme = "solarized-universal",;
+    hilight_color = "%R";
   };
   "fe-text" = {
     term_force_colors = "no";
@@ -336,6 +337,15 @@ settings = {
     awl_display_nokey = "%n$N%k|%n$H$C$S%k";
     awl_display_key_active = "%k[%0%9$H$C$S%k]";
     awl_display_nokey_active = "%k[%0%9$H$C$S%k]";
+    
+    ### For Solarized adv_windowlist.pl script
+    awl_display_key_active = "%k%2[$Q=$N:$C]%n";
+    awl_display_nokey_active = "%k%2[$N:$C]%n";
+    awl_display_key = "[$Q:$H$C$S]";
+    awl_display_nokey = "[$N:$H$C$S]";
+
+    ### For Solarized trackbar.pl script
+    trackbar_style = "%B";
   };
   "irc/core" = { alternate_nick = "deigar_"; };
 };
@@ -343,7 +353,7 @@ hilights = (
   { text = "timosand"; nick = "yes"; word = "yes"; },
   { text = "s+Sands+"; nick = "no"; word = "yes"; regexp = "yes"; },
   { text = "[\\w-][Tt]imo"; nick = "yes"; word = "yes"; regexp = "yes"; },
-  { text = "[Dd]eiga"; nick = "yes"; word = "yes"; regexp = "yes"; },
+  { text = "[Dd]eiga"; nick = "yes"; word = "yes"; regexp = "yes"; color = "%M"color = "%M";;},
   {
     # URL hilighting by Stig Gronroos, http://www.waino.org
     # Used with a terminal emulator that provides clickable URLs, this is a real sanity saver. 
