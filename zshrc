@@ -110,8 +110,6 @@ case `uname -a` in
         ;;
 esac
 
-export TERM=xterm-256color
-
 # Setting color options for ls
 if [ "$TERM" != "dumb" ]; then
         export LS_OPTIONS='--color=auto'
