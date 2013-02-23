@@ -33,7 +33,6 @@ servers = (
     port = "6667";
     use_ssl = "no";
     ssl_verify = "no";
-    autoconnect = "yes";
   },
   {
     address = "irc6.saunalahti.fi";
@@ -306,7 +305,7 @@ settings = {
     autolog = "yes";
     autocreate_query_level = "DCCMSGS MSGS";
     window_check_level_first = "yes";
-    window_default_level = "PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS MSGS CLIENTCRAP";
+    window_default_level = "PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS MSGS CLIENTCRAP JOINS PARTS QUITS";
     beep_when_window_active = "yes";
     beep_when_away = "yes";
     beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
@@ -344,6 +343,7 @@ settings = {
 
     ### For Solarized trackbar.pl script
     trackbar_style = "%B";
+    upgrade_separator = "";
   };
   "irc/core" = { alternate_nick = "deigar_"; };
 };
@@ -398,15 +398,9 @@ windows = {
     level = "MSGS ACTIONS DCCMSGS";
     sticky = "yes";
   };
-  2 = {
-    immortal = "yes";
-    name = "Stat";
-    level = "CRAP PUBLICS NOTICES SNOTES CTCPS ACTIONS KICKS MODES TOPICS WALLOPS INVITES NICKS DCC DCCMSGS CLIENTNOTICES CLIENTCRAP CLIENTERRORS HILIGHTS";
-    sticky = "yes";
-    parent = "5";
-  };
+  2 = { immortal = "yes"; name = "Stat"; level = "ALL"; sticky = "yes"; };
   3 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "CHANNEL";
@@ -416,10 +410,10 @@ windows = {
       }
     );
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   4 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "CHANNEL";
@@ -429,11 +423,11 @@ windows = {
       }
     );
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   5 = {
     name = "überfinns";
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "CHANNEL";
@@ -443,9 +437,10 @@ windows = {
       }
     );
     sticky = "yes";
+    parent = "2";
   };
   6 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "CHANNEL";
@@ -455,10 +450,10 @@ windows = {
       }
     );
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   7 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "CHANNEL";
@@ -468,29 +463,21 @@ windows = {
       }
     );
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   8 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "&bitlbee";
-        tag = "BitlBee";
-      }
-    );
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   9 = {
     name = "JPQ";
-    level = "JOINS PARTS QUITS";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   10 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "CHANNEL";
@@ -500,10 +487,10 @@ windows = {
       }
     );
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   11 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "CHANNEL";
@@ -513,10 +500,10 @@ windows = {
       }
     );
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   12 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "CHANNEL";
@@ -526,36 +513,20 @@ windows = {
       }
     );
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   13 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#nethack";
-        tag = "IRCnet";
-      }
-    );
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   14 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#typo3";
-        tag = "Freenode";
-      }
-    );
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   15 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "QUERY";
@@ -565,60 +536,83 @@ windows = {
       }
     );
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   16 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#yasdoutsidealone";
-        tag = "IRCnet";
-      }
-    );
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   17 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#tikirage";
-        tag = "IRCnet";
-      }
-    );
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     sticky = "yes";
-    parent = "5";
+    parent = "2";
   };
   18 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
+  };
+  19 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    sticky = "yes";
+    parent = "2";
+  };
+  20 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#logiikka";
+        name = "#tkt-aktiivit";
         tag = "IRCnet";
       }
     );
   };
-  19 = {
-    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS KICKS MODES TOPICS NICKS CLIENTCRAP";
+  21 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
     items = (
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#ammuu";
+        name = "#smokeparrot";
         tag = "IRCnet";
       }
     );
-    sticky = "yes";
-    parent = "5";
+  };
+  22 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#loacraft";
+        tag = "IRCnet";
+      }
+    );
+  };
+  23 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#bathmeshup";
+        tag = "IRCnet";
+      }
+    );
+  };
+  24 = {
+    level = "MSGS PUBLICS NOTICES CTCPS ACTIONS JOINS PARTS QUITS KICKS MODES TOPICS NICKS CLIENTCRAP";
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#batcountry";
+        tag = "IRCnet";
+      }
+    );
   };
 };
 mainwindows = {
-  5 = { first_line = "9"; lines = "30"; };
-  1 = { first_line = "1"; lines = "8"; };
+  2 = { first_line = "6"; lines = "22"; };
+  1 = { first_line = "1"; lines = "5"; };
 };

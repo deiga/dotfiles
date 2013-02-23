@@ -13,3 +13,6 @@
 [submodule "config/irssi-colors-solarized"]
 	path = config/irssi-colors-solarized
 	url = https://github.com/huyz/irssi-colors-solarized.git
+[submodule "config/irssi-trackbar"]
+	path = config/irssi-trackbar
+	url = https://github.com/mjholtkamp/irssi-trackbar
