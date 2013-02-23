@@ -1,0 +1,1 @@
+../../config/irssi-trackbar/trackbar.pl
