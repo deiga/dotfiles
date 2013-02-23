@@ -316,6 +316,7 @@ settings = {
     # Solarized
     theme = "solarized-universal";
     hilight_color = "%R";
+    activity_hide_level = "QUITS JOINS PARTS KICKS MODES TOPIC NICKS";
   };
   "fe-text" = {
     term_force_colors = "no";
