@@ -42,13 +42,11 @@ set sm             " show matching braces, somewhat annoying...
 " Basics {
     set nocompatible " explicitly get out of vi-compatible mode
     set noexrc " don't use local version of .(g)vimrc, .exrc
-    set background=dark " we plan to use a dark background
+    set background=dark  " we plan to use a dark background
     if &term =~ "screen" || &term !~ "256color"
         set t_Co=256
         let g:solarized_termcolors=256
-        let g:solarized_termtrans=1
-    else
-        set t_Co=16
+        "let g:solarized_termtrans=1
     endif
     colorscheme solarized
     syntax on " syntax highlighting on
