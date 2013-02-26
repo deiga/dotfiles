@@ -15,7 +15,6 @@
         grep = true
         showbranch = true
 [merge]
-	tool = opendiff
         conflictstyle = diff3
 	stat = true
 [apply]
@@ -46,6 +45,7 @@
 [diff]
 	renames = copies
 	mnemonicprefix = true
+	tool = vimdiff
 [branch]
 	autosetupmerge = true
 [rerere]
