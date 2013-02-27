@@ -1,14 +1,34 @@
 require 'rake'
 require 'erb'
 
-desc "install the dotfiles"
-task :install, :update_vundle do |t, args|
-    update_vundle = args[:update_vundle] || false
+desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
+task '' => :install
+
+namespace :install do
+  desc "Delete and recreate symbolic links and generated files in #{ENV['HOME']}"
+  task :force do
+  end
+
+  desc "Install dotfiles and update vundle"
+  task :update_vundle do
+    @update_vundle = true
+    setup
+  end
+end
+
+desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
+task :install do
+    setup
+end
+
+task :default => :install
+
+def setup
     switch_to_zsh
     install_common_dotfiles
     install_kr4mb
     install_bin
-    setup_vim(update_vundle)
+    setup_vim
 end
 
 def replace_home(path)
@@ -76,9 +96,9 @@ def link_file(file, target = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"
     end
 end
 
-def setup_vim(update_bundles)
+def setup_vim
     clone_vundle
-    install_vim_bundles(update_bundles)
+    install_vim_bundles
 end
 
 def clone_vundle
@@ -89,9 +109,9 @@ def clone_vundle
     end
 end
 
-def install_vim_bundles(update)
+def install_vim_bundles
     run_vim = "vim +BundleInstall! +qall"
-    if update
+    if @update_vundle
         puts 'Updating Vim Bundles'
         not(system run_vim) && 'Error installing bundles'
     else
