@@ -10,7 +10,9 @@ repo_parts = repo_name.split('/').reject(&:empty?)
 # puts 'Parts:', repo_parts
 url = "https://api.github.com/repos/#{repo_parts[0]}/#{repo_parts[1]}"
 result = JSON.parse(open(url).read)
+# puts "Result", result
 parent =  result['parent']
+# puts "Parent:", parent
 if parent
   system %Q{git remote add upstream #{parent['clone_url']}}
 end

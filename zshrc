@@ -146,3 +146,5 @@ good_theme() { echo $@ >> ~/dotfiles/config/zsh_themes }
 
 # Profiling end
 # zprof
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

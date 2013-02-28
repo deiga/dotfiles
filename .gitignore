@@ -2,3 +2,5 @@ vim/.netrwhist
 vim/bundle/*
 known_hosts
 ssh/keys/*
+ssh/environment*
+ssh/authorized_keys
