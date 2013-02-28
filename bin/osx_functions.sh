@@ -1,7 +1,12 @@
 # Shell functions for OS X
 
 update_system () {
-    brew update && brew upgrade && npm -g update && gem update && gem update --system
+    echo "Update & upgrade brew"
+    brew update && brew upgrade
+    echo "Updating node pacakges"
+    npm -g update
+    echo "Updating gems"
+    gem update && gem update --system
 }
 
 update_hosts () {
