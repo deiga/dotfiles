@@ -103,11 +103,7 @@ case `uname -a` in
         ;;
 esac
 
-# Setting color options for ls
-if [ "$TERM" != "dumb" ]; then
-        export LS_OPTIONS='--color=auto'
-        eval `dircolors ~/.dir_colors`
-fi
+eval `dircolors ~/.dir_colors`
 
 # Disable correct
 if [ -f ~/.zsh_nocorrect ]; then
