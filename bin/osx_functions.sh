@@ -2,11 +2,11 @@
 
 update_system () {
     echo "Update & upgrade brew"
-    brew update && brew upgrade
+    brew update ; brew upgrade
     echo "Updating node pacakges"
-    npm -g update
+    npm -g update npm; npm -g update
     echo "Updating gems"
-    gem update && gem update --system
+    gem update ; gem update --system
 }
 
 update_hosts () {
