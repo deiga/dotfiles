@@ -134,7 +134,8 @@ def link_file(file, target = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"
         end
     else
         puts "linking #{target.replace_home}"
-        system %Q{ln -s "$PWD/#{file}" "#{target}"}
+        File.symlink(File.join(Dir.pwd,file), target)
+        # system %Q{ln -s "$PWD/#{file}" "#{target}"}
     end
 end
 
