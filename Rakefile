@@ -47,10 +47,15 @@ namespace :install do
     task :ssh do
         install_ssh
     end
+
+    desc "Install Homebrew if OS X"
+    task :brew do
+        install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
+    end
 end
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
-task :install => ['install:zsh', 'install:vim', 'install:kr4mb', 'install:bin', 'install:common', 'install:ssh'] do
+task :install => ['install:zsh', 'install:vim', 'install:kr4mb', 'install:bin', 'install:common', 'install:ssh', 'install:brew'] do
 end
 
 task :default => :install
@@ -59,6 +64,26 @@ class String
     def replace_home
         self.gsub(ENV['HOME'],'~')
     end
+end
+
+def install_homebrew
+  run %{which brew}
+  unless $?.success?
+    puts "======================================================"
+    puts "Installing Homebrew, the OSX package manager...If it's"
+    puts "already installed, this will do nothing."
+    puts "======================================================"
+    run %{ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"}
+  end
+
+  puts
+  puts
+  puts "======================================================"
+  puts "Installing Homebrew packages...There may be some warnings."
+  puts "======================================================"
+  run %{brew install coreutils ctags git git-flow node readline hub wget zsh}
+  puts
+  puts
 end
 
 
