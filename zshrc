@@ -27,14 +27,8 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 export ZSH_THEME="random"
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
 # Comment this out to disable weekly auto-update checks
 DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -47,13 +41,12 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(autojump bundler gem heroku rails3 rake ruby vi-mode git brew git-flow osx command-coloring rvm ssh-agent screen python npm node)
 
 source $ZSH/oh-my-zsh.sh
+# end oh-my-zsh
 
 # Customize to your needs...
 export PATH=$HOME/bin:$PATH # Add ~/bin to PATH
 export PATH=/usr/local/share/npm/bin:$PATH # Add npm packages to PATH
 export PATH=$HOME/dotfiles/box/bin:$PATH # Add path for box
-
-# end oh-my-zsh
 
 # Set editor
 export EDITOR=vim
