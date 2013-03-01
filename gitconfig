@@ -21,10 +21,27 @@
 [apply]
 	whitespace = nowarn
 [alias]
-    co = checkout
-    ci = commit
+    # checkout
+    co = checkout                     # checkout
+    nb = checkout -b                  # create and switch to a new branch (mnemonic: "git new branch branchname...")
+
+    # commit
+    c = commit -m                     # commit with message
+    ca = commit -am                   # commit all with message
+    ci = commit                       # commit
+    amend = commit --amend            # ammend your last commit
+    ammend = commit --amend           # ammend your last commit
+
     st = status
-    br = branch
+
+    # branch
+    b = branch -v                     # branch (verbose)
+
+    # diff
+    d = diff                          # diff unstaged changes
+    dc = diff --cached                # diff staged changes
+    last = diff HEAD^                 # diff last committed change
+
     hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
     type = cat-file -t
     dump = cat-file -p
@@ -33,7 +50,7 @@
     cl = clone --recursive
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustExitCode = true
