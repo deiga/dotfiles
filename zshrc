@@ -116,22 +116,6 @@ if [ "$TERM" != "dumb" ]; then
         eval `dircolors ~/.dir_colors`
 fi
 
-# ls aliases
-alias ls='ls $LS_OPTIONS -hF'
-alias la='ls $LS_OPTIONS -lhAF'
-alias ll='ls $LS_OPTIONS -lhF'
-
-# added interactive and verbose mode for common file operations
-alias cp="cp -iv"
-alias mv="mv -iv"
-alias rm="rm -vi"
-
-# all-round man
-man () {
-/usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
-}
-
-
 # Disable correct
 if [ -f ~/.zsh_nocorrect ]; then
     while read -r COMMAND; do
@@ -139,10 +123,15 @@ if [ -f ~/.zsh_nocorrect ]; then
     done < ~/.zsh_nocorrect
 fi
 
-growl() { echo $'\e]9;'${1}'\007' ; return ; }
+# all of our zsh files
+typeset -U config_files
+config_files=(~/.zsh/*.zsh)
 
-# Add good theme to list
-good_theme() { echo $@ >> ~/dotfiles/config/zsh_themes }
+# load the path files
+for file in $config_files
+do
+  source $file
+done
 
 # Profiling end
 # zprof
