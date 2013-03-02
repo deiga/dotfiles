@@ -25,7 +25,7 @@ namespace :install do
 
     desc "Setup KeyRemap4MacBook profile"
     task :kr4mb do
-        install_kr4mb
+        install_kr4mb if RUBY_PLATFORM.downcase.include?("darwin")
     end
 
     desc "Install Vundle and execute VundleInstall"
