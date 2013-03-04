@@ -1,10 +1,22 @@
 # Shell functions for OS X
 
 update_system () {
+    update_brew
+    update_node
+    update_gems
+}
+
+update_brew () {
     echo "Update & upgrade brew"
     brew update ; brew upgrade
+}
+
+update_node () {
     echo "Updating node pacakges"
     npm -g update npm; npm -g update
+}
+
+update_gems () {
     echo "Updating gems"
     gem update ; gem update --system
 }
