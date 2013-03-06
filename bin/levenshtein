@@ -36,8 +36,8 @@ def levenshteinMemo(s, i, len1, t, j, len2)
       levenshteinMemo(s,i,len1,t,j+1,len2-1)+1,
       levenshteinMemo(s,i+1,len1-1,t,j+1,len2-1)+cost
     ].min
-  @memo[key] = dist;
-  return dist;
+  @memo[key] = dist
+  dist
 end
 
 def with_timing
