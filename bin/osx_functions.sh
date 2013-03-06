@@ -13,7 +13,7 @@ update_brew () {
 
 update_node () {
     echo "Updating node pacakges"
-    npm -g update npm; npm -g update
+    npm update npm@latest -g; npm update -g
 }
 
 update_gems () {
