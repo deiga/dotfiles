@@ -40,16 +40,16 @@ def levenshteinMemo(s, i, len1, t, j, len2)
   return dist;
 end
 
-def time
+def with_timing
   start = Time.now
   yield
   puts Time.now - start
 end
 
-time do
+with_timing do
   puts "Levenshtein distance between '#{ARGV[0]}' and '#{ARGV[1]}' is #{levenshtein(ARGV[0], ARGV[1])}"
 end
-time do
+with_timing do
   puts "Levenshtein (memoization)"
   levenshteinPrime(ARGV[0], ARGV[1])
 end
