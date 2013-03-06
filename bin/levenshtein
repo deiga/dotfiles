@@ -1,0 +1,23 @@
+#! /usr/bin/env ruby
+
+def levenshtein(s, t)
+  len1 = s.length
+  len2 = t.length
+
+  return len2 if len1 == 0
+  return len1 if len2 == 0
+  if s[-1] == t[-1]
+    cost = 0
+  else
+    cost = 1
+  end
+  [
+    levenshtein(s[0...-1], t) + 1,
+    levenshtein(s, t[0...-1]) + 1,
+    levenshtein(s[0...-1], t[0...-1]) + cost
+    ].min
+end
+
+
+
+puts "Levenshtein distance between '#{ARGV[0]}' and '#{ARGV[1]}' is #{levenshtein(ARGV[0], ARGV[1])}"
