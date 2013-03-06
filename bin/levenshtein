@@ -6,16 +6,12 @@ def levenshtein(s, t)
 
   return len2 if len1 == 0
   return len1 if len2 == 0
-  if s[-1] == t[-1]
-    cost = 0
-  else
-    cost = 1
-  end
+  cost = if s[-1] == t[-1] ? 0 : 1
   [
     levenshtein(s[0...-1], t) + 1,
     levenshtein(s, t[0...-1]) + 1,
     levenshtein(s[0...-1], t[0...-1]) + cost
-    ].min
+  ].min
 end
 
 @memo = Hash.new
@@ -36,9 +32,9 @@ def levenshteinMemo(s, i, len1, t, j, len2)
   end
 
   dist = [
-    levenshteinMemo(s, i+1,len1-1, t,j,len2)+1,
-    levenshteinMemo(s,i,len1,t,j+1,len2-1)+1,
-    levenshteinMemo(s,i+1,len1-1,t,j+1,len2-1)+cost
+      levenshteinMemo(s, i+1,len1-1, t,j,len2)+1,
+      levenshteinMemo(s,i,len1,t,j+1,len2-1)+1,
+      levenshteinMemo(s,i+1,len1-1,t,j+1,len2-1)+cost
     ].min
   @memo[key] = dist;
   return dist;
