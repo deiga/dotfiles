@@ -14,26 +14,24 @@ def levenshtein(s, t)
   ].min
 end
 
-@memo = Hash.new
-
 def levenshteinPrime(s, t)
-  levenshteinMemo(s, 0, s.length, t, 0, t.length)
+  levenshteinMemo(s, 0, s.length, t, 0, t.length, Hash.new)
 end
 
-def levenshteinMemo(s, i, len1, t, j, len2)
+def levenshteinMemo(s, i, len1, t, j, len2, memo)
   key = [i, len1, j, len2].join(',')
-  return @memo[key] if @memo.has_key?(key)
+  return memo[key] if memo.has_key?(key)
 
   return len2 if len1 == 0
   return len1 if len2 == 0
   cost = s[i] != t[j] ? 1 : 0
 
   dist = [
-      levenshteinMemo(s, i + 1, len1 - 1, t, j, len2) + 1,
-      levenshteinMemo(s , i, len1, t, j + 1, len2 - 1) + 1,
-      levenshteinMemo(s, i + 1 ,len1 - 1 ,t , j + 1, len2 - 1)+cost
+      levenshteinMemo(s, i + 1, len1 - 1, t, j, len2, memo) + 1,
+      levenshteinMemo(s , i, len1, t, j + 1, len2 - 1, memo) + 1,
+      levenshteinMemo(s, i + 1 ,len1 - 1 ,t , j + 1, len2 - 1, memo) + cost
     ].min
-  @memo[key] = dist
+  memo[key] = dist
   dist
 end
 
