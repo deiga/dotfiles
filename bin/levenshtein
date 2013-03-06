@@ -26,10 +26,7 @@ def levenshteinMemo(s, i, len1, t, j, len2)
 
   return len2 if len1 == 0
   return len1 if len2 == 0
-  cost = 0
-  if s[i] != t[j]
-    cost = 1
-  end
+  cost = s[i] != t[j] ? 1 : 0
 
   dist = [
       levenshteinMemo(s, i+1, len1-1, t, j, len2)+1,
