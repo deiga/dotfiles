@@ -43,11 +43,6 @@ plugins=(autojump bundler gem heroku rails3 rake ruby vi-mode git brew git-flow 
 source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
 
-# Customize to your needs...
-export PATH=$HOME/bin:$PATH # Add ~/bin to PATH
-export PATH=/usr/local/share/npm/bin:$PATH # Add npm packages to PATH
-export PATH=$HOME/dotfiles/box/bin:$PATH # Add path for box
-
 # Set editor
 export EDITOR=vim
 set -o vi
@@ -82,10 +77,6 @@ setopt prompt_subst
 case $OSTYPE in
     darwin*)
         alias manpdf="man -t $0 | ps2pdf - - | open -f -a Preview"
-        export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-
-        # Set homebrew bin infront of PATH
-        export PATH=/usr/local/bin:$PATH
 
         # Make path system wide
         launchctl setenv PATH $PATH
