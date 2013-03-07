@@ -79,8 +79,8 @@ setopt prompt_subst
 # RPROMPT='%{$fg[white]%} $(~/.rbenv/bin/rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # OS X specifics
-case `uname -a` in
-    *Darwin*)
+case $OSTYPE in
+    darwin*)
         alias manpdf="man -t $0 | ps2pdf - - | open -f -a Preview"
         export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
