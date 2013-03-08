@@ -39,12 +39,15 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-rvm'
 Bundle 'tpope/vim-bundler'
+
 "   JavaScript
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'leshill/vim-json'
+
 "   HTML
 Bundle 'nono/vim-handlebars'
 Bundle 'othree/html5.vim'
 Bundle 'indenthtml.vim'
+
 filetype plugin indent on
