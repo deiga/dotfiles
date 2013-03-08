@@ -18,7 +18,6 @@ map ,h :source $VIM/vim71/syntax/2html.vim<cr>:w<cr>:clo<cr>
 " Paste mode toggle
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
-set showmode
 
 " Common command line typos
 "cmap W w

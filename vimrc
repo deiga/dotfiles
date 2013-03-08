@@ -9,7 +9,7 @@ source ~/.vim/vundle.vim
 set tags=./.tags,./.TAGS,./tags,./TAGS,tags;~,TAGS;~,.tags:~,.TAGS;
 
 set history=50
-set showmode
+set noshowmode
 set viminfo='50,\"1000,:20,n~/.viminfo
 set cpoptions=aABcFsmq
 " Vim UI
