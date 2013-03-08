@@ -13,7 +13,6 @@ set showmode
 set viminfo='50,\"1000,:20,n~/.viminfo
 set cpoptions=aABcFsmq
 " Vim UI
-set statusline=%-20(%F%)\ [%1*%M%*%n%R%H]\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ %-20(%)%=\ l:\ %l,\ c:\ %c\ [%p%%]\ [LEN=%L]
 " Text Formatting
 
 " LaTeX Suite
@@ -85,6 +84,7 @@ set sm             " show matching braces, somewhat annoying...
     set shortmess=aOstT " shortens messages to avoid
                          " 'press a key' prompt
     set sidescrolloff=10 " Keep 5 lines at the size
+    set statusline=%-20(%F%)\ [%1*%M%*%n%R%H]\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ %-20(%)%=\ l:\ %l,\ c:\ %c\ [%p%%]\ [LEN=%L]
     "set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     "              | | | | |  |   |      |  |     |    |
     "              | | | | |  |   |      |  |     |    + current
@@ -124,3 +124,6 @@ source ~/.vim/bindings.vim
 
 " Auto commands.
 source ~/.vim/autocmds.vim
+
+" Powerline
+set rtp +=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim

@@ -25,7 +25,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-export ZSH_THEME="random"
+#export ZSH_THEME="random"
+export ZSH_THEME=""
 
 # Comment this out to disable weekly auto-update checks
 DISABLE_AUTO_UPDATE="true"
@@ -110,6 +111,7 @@ do
   source $file
 done
 
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 # Profiling end
 # zprof
 

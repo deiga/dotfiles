@@ -17,7 +17,7 @@ case $OSTYPE in
         COREUTILS_PATH=/usr/local/opt/coreutils/libexec/gnubin
         HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin:/usr/local/share/python
         PATH=$COREUTILS_PATH:$HOMEBREW_PATH:$PATH
-        export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+        # export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
     ;;
 esac
 
