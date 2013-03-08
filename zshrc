@@ -47,9 +47,6 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 set -o vi
 
-# Locale settings
-export LC_ALL="en_GB.UTF-8"
-
 # Announces todays date
 today=`date "+%m.%d.%Y"`
 

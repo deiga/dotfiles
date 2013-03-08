@@ -2,6 +2,10 @@
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+# Locale settings
+export LANG="en_GB.UTF-8"
+export LC_ALL="en_GB.UTF-8"
+
 # Customize to your needs...
 RVM_PATH=$rvm_path:$rvm_bin_path # Add RVM to PATH for scripting
 BIN_PATH=$HOME/bin # Add ~/bin to PATH
