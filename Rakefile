@@ -52,6 +52,11 @@ namespace :install do
     task :brew do
         install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
     end
+
+    desc "Install powerline"
+    task :powerline do
+        install_powerline
+    end
 end
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
@@ -204,4 +209,13 @@ def switch_to_zsh
             puts "skipping zsh"
         end
     end
+end
+
+def install_powerline
+    system %{brew python libgit2}
+    system %{pip install --user git+git://github.com/Lokaltog/powerline}
+    system %{pip install pygit2 mercurial psutils}
+    FileUtils.cp(File.join('config', 'powerline-fonts' ,'Menlo', 'Menlo Regular for Powerline.otf'), File.join(ENV['HOME'], 'Library', 'Fonts'))
+    FileUtils.mkdir(File.join(ENV['HOME'], '.config'))
+    install_dotfile(Dir['powerline'], File.join(ENV['HOME'], '.config', 'powerline'))
 end
