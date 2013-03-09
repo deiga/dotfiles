@@ -67,7 +67,6 @@ set sm             " show matching braces, somewhat annoying...
     set cursorline " highlight current line
     set incsearch " BUT do highlight as you type you
                    " search phrase
-    set lazyredraw " do not redraw while running macros
     set linespace=0 " don't insert any extra pixel lines
                      " betweens rows
     set list " we do what to show tabs, to ensure we get them
