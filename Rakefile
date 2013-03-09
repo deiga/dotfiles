@@ -3,6 +3,7 @@ require 'erb'
 require 'fileutils'
 
 @replace_all = false
+EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp]
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
 task '' => :install
@@ -118,7 +119,7 @@ def install_dotfile(file, target_file)
 end
 
 def install_common_dotfiles
-    files = Dir['*'] - %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh] - Dir['*~']
+    files = Dir['*'] - EXCLUDE_COMMON - Dir['*~']
     files.each do |file|
         install_dotfile(file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
     end
