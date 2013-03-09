@@ -58,10 +58,16 @@ namespace :install do
     task :powerline do
         install_powerline
     end
+
+    desc "Install fonts"
+    task :fonts do
+        install_fonts if RUBY_PLATFORM.downcase.include?("darwin")
+    end
 end
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
-task :install => ['install:zsh', 'install:vim', 'install:kr4mb', 'install:bin', 'install:common', 'install:ssh', 'install:brew'] do
+task :install => ['install:zsh', 'install:vim', 'install:kr4mb', 'install:bin', 'install:common', 'install:ssh', 'install:brew', 'install:fonts'] do
+    clean_temp
 end
 
 task :default => :install
@@ -213,10 +219,24 @@ def switch_to_zsh
 end
 
 def install_powerline
+    puts "Installing powerline"
     system %{brew python libgit2}
     system %{pip install --user git+git://github.com/Lokaltog/powerline}
     system %{pip install pygit2 mercurial psutils}
-    FileUtils.cp(File.join('config', 'powerline-fonts' ,'Menlo', 'Menlo Regular for Powerline.otf'), File.join(ENV['HOME'], 'Library', 'Fonts'))
-    FileUtils.mkdir(File.join(ENV['HOME'], '.config'))
+    FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
     install_dotfile(Dir['powerline'], File.join(ENV['HOME'], '.config', 'powerline'))
+end
+
+def install_fonts
+    puts "Installing Fonts"
+    FileUtils.mkdir_p('tmp')
+    %x{wget -q http://sourceforge.net/projects/sourcecodepro.adobe/files/latest/download\?source\=files -O tmp/source_code_pro_latest.zip}
+    %x{unzip tmp/source_code_pro_latest.zip -d tmp/}
+    font_paths = Dir['tmp/SourceCodePro*/OTF/*'] + Dir[File.join('config', 'powerline-fonts' ,'*', '*.otf')]
+    FileUtils.cp(font_paths, File.join(ENV['HOME'], 'Library', 'Fonts'))
+end
+
+def clean_temp
+    puts "Cleaning tmp"
+    FileUtils.rm_r(Dir['tmp/*'])
 end
