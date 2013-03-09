@@ -45,6 +45,8 @@ bind up:${hyper}       focus up
 bind down:${hyper}     focus down
 
 # App bindings
-bind i:${hyper} focus 'iTerm'
+bind t:${hyper} focus 'iTerm'
 bind b:${hyper} focus ${browser}
 bind s:${hyper} focus ${editor}
+
+bind r:${hyper} relaunch

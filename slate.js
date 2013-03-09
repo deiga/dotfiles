@@ -1,3 +1,4 @@
+S.log("[SLATE] -------------- Loading Config --------------");
 // Monitors
 var monLaptop = "1440x900";
 var monTbolt = "2560x1440";
@@ -94,9 +95,17 @@ S.bnda({
     "padEnter:ctrl" : universalLayout,
     "space:ctrl" : universalLayout,
 
+    // App Bindings
+    "t:"+hyper : S.op("focus" , { "app" : "iTerm" }),
+    "b:"+hyper : S.op("focus" , { "app" : "Google Chrome" }),
+    "s:"+hyper : S.op("focus" , { "app" : "Sublime Text 2" }),
+
     // Relaunch
-    "r:"+hyper : S.op("relaunch");
-    // "d:"+hyper : S.op("switch");
+    "r:"+hyper : S.op("relaunch"),
+    // "d:"+hyper : S.op("switch"),
+
+    // Grid
+    "esc:alt" : S.op("grid")
 });
 
 // Log that we're done configuring
