@@ -75,9 +75,6 @@ case $OSTYPE in
     darwin*)
         alias manpdf="man -t $0 | ps2pdf - - | open -f -a Preview"
 
-        # Make path system wide
-        launchctl setenv PATH $PATH
-
         # Use keychain for HTTPS git
         git config --global credential.helper osxkeychain
 
