@@ -9,7 +9,6 @@ source ~/.vim/vundle.vim
 set tags=./.tags,./.TAGS,./tags,./TAGS,tags;~,TAGS;~,.tags:~,.TAGS;
 
 set history=50
-set noshowmode
 set viminfo='50,\"1000,:20,n~/.viminfo
 set cpoptions=aABcFsmq
 " Vim UI
@@ -126,3 +125,4 @@ source ~/.vim/autocmds.vim
 
 " Powerline
 set rtp +=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+set noshowmode
