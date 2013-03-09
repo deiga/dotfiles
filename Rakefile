@@ -73,13 +73,13 @@ class String
 end
 
 def install_homebrew
-  run %{which brew}
+  rval = %x{which brew}
   unless $?.success?
     puts "======================================================"
     puts "Installing Homebrew, the OSX package manager...If it's"
     puts "already installed, this will do nothing."
     puts "======================================================"
-    run %{ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"}
+    system %{ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"}
   end
 
   puts
@@ -87,7 +87,7 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install coreutils ctags git git-flow node readline hub wget zsh python vim}
+  system %{brew install coreutils ctags git git-flow node readline hub wget zsh vim}
   puts
   puts
 end
