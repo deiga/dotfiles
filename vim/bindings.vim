@@ -16,12 +16,8 @@ map ,u :source ~/.vimrc<cr> " update the system settings from my vimrc file
 map ,h :source $VIM/vim71/syntax/2html.vim<cr>:w<cr>:clo<cr>
 
 " Paste mode toggle
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-
-" Common command line typos
-"cmap W w
-"cmap Q q
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
 
 " Commands
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
