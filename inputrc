@@ -1,8 +1,10 @@
-set editing-mode vi
-set show-all-if-ambiguous on
 set meta-flag on
+
+# https://code.google.com/p/iterm2/wiki/Keybindings#Configuring_readline
+set input-meta on
 set convert-meta off
-set output-meta off
+set output-meta on
+
 set bell-style visible
 control-p: history-search-backward
 control-n: history-search-forward
