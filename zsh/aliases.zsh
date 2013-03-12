@@ -3,7 +3,7 @@
 hub_path=$(which hub)
 if (( $+commands[hub] ))
 then
-  alias git=$hub_path
+ eval "$(hub alias -s)"
 fi
 
 # Detect which `ls` flavor is in use
