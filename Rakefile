@@ -2,21 +2,22 @@ require 'rake'
 require 'erb'
 require 'fileutils'
 
-@replace_all = false
 EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp]
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
 task '' => :install
 
+namespace :update do
+  desc "Update vundle"
+  task :vundle do
+    @update_vundle = true
+    Rake::Task['install:vim'].invoke
+  end
+end
+
 namespace :install do
     desc "Delete and recreate symbolic links and generated files in #{ENV['HOME']}"
     task :force do
-    end
-
-    desc "Install dotfiles and update vundle"
-    task :update_vundle do
-        @update_vundle = true
-        Rake::Task[:install].invoke
     end
 
     desc "Switch to ZSH"
@@ -93,7 +94,7 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  system %{brew install coreutils ctags git git-flow node readline hub wget zsh vim}
+  system %{brew install coreutils ctags git git-flow readline hub wget zsh vim}
   puts
   puts
 end
