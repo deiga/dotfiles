@@ -107,7 +107,10 @@ do
   source $file
 done
 
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
+
+source ~/.nvm/nvm.sh # Add nvm
+
 # Profiling end
 # zprof
 
