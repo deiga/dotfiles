@@ -18,6 +18,7 @@
 [merge]
         conflictstyle = diff3
 	stat = true
+        tool = vimdiff
 [apply]
 	whitespace = nowarn
 [alias]
