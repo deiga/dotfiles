@@ -84,7 +84,8 @@ namespace :install do
                   ssh
                   brew
                   fonts
-                  } do
+                  powerline
+                            } do
   end
 end
 
