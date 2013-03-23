@@ -83,3 +83,5 @@
                   exit 1 if b.include?(%(<)*%L)'"
 [hub]
 	protocol = https
+[web]
+	browser = open
