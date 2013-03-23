@@ -73,10 +73,23 @@ namespace :install do
   task :fonts do
     install_fonts if RUBY_PLATFORM.downcase.include?("darwin")
   end
+
+  desc "Install all"
+  task :all => %w{
+                  zsh
+                  vim
+                  kr4mb
+                  bin
+                  common
+                  ssh
+                  brew
+                  fonts
+                  } do
+  end
 end
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
-task :install => ['install:zsh', 'install:vim', 'install:kr4mb', 'install:bin', 'install:common', 'install:ssh', 'install:brew', 'install:fonts'] do
+task :install => ['install:all'] do
   clean_temp
 end
 
