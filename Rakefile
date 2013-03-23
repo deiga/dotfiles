@@ -13,6 +13,11 @@ namespace :update do
     @update_vundle = true
     Rake::Task['install:vim'].invoke
   end
+
+  desc "Update Powerline"
+  task :task_name => [:dependent, :tasks] do
+    update_powerline
+  end
 end
 
 namespace :install do
@@ -226,6 +231,11 @@ def install_powerline
     system %{pip install pygit2 mercurial psutils}
     FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
     install_dotfile(Dir['powerline'], File.join(ENV['HOME'], '.config', 'powerline'))
+end
+
+def update_powerline
+  puts "Updating powerline"
+  system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
 end
 
 def install_fonts
