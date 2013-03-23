@@ -15,8 +15,12 @@ namespace :update do
   end
 
   desc "Update Powerline"
-  task :task_name => [:dependent, :tasks] do
+  task :powerline do
     update_powerline
+  end
+
+  desc "Update all"
+  task :all => [:vundle, :powerline] do
   end
 end
 
@@ -74,6 +78,11 @@ end
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
 task :install => ['install:zsh', 'install:vim', 'install:kr4mb', 'install:bin', 'install:common', 'install:ssh', 'install:brew', 'install:fonts'] do
   clean_temp
+end
+
+desc "Update everything"
+task :update => ['update:all'] do
+
 end
 
 task :default => :install
