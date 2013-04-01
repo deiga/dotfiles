@@ -70,24 +70,6 @@ setopt prompt_subst
 # Replace the above with this if you use rbenv
 # RPROMPT='%{$fg[white]%} $(~/.rbenv/bin/rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
-# OS X specifics
-case $OSTYPE in
-    darwin*)
-        alias manpdf="man -t $0 | ps2pdf - - | open -f -a Preview"
-
-        # Use keychain for HTTPS git
-        git config --global credential.helper osxkeychain
-
-        source ~/bin/osx_functions.sh
-
-        ;;
-    *)
-        # Cache credentials for 60min for HTTPS git
-        git config credential.helper 'cache --timeout=3600'
-        echo "This system is not Darwin"
-        ;;
-esac
-
 eval `dircolors ~/.dir_colors`
 
 # Disable correct
