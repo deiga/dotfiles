@@ -1,3 +1,4 @@
+# General shell functions
 
 growl() {
   if [ $# -eq 1 ] ; then

@@ -1,26 +1,5 @@
 # Shell functions for OS X
 
-update_system () {
-    update_brew
-    update_node
-    update_gems
-}
-
-update_brew () {
-    echo "Update & upgrade brew"
-    brew update ; brew upgrade
-}
-
-update_node () {
-    echo "Updating node pacakges"
-    npm update npm@latest -g; npm update -g
-}
-
-update_gems () {
-    echo "Updating gems"
-    gem update ; gem update --system
-}
-
 update_hosts () {
     curl http://someonewhocares.org/hosts/hosts | sudo tee /etc/hosts.whocare > /dev/null
 }

@@ -19,8 +19,31 @@ namespace :update do
     update_powerline
   end
 
+  desc "Update Homebrew"
+  task :brew do
+      if RUBY_PLATFORM.downcase.include?("darwin")
+          puts "\nUpdate brew"
+          system %Q{brew upgrade}
+          system %Q{brew update}
+      end
+  end
+
+  desc "Update Ruby Gems"
+  task :gems do
+      puts "\nUpdate gems"
+      system %Q{gem update --system}
+      system %Q{gem update}
+  end
+
+  desc "Update Node"
+  task :node do
+      puts "\nUpdate node"
+      system %Q{npm update npm@latest -g}
+      system %Q{npm update -g}
+  end
+
   desc "Update all"
-  task :all => [:vundle, :powerline] do
+  task :all => [:vundle, :powerline, :node, :brew, :gems] do
   end
 end
 
@@ -110,7 +133,7 @@ end
 def install_homebrew
   rval = %x{which brew}
   unless $?.success?
-    puts "======================================================"
+    puts "\n======================================================"
     puts "Installing Homebrew, the OSX package manager...If it's"
     puts "already installed, this will do nothing."
     puts "======================================================"
@@ -119,11 +142,10 @@ def install_homebrew
 
   puts
   puts
-  puts "======================================================"
+  puts "\n======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
   system %{brew install coreutils ctags git git-flow readline hub wget zsh vim}
-  puts
   puts
 end
 
