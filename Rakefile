@@ -23,8 +23,8 @@ namespace :update do
   task :brew do
       if RUBY_PLATFORM.downcase.include?("darwin")
           puts "\nUpdate brew"
-          system %Q{brew upgrade}
           system %Q{brew update}
+          system %Q{brew upgrade}
       end
   end
 
@@ -42,8 +42,14 @@ namespace :update do
       system %Q{npm update -g}
   end
 
+  desc "Update submodules"
+  task :submodule do
+      puts "Update submodules"
+      system %Q{git submodule foreach git pull origin master}
+  end
+
   desc "Update all"
-  task :all => [:vundle, :powerline, :node, :brew, :gems] do
+  task :all => [:vundle, :powerline, :node, :brew, :gems, :submodule] do
   end
 end
 
