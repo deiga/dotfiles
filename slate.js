@@ -77,11 +77,9 @@ S.def([monLaptop], oneMonitorLayout);
 // Layout operations
 var twoMonitor = S.op("layout", { "name" : twoMonitorLayout });
 var oneMonitor = S.op("layout", { "name" : oneMonitorLayout });
-var universalLayout = function() {
+var universalLayout = function () {
     // Should probably make sure the resolutions match but w/e
-    if (S.screenCount() === 3) {
-        threeMonitor.run();
-    } else if (S.screenCount() === 2) {
+    if (S.screenCount() === 2) {
         twoMonitor.run();
     } else if (S.screenCount() === 1) {
         oneMonitor.run();
@@ -96,13 +94,13 @@ S.bnda({
     "space:ctrl" : universalLayout,
 
     // App Bindings
-    "t:"+hyper : S.op("focus" , { "app" : "iTerm" }),
-    "b:"+hyper : S.op("focus" , { "app" : "Google Chrome" }),
-    "s:"+hyper : S.op("focus" , { "app" : "Sublime Text 2" }),
-
-    // Relaunch
-    "r:"+hyper : S.op("relaunch"),
-    // "d:"+hyper : S.op("switch"),
+//    "t:"+hyper : S.op("focus" , { "app" : "iTerm" }),
+//    "b:"+hyper : S.op("focus" , { "app" : "Google Chrome" }),
+//    "s:"+hyper : S.op("focus" , { "app" : "Sublime Text 2" }),
+//
+//    // Relaunch
+//    "r:"+hyper : S.op("relaunch"),
+//    // "d:"+hyper : S.op("switch"),
 
     // Grid
     "esc:alt" : S.op("grid")
