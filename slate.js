@@ -91,7 +91,7 @@ S.bnda({
 
     // Layout Bindings
     "padEnter:ctrl" : universalLayout,
-    "space:ctrl" : universalLayout,
+    "space:ctrl;shift" : universalLayout,
 
     // App Bindings
 //    "t:"+hyper : S.op("focus" , { "app" : "iTerm" }),
