@@ -32,7 +32,7 @@ namespace :update do
   task :gems do
       puts "\nUpdate gems"
       system %Q{gem update --system}
-      system %Q{gem update}
+      # system %Q{gem update} # FIXME get to use global gemset before update
   end
 
   desc "Update Node"
