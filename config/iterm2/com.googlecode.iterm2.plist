@@ -510,7 +510,7 @@
 	<key>NSFontPanelPreviewHeight</key>
 	<real>0.0</real>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/dotfiles/config/iterm2</string>
+	<string>~/Dropbox/Documents</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -548,7 +548,7 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>829 107 445 270 0 0 1440 878 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>494 283 924 485 0 0 1440 878 </string>
+	<string>253 249 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>162 91 1075 621 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
@@ -2060,7 +2060,7 @@
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
-			<string></string>
+			<string>cd;cd -</string>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -4355,6 +4355,8 @@
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>1</integer>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PassOnControlClick</key>
 	<false/>
 	<key>PasteFromClipboard</key>
@@ -4413,7 +4415,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-03-24T18:59:30Z</date>
+	<date>2013-04-13T18:33:28Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
