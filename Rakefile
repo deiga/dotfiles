@@ -276,9 +276,9 @@ end
 
 def install_powerline
   puts "Installing powerline"
-  system %{brew python libgit2}
+  system %{brew install python libgit2}
   system %{pip install --user git+git://github.com/Lokaltog/powerline}
-  system %{pip install pygit2 mercurial psutils}
+  system %{pip install --upgrade pygit2 mercurial psutil}
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
   install_dotfile(Dir['powerline'], File.join(ENV['HOME'], '.config', 'powerline'))
 end
