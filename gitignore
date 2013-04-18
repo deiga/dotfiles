@@ -69,3 +69,8 @@ target/*
 .TAGS*
 tags*
 TAGS*
+
+# Foreman files #
+#################
+.env
+.foreman
