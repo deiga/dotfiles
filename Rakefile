@@ -16,6 +16,7 @@ namespace :update do
 
   desc "Update Powerline"
   task :powerline do
+    puts "Updating powerline"
     update_powerline
   end
 
@@ -120,7 +121,6 @@ end
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
 task :install => ['install:all'] do
-  clean_temp
 end
 
 desc "Update everything"
@@ -277,15 +277,14 @@ end
 def install_powerline
   puts "Installing powerline"
   system %{brew install python libgit2}
-  system %{pip install --user git+git://github.com/Lokaltog/powerline}
-  system %{pip install --upgrade pygit2 mercurial psutil}
+  update_powerline
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
   install_dotfile(Dir['powerline'], File.join(ENV['HOME'], '.config', 'powerline'))
 end
 
 def update_powerline
-  puts "Updating powerline"
   system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
+  system %{pip install -U pygit2 mercurial psutil}
 end
 
 def install_fonts
@@ -295,6 +294,7 @@ def install_fonts
   %x{unzip tmp/source_code_pro_latest.zip -d tmp/}
   font_paths = Dir['tmp/SourceCodePro*/OTF/*'] + Dir[File.join('config', 'powerline-fonts' ,'*', '*.otf')]
   FileUtils.cp(font_paths, File.join(ENV['HOME'], 'Library', 'Fonts'))
+  clean_temp
 end
 
 def clean_temp
