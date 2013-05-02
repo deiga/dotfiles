@@ -32,7 +32,7 @@ namespace :update do
   desc "Update Ruby Gems"
   task :gems do
       puts "\nUpdate gems"
-      system %Q{gem update --system}
+      system %Q{zsh -c 'rvm use 2.0.0@global; gem update --system; gem update'}
       # system %Q{gem update} # FIXME get to use global gemset before update
   end
 
@@ -151,7 +151,7 @@ def install_homebrew
   puts "\n======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  system %{brew install coreutils ctags git git-flow readline hub wget zsh vim}
+  system %{brew install coreutils ctags git git-flow readline hub wget zsh vim 2>/dev/null}
   puts
 end
 
@@ -276,7 +276,7 @@ end
 
 def install_powerline
   puts "Installing powerline"
-  system %{brew install python libgit2}
+  system %{brew install python libgit2 2>/dev/null}
   update_powerline
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
   install_dotfile(Dir['powerline'], File.join(ENV['HOME'], '.config', 'powerline'))
