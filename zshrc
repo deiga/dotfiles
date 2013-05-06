@@ -95,4 +95,4 @@ source ~/.nvm/nvm.sh # Add nvm
 # Profiling end
 # zprof
 
-PATH=$PATH:$rvm_bin_path # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
