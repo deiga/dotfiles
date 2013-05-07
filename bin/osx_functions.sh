@@ -12,3 +12,7 @@ parents_wifi () {
     /usr/sbin/networksetup -setairportnetwork Wi-Fi JASWIFI detlef23
 }
 
+current_wallpaper() {
+    defaults read com.apple.desktop Background |grep LastName | awk '{print $3}'| sed -e 's/;//g' | sed -e 's/"//g' | uniq
+}
+
