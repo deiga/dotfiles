@@ -167,15 +167,15 @@ def install_dotfile(file, target_file)
     if File.identical? file, target_file
       puts "identical #{target_file.replace_home}"
     elsif @replace_all
-      replace_file(file)
+      replace_file(file, target_file)
     else
       print "overwrite #{target_file.replace_home}? [ynaq] "
       case $stdin.gets.chomp
       when 'a'
         @replace_all = true
-        replace_file(file)
+        replace_file(file, target_file)
       when 'y'
-        replace_file(file)
+        replace_file(file, target_file)
       when 'q'
         exit
       else
@@ -220,10 +220,10 @@ def install_kr4mb
   install_dotfile(kr4mb_file, File.join(ENV['HOME'],'Library/Application Support', kr4mb_file))
 end
 
-def replace_file(file)
-  puts "Replacing ~/.#{file}"
-  system %Q{rm -rf "$HOME/.#{file.sub(/\.erb$/, '')}"}
-  link_file(file)
+def replace_file(file, target)
+  puts "Replacing #{file}"
+  system %Q{rm -rf "#{target}"}
+  link_file(file, target)
 end
 
 def link_file(file, target = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
