@@ -64,6 +64,11 @@ namespace :install do
     switch_to_zsh
   end
 
+  desc "Setup submodules"
+  task :submodule do
+      install_submodules
+    end
+
   desc "Setup KeyRemap4MacBook profile"
   task :kr4mb do
     install_kr4mb if RUBY_PLATFORM.downcase.include?("darwin")
@@ -106,6 +111,7 @@ namespace :install do
 
   desc "Install all"
   task :all => %w{
+                  submodule
                   zsh
                   vim
                   kr4mb
@@ -300,4 +306,9 @@ end
 def clean_temp
   puts "Cleaning tmp"
   FileUtils.rm_r(Dir['tmp/*'])
+end
+
+def install_submodules
+    puts "Installing submodules"
+    system %Q{git submodule update --init --recursive}
 end
