@@ -1,0 +1,2 @@
+#!/bin/bash
+qlmanage -p -c public.plain-text "$@" 2> /dev/null &
