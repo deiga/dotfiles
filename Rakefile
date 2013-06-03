@@ -217,7 +217,9 @@ end
 
 def install_kr4mb
   kr4mb_file = Dir['KeyRemap4MacBook/*'][0]
-  install_dotfile(kr4mb_file, File.join(ENV['HOME'],'Library/Application Support', kr4mb_file))
+  target = File.join(ENV['HOME'],'Library/Application Support', kr4mb_file)
+  FileUtils.mkdir_p(File.join(ENV['HOME'],'Library/Application Support'))
+  install_dotfile(kr4mb_file, target)
 end
 
 def replace_file(file, target)
