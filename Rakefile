@@ -59,6 +59,11 @@ namespace :install do
   task :force do
   end
 
+  desc "Setup imagesnap to take pictrues of commits"
+  task :imagesnap do
+      install_imagesnap
+    end
+
   desc "Switch to ZSH"
   task :zsh do
     switch_to_zsh
@@ -121,6 +126,7 @@ namespace :install do
                   brew
                   fonts
                   powerline
+                  imagesnap
                             } do
   end
 end
@@ -313,4 +319,10 @@ end
 def install_submodules
     puts "Installing submodules"
     system %Q{git submodule update --init --recursive}
+end
+
+def install_imagesnap
+    puts "Installing imagesnap"
+    system %Q{brew install imagesnap 2>/dev/null}
+    FileUtils.mkdir_p('~/.gitshots')
 end
