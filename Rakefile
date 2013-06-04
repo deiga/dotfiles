@@ -157,7 +157,7 @@ def install_homebrew
   puts "\n======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  system %{brew install coreutils ctags git git-flow readline hub wget zsh vim 2>/dev/null}
+  system %{brew install coreutils ctags git git-flow readline hub wget zsh vim autojump 2>/dev/null}
   puts
 end
 
