@@ -2,6 +2,8 @@ require 'rake'
 require 'erb'
 require 'fileutils'
 
+# TODO Refactor tasks to dynamically call methods
+
 EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp]
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
@@ -62,6 +64,11 @@ namespace :install do
   desc "Setup imagesnap to take pictrues of commits"
   task :imagesnap do
       install_imagesnap
+    end
+
+  desc "Install Slate.app"
+  task :slate do
+      install_slate
     end
 
   desc "Switch to ZSH"
@@ -325,4 +332,9 @@ def install_imagesnap
     puts "Installing imagesnap"
     system %Q{brew install imagesnap 2>/dev/null}
     FileUtils.mkdir_p('~/.gitshots')
+end
+
+def install_slate
+    puts "Installing slate"
+    system %Q{cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz}
 end
