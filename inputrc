@@ -6,12 +6,8 @@ set convert-meta off
 set output-meta on
 
 set bell-style visible
-control-p: history-search-backward
-control-n: history-search-forward
-"\M-o": "\C-p\C-a\M-f "
 
 set match-hidden-files off
 set completion-ignore-case on
 set visible-stats on
 set show-all-if-ambiguous on
-"\M-s": menu-complete
