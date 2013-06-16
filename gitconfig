@@ -87,7 +87,7 @@
 	browser = open
 [gitflow "branch"]
         master = master
-        develop = dev
+        develop = develop
 [gitflow "prefix"]
         feature = feature/
         release = release/
