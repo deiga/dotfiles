@@ -85,3 +85,12 @@
 	protocol = https
 [web]
 	browser = open
+[gitflow "branch"]
+        master = master
+        develop = dev
+[gitflow "prefix"]
+        feature = feature/
+        release = release/
+        hotfix = hotfix/
+        support = support/
+        versiontag = 
