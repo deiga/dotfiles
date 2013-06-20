@@ -43,13 +43,17 @@
     dc = diff --cached                # diff staged changes
     last = diff HEAD^                 # diff last committed change
 
-    hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
     type = cat-file -t
     dump = cat-file -p
-    unstage = reset HEAD --
-    wc = whatchanged -p --abbrev-commit --pretty=medium
     cl = clone --recursive
-	lg = log --color --graph \n  --pretty=format:'%Cred%h%Creset \n  -%C(yellow)%d%Creset %s %Cgreen(%cr) \n  %C(bold blue)<%an>%Creset' \n  --abbrev-commit
+
+    unstage = reset HEAD --
+    disc = checkout --
+
+    # history
+    wc = whatchanged -p --abbrev-commit --pretty=medium
+    lg = log --color --graph \n  --pretty=format:'%Cred%h%Creset \n  -%C(yellow)%d%Creset %s %Cgreen(%cr) \n  %C(bold blue)<%an>%Creset' \n  --abbrev-commit
+    hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
 	path = 
