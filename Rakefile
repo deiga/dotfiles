@@ -61,6 +61,11 @@ namespace :install do
   task :force do
   end
 
+  desc "Copy and launch LaunchAgent scripts"
+  task :agents do
+    install_launch_agents
+  end
+
   desc "Setup imagesnap to take pictrues of commits"
   task :imagesnap do
       install_imagesnap
@@ -337,4 +342,14 @@ end
 def install_slate
     puts "Installing slate"
     system %Q{cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz}
+end
+
+def install_launch_agents
+    puts "Installing LaunchAgents"
+    FileUtils.cp_r('config/launchAgents/.', File.join(ENV['HOME'], 'Library', 'LaunchAgents'))
+    Dir.entries('config/launchAgents').each do |file|
+        if !File.directory? file
+            system %Q{launchctl load #{File.join(ENV['HOME'], 'Library', 'LaunchAgents', file)}}
+        end
+    end
 end
