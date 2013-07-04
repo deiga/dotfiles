@@ -305,7 +305,7 @@ def install_powerline
   system %{brew install python libgit2 2>/dev/null}
   update_powerline
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
-  install_dotfile(Dir['powerline'], File.join(ENV['HOME'], '.config', 'powerline'))
+  install_dotfile(Dir['powerline'][0], File.join(ENV['HOME'], '.config', 'powerline'))
 end
 
 def update_powerline
