@@ -116,8 +116,8 @@ namespace :install do
     install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
   end
 
-  desc "Install powerline"
-  task :powerline do
+  desc "Install powerline (installs zsh and powerline-fonts)"
+  task :powerline => %w{zsh fonts} do
     install_powerline
   end
 
@@ -306,15 +306,21 @@ def install_powerline
   update_powerline
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
   install_dotfile(Dir['powerline'][0], File.join(ENV['HOME'], '.config', 'powerline'))
+  p "Obs.!"
+  p "You need to add 'source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh' to your ~/.zshrc file"
+  p "You need to set your terminal to use any of the installed powerline fonts"
 end
 
 def update_powerline
-  system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
+  # system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
+  system %{pip install -U git+git://github.com/Lokaltog/powerline}
   system %{pip install -U pygit2 mercurial psutil}
 end
 
 def install_fonts
   puts "Installing Fonts"
+  system %{brew install wget 2>/dev/null}
+  system %Q{git submodule update --init --recursive config/powerline-fonts}
   FileUtils.mkdir_p('tmp')
   %x{wget -q http://sourceforge.net/projects/sourcecodepro.adobe/files/latest/download\?source\=files -O tmp/source_code_pro_latest.zip}
   %x{unzip tmp/source_code_pro_latest.zip -d tmp/}
