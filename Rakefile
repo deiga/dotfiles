@@ -61,6 +61,12 @@ namespace :install do
   task :force do
   end
 
+  desc "Install common used gems"
+  task :gems => %w{rvm} do
+      puts "\nInstall gems"
+      system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake gem-up;' }
+  end
+
   desc "Copy and launch LaunchAgent scripts"
   task :agents do
     install_launch_agents
@@ -121,6 +127,11 @@ namespace :install do
     install_powerline
   end
 
+  desc "Install rvm"
+  task :rvm => %w{brew} do
+      install_rvm
+  end
+
   desc "Install fonts"
   task :fonts do
     install_fonts if RUBY_PLATFORM.downcase.include?("darwin")
@@ -129,13 +140,15 @@ namespace :install do
   desc "Install all"
   task :all => %w{
                   submodule
+                  common
+                  brew
+                  rvm
+                  gems
                   zsh
                   vim
                   kr4mb
                   bin
-                  common
                   ssh
-                  brew
                   fonts
                   powerline
                   imagesnap
@@ -358,4 +371,10 @@ def install_launch_agents
             system %Q{launchctl load #{File.join(ENV['HOME'], 'Library', 'LaunchAgents', file)}}
         end
     end
+end
+
+def install_rvm
+    puts "Installing RVM"
+    system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=homebrew --ruby}
+    system %Q{rvm autolibs homebrew}
 end
