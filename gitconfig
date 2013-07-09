@@ -99,3 +99,5 @@
         hotfix = hotfix/
         support = support/
         versiontag = 
+[git-up "bundler"]
+	check = true
