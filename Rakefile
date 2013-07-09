@@ -34,8 +34,7 @@ namespace :update do
   desc "Update Ruby Gems"
   task :gems do
       puts "\nUpdate gems"
-      system %Q{zsh -c 'rvm use 2.0.0@global; gem update --system; gem update'}
-      # system %Q{gem update} # FIXME get to use global gemset before update
+      system %Q{zsh -c 'rvm gemset use global; gem update --system; gem update'}
   end
 
   desc "Update Node"
@@ -319,9 +318,9 @@ def install_powerline
   update_powerline
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
   install_dotfile(Dir['powerline'][0], File.join(ENV['HOME'], '.config', 'powerline'))
-  p "Obs.!"
-  p "You need to add 'source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh' to your ~/.zshrc file"
-  p "You need to set your terminal to use any of the installed powerline fonts"
+  puts "Obs.!"
+  puts "You need to add 'source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh' to your ~/.zshrc file"
+  puts "You need to set your terminal to use any of the installed powerline fonts"
 end
 
 def update_powerline
