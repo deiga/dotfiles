@@ -19,7 +19,7 @@ namespace :update do
   desc "Update Powerline"
   task :powerline do
     puts "Updating powerline"
-    update_powerline
+    update_powerline if RUBY_PLATFORM.downcase.include?('darwin')
   end
 
   desc "Update Homebrew"
@@ -63,7 +63,7 @@ namespace :install do
   desc "Install common used gems"
   task :gems => %w{rvm} do
       puts "\nInstall gems"
-      system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake gem-up;' }
+      system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake git-up;' }
   end
 
   desc "Copy and launch LaunchAgent scripts"
@@ -123,7 +123,7 @@ namespace :install do
 
   desc "Install powerline (installs zsh and powerline-fonts)"
   task :powerline => %w{zsh fonts} do
-    install_powerline
+    install_powerline if RUBY_PLATFORM.downcase.include?('darwin')
   end
 
   desc "Install rvm"
@@ -374,6 +374,7 @@ end
 
 def install_rvm
     puts "Installing RVM"
-    system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=homebrew --ruby}
+    autolibs = RUBY_PLATFORM.downcase.include?('darwin') ? 'homebrew' : 'packages'
+    system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=${autolibs} --ruby}
     system %Q{rvm autolibs homebrew}
 end
