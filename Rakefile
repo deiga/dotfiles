@@ -68,7 +68,7 @@ namespace :install do
 
   desc "Copy and launch LaunchAgent scripts"
   task :agents do
-    install_launch_agents
+    install_launch_agents if RUBY_PLATFORM.downcase.include?('darwin')
   end
 
   desc "Setup imagesnap to take pictrues of commits"
