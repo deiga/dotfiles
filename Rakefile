@@ -189,6 +189,8 @@ def install_homebrew
   puts "======================================================"
   system %{brew install python coreutils ctags git git-flow readline hub wget zsh vim autojump 2>/dev/null}
   puts
+
+  system %{brew tap phinze/homebrew-cask && brew install brew-cask 2>/dev/null}
 end
 
 
