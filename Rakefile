@@ -19,7 +19,7 @@ namespace :update do
   desc "Update Powerline"
   task :powerline do
     puts "Updating powerline"
-    update_powerline
+    update_powerline if RUBY_PLATFORM.downcase.include?('darwin')
   end
 
   desc "Update Homebrew"
@@ -34,8 +34,7 @@ namespace :update do
   desc "Update Ruby Gems"
   task :gems do
       puts "\nUpdate gems"
-      system %Q{zsh -c 'rvm use 2.0.0@global; gem update --system; gem update'}
-      # system %Q{gem update} # FIXME get to use global gemset before update
+      system %Q{zsh -c 'rvm gemset use global; gem update --system; gem update'}
   end
 
   desc "Update Node"
@@ -59,6 +58,17 @@ end
 namespace :install do
   desc "Delete and recreate symbolic links and generated files in #{ENV['HOME']}"
   task :force do
+  end
+
+  desc "Install common used gems"
+  task :gems => %w{rvm} do
+      puts "\nInstall gems"
+      system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake git-up;' }
+  end
+
+  desc "Copy and launch LaunchAgent scripts"
+  task :agents do
+    install_launch_agents if RUBY_PLATFORM.downcase.include?('darwin')
   end
 
   desc "Setup imagesnap to take pictrues of commits"
@@ -111,9 +121,14 @@ namespace :install do
     install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
   end
 
-  desc "Install powerline"
-  task :powerline do
-    install_powerline
+  desc "Install powerline (installs zsh and powerline-fonts)"
+  task :powerline => %w{zsh fonts} do
+    install_powerline if RUBY_PLATFORM.downcase.include?('darwin')
+  end
+
+  desc "Install rvm"
+  task :rvm => %w{brew} do
+      install_rvm
   end
 
   desc "Install fonts"
@@ -124,13 +139,15 @@ namespace :install do
   desc "Install all"
   task :all => %w{
                   submodule
+                  common
+                  brew
+                  rvm
+                  gems
                   zsh
                   vim
                   kr4mb
                   bin
-                  common
                   ssh
-                  brew
                   fonts
                   powerline
                   imagesnap
@@ -300,16 +317,22 @@ def install_powerline
   system %{brew install python libgit2 2>/dev/null}
   update_powerline
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
-  install_dotfile(Dir['powerline'], File.join(ENV['HOME'], '.config', 'powerline'))
+  install_dotfile(Dir['powerline'][0], File.join(ENV['HOME'], '.config', 'powerline'))
+  puts "Obs.!"
+  puts "You need to add 'source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh' to your ~/.zshrc file"
+  puts "You need to set your terminal to use any of the installed powerline fonts"
 end
 
 def update_powerline
-  system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
+  # system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
+  system %{pip install -U git+git://github.com/Lokaltog/powerline}
   system %{pip install -U pygit2 mercurial psutil}
 end
 
 def install_fonts
   puts "Installing Fonts"
+  system %{brew install wget 2>/dev/null}
+  system %Q{git submodule update --init --recursive config/powerline-fonts}
   FileUtils.mkdir_p('tmp')
   %x{wget -q http://sourceforge.net/projects/sourcecodepro.adobe/files/latest/download\?source\=files -O tmp/source_code_pro_latest.zip}
   %x{unzip tmp/source_code_pro_latest.zip -d tmp/}
@@ -337,4 +360,21 @@ end
 def install_slate
     puts "Installing slate"
     system %Q{cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz}
+end
+
+def install_launch_agents
+    puts "Installing LaunchAgents"
+    FileUtils.cp_r('config/launchAgents/.', File.join(ENV['HOME'], 'Library', 'LaunchAgents'))
+    Dir.entries('config/launchAgents').each do |file|
+        if !File.directory? file
+            system %Q{launchctl load #{File.join(ENV['HOME'], 'Library', 'LaunchAgents', file)}}
+        end
+    end
+end
+
+def install_rvm
+    puts "Installing RVM"
+    autolibs = RUBY_PLATFORM.downcase.include?('darwin') ? 'homebrew' : 'packages'
+    system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=${autolibs} --ruby}
+    system %Q{rvm autolibs homebrew}
 end

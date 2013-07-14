@@ -14,9 +14,10 @@ else # OS X `ls`
 fi
 
 # ls aliases
-alias ls="ls ${colorflag} -hF"
-alias la="ls ${colorflag} -lhAF"
-alias ll="ls ${colorflag} -lhF"
+lsflags="-hF"
+alias ls="ls ${colorflag} ${lsflags}"
+alias la="ls ${colorflag} ${lsflags} -lA"
+alias ll="ls ${colorflag} ${lsflags} -l"
 
 # added interactive and verbose mode for common file operations
 alias cp="cp -iv"
@@ -25,6 +26,9 @@ alias rm="rm -vi"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+
+# Make mkdir use -p
+alias mkdir='mkdir -p'
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"

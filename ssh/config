@@ -115,7 +115,8 @@ Host *
     IdentitiesOnly yes
     ExitOnForwardFailure yes
     Protocol 2
-    ServerAliveInterval 400
+    ServerAliveInterval 60
+    TCPKeepAlive yes
     Port 22
     Compression yes
     CompressionLevel 7
