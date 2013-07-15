@@ -327,8 +327,10 @@ end
 
 def update_powerline
   # system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
+  system %{pip install -U distribute; pip install -U pip}
   system %{pip install -U git+git://github.com/Lokaltog/powerline}
-  system %{pip install -U pygit2 mercurial psutil}
+  system %{pip install -U mercurial psutil}
+  system %{pip install -U pygit2} unless RUBY_PLATFORM.downcase.include?('darwin')
 end
 
 def install_fonts
