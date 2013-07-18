@@ -195,7 +195,7 @@ end
 
 
 def install_dotfile(file, target_file)
-  if File.exist?(target_file)
+  if File.exist?(target_file) or File.symlink?(target_file)
     if File.identical? file, target_file
       puts "identical #{target_file.replace_home}"
     elsif @replace_all
