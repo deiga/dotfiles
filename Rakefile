@@ -61,7 +61,7 @@ namespace :install do
   end
 
   desc "Install common used gems"
-  task :gems => %w{rvm} do
+  task :gems => %w{zsh, rvm} do
       puts "\nInstall gems"
       system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake git-up;' }
   end
