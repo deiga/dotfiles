@@ -238,7 +238,7 @@ def install_ssh
     puts "~/.ssh already linked"
   else
     FileUtils.mv(Dir[File.join(ENV['HOME'], '.ssh','*')], File.join(Dir.pwd, 'ssh'))
-    install_dotfile(Dir['ssh'], File.join(ENV['HOME'], '.ssh'))
+    install_dotfile(Dir['ssh'][0], File.join(ENV['HOME'], '.ssh'))
   end
 end
 
