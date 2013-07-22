@@ -27,6 +27,9 @@ alias rm="rm -vi"
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
+# Enable locate db update
+alias updatedb='/usr/libexec/locate.updatedb'
+
 # Make mkdir use -p
 alias mkdir='mkdir -p'
 
