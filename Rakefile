@@ -18,14 +18,14 @@ namespace :update do
 
   desc "Update Powerline"
   task :powerline do
-    puts "Updating powerline"
+    puts blue "\nUpdating powerline"
     update_powerline if RUBY_PLATFORM.downcase.include?('darwin')
   end
 
   desc "Update Homebrew"
   task :brew do
       if RUBY_PLATFORM.downcase.include?("darwin")
-          puts "\nUpdate brew"
+          puts blue "\nUpdate brew"
           system %Q{brew update}
           system %Q{brew upgrade}
       end
@@ -33,20 +33,20 @@ namespace :update do
 
   desc "Update Ruby Gems"
   task :gems do
-      puts "\nUpdate gems"
+      puts blue "\nUpdate gems"
       system %Q{zsh -c 'rvm gemset use global; gem update --system; gem update'}
   end
 
   desc "Update Node"
   task :node do
-      puts "\nUpdate node"
+      puts blue "\nUpdate node"
       system %Q{npm update npm@latest -g}
       system %Q{npm update -g}
   end
 
   desc "Update submodules"
   task :submodule do
-      puts "Update submodules"
+      puts blue "\nUpdate submodules"
       system %Q{git submodule foreach git pull origin master}
   end
 
@@ -62,7 +62,7 @@ namespace :install do
 
   desc "Install common used gems"
   task :gems => %w{zsh rvm} do
-      puts "\nInstall gems"
+      puts blue "\nInstall gems"
       system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake git-up;' }
   end
 
@@ -175,18 +175,16 @@ end
 def install_homebrew
   rval = %x{which brew}
   unless $?.success?
-    puts "\n======================================================"
-    puts "Installing Homebrew, the OSX package manager...If it's"
-    puts "already installed, this will do nothing."
-    puts "======================================================"
+    puts blue "\n======================================================"
+    puts blue "Installing Homebrew, the OSX package manager...If it's"
+    puts blue "already installed, this will do nothing."
+    puts blue "======================================================"
     system %{ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"}
   end
 
-  puts
-  puts
-  puts "\n======================================================"
-  puts "Installing Homebrew packages...There may be some warnings."
-  puts "======================================================"
+  puts blue "\n\n======================================================"
+  puts blue "Installing Homebrew packages...There may be some warnings."
+  puts blue "======================================================"
   system %{brew install python coreutils ctags git git-flow-avh readline hub wget zsh vim autojump 2>/dev/null}
   puts
 
@@ -197,7 +195,7 @@ end
 def install_dotfile(file, target_file)
   if File.exist?(target_file) or File.symlink?(target_file)
     if File.identical? file, target_file
-      puts "identical #{target_file.replace_home}"
+      puts green "identical #{target_file.replace_home}"
     elsif @replace_all
       replace_file(file, target_file)
     else
@@ -211,7 +209,7 @@ def install_dotfile(file, target_file)
       when 'q'
         exit
       else
-        puts "skipping #{target_file.replace_home}"
+        puts green "skipping #{target_file.replace_home}"
       end
     end
   else
@@ -235,7 +233,7 @@ def install_ssh
   move_keys
 
   if File.symlink?(File.join(ENV['HOME'], '.ssh'))
-    puts "~/.ssh already linked"
+    puts green "~/.ssh already linked"
   else
     FileUtils.mv(Dir[File.join(ENV['HOME'], '.ssh','*')], File.join(Dir.pwd, 'ssh'))
     install_dotfile(Dir['ssh'][0], File.join(ENV['HOME'], '.ssh'))
@@ -255,19 +253,19 @@ def install_kr4mb
 end
 
 def replace_file(file, target)
-  puts "Replacing #{file}"
+  puts blue "Replacing #{file}"
   system %Q{rm -rf "#{target}"}
   link_file(file, target)
 end
 
 def link_file(file, target = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
   if file =~ /.erb$/
-    puts "generating #{target.replace_home}"
+    puts blue "generating #{target.replace_home}"
     File.open(target, 'w') do |new_file|
       new_file.write ERB.new(File.read(file)).result(binding)
     end
   else
-    puts "linking #{target.replace_home}"
+    puts blue "linking #{target.replace_home}"
     File.symlink(File.join(Dir.pwd,file), target) # system %Q{ln -s "$PWD/#{file}" "#{target}"}
   end
 end
@@ -279,7 +277,7 @@ end
 
 def clone_vundle
   if File.exist?('vim/bundle/vundle/.git')
-    puts 'Vundle already installed'
+    puts green 'Vundle already installed'
   else
     not(system %Q{git clone https://github.com/gmarik/vundle.git vim/bundle/vundle}) && 'Could not clone Vundle'
   end
@@ -288,10 +286,10 @@ end
 def install_vim_bundles
   run_vim = "vim +BundleInstall! +qall"
   if @update_vundle
-    puts 'Updating Vim Bundles'
+    puts  blue 'Updating Vim Bundles'
     not(system run_vim) && 'Error installing bundles'
   else
-    puts 'Installing Vim Bundles'
+    puts blue 'Installing Vim Bundles'
     not(system run_vim.gsub('!','')) && 'Error installing bundles'
   end
 end
@@ -299,42 +297,41 @@ end
 
 def switch_to_zsh
   if `ps -p #{Process::ppid}` =~ /zsh/
-    puts "Already using ZSH"
+    puts green "Already using ZSH"
   else
     print "switch to zsh? (recommended) [ynq] "
     case $stdin.gets.chomp
     when 'y'
-      puts "switching to zsh"
+      puts blue "switching to zsh"
       system %Q{chsh -s `which zsh`}
     when 'q'
       exit
     else
-      puts "skipping zsh"
+      puts blue "skipping zsh"
     end
   end
 end
 
 def install_powerline
-  puts "Installing powerline"
+  puts blue "Installing powerline"
   system %{brew install python libgit2 2>/dev/null}
   update_powerline
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
   install_dotfile(Dir['powerline'][0], File.join(ENV['HOME'], '.config', 'powerline'))
-  puts "Obs.!"
-  puts "You need to add 'source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh' to your ~/.zshrc file"
-  puts "You need to set your terminal to use any of the installed powerline fonts"
+  puts red "\nYou need to add 'source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh' to your ~/.zshrc file"
+  puts red "You need to set your terminal to use any of the installed powerline fonts"
 end
 
 def update_powerline
   # system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
-  puts %{Run: pip install -U distribute; pip install -U pip}
+  puts red %{Run: sudo pip install -U distribute; sudo pip install -U pip}
   system %{pip install -U git+git://github.com/Lokaltog/powerline}
   system %{pip install -U mercurial psutil}
   system %{pip install -U pygit2} unless RUBY_PLATFORM.downcase.include?('darwin')
 end
 
 def install_fonts
-  puts "Installing Fonts"
+  puts blue "\nInstalling Fonts"
   system %{brew install wget 2>/dev/null}
   system %Q{git submodule update --init --recursive config/powerline-fonts}
   FileUtils.mkdir_p('tmp')
@@ -346,28 +343,28 @@ def install_fonts
 end
 
 def clean_temp
-  puts "Cleaning tmp"
+  puts blue "\nCleaning tmp"
   FileUtils.rm_r(Dir['tmp/*'])
 end
 
 def install_submodules
-    puts "Installing submodules"
+    puts blue "\nInstalling submodules"
     system %Q{git submodule update --init --recursive}
 end
 
 def install_imagesnap
-    puts "Installing imagesnap"
+    puts blue "\nInstalling imagesnap"
     system %Q{brew install imagesnap 2>/dev/null}
     FileUtils.mkdir_p('~/.gitshots')
 end
 
 def install_slate
-    puts "Installing slate"
+    puts blue "\nInstalling slate"
     system %Q{cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz}
 end
 
 def install_launch_agents
-    puts "Installing LaunchAgents"
+    puts blue "\nInstalling LaunchAgents"
     FileUtils.cp_r('config/launchAgents/.', File.join(ENV['HOME'], 'Library', 'LaunchAgents'))
     Dir.entries('config/launchAgents').each do |file|
         if !File.directory? file
@@ -377,8 +374,24 @@ def install_launch_agents
 end
 
 def install_rvm
-    puts "Installing RVM"
+    puts blue "\nInstalling RVM"
     autolibs = RUBY_PLATFORM.downcase.include?('darwin') ? 'homebrew' : 'packages'
     system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=${autolibs} --ruby}
     system %Q{rvm autolibs homebrew}
+end
+
+def colorized(text, color_code)
+    "\e[#{color_code}m#{text}\e[0m"
+end
+
+def red(text)
+    colorized(text, 31)
+end
+
+def blue(text)
+    colorized(text, 34)
+end
+
+def green(text)
+    colorized(text, 32)
 end
