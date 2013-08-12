@@ -1,0 +1,9 @@
+PS1(">>> ")
+PS2("... ")
+
+addpath("~/Octave")
+
+edit author "Timo Sand"
+edit email "timo.j.sand@gmail.com"
+
+edit mode async
