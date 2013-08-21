@@ -66,6 +66,11 @@ namespace :install do
       system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake git-up;' }
   end
 
+  task :node => %w{brew} do
+      puts blue "\nInstall node, npm, nvm"
+      install_node
+  end
+
   desc "Copy and launch LaunchAgent scripts"
   task :agents do
     install_launch_agents if RUBY_PLATFORM.downcase.include?('darwin')
@@ -189,8 +194,8 @@ def install_homebrew
   puts
 
   system %{brew tap phinze/homebrew-cask && brew install brew-cask 2>/dev/null}
+  system %{brew tap homebrew-science 2>/dev/null}
 end
-
 
 def install_dotfile(file, target_file)
   if File.exist?(target_file) or File.symlink?(target_file)
@@ -378,6 +383,11 @@ def install_rvm
     autolibs = RUBY_PLATFORM.downcase.include?('darwin') ? 'homebrew' : 'packages'
     system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=${autolibs} --ruby}
     system %Q{rvm autolibs homebrew}
+end
+
+def install_node
+    system %Q{brew install node 2>/dev/null}
+    system %Q{npm install -g nvm}
 end
 
 def colorized(text, color_code)
