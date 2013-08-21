@@ -40,7 +40,6 @@ namespace :update do
   desc "Update Node"
   task :node do
       puts blue "\nUpdate node"
-      system %Q{npm update npm@latest -g}
       system %Q{npm update -g}
   end
 
@@ -387,7 +386,7 @@ end
 
 def install_node
     system %Q{brew install node 2>/dev/null}
-    system %Q{npm install -g nvm}
+    system %Q{npm install nvm}
 end
 
 def colorized(text, color_code)
