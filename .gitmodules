@@ -19,6 +19,3 @@
 [submodule "config/powerline-fonts"]
 	path = config/powerline-fonts
 	url = https://github.com/Lokaltog/powerline-fonts
-[submodule "nvm"]
-	path = nvm
-	url = https://github.com/creationix/nvm.git

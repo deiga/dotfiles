@@ -37,7 +37,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump gem heroku brew command-coloring ssh-agent screen npm node)
+plugins=(autojump gem heroku brew command-coloring ssh-agent screen npm node history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
@@ -89,8 +89,6 @@ do
 done
 
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
-
-source ~/.nvm/nvm.sh # Add nvm
 
 # Profiling end
 # zprof
