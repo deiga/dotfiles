@@ -46,8 +46,10 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'leshill/vim-json'
 
 "   HTML
-Bundle 'nono/vim-handlebars'
 Bundle 'othree/html5.vim'
 Bundle 'indenthtml.vim'
+
+"   XML
+Bundle 'othree/xml.vim'
 
 filetype plugin indent on
