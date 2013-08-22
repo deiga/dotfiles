@@ -32,6 +32,10 @@ if has("autocmd")
         au BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2
     " }
     
+    " XML {
+        au FileType xml set omnifunc=xmlcomplete#CompleteTags
+    " }(
+    
     " Crontab http://vim.wikia.com/wiki/Editing_crontab
     au BufEnter /private/tmp/crontab.* setl backupcopy=yes
 endif
