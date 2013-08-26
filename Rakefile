@@ -40,7 +40,7 @@ namespace :update do
   desc "Update Node"
   task :node do
       puts blue "\nUpdate node"
-      system %Q{npm update -g}
+      system %Q{npm update}
   end
 
   desc "Update submodules"
