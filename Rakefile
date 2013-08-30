@@ -386,7 +386,7 @@ end
 
 def install_node
     system %Q{brew install node 2>/dev/null}
-    system %Q{npm install nvm}
+    system %Q{npm install nvm bower node-static}
 end
 
 def colorized(text, color_code)
