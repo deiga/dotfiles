@@ -41,6 +41,7 @@ namespace :update do
   task :node do
       puts blue "\nUpdate node"
       system %Q{npm update}
+      system %Q{npm update -g}
   end
 
   desc "Update submodules"
@@ -155,6 +156,7 @@ namespace :install do
                   fonts
                   powerline
                   imagesnap
+                  node
                             } do
   end
 end
@@ -386,7 +388,7 @@ end
 
 def install_node
     system %Q{brew install node 2>/dev/null}
-    system %Q{npm install nvm bower node-static}
+    system %Q{npm install -g nvm bower node-static coffee-script}
 end
 
 def colorized(text, color_code)
