@@ -19,6 +19,15 @@ Bundle 'gmarik/vundle'
 " Sensible vimrc defaults
 Bundle 'tpope/vim-sensible'
 
+" Fuzzy file opener
+Bundle 'kien/ctrlp.vim'
+
+" changing surrounding characters
+Bundle 'tpope/vim-surround'
+
+" Gist!
+Bundle 'mattn/gist-vim'
+
 " Vim Markdown runtime files
 Bundle 'tpope/vim-markdown'
 
