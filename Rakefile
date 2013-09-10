@@ -63,7 +63,7 @@ namespace :install do
   desc "Install common used gems"
   task :gems => %w{zsh rvm} do
       puts blue "\nInstall gems"
-      system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake git-up;' }
+      system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake git-up rubygems-bundler compass gem-browse httparty;' }
   end
 
   task :node => %w{brew} do
@@ -383,12 +383,12 @@ def install_rvm
     puts blue "\nInstalling RVM"
     autolibs = RUBY_PLATFORM.downcase.include?('darwin') ? 'homebrew' : 'packages'
     system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=${autolibs} --ruby}
-    system %Q{rvm autolibs homebrew}
+    system %Q{rvm autolibs homebrew} if RUBY_PLATFORM.downcase.include?('darwin')
 end
 
 def install_node
     system %Q{brew install node 2>/dev/null}
-    system %Q{npm install -g nvm bower node-static coffee-script}
+    system %Q{npm install -g nvm  yo bower node-static coffee-script generator-webapp generator-angular generator-karma}
 end
 
 def colorized(text, color_code)
