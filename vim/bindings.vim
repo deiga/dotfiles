@@ -26,4 +26,4 @@ set pastetoggle=<F3>
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 command Wq :execute ':W' | :q
 command WQ :Wq
-
+command Q :execute ':q!'
