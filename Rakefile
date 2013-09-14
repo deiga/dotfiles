@@ -330,7 +330,7 @@ end
 
 def update_powerline
   # system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
-  puts red %{Run: sudo pip install -U distribute; sudo pip install -U pip}
+  system %{pip install -U setuptools pip}
   system %{pip install -U git+git://github.com/Lokaltog/powerline}
   system %{pip install -U mercurial psutil}
   system %{pip install -U pygit2} unless RUBY_PLATFORM.downcase.include?('darwin')
