@@ -19,6 +19,7 @@ namespace :update do
   desc "Update Powerline"
   task :powerline do
     puts blue "\nUpdating powerline"
+    update_python
     update_powerline if RUBY_PLATFORM.downcase.include?('darwin')
   end
 
@@ -40,14 +41,14 @@ namespace :update do
   desc "Update Node"
   task :node do
       puts blue "\nUpdate node"
-      system %Q{npm update}
-      system %Q{npm update -g}
+      system %Q{npm update 2>/dev/null}
+      system %Q{npm update -g 2>/dev/null}
   end
 
   desc "Update submodules"
   task :submodule do
       puts blue "\nUpdate submodules"
-      system %Q{git submodule foreach git pull origin master}
+      system %Q{git submodule foreach git pull origin master 2>/dev/null}
   end
 
   desc "Update all"
@@ -74,6 +75,11 @@ namespace :install do
   desc "Copy and launch LaunchAgent scripts"
   task :agents do
     install_launch_agents if RUBY_PLATFORM.downcase.include?('darwin')
+  end
+
+  desc "Install Python"
+  task :python do
+      install_python
   end
 
   desc "Setup imagesnap to take pictrues of commits"
@@ -127,7 +133,7 @@ namespace :install do
   end
 
   desc "Install powerline (installs zsh and powerline-fonts)"
-  task :powerline => %w{zsh brew fonts} do
+  task :powerline => %w{brew zsh python fonts} do
     install_powerline if RUBY_PLATFORM.downcase.include?('darwin')
   end
 
@@ -191,11 +197,22 @@ def install_homebrew
   puts blue "\n\n======================================================"
   puts blue "Installing Homebrew packages...There may be some warnings."
   puts blue "======================================================"
-  system %{brew install python coreutils ctags git git-flow-avh readline hub wget zsh vim autojump  blueutil 2>/dev/null}
+  system %{brew install ctags coreutils git git-flow-avh readline hub wget zsh vim autojump blueutil zsh-completions ssh-copy-id 2>/dev/null}
   puts
 
   system %{brew tap phinze/homebrew-cask && brew install brew-cask 2>/dev/null}
   system %{brew tap homebrew-science 2>/dev/null}
+end
+
+def install_python
+    system %{brew install python --with-brewed-openssl}
+    update_python
+end
+
+def update_python
+    system %{pip install -U setuptools pip}
+    system %{pip install -U mercurial psutil}
+    system %{pip install -U pygit2} unless RUBY_PLATFORM.downcase.include?('darwin')
 end
 
 def install_dotfile(file, target_file)
@@ -320,7 +337,7 @@ end
 
 def install_powerline
   puts blue "Installing powerline"
-  system %{brew install python libgit2 2>/dev/null}
+  system %{brew install libgit2 2>/dev/null}
   update_powerline
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
   install_dotfile(Dir['powerline'][0], File.join(ENV['HOME'], '.config', 'powerline'))
@@ -330,10 +347,7 @@ end
 
 def update_powerline
   # system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
-  system %{pip install -U setuptools pip}
   system %{pip install -U git+git://github.com/Lokaltog/powerline}
-  system %{pip install -U mercurial psutil}
-  system %{pip install -U pygit2} unless RUBY_PLATFORM.downcase.include?('darwin')
 end
 
 def install_fonts
