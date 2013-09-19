@@ -88,7 +88,11 @@ do
   source $file
 done
 
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
+if [ `uname` = "Darwin" ]; then
+    source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
+else
+    source ~/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
+fi
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 

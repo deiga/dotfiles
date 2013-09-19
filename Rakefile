@@ -68,7 +68,7 @@ namespace :install do
       system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake git-up rubygems-bundler compass gem-browse httparty ruby-lint;' }
   end
 
-  task :node => %w{brew} do
+  task :node => %w{ packages} do
       install_node
   end
 
@@ -127,18 +127,19 @@ namespace :install do
     install_ssh
   end
 
-  desc "Install Homebrew if OS X"
-  task :brew do
+  desc "Install Packages"
+  task :packages do
     install_homebrew if OSX
+    install_packages
   end
 
   desc "Install powerline (installs zsh and powerline-fonts)"
-  task :powerline => %w{brew zsh python} do
-    install_powerline if OSX
+  task :powerline => %w{ packages zsh python} do
+    install_powerline 
   end
 
   desc "Install rvm"
-  task :rvm => %w{brew} do
+  task :rvm => %w{ packages} do
       install_rvm
   end
 
@@ -151,7 +152,7 @@ namespace :install do
   task :all => %w{
                   submodule
                   common
-                  brew
+                   packages
                   rvm
                   gems
                   zsh
@@ -197,22 +198,24 @@ def install_homebrew
   puts blue "\n\n======================================================"
   puts blue "Installing Homebrew packages...There may be some warnings."
   puts blue "======================================================"
-  system %{brew install ctags coreutils git git-flow-avh readline wget zsh vim autojump blueutil zsh-completions ssh-copy-id 2>/dev/null}
-  puts
-
-  system %{brew tap phinze/homebrew-cask && brew install brew-cask 2>/dev/null}
-  system %{brew tap homebrew-science 2>/dev/null}
 end
 
 def install_python
-    system %{brew install python --with-brewed-openssl}
+    if OSX
+        system %{brew install python --with-brewed-openssl}
+    else
+        system %{cd ~/local/build; wget http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz; tar -zxf Python-2.7.5.tgz; cd Python-2.7.5; ./configure --prefix=$HOME/local && make -j 3 && make install}
+        system %{cd ~/local/build; wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python }
+        system %{cd ~/local/build; curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python }
+        system %{cd ~/local/build; git clone git://github.com/libgit2/libgit2.git -b master; cd libgit2; mkdir build; cd build; cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/local && cmake --build . --target install}
+    end
     update_python
 end
 
 def update_python
     system %{pip install -U setuptools pip}
     system %{pip install -U mercurial psutil}
-    system %{pip install -U pygit2} unless OSX
+    system %{LIBGIT2="$HOME/local" LDFLAGS="-Wl,-rpath='$LIBGIT2/lib',--enable-new-dtags $LDFLAGS" pip install -U pygit2} unless OSX
 end
 
 def install_dotfile(file, target_file)
@@ -337,7 +340,7 @@ end
 
 def install_powerline
   puts blue "Installing powerline"
-  system %{brew install libgit2 2>/dev/null}
+  system %{brew install libgit2 2>/dev/null} if OSX
   update_powerline
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
   install_dotfile(Dir['powerline'][0], File.join(ENV['HOME'], '.config', 'powerline'))
@@ -429,10 +432,23 @@ def green(text)
     colorized(text, 32)
 end
 
-def install_hub
+def install_packages
     if OSX
-        system %{brew install hub}
+        system %{brew install hub git-flow-avh}
+        system %{brew install ctags coreutils git readline wget zsh vim autojump blueutil zsh-completions ssh-copy-id 2>/dev/null}
+
+        system %{brew tap phinze/homebrew-cask && brew install brew-cask 2>/dev/null}
+        system %{brew tap homebrew-science 2>/dev/null}
     else
+        # hub
         system %{curl http://hub.github.com/standalone -sLo ~/local/bin/hub && chmod +x ~/local/bin/hub}
+        # gitflow-avh
+        system %{wget --no-check-certificate -q  https://raw.github.com/petervanderdoes/gitflow/develop/contrib/gitflow-installer.sh && PREFIX="$HOME/local" REPO_NAME="$PREFIX/build/gitflow" bash gitflow-installer.sh install stable; rm gitflow-installer.sh}
+        # ctags
+        system %{cd ~/local/build; wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz; tar -zxf ctags-5.8.tar.gz; cd ctags-5.8; ./configure --prefix=$HOME/local && make -j 3 && make install}
+        # readline
+        system %{cd ~/local/build; wget ftp://ftp.cwru.edu/pub/bash/readline-6.2.tar.gz; tar -zxf readline-6.2.tar.gz; cd readline-6.2; ./configure --prefix=$HOME/local && make -j 3 && make install}
+        # zsh
+        system %{cd ~/local/build; wget http://sourceforge.net/projects/zsh/files/zsh/5.0.2/zsh-5.0.2.tar.gz; tar -zxf zsh-5.0.2.tar.gz; cd zsh-5.0.2; ./configure --prefix=$HOME/local && make -j 3 && make install}
     end
 end
