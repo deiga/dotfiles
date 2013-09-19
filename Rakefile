@@ -5,6 +5,7 @@ require 'fileutils'
 # TODO Refactor tasks to dynamically call methods
 
 EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp]
+OSX= RUBY_PLATFORM.downcase.include?('darwin')
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
 task '' => :install
@@ -20,12 +21,12 @@ namespace :update do
   task :powerline do
     puts blue "\nUpdating powerline"
     update_python
-    update_powerline if RUBY_PLATFORM.downcase.include?('darwin')
+    update_powerline 
   end
 
   desc "Update Homebrew"
   task :brew do
-      if RUBY_PLATFORM.downcase.include?("darwin")
+      if OSX
           puts blue "\nUpdate brew"
           system %Q{brew update}
           system %Q{brew upgrade}
@@ -73,7 +74,7 @@ namespace :install do
 
   desc "Copy and launch LaunchAgent scripts"
   task :agents do
-    install_launch_agents if RUBY_PLATFORM.downcase.include?('darwin')
+    install_launch_agents if OSX
   end
 
   desc "Install Python"
@@ -83,12 +84,12 @@ namespace :install do
 
   desc "Setup imagesnap to take pictrues of commits"
   task :imagesnap do
-      install_imagesnap if RUBY_PLATFORM.downcase.include?('darwin')
+      install_imagesnap if OSX
     end
 
   desc "Install Slate.app"
   task :slate do
-      install_slate if RUBY_PLATFORM.downcase.include?('darwin')
+      install_slate if OSX
     end
 
   desc "Switch to ZSH"
@@ -103,7 +104,7 @@ namespace :install do
 
   desc "Setup KeyRemap4MacBook profile"
   task :kr4mb do
-    install_kr4mb if RUBY_PLATFORM.downcase.include?("darwin")
+    install_kr4mb if OSX
   end
 
   desc "Install Vundle and execute VundleInstall"
@@ -128,12 +129,12 @@ namespace :install do
 
   desc "Install Homebrew if OS X"
   task :brew do
-    install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
+    install_homebrew if OSX
   end
 
   desc "Install powerline (installs zsh and powerline-fonts)"
   task :powerline => %w{brew zsh python} do
-    install_powerline if RUBY_PLATFORM.downcase.include?('darwin')
+    install_powerline if OSX
   end
 
   desc "Install rvm"
@@ -143,7 +144,7 @@ namespace :install do
 
   desc "Install fonts"
   task :fonts do
-    install_fonts if RUBY_PLATFORM.downcase.include?("darwin")
+    install_fonts if OSX
   end
 
   desc "Install all"
@@ -196,7 +197,7 @@ def install_homebrew
   puts blue "\n\n======================================================"
   puts blue "Installing Homebrew packages...There may be some warnings."
   puts blue "======================================================"
-  system %{brew install ctags coreutils git git-flow-avh readline hub wget zsh vim autojump blueutil zsh-completions ssh-copy-id 2>/dev/null}
+  system %{brew install ctags coreutils git git-flow-avh readline wget zsh vim autojump blueutil zsh-completions ssh-copy-id 2>/dev/null}
   puts
 
   system %{brew tap phinze/homebrew-cask && brew install brew-cask 2>/dev/null}
@@ -211,7 +212,7 @@ end
 def update_python
     system %{pip install -U setuptools pip}
     system %{pip install -U mercurial psutil}
-    system %{pip install -U pygit2} unless RUBY_PLATFORM.downcase.include?('darwin')
+    system %{pip install -U pygit2} unless OSX
 end
 
 def install_dotfile(file, target_file)
@@ -394,14 +395,14 @@ end
 
 def install_rvm
     puts blue "\nInstalling RVM"
-    autolibs = RUBY_PLATFORM.downcase.include?('darwin') ? 'homebrew' : 'packages'
+    autolibs = OSX ? 'homebrew' : 'packages'
     system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=#{autolibs} --ruby}
-    system %Q{rvm autolibs homebrew} if RUBY_PLATFORM.downcase.include?('darwin')
+    system %Q{rvm autolibs homebrew} if OSX
 end
 
 def install_node
     puts blue "\nInstall node, npm, nvm"
-    if RUBY_PLATFORM.include?('darwin')
+    if OSX
         system %Q{brew install node 2>/dev/null}
     else
         node_version = 'v0.10.18'
@@ -426,4 +427,12 @@ end
 
 def green(text)
     colorized(text, 32)
+end
+
+def install_hub
+    if OSX
+        system %{brew install hub}
+    else
+        system %{curl http://hub.github.com/standalone -sLo ~/local/bin/hub && chmod +x ~/local/bin/hub}
+    end
 end
