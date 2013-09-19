@@ -68,7 +68,6 @@ namespace :install do
   end
 
   task :node => %w{brew} do
-      puts blue "\nInstall node, npm, nvm"
       install_node
   end
 
@@ -84,12 +83,12 @@ namespace :install do
 
   desc "Setup imagesnap to take pictrues of commits"
   task :imagesnap do
-      install_imagesnap
+      install_imagesnap if RUBY_PLATFORM.downcase.include?('darwin')
     end
 
   desc "Install Slate.app"
   task :slate do
-      install_slate
+      install_slate if RUBY_PLATFORM.downcase.include?('darwin')
     end
 
   desc "Switch to ZSH"
@@ -133,7 +132,7 @@ namespace :install do
   end
 
   desc "Install powerline (installs zsh and powerline-fonts)"
-  task :powerline => %w{brew zsh python fonts} do
+  task :powerline => %w{brew zsh python} do
     install_powerline if RUBY_PLATFORM.downcase.include?('darwin')
   end
 
@@ -396,13 +395,21 @@ end
 def install_rvm
     puts blue "\nInstalling RVM"
     autolibs = RUBY_PLATFORM.downcase.include?('darwin') ? 'homebrew' : 'packages'
-    system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=${autolibs} --ruby}
+    system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=#{autolibs} --ruby}
     system %Q{rvm autolibs homebrew} if RUBY_PLATFORM.downcase.include?('darwin')
 end
 
 def install_node
-    system %Q{brew install node 2>/dev/null}
-    system %Q{npm install -g nvm  yo bower node-static coffee-script generator-webapp generator-angular generator-karma}
+    puts blue "\nInstall node, npm, nvm"
+    if RUBY_PLATFORM.include?('darwin')
+        system %Q{brew install node 2>/dev/null}
+    else
+        node_version = 'v0.10.18'
+        system %{cd /tmp; wget http://nodejs.org/dist/#{node_version}/node-#{node_version}.tar.gz; tar -zxf node-#{node_version}.tar.gz; cd node-#{node_version}; ./configure --prefix=~/local/node && make -j 3 && make install;}
+        system %{ln -s ~/local/node/bin/* ~/local/bin}
+        system %{rm -rf /tmp/node-*}
+    end
+    system %Q{npm install -g nvm yo bower node-static coffee-script generator-webapp generator-angular generator-karma}
 end
 
 def colorized(text, color_code)
