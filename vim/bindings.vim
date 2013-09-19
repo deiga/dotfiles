@@ -22,6 +22,12 @@ map <leader>h :source $VIM/vim71/syntax/2html.vim<cr>:w<cr>:clo<cr>
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 
+" Refactor
+" Local
+:nnoremap grl gdyiw[{V%:s/<C-R>"//gc<left><left><left>
+" File
+:nnoremap grf yiwggVG:s/<C-R>"//gc<left><left><left> 
+
 " Commands
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 command Wq :execute ':W' | :q
