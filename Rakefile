@@ -407,6 +407,7 @@ def install_node
     puts blue "\nInstall node, npm, nvm"
     if OSX
         system %Q{brew install node 2>/dev/null}
+        system %{rm /usr/local/bin/npm; ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm}
     else
         node_version = 'v0.10.18'
         system %{cd /tmp; wget http://nodejs.org/dist/#{node_version}/node-#{node_version}.tar.gz; tar -zxf node-#{node_version}.tar.gz; cd node-#{node_version}; ./configure --prefix=~/local/node && make -j 3 && make install;}
