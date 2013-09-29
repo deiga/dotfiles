@@ -78,7 +78,7 @@ namespace :install do
   end
 
   desc "Install Python"
-  task :python do
+  task :python => %w{ packages} do
       install_python
   end
 
@@ -134,7 +134,7 @@ namespace :install do
   end
 
   desc "Install powerline (installs zsh and powerline-fonts)"
-  task :powerline => %w{ packages zsh python} do
+  task :powerline => %w{ python zsh} do
     install_powerline 
   end
 
@@ -152,7 +152,7 @@ namespace :install do
   task :all => %w{
                   submodule
                   common
-                   packages
+                  packages
                   rvm
                   gems
                   zsh
@@ -194,10 +194,6 @@ def install_homebrew
     puts blue "======================================================"
     system %{ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"}
   end
-
-  puts blue "\n\n======================================================"
-  puts blue "Installing Homebrew packages...There may be some warnings."
-  puts blue "======================================================"
 end
 
 def install_python
@@ -440,6 +436,13 @@ def install_packages
         system %{brew tap phinze/homebrew-cask && brew install brew-cask 2>/dev/null}
         system %{brew tap homebrew-science 2>/dev/null}
     else
+        system %{mkdir -p ~/local/bin ~/local/build}
+        ENV['LD_LIBRARY_PATH']=File.join(ENV['HOME'], 'local/lib')
+        ENV['LD_RUN_PATH']=ENV['LD_LIBRARY_PATH']
+        ENV['LDFLAGS'] = "-L"+File.join(ENV['HOME'], 'local/lib')
+        ENV['CPPFLAGS'] = "-I"+File.join(ENV['HOME'], 'local/include')+" -fPIC"
+        ENV['CXXFLAGS'] = ENV['CPPFLAGS']
+        ENV['CFLAGS'] = ENV['CPPFLAGS']
         # hub
         system %{curl http://hub.github.com/standalone -sLo ~/local/bin/hub && chmod +x ~/local/bin/hub}
         # gitflow-avh
@@ -451,6 +454,8 @@ def install_packages
         # zsh
         system %{cd ~/local/build; wget http://sourceforge.net/projects/zsh/files/zsh/5.0.2/zsh-5.0.2.tar.gz; tar -zxf zsh-5.0.2.tar.gz; cd zsh-5.0.2; ./configure --prefix=$HOME/local && make -j 3 && make install}
         # autojump
-        system %{cd ~/local/build; git clone git://github.com/joelthelion/autojump.git; cd autojump; git pull origin; ./install --local && ln -s ~/.autojump/bin/* ~/local/bin}
+        system %{cd ~/local/build; git clone git://github.com/joelthelion/autojump.git; cd autojump; git pull origin; ./install.sh --local && ln -s ~/.autojump/bin/* ~/local/bin}
+        # bzip2
+        system %{cd ~/local/build; wget http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz; tar -zxf bzip-1.0.6.tar.gz; cd bzip2-1.0.6; make -j 3 && make install PREFIX=$HOME/local}
     end
 end
