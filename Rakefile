@@ -4,7 +4,7 @@ require 'fileutils'
 
 # TODO Refactor tasks to dynamically call methods
 
-EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp]
+EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp *~]
 OSX= RUBY_PLATFORM.downcase.include?('darwin')
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
