@@ -49,6 +49,7 @@
 
     unstage = reset HEAD --
     disc = checkout --
+    discard = checkout --
 
     # history
     wc = whatchanged -p --abbrev-commit --pretty=medium

@@ -124,6 +124,9 @@ source ~/.vim/bindings.vim
 " Auto commands.
 source ~/.vim/autocmds.vim
 
+" Plugin configuration
+source ~/.vim/plugins.vim
+
 " Powerline
 set rtp +=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 set noshowmode
