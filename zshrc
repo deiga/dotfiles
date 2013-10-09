@@ -37,7 +37,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump gem heroku brew command-coloring ssh-agent screen npm node history-substring-search)
+plugins=(autojump gem heroku brew command-coloring ssh-agent screen npm node history-substring-search extract)
 
 source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
