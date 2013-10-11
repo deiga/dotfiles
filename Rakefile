@@ -240,7 +240,7 @@ def install_dotfile(file, target_file)
 end
 
 def install_common_dotfiles
-  files = Dir['*'] - EXCLUDE_COMMON - Dir['*~']
+  files = Dir['*'] - EXCLUDE_COMMON
   files.each do |file|
     install_dotfile(file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
   end
@@ -393,10 +393,13 @@ def install_launch_agents
 end
 
 def install_rvm
-    puts blue "\nInstalling RVM"
-    autolibs = OSX ? 'homebrew' : 'packages'
-    system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=#{autolibs} --ruby}
-    system %Q{rvm autolibs homebrew} if OSX
+    rval = %x{which rvm}
+    unless $?.success?
+        puts blue "\nInstalling RVM"
+        autolibs = OSX ? 'homebrew' : 'packages'
+        system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=#{autolibs} --ruby --with-gems="pry gem-ctags git-up rubygems-bundler compass gem-browse httparty ruby-lint pry-plus"}
+        system %Q{rvm autolibs homebrew} if OSX
+    end
 end
 
 def install_node
