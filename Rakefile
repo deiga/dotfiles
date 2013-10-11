@@ -68,7 +68,7 @@ namespace :install do
       system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake git-up rubygems-bundler compass gem-browse httparty ruby-lint pry-plus;' }
   end
 
-  task :node => %w{ packages} do
+  task :node do
       install_node
   end
 
@@ -401,16 +401,19 @@ end
 
 def install_node
     puts blue "\nInstall node, npm, nvm"
-    if OSX
-        system %Q{brew install node 2>/dev/null}
-        system %{rm /usr/local/bin/npm; ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm}
+    install_nvm
+    system %{zsh -c 'nvm install 0.10; nvm alias default 0.10'}
+    system %Q{npm install -g yo bower node-static coffee-script generator-webapp generator-angular generator-karma}
+end
+
+def install_nvm
+    nvm_dir = File.join(ENV['HOME'], '.nvm')
+    if File.exist?(nvm_dir)
+        puts blue "=> NVM is already installed in #{nvm_dir}, trying to update"
+        system %{cd #{nvm_dir}; git pull}
     else
-        node_version = 'v0.10.18'
-        system %{cd /tmp; wget http://nodejs.org/dist/#{node_version}/node-#{node_version}.tar.gz; tar -zxf node-#{node_version}.tar.gz; cd node-#{node_version}; ./configure --prefix=~/local/node && make -j 3 && make install;}
-        system %{ln -s ~/local/node/bin/* ~/local/bin}
-        system %{rm -rf /tmp/node-*}
+        system %{git clone https://github.com/creationix/nvm.git #{nvm_dir}}
     end
-    system %Q{npm install -g nvm yo bower node-static coffee-script generator-webapp generator-angular generator-karma}
 end
 
 def colorized(text, color_code)
