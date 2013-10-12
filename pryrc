@@ -37,3 +37,8 @@ if defined? Hirb
     end
   end
 end
+
+# My pry is polite
+Pry.config.hooks.add_hook(:after_session, :say_bye ) do
+    puts "bye-bye"
+end
