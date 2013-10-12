@@ -57,18 +57,6 @@ bindkey '^R' history-incremental-search-backward
 autoload -U colors && colors
 setopt prompt_subst
 
-# Prompt
-#local smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
-
-#PROMPT='
-#%~
-#${smiley} %{$reset_color%}$fg_bold[white]%n$fg[grey]@%{$fg[red]%}%m%{$reset_color%} %% '
-
-#RPROMPT='%{$fg[white]%} $(~/.rvm/bin/rvm-prompt)$(~/bin/git-cwd-info)%{$reset_color%}'
-
-# Replace the above with this if you use rbenv
-# RPROMPT='%{$fg[white]%} $(~/.rbenv/bin/rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
-
 eval `dircolors ~/.dir_colors`
 
 # Disable correct
@@ -95,8 +83,6 @@ else
 fi
 
 fpath=(/usr/local/share/zsh-completions $fpath)
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Profiling end
 # zprof

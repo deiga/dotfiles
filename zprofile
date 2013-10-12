@@ -4,10 +4,12 @@
 export LANG="en_GB.UTF-8"
 export LC_ALL="en_GB.UTF-8"
 
-# Customize to your needs...
-RVMS_PATH=$rvm_path:$rvm_bin_path # Add RVM to PATH for scripting
-BIN_PATH=$HOME/bin:$HOME/local/bin # Add ~/bin to PATH
 export NODE_PATH=/usr/local/lib/node_modules
+export RBENV_ROOT=/usr/local/var/rbenv
+export ARCHFLAGS="-arch x86_64"
+
+# Customize to your needs...
+BIN_PATH=$HOME/bin:$HOME/local/bin # Add ~/bin to PATH
 BOX_PATH=$HOME/dotfiles/box/bin # Add path for box
 PATH=$BIN_PATH:$BOX_PATH:$PATH
 
@@ -30,6 +32,5 @@ case $OSTYPE in
     ;;
 esac
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 [ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"  # This loads NVM
-export ARCHFLAGS="-arch x86_64"
