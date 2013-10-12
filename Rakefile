@@ -36,6 +36,7 @@ namespace :update do
   desc "Update Ruby Gems"
   task :gems do
       puts blue "\nUpdate gems"
+      system %Q{zsh -c 'rvm use default; gem update --system; gem update'}
       system %Q{zsh -c 'rvm gemset use global; gem update --system; gem update'}
   end
 
