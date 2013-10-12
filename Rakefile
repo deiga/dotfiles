@@ -36,8 +36,8 @@ namespace :update do
   desc "Update Ruby Gems"
   task :gems do
       puts blue "\nUpdate gems"
-      system %Q{zsh -c 'rvm use default; gem update --system; gem update'}
-      system %Q{zsh -c 'rvm gemset use global; gem update --system; gem update'}
+      system %Q{zsh -c 'gem update --system; gem update'}
+      system %Q{zsh -c 'gem update --system; gem update'}
   end
 
   desc "Update Node"
@@ -66,7 +66,7 @@ namespace :install do
   desc "Install common used gems"
   task :gems do
       puts blue "\nInstall gems"
-      system %Q{zsh -c 'rvm gemset use global; gem install gem-ctags bundler rake git-up rubygems-bundler compass gem-browse httparty ruby-lint pry-plus;' }
+      system %Q{zsh -c 'gem install gem-ctags bundler rake git-up compass gem-browse httparty pry-plus;' }
   end
 
   task :node do
@@ -141,7 +141,7 @@ namespace :install do
 
   desc "Install rvm"
   task :rvm => %w{ packages} do
-      install_rvm
+      #install_rvm
   end
 
   desc "Install fonts"
@@ -398,7 +398,7 @@ def install_rvm
     unless $?.success?
         puts blue "\nInstalling RVM"
         autolibs = OSX ? 'homebrew' : 'packages'
-        system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=#{autolibs} --ruby --with-gems="pry gem-ctags git-up rubygems-bundler compass gem-browse httparty ruby-lint pry-plus"}
+        system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=#{autolibs} --ruby --with-gems="pry gem-ctags git-up compass gem-browse httparty pry-plus" --without-gems=rubygems-bundler}
         system %Q{rvm autolibs homebrew} if OSX
     end
 end
