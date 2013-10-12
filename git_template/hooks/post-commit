@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+system %{.git/hooks/ctags >/dev/null 2>&1 &}
 file="~/.gitshots/#{Time.now.to_i}.jpg"
 unless File.directory?(File.expand_path("../../rebase-merge", __FILE__))
   puts "Taking capture into #{file}!"
