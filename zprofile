@@ -33,4 +33,3 @@ case $OSTYPE in
 esac
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"  # This loads NVM
