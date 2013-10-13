@@ -4,7 +4,7 @@ require 'fileutils'
 
 # TODO Refactor tasks to dynamically call methods
 
-EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp *~]
+EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp]
 OSX= RUBY_PLATFORM.downcase.include?('darwin')
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
@@ -241,7 +241,7 @@ def install_dotfile(file, target_file)
 end
 
 def install_common_dotfiles
-  files = Dir['*'] - EXCLUDE_COMMON
+  files = Dir['*'] - EXCLUDE_COMMON - Dir['*~']
   files.each do |file|
     install_dotfile(file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
   end
