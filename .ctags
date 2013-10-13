@@ -1,0 +1,2 @@
+--exclude=oh-my-zsh
+--exclude=vim/bundle
