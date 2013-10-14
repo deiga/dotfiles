@@ -8,6 +8,8 @@
 	excludesfile = ~/.gitignore
 	editor = vim
 	whitespace = trailing-space,space-before-tab
+        autocrfl = input
+        safecrlf = true
 [color]
 	status = true
 	diff = true
@@ -30,6 +32,7 @@
     c = commit -m                     # commit with message
     ca = commit -am                   # commit all with message
     ci = commit                       # commit
+    cm = commit --amend
     amend = commit --amend            # ammend your last commit
     ammend = commit --amend           # ammend your last commit
 
@@ -45,9 +48,11 @@
 
     type = cat-file -t
     dump = cat-file -p
+
     cl = clone --recursive
 
     unstage = reset HEAD --
+
     disc = checkout --
     discard = checkout --
 
@@ -56,6 +61,7 @@
     lg = log --color --graph \n  --pretty=format:'%Cred%h%Creset \n  -%C(yellow)%d%Creset %s %Cgreen(%cr) \n  %C(bold blue)<%an>%Creset' \n  --abbrev-commit
     hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
     report = "log --author=Timo --since='2 sunday ago' --until='1 sunday ago' --format='%Cgreen%ci%Creset %s%Creset' --no-merges"
+
     ctags = !.git/hooks/ctags
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
