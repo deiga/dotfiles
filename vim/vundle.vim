@@ -61,4 +61,7 @@ Bundle 'indenthtml.vim'
 "   XML
 Bundle 'othree/xml.vim'
 
+" Robot Framework
+Bundle 'mfukar/robotframework-vim'
+
 filetype plugin indent on
