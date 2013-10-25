@@ -63,6 +63,7 @@
     report = "log --author=Timo --since='2 sunday ago' --until='1 sunday ago' --format='%Cgreen%ci%Creset %s%Creset' --no-merges"
 
     ctags = !.git/hooks/ctags
+    serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
 	path = 
