@@ -33,3 +33,4 @@ case $OSTYPE in
 esac
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which perlbrew > /dev/null; then source ~/perl5/perlbrew/etc/bashrc; fi

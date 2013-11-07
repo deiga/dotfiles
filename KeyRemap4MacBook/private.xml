@@ -607,7 +607,7 @@
             <!-- Greek layer ends  -->
             <item>
                 <name>Math Layer</name>
-                <appendix>Right Control key activates the Math key layer.</appendix>
+                <appendix>Right Command key activates the Math key layer.</appendix>
 
                 <identifier>space_cadet.math_layer</identifier>
 
