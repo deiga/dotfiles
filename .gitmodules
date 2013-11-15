@@ -22,3 +22,6 @@
 [submodule "config/xiki"]
 	path = config/xiki
 	url = git://github.com/trogdoro/xiki.git
+[submodule "config/git-submodule-tools"]
+	path = config/git-submodule-tools
+	url = https://github.com/kollerma/git-submodule-tools.git
