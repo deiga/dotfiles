@@ -25,3 +25,6 @@
 [submodule "config/git-submodule-tools"]
 	path = config/git-submodule-tools
 	url = https://github.com/kollerma/git-submodule-tools.git
+[submodule "config/oh-my-zsh/zsh-syntax-highlighting"]
+	path = config/oh-my-zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git

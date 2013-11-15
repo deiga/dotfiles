@@ -96,6 +96,7 @@ namespace :install do
   desc "Switch to ZSH"
   task :zsh do
     switch_to_zsh
+    install_omz_plugins
   end
 
   desc "Setup submodules"
@@ -465,5 +466,12 @@ def install_packages
         system %{cd ~/local/build; git clone git://github.com/joelthelion/autojump.git; cd autojump; git pull origin; ./install.sh --local && ln -s ~/.autojump/bin/* ~/local/bin}
         # bzip2
         system %{cd ~/local/build; wget http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz; tar -zxf bzip-1.0.6.tar.gz; cd bzip2-1.0.6; make -j 3 && make install PREFIX=$HOME/local}
+    end
+end
+
+def install_omz_plugins
+    omz_plugins = Dir['config/oh-my-zsh/*']
+    omz_plugins.each do |plugin|
+        install_dotfile(plugin, File.join(ENV['HOME'], '.oh-my-zsh', 'custom', 'plugins', plugin.split('/')[-1]))
     end
 end
