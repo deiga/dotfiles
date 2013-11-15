@@ -130,9 +130,8 @@
                 <identifier>space_cadet.greek_layer</identifier>
 
                 <autogen>
-                    --KeyToKey--
-                    KeyCode::OPTION_R,
-                    KeyCode::VK_STICKY_EXTRA4
+                    __KeyOverlaidModifier__
+                    KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::VK_STICKY_EXTRA4
                 </autogen>
 
 
@@ -612,9 +611,8 @@
                 <identifier>space_cadet.math_layer</identifier>
 
                 <autogen>
-                    --KeyToKey--
-                        KeyCode::COMMAND_R,
-                        KeyCode::VK_STICKY_EXTRA3
+                    __KeyOverlaidModifier__
+                    KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::VK_STICKY_EXTRA3
                 </autogen>
 
 
