@@ -4,10 +4,6 @@
 export LANG="en_GB.UTF-8"
 export LC_ALL="en_GB.UTF-8"
 
-export NODE_PATH=/usr/local/lib/node_modules
-export RBENV_ROOT=/usr/local/var/rbenv
-export ARCHFLAGS="-arch x86_64"
-
 # Customize to your needs...
 BIN_PATH=$HOME/bin:$HOME/local/bin # Add ~/bin to PATH
 BOX_PATH=$HOME/dotfiles/box/bin # Add path for box
@@ -18,7 +14,13 @@ case $OSTYPE in
         COREUTILS_PATH=/usr/local/opt/coreutils/libexec/gnubin
         HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin
         PATH=$COREUTILS_PATH:$HOMEBREW_PATH:$PATH
+        export RBENV_ROOT=/usr/local/var/rbenv
+        export NODE_PATH=/usr/local/lib/node_modules
+        export ARCHFLAGS="-arch x86_64"
         # export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+    ;;
+    *)
+        export RBENV_ROOT=~/.rbenv
     ;;
 esac
 

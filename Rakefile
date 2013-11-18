@@ -1,10 +1,13 @@
 require 'rake'
 require 'erb'
 require 'fileutils'
+$LOAD_PATH << '.'
+require 'lib/common'
+require 'lib/ruby'
 
 # TODO Refactor tasks to dynamically call methods
 
-EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp]
+EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp lib]
 OSX= RUBY_PLATFORM.downcase.include?('darwin')
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
@@ -141,9 +144,9 @@ namespace :install do
     install_powerline 
   end
 
-  desc "Install rvm"
-  task :rvm => %w{ packages} do
-      #install_rvm
+  desc "Install ruby"
+  task :ruby => %w{ packages} do
+      install_ruby
   end
 
   desc "Install fonts"
@@ -215,31 +218,6 @@ def update_python
     system %{pip install -U setuptools pip}
     system %{pip install -U mercurial psutil}
     system %{LIBGIT2="$HOME/local" LDFLAGS="-Wl,-rpath='$LIBGIT2/lib',--enable-new-dtags $LDFLAGS" pip install -U pygit2} unless OSX
-end
-
-def install_dotfile(file, target_file)
-  if File.exist?(target_file) or File.symlink?(target_file)
-    if File.identical? file, target_file
-      puts green "identical #{target_file.replace_home}"
-    elsif @replace_all
-      replace_file(file, target_file)
-    else
-      print "overwrite #{target_file.replace_home}? [ynaq] "
-      case $stdin.gets.chomp
-      when 'a'
-        @replace_all = true
-        replace_file(file, target_file)
-      when 'y'
-        replace_file(file, target_file)
-      when 'q'
-        exit
-      else
-        puts green "skipping #{target_file.replace_home}"
-      end
-    end
-  else
-    link_file(file, target_file)
-  end
 end
 
 def install_common_dotfiles
@@ -392,16 +370,6 @@ def install_launch_agents
         if !File.directory? file
             system %Q{launchctl load #{File.join(ENV['HOME'], 'Library', 'LaunchAgents', file)}}
         end
-    end
-end
-
-def install_rvm
-    rval = %x{which rvm}
-    unless $?.success?
-        puts blue "\nInstalling RVM"
-        autolibs = OSX ? 'homebrew' : 'packages'
-        system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=#{autolibs} --ruby --with-gems="pry gem-ctags git-up compass gem-browse httparty pry-plus" --without-gems=rubygems-bundler}
-        system %Q{rvm autolibs homebrew} if OSX
     end
 end
 
