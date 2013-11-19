@@ -36,7 +36,6 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(autojump bower brew bundler coffee extract gem git-flow-avh git gitfast heroku history-substring-search node npm nvm ssh-agent tmux web-search zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
@@ -52,6 +51,13 @@ today=`date "+%m.%d.%Y"`
 # Keybindings
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
 
 # Colors
 autoload -U colors && colors
