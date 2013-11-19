@@ -57,3 +57,7 @@ def install_ruby
   system %{rbenv install 2.0.0-p247}
   system %{rbenv use 2.0 --global}
 end
+
+def update_rbenv
+  system %{rbenv update}
+end

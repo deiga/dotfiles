@@ -56,8 +56,13 @@ namespace :update do
       system %Q{git submodule foreach git pull origin master 2>/dev/null}
   end
 
-  desc "Update all"
-  task :all => [:vundle, :powerline, :node, :brew, :gems, :submodule] do
+  desc "Updated rbenv"
+  task :rbenv do
+      update_rbenv
+  end
+
+ desc "Update all"
+  task :all => [:vundle, :powerline, :node, :brew, :gems, :submodule, :rbenv] do
   end
 end
 
@@ -175,21 +180,12 @@ namespace :install do
 end
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
-task :install => ['install:all'] do
-end
+task :install => ['install:all']
 
 desc "Update everything"
-task :update => ['update:all'] do
-
-end
+task :update => ['update:all'] 
 
 task :default => :install
-
-class String
-  def replace_home
-    self.gsub(ENV['HOME'],'~')
-  end
-end
 
 def install_homebrew
   rval = %x{which brew}
@@ -253,24 +249,6 @@ def install_kr4mb
   target = File.join(ENV['HOME'],'Library/Application Support', kr4mb_file)
   FileUtils.mkdir_p(File.join(ENV['HOME'],'Library/Application Support'))
   install_dotfile(kr4mb_file, target)
-end
-
-def replace_file(file, target)
-  puts blue "Replacing #{file}"
-  system %Q{rm -rf "#{target}"}
-  link_file(file, target)
-end
-
-def link_file(file, target = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
-  if file =~ /.erb$/
-    puts blue "generating #{target.replace_home}"
-    File.open(target, 'w') do |new_file|
-      new_file.write ERB.new(File.read(file)).result(binding)
-    end
-  else
-    puts blue "linking #{target.replace_home}"
-    File.symlink(File.join(Dir.pwd,file), target) # system %Q{ln -s "$PWD/#{file}" "#{target}"}
-  end
 end
 
 def setup_vim
@@ -342,11 +320,6 @@ def install_fonts
   clean_temp
 end
 
-def clean_temp
-  puts blue "\nCleaning tmp"
-  FileUtils.rm_r(Dir['tmp/*'])
-end
-
 def install_submodules
     puts blue "\nInstalling submodules"
     system %Q{git submodule update --init --recursive}
@@ -388,22 +361,6 @@ def install_nvm
     else
         system %{git clone https://github.com/creationix/nvm.git #{nvm_dir}}
     end
-end
-
-def colorized(text, color_code)
-    "\e[#{color_code}m#{text}\e[0m"
-end
-
-def red(text)
-    colorized(text, 31)
-end
-
-def blue(text)
-    colorized(text, 34)
-end
-
-def green(text)
-    colorized(text, 32)
 end
 
 def install_packages
