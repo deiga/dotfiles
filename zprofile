@@ -38,5 +38,6 @@ case $OSTYPE in
     ;;
 esac
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-if which perlbrew > /dev/null; then source ~/perl5/perlbrew/etc/bashrc; fi
+if [[ ! $(type rbenv) =~ "shell function" ]]; then (eval "$(rbenv init - --no-rehash)" &) 2> /dev/null; fi
+if [[ ! $(type perlbrew) =~ "shell function" ]]; then (source ~/perl5/perlbrew/etc/bashrc &) 2> /dev/null; fi
+if [[ ! $(type nvm) =~ "shell function" ]]; then ([[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh &) 2> /dev/null; fi
