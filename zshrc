@@ -36,7 +36,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(autojump bower brew bundler coffee extract gem git-flow-avh git gitfast heroku history-substring-search node npm nvm ssh-agent tmux web-search zsh-syntax-highlighting)
+plugins=(autojump bower brew bundler coffee extract gem git-flow-avh git gitfast heroku history-substring-search node npm ssh-agent tmux zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
