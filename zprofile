@@ -1,4 +1,8 @@
 #echo 'zprofile' $0 # Debug
+#setopt xtrace # Trace
+#setopt promptsubst
+#typeset -F SECONDS
+#PS4='+{$SECONDS}%N:%i> '
 
 # Locale settings
 export LANG="en_GB.UTF-8"
