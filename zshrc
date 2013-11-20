@@ -1,6 +1,8 @@
 # Profiling
 # zmodload zsh/zprof
 
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -88,7 +90,6 @@ else
     source ~/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
 fi
 
-fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Profiling end
 # zprof
