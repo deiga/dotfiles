@@ -61,3 +61,7 @@ end
 def update_rbenv
   system %{rbenv update}
 end
+
+def update_gems
+  system %Q{zsh -c 'gem update --system; gem update'}
+end

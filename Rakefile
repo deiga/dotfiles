@@ -2,8 +2,7 @@ require 'rake'
 require 'erb'
 require 'fileutils'
 $LOAD_PATH << '.'
-require 'lib/common'
-require 'lib/ruby'
+Dir['lib/*.rb'].each { |lib| require lib }
 
 # TODO Refactor tasks to dynamically call methods
 
@@ -39,8 +38,7 @@ namespace :update do
   desc "Update Ruby Gems"
   task :gems do
       puts blue "\nUpdate gems"
-      system %Q{zsh -c 'gem update --system; gem update'}
-      system %Q{zsh -c 'gem update --system; gem update'}
+      update_gems
   end
 
   desc "Update Node"
@@ -198,24 +196,6 @@ def install_homebrew
   end
 end
 
-def install_python
-    if OSX
-        system %{brew install python --with-brewed-openssl}
-    else
-        system %{cd ~/local/build; wget http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz; tar -zxf Python-2.7.5.tgz; cd Python-2.7.5; ./configure --prefix=$HOME/local && make -j 3 && make install}
-        system %{cd ~/local/build; wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python }
-        system %{cd ~/local/build; curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python }
-        system %{cd ~/local/build; git clone git://github.com/libgit2/libgit2.git -b master; cd libgit2; git pull origin; mkdir build; cd build; cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/local && cmake --build . --target install}
-    end
-    update_python
-end
-
-def update_python
-    system %{pip install -U setuptools pip}
-    system %{pip install -U mercurial psutil}
-    system %{LIBGIT2="$HOME/local" LDFLAGS="-Wl,-rpath='$LIBGIT2/lib',--enable-new-dtags $LDFLAGS" pip install -U pygit2} unless OSX
-end
-
 def install_common_dotfiles
   files = Dir['*'] - EXCLUDE_COMMON - Dir['*~']
   files.each do |file|
@@ -251,31 +231,6 @@ def install_kr4mb
   install_dotfile(kr4mb_file, target)
 end
 
-def setup_vim
-  clone_vundle
-  install_vim_bundles
-end
-
-def clone_vundle
-  if File.exist?('vim/bundle/vundle/.git')
-    puts green 'Vundle already installed'
-  else
-    not(system %Q{git clone https://github.com/gmarik/vundle.git vim/bundle/vundle}) && 'Could not clone Vundle'
-  end
-end
-
-def install_vim_bundles
-  run_vim = "vim +BundleInstall! +qall"
-  if @update_vundle
-    puts  blue 'Updating Vim Bundles'
-    not(system run_vim) && 'Error installing bundles'
-  else
-    puts blue 'Installing Vim Bundles'
-    not(system run_vim.gsub('!','')) && 'Error installing bundles'
-  end
-end
-
-
 def switch_to_zsh
   if `ps -p #{Process::ppid}` =~ /zsh/
     puts green "Already using ZSH"
@@ -291,33 +246,6 @@ def switch_to_zsh
       puts blue "skipping zsh"
     end
   end
-end
-
-def install_powerline
-  puts blue "Installing powerline"
-  system %{brew install libgit2 2>/dev/null} if OSX
-  update_powerline
-  FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
-  install_dotfile(Dir['powerline'][0], File.join(ENV['HOME'], '.config', 'powerline'))
-  puts red "\nYou need to add 'source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh' to your ~/.zshrc file"
-  puts red "You need to set your terminal to use any of the installed powerline fonts"
-end
-
-def update_powerline
-  # system %{pip install -U --user git+git://github.com/Lokaltog/powerline}
-  system %{pip install -U git+git://github.com/Lokaltog/powerline}
-end
-
-def install_fonts
-  puts blue "\nInstalling Fonts"
-  system %{brew install wget 2>/dev/null}
-  system %Q{git submodule update --init --recursive config/powerline-fonts}
-  FileUtils.mkdir_p('tmp')
-  %x{wget -q http://sourceforge.net/projects/sourcecodepro.adobe/files/latest/download\?source\=files -O tmp/source_code_pro_latest.zip}
-  %x{unzip tmp/source_code_pro_latest.zip -d tmp/}
-  font_paths = Dir['tmp/SourceCodePro*/OTF/*'] + Dir[File.join('config', 'powerline-fonts' ,'*', '*.otf')]
-  FileUtils.cp(font_paths, File.join(ENV['HOME'], 'Library', 'Fonts'))
-  clean_temp
 end
 
 def install_submodules
