@@ -62,4 +62,7 @@ Bundle 'othree/xml.vim'
 " Robot Framework
 Bundle 'mfukar/robotframework-vim'
 
+" Utilities
+Bundle 'scrooloose/nerdcommenter'
+
 filetype plugin indent on
