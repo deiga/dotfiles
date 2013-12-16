@@ -19,7 +19,6 @@ case $OSTYPE in
         HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin
         PATH=$COREUTILS_PATH:$HOMEBREW_PATH:$PATH
         export RBENV_ROOT=/usr/local/var/rbenv
-        export NODE_PATH=/usr/local/lib/node_modules
         export ARCHFLAGS="-arch x86_64"
         # export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
     ;;
