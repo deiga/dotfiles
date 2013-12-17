@@ -6,6 +6,8 @@ Dir['lib/*.rb'].each { |lib| require lib }
 # TODO Refactor tasks to dynamically call methods
 
 EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp lib]
+
+# Shorthand for darwin platform
 OSX= RUBY_PLATFORM.downcase.include?('darwin')
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"

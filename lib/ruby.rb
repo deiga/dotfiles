@@ -2,6 +2,7 @@ require_relative 'common'
 
 PLUGINS = File.join(ENV['RBENV_ROOT'], 'plugins')
 
+# Method to install RVM (Ruby Version Manager)
 def install_rvm
     rval = %x{which rvm}
     unless $?.success?

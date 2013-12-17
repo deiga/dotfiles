@@ -6,6 +6,7 @@ $log.formatter = proc do |s,dt,p, msg|
     "#{msg}\n"
 end
 
+# Monkeypatching String to include coloring of output and easy insertion of HOME
 class String
   def replace_home
     self.gsub(ENV['HOME'],'~')
@@ -29,6 +30,9 @@ class String
 
 end
 
+# Method for installing a given file/folder to given location
+# * Checks for exitence of target file
+# * Compares equality and asks for overwrite
 def install_dotfile(file, target_file)
   if File.exist?(target_file) or File.symlink?(target_file)
     if File.identical? file, target_file
