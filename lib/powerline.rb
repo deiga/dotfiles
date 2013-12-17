@@ -1,13 +1,13 @@
 require_relative 'common'
 
 def install_powerline
-  puts blue "Installing powerline"
+  $log.info "Installing powerline".blue
   system %{brew install libgit2 2>/dev/null} if OSX
   update_powerline
   FileUtils.mkdir_p(File.join(ENV['HOME'], '.config'))
   install_dotfile(Dir['powerline'][0], File.join(ENV['HOME'], '.config', 'powerline'))
-  puts red "\nYou need to add 'source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh' to your ~/.zshrc file"
-  puts red "You need to set your terminal to use any of the installed powerline fonts"
+  $log.info "\nYou need to add 'source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh' to your ~/.zshrc file".red
+  $log.info "You need to set your terminal to use any of the installed powerline fonts".red
 end
 
 def update_powerline
@@ -16,7 +16,7 @@ def update_powerline
 end
 
 def install_fonts
-  puts blue "\nInstalling Fonts"
+  $log.info "\nInstalling Fonts".blue
   system %{brew install wget 2>/dev/null}
   system %Q{git submodule update --init --recursive config/powerline-fonts}
   FileUtils.mkdir_p('tmp')

@@ -1,7 +1,5 @@
 require 'rake'
 require 'erb'
-require 'fileutils'
-require 'logger'
 $LOAD_PATH << '.'
 Dir['lib/*.rb'].each { |lib| require lib }
 
@@ -9,11 +7,6 @@ Dir['lib/*.rb'].each { |lib| require lib }
 
 EXCLUDE_COMMON = %w[Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp lib]
 OSX= RUBY_PLATFORM.downcase.include?('darwin')
-
-log = Logger.new(STDOUT)
-log.formatter = proc do |s,dt,p, msg|
-    "#{msg}\n"
-end
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
 task '' => :install
@@ -27,7 +20,7 @@ namespace :update do
 
   desc "Update Powerline"
   task :powerline do
-    log.info "\nUpdating powerline".blue
+    $log.info "\nUpdating powerline".blue
     update_python
     update_powerline 
   end
@@ -35,7 +28,7 @@ namespace :update do
   desc "Update Homebrew"
   task :brew do
       if OSX
-          log.info "\nUpdate brew".blue
+          $log.info "\nUpdate brew".blue
           system %Q{brew update}
           system %Q{brew upgrade}
       end
@@ -43,20 +36,20 @@ namespace :update do
 
   desc "Update Ruby Gems"
   task :gems do
-      log.info "\nUpdate gems".blue
+      $log.info "\nUpdate gems".blue
       update_gems
   end
 
   desc "Update Node"
   task :node do
-      log.info "\nUpdate node".blue
+      $log.info "\nUpdate node".blue
       system %Q{npm update 2>/dev/null}
       system %Q{npm update -g 2>/dev/null}
   end
 
   desc "Update submodules"
   task :submodule do
-      log.info "\nUpdate submodules".blue
+      $log.info "\nUpdate submodules".blue
       system %Q{git submodule foreach git pull origin master 2>/dev/null}
   end
 
@@ -77,7 +70,7 @@ namespace :install do
 
   desc "Install common used gems"
   task :gems do
-      log.info "\nInstall gems".blue
+      $log.info "\nInstall gems".blue
       system %Q{zsh -c 'gem install gem-ctags bundler rake git-up compass gem-browse httparty pry-plus;' }
   end
 
@@ -194,10 +187,10 @@ task :default => :install
 def install_homebrew
   rval = %x{which brew}
   unless $?.success?
-    log.info "\n======================================================".blue
-    log.info "Installing Homebrew, the OSX package manager...If it's".blue
-    log.info "already installed, this will do nothing.".blue
-    log.info "======================================================".blue
+    $log.info "\n======================================================".blue
+    $log.info "Installing Homebrew, the OSX package manager...If it's".blue
+    $log.info "already installed, this will do nothing.".blue
+    $log.info "======================================================".blue
     system %{ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"}
   end
 end
@@ -218,7 +211,7 @@ def install_ssh
   move_keys
 
   if File.symlink?(File.join(ENV['HOME'], '.ssh'))
-    log.info "~/.ssh already linked".green
+    $log.info "~/.ssh already linked".green
   else
     FileUtils.mv(Dir[File.join(ENV['HOME'], '.ssh','*')], File.join(Dir.pwd, 'ssh'))
     install_dotfile(Dir['ssh'][0], File.join(ENV['HOME'], '.ssh'))
@@ -239,39 +232,39 @@ end
 
 def switch_to_zsh
   if `ps -p #{Process::ppid}` =~ /zsh/
-    log.info "Already using ZSH".green
+    $log.info "Already using ZSH".green
   else
     print "switch to zsh? (recommended) [ynq] "
     case $stdin.gets.chomp
     when 'y'
-      log.info "switching to zsh".blue
+      $log.info "switching to zsh".blue
       system %Q{chsh -s `which zsh`}
     when 'q'
       exit
     else
-      log.info "skipping zsh".blue
+      $log.info "skipping zsh".blue
     end
   end
 end
 
 def install_submodules
-    log.info "\nInstalling submodules".blue
+    $log.info "\nInstalling submodules".blue
     system %Q{git submodule update --init --recursive}
 end
 
 def install_imagesnap
-    log.info "\nInstalling imagesnap".blue
+    $log.info "\nInstalling imagesnap".blue
     system %Q{brew install imagesnap 2>/dev/null}
     FileUtils.mkdir_p('~/.gitshots')
 end
 
 def install_slate
-    log.info "\nInstalling slate".blue
+    $log.info "\nInstalling slate".blue
     system %Q{cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz}
 end
 
 def install_launch_agents
-    log.info "\nInstalling LaunchAgents".blue
+    $log.info "\nInstalling LaunchAgents".blue
     FileUtils.cp_r('config/launchAgents/.', File.join(ENV['HOME'], 'Library', 'LaunchAgents'))
     Dir.entries('config/launchAgents').each do |file|
         if !File.directory? file
@@ -281,7 +274,7 @@ def install_launch_agents
 end
 
 def install_node
-    log.info "\nInstall node, npm, nvm".blue
+    $log.info "\nInstall node, npm, nvm".blue
     install_nvm
     system %{zsh -c 'nvm install 0.10; nvm alias default 0.10'}
     system %Q{npm install -g yo bower node-static coffee-script generator-webapp generator-angular generator-karma}
@@ -290,7 +283,7 @@ end
 def install_nvm
     nvm_dir = File.join(ENV['HOME'], '.nvm')
     if File.exist?(nvm_dir)
-        log.info "=> NVM is already installed in #{nvm_dir}, trying to update".blue
+        $log.info "=> NVM is already installed in #{nvm_dir}, trying to update".blue
         system %{cd #{nvm_dir}; git pull}
     else
         system %{git clone https://github.com/creationix/nvm.git #{nvm_dir}}
