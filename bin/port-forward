@@ -1,0 +1,17 @@
+#!/bin/sh
+PORT=8080
+
+if [ -n "$2" ]; then
+    PORT=$2
+fi
+
+case "$1" in
+    "start" )
+        sudo ipfw add 100 fwd 127.0.0.1,$PORT tcp from any to any 80 in
+        ;;
+    "stop" )
+        sudo ipfw flush
+        ;;
+esac
+
+exit 0
