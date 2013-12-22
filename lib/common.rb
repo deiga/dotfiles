@@ -2,17 +2,17 @@ require 'fileutils'
 require 'logger'
 
 $log = Logger.new(STDOUT)
-$log.formatter = proc do |s,dt,p, msg|
+$log.formatter = proc do |s, dt, p, msg|
     "#{msg}\n"
 end
 
 # Monkeypatching String to include coloring of output and easy insertion of HOME
 class String
   def replace_home
-    self.gsub(ENV['HOME'],'~')
+    self.gsub(ENV['HOME'], '~')
   end
 
-  def colorize( color_code)
+  def colorize(color_code)
     "\e[#{color_code}m#{self}\e[0m"
   end
 
@@ -77,6 +77,6 @@ def link_file(file, target = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"
     end
   else
     $log.info "linking #{target.replace_home}".blue
-    File.symlink(File.join(Dir.pwd,file), target) # system %Q{ln -s "$PWD/#{file}" "#{target}"}
+    File.symlink(File.join(Dir.pwd, file), target) # system %Q{ln -s "$PWD/#{file}" "#{target}"}
   end
 end

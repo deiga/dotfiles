@@ -30,7 +30,7 @@ def levenshtein_memo(s, i, len1, t, j, len2)
   dist = [
       levenshtein_memo(s, i + 1, len1 - 1, t, j, len2) + 1,
       levenshtein_memo(s , i, len1, t, j + 1, len2 - 1) + 1,
-      levenshtein_memo(s, i + 1 ,len1 - 1 ,t , j + 1, len2 - 1) + cost
+      levenshtein_memo(s, i + 1 , len1 - 1, t, j + 1, len2 - 1) + cost
     ].min
   @memo[key] = dist
   dist

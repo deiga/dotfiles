@@ -9,7 +9,7 @@ def clone_vundle
   if File.exist?('vim/bundle/vundle/.git')
     $log.info 'Vundle already installed'.green
   else
-    not(system %Q{git clone https://github.com/gmarik/vundle.git vim/bundle/vundle}) && 'Could not clone Vundle'
+    not(system 'git clone https://github.com/gmarik/vundle.git vim/bundle/vundle') && 'Could not clone Vundle'
   end
 end
 
@@ -20,7 +20,7 @@ def install_vim_bundles
     not(system run_vim) && 'Error installing bundles'
   else
     $log.info 'Installing Vim Bundles'.blue
-    not(system run_vim.gsub('!','')) && 'Error installing bundles'
+    not(system run_vim.gsub('!', '')) && 'Error installing bundles'
   end
 end
 

@@ -4,12 +4,12 @@ PLUGINS = File.join(ENV['RBENV_ROOT'], 'plugins')
 
 # Method to install RVM (Ruby Version Manager)
 def install_rvm
-    rval = %x{which rvm}
+    %x{which rvm}
     unless $?.success?
         $log.info "\nInstalling RVM".blue
         autolibs = OSX ? 'homebrew' : 'packages'
         system %Q{curl -L https://get.rvm.io | bash -s stable --autolibs=#{autolibs} --ruby --with-gems="pry gem-ctags git-up compass gem-browse httparty pry-plus" --without-gems=rubygems-bundler}
-        system %Q{rvm autolibs homebrew} if OSX
+        system 'rvm autolibs homebrew' if OSX
     end
 end
 
@@ -21,12 +21,12 @@ end
 
 def install_rbenv
   if OSX
-    system %{brew install rbenv ruby-build rbenv-readline}
+    system 'brew install rbenv ruby-build rbenv-readline'
   else
     FileUtils.mkdir_p(File.join(ENV['HOME'], '.rbenv'))
-    system %{git clone https://github.com/sstephenson/rbenv.git ~/.rbenv}
+    system 'git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
     FileUtils.mkdir_p(PLUGINS)
-    system %{git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build}
+    system 'git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
   end
 
 end
@@ -34,15 +34,15 @@ end
 def install_rbenv_plugins
   FileUtils.mkdir_p(PLUGINS)
   Dir.chdir(PLUGINS) do
-    system %{git clone git://github.com/tpope/rbenv-communal-gems.git}
-    system %{git clone https://github.com/ianheggie/rbenv-binstubs.git}
-    system %{git clone git://github.com/tpope/rbenv-ctags.git}
-    system %{git clone https://github.com/sstephenson/rbenv-default-gems.git}
-    system %{git clone https://github.com/sstephenson/rbenv-gem-rehash.git}
-    system %{git clone https://github.com/rkh/rbenv-update.git}
-    system %{git clone https://github.com/rkh/rbenv-whatis.git}
-    system %{git clone https://github.com/rkh/rbenv-use.git}
-    system %{git clone https://github.com/sstephenson/rbenv-vars.git}
+    system 'git clone git://github.com/tpope/rbenv-communal-gems.git'
+    system 'git clone https://github.com/ianheggie/rbenv-binstubs.git'
+    system 'git clone git://github.com/tpope/rbenv-ctags.git'
+    system 'git clone https://github.com/sstephenson/rbenv-default-gems.git'
+    system 'git clone https://github.com/sstephenson/rbenv-gem-rehash.git'
+    system 'git clone https://github.com/rkh/rbenv-update.git'
+    system 'git clone https://github.com/rkh/rbenv-whatis.git'
+    system 'git clone https://github.com/rkh/rbenv-use.git'
+    system 'git clone https://github.com/sstephenson/rbenv-vars.git'
   end
 end
 
@@ -55,14 +55,14 @@ def install_ruby
   install_rbenv
   install_rbenv_plugins
   link_default_gems
-  system %{rbenv install 2.0.0-p247}
-  system %{rbenv use 2.0 --global}
+  system 'rbenv install 2.0.0-p247'
+  system 'rbenv use 2.0 --global'
 end
 
 def update_rbenv
-  system %{rbenv update}
+  system 'rbenv update'
 end
 
 def update_gems
-  system %Q{zsh -c 'gem update --system; gem update'}
+  system %{zsh -c 'gem update --system; gem update'}
 end

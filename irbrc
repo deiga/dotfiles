@@ -39,9 +39,9 @@ require 'wirble'
 Wirble.init
 Wirble.colorize
 colors = Wirble::Colorize.colors.merge({
-    :object_class => :purple,
-    :symbol => :purple,
-    :symbol_prefix => :purple
+    object_class: :purple,
+    symbol: :purple,
+    symbol_prefix: :purple
 })
 Wirble::Colorize.colors = colors
 
@@ -52,7 +52,7 @@ end
 def copy_history
     history = Readline::HISTORY.entries
     index = history.rindex("exit") || -1
-    content = history[(index+1)..-2].join("\n")
+    content = history[(index + 1)..-2].join("\n")
     puts content
     copy content
 end

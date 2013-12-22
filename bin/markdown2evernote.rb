@@ -71,16 +71,16 @@ ARGF.each_line do |line|
  		if metadata then title = line[7..-1].strip else input << line end
 	# strip all 1st level headings as logically, note title is 1st level
 	when /^#[^#]+?/
-		if title.empty? then title = line[line.index(/[^#]/)..-1].strip end
+		title = line[line.index(/[^#]/)..-1].strip if title.empty?
 	# note tags (either MMD metadata 'Keywords' or '@ <tag list>'; must occur before the first blank line)
 	when /^(Keywords:|@)\s.*?/
-		if metadata then tags = line[line.index(/\s/)+1..-1].split(',').map {|tag| tag = tag.strip} else input << line end
+		if metadata then tags = line[line.index(/\s/) + 1..-1].split(',').map { |tag| tag = tag.strip } else input << line end
 	# notebook (either MMD metadata 'Notebook' or '= <name>'; must occur before the first blank line)
 	when /^(Notebook:|=)\s.*?/
-		if metadata then notebook = line[line.index(/\s/)+1..-1].strip else input << line end
+		if metadata then notebook = line[line.index(/\s/) + 1..-1].strip else input << line end
 	# metadata block ends at first blank line
 	when /^\s?$/
-		if metadata then metadata = false end
+		metadata = false if metadata 
 		input << line
 	# anything else is appended to input
 	else
@@ -90,21 +90,21 @@ end
 
 # Markdown processing
 mmd_cmd =  "#{quote MARKDOWN}"
-mmd_cmd << if SMARTY_PATH.empty? then SMARTY ? " #{SMARTY_EXT_ON}" : " #{SMARTY_EXT_OFF}" else "|#{quote SMARTY_PATH}" end unless !SMARTY
+mmd_cmd << if SMARTY_PATH.empty? then SMARTY ? " #{SMARTY_EXT_ON}" : " #{SMARTY_EXT_OFF}" else "|#{quote SMARTY_PATH}" end if SMARTY
 
 IO.popen(mmd_cmd, 'r+') do |io|
-	input.each_line {|line| io << line}
+	input.each_line { |line| io << line }
 	io.close_write
-	io.each_line {|line| contents << line}
+	io.each_line { |line| contents << line }
 end
 
 # create note, using localized date and time stamp as fallback for title
-if title.empty? then title = %x{osascript -e 'get (current date) as text'}.chomp end
+title = %x{osascript -e 'get (current date) as text'}.chomp if title.empty?
 
 osa_cmd =  "tell application #{quote 'Evernote'} to create note with html #{quote escape contents}"
 osa_cmd << "  title #{quote escape title}"
-if tags.length  > 1 then osa_cmd << " tags #{'{' << tags.map {|tag| tag = quote escape tag}.join(",") << '}'}" end
-if tags.length == 1 then osa_cmd << " tags #{quote escape tags[0]}" end
+if tags.length  > 1 then osa_cmd << " tags #{'{' << tags.map { |tag| tag = quote escape tag}.join(",") << '}'}" end
+osa_cmd << " tags #{quote escape tags[0]}" if tags.length == 1 
 osa_cmd << " notebook #{quote escape notebook}" unless notebook.empty?
 
 require 'tempfile'
