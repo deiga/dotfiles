@@ -3,7 +3,6 @@
 	email = timo.j.sand@gmail.com
 [github]
 	user = deiga
-	token = 0e45cb3e6c875ec6d6833b52403e8f46cea91db6
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
