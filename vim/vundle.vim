@@ -55,6 +55,7 @@ Bundle 'leshill/vim-json'
 "   HTML
 Bundle 'othree/html5.vim'
 Bundle 'indenthtml.vim'
+Bundle 'mattn/emmet-vim'
 
 "   XML
 Bundle 'othree/xml.vim'

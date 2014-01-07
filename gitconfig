@@ -111,3 +111,15 @@
         versiontag = 
 [git-up "bundler"]
 	check = true
+[gitflow "hotfix.finish"]
+	push = True
+	fetch = True
+[gitflow "hotfix.start"]
+	fetch = True
+[gitflow "release.finish"]
+	fetch = True
+	push = True
+[gitflow "release.start"]
+	fetch = True
+[gitflow "init"]
+	defaults = True

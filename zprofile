@@ -39,4 +39,3 @@ esac
 
 eval "$(rbenv init - --no-rehash)"
 if [[ ! $(type perlbrew) =~ "shell function" ]]; then source ~/perl5/perlbrew/etc/bashrc; fi
-if [[ ! $(type nvm) =~ "shell function" ]]; then [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh  ; fi

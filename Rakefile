@@ -277,9 +277,10 @@ end
 
 def install_node
     $log.info "\nInstall node, npm, nvm".blue
-    install_nvm
-    system %{zsh -c 'nvm install 0.10; nvm alias default 0.10'}
-    system %Q{npm install -g yo bower node-static coffee-script generator-webapp generator-angular generator-karma}
+    # install_nvm
+    # system %{zsh -c 'nvm install 0.10; nvm alias default 0.10'}
+    system 'brew install node'
+    system %Q{npm install -g yo node-static coffee-script generator-webapp generator-angular generator-karma}
 end
 
 def install_nvm
