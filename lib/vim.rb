@@ -23,4 +23,3 @@ def install_vim_bundles
     not(system run_vim.gsub('!', '')) && 'Error installing bundles'
   end
 end
-
