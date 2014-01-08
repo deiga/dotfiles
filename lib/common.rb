@@ -6,7 +6,6 @@ LOGGER.formatter = proc do |s, dt, p, msg|
   "#{msg}\n"
 end
 
-
 # Monkeypatching String to include coloring of output and easy insertion of HOME
 class String
   def replace_home
