@@ -27,7 +27,6 @@ class String
   def green
     colorize(32)
   end
-
 end
 
 # Method for installing a given file/folder to given location

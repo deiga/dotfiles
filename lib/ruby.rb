@@ -16,7 +16,7 @@ end
 def uninstall_rvm
     `/usr/bin/sudo rm -rf $HOME/.rvm $HOME/.rvmrc /etc/rvmrc /etc/profile.d/rvm.sh /usr/local/rvm /usr/local/bin/rvm`
     `/usr/bin/sudo /usr/sbin/groupdel rvm`
-    $log.info "RVM is removed. Please check all .bashrc|.bash_profile|.profile|.zshrc for RVM source lines and delete or comment out if this was a Per-User installation.".blue
+    $log.info 'RVM is removed. Please check all .bashrc|.bash_profile|.profile|.zshrc for RVM source lines and delete or comment out if this was a Per-User installation.'.blue
 end
 
 def install_rbenv
@@ -28,7 +28,6 @@ def install_rbenv
     FileUtils.mkdir_p(PLUGINS)
     system 'git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
   end
-
 end
 
 def install_rbenv_plugins

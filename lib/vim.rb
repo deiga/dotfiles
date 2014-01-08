@@ -14,7 +14,7 @@ def clone_vundle
 end
 
 def install_vim_bundles
-  run_vim = "vim +BundleInstall! +qall"
+  run_vim = 'vim +BundleInstall! +qall'
   if @update_vundle
     $log.info  'Updating Vim Bundles'.blue
     not(system run_vim) && 'Error installing bundles'

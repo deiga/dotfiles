@@ -9,7 +9,7 @@ def convert_currency(cli_params)
   url.query = URI.encode_www_form(params)
   res = Net::HTTP.get_response(url)
 
-  STDOUT.puts res.body.match(/(?:result>)(.*?)(?:<\/)/m)[1].gsub(/<[^>]*>/,'')
+  STDOUT.puts res.body.match(/(?:result>)(.*?)(?:<\/)/m)[1].gsub(/<[^>]*>/, '')
 end
 
 case ARGV.length
