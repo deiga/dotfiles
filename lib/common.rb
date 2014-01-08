@@ -1,10 +1,11 @@
 require 'fileutils'
 require 'logger'
 
-$log = Logger.new(STDOUT)
-$log.formatter = proc do |s, dt, p, msg|
-    "#{msg}\n"
+LOGGER = Logger.new(STDOUT)
+LOGGER.formatter = proc do |s, dt, p, msg|
+  "#{msg}\n"
 end
+
 
 # Monkeypatching String to include coloring of output and easy insertion of HOME
 class String
@@ -35,7 +36,7 @@ end
 def install_dotfile(file, target_file)
   if File.exist?(target_file) or File.symlink?(target_file)
     if File.identical? file, target_file
-      $log.info "identical #{target_file.replace_home}".green
+      LOGGER.info "identical #{target_file.replace_home}".green
     elsif @replace_all
       replace_file(file, target_file)
     else
@@ -49,7 +50,7 @@ def install_dotfile(file, target_file)
       when 'q'
         exit
       else
-        $log.info "skipping #{target_file.replace_home}".green
+        LOGGER.info "skipping #{target_file.replace_home}".green
       end
     end
   else
@@ -58,24 +59,24 @@ def install_dotfile(file, target_file)
 end
 
 def clean_temp
-  $log.info "\nCleaning tmp".blue
+  LOGGER.info "\nCleaning tmp".blue
   FileUtils.rm_r(Dir['tmp/*'])
 end
 
 def replace_file(file, target)
-  $log.info "Replacing #{file}".blue
+  LOGGER.info "Replacing #{file}".blue
   system %Q{rm -rf "#{target}"}
   link_file(file, target)
 end
 
 def link_file(file, target = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
   if file =~ /.erb$/
-    $log.info "generating #{target.replace_home}".blue
+    LOGGER.info "generating #{target.replace_home}".blue
     File.open(target, 'w') do |new_file|
       new_file.write ERB.new(File.read(file)).result(binding)
     end
   else
-    $log.info "linking #{target.replace_home}".blue
+    LOGGER.info "linking #{target.replace_home}".blue
     File.symlink(File.join(Dir.pwd, file), target) # system %Q{ln -s "$PWD/#{file}" "#{target}"}
   end
 end
