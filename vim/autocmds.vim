@@ -34,7 +34,18 @@ if has("autocmd")
     
     " XML {
         au FileType xml set omnifunc=xmlcomplete#CompleteTags
-    " }(
+    " }
+
+    " Haskell {
+        au FileType hs set tabstop=8
+        au FileType hs set expandtab
+        au FileType hs set softtabstop=4
+        au FileType hs set shiftwidth=4
+        au FileType hs set smarttab
+        au FileType hs set shiftround
+        au FileType hs set nojoinspaces
+    " }
+
     
     " Crontab http://vim.wikia.com/wiki/Editing_crontab
     au BufEnter /private/tmp/crontab.* setl backupcopy=yes
