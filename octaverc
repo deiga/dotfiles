@@ -3,7 +3,7 @@ PS2("... ")
 
 addpath("~/Octave")
 setenv ("GNUTERM", "X11")
-graphics_toolkit ("fltk") 
+#graphics_toolkit ("fltk") 
 
 edit author "Timo Sand"
 edit email "timo.j.sand@gmail.com"

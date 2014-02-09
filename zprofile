@@ -22,6 +22,7 @@ case $OSTYPE in
         export RBENV_ROOT=/usr/local/var/rbenv
         export ARCHFLAGS="-arch x86_64"
         # export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+        export JAVA_HOME=$(/usr/libexec/java_home)
     ;;
     *)
         export RBENV_ROOT=~/.rbenv
