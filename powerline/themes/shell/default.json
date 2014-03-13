@@ -12,7 +12,13 @@
 		},
 		"branch": {
 			"before": " "
-		}
+		},
+                "system_load": {
+                    "args": {
+                        "threshold_bad": 6,
+                        "threshold_good": 2
+                    }
+                }
 	},
 	"segments": {
 		"left": [
@@ -47,7 +53,10 @@
 			},
 			{
 				"name": "branch"
-			}
+			},
+                        {
+                                "name": "system_load"
+                        }
 		]
 	}
 }

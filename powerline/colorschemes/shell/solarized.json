@@ -17,7 +17,10 @@
 		"exit_fail":            { "fg": "oldlace", "bg": "red" },
 		"exit_success":         { "fg": "oldlace", "bg": "green" },
 		"environment":          { "fg": "oldlace", "bg": "green" },
-		"mode":                 { "fg": "oldlace", "bg": "green", "attr": ["bold"] }
+		"mode":                 { "fg": "oldlace", "bg": "green", "attr": ["bold"] },
+                "system_load_gradient": { "fg": "GREEN_Orange_red", "bg": "gray0"},
+                "background:divider":   { "fg": "gray0", "bg": "darkcyan" }
+
 	},
 	"mode_translations": {
 		"vicmd": {
