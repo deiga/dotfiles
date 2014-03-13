@@ -198,7 +198,7 @@ def install_homebrew
 end
 
 def install_common_dotfiles
-  files = Dir['*'] - EXCLUDE_COMMON - Dir['*~']
+    files = Dir['*'] - EXCLUDE_COMMON - Dir['*~'] - Dir['*.log']
   files.each do |file|
     install_dotfile(file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
   end
@@ -279,7 +279,9 @@ def install_node
     LOGGER.info "\nInstall node, npm, nvm".blue
     # install_nvm
     # system %{zsh -c 'nvm install 0.10; nvm alias default 0.10'}
-    system 'brew install node'
+    system 'brew install nvm'
+    system 'nvm install 0.10'
+    system 'curl https://npmjs.org/install.sh | sh'
     system %Q{npm install -g yo node-static coffee-script generator-webapp generator-angular generator-karma}
 end
 

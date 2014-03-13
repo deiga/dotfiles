@@ -2,9 +2,9 @@
     "LAYOUTS": "----------------------",
     "layouts": [
         "tall",
-        "wide",
         "fullscreen",
-        "column"
+        "column",
+        "floating"
     ],
 
     "MODIFIERS": "----------------------",
@@ -185,7 +185,13 @@
     },
 
     "MISC": "----------------------",
-    "floating": [],
+    "floating": [
+        "com.torusknot.SourceTreeNotMAS",
+        "com.apple.systempreferences",
+        "com.apple.appstore",
+        "net.battle.app",
+        "unity.Blizzard Entertainment.Hearthstone"
+    ],
     "float-small-windows": true,
-    "mouse-follows-focus": false
+    "mouse-follows-focus": true
 }

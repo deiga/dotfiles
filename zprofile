@@ -13,6 +13,10 @@ BIN_PATH=$HOME/bin:$HOME/local/bin # Add ~/bin to PATH
 BOX_PATH=$HOME/dotfiles/box/bin # Add path for box
 CABAL_PATH=$HOME/.cabal/bin
 PATH=$BIN_PATH:$BOX_PATH:$PATH
+export GOPATH=$HOME/go
+
+source $(brew --prefix nvm)/nvm.sh
+PATH=$CABAL_PATH:$PATH
 
 case $OSTYPE in
     darwin*)
@@ -28,8 +32,6 @@ case $OSTYPE in
         export RBENV_ROOT=~/.rbenv
     ;;
 esac
-
-PATH=$CABAL_PATH:$PATH
 
 typeset -U PATH
 export PATH
