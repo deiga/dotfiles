@@ -1,10 +1,9 @@
 {
+	"default_module": "powerline.segments.plugin.nerdtree",
 	"segments": {
 		"left": [
 			{
-				"type": "string",
-				"contents": "Command Line",
-				"highlight_group": ["file_name"]
+				"name": "nerdtree"
 			},
 			{
 				"type": "string",

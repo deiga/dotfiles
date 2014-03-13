@@ -3,12 +3,12 @@
 		"left": [
 			{
 				"type": "string",
-				"contents": "Command Line",
-				"highlight_group": ["file_name"]
+				"highlight_group": ["gundo.name", "file_name"],
+				"contents": "Undo tree"
 			},
 			{
 				"type": "string",
-				"highlight_group": ["background"],
+				"highlight_group": ["gundo.background", "background"],
 				"draw_soft_divider": false,
 				"draw_hard_divider": false,
 				"width": "auto"
