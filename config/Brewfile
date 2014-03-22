@@ -1,9 +1,1 @@
-cask:
-    qlcolorcode
-    qlstephen
-    qlmarkdown
-    qlmarkdown
-    quicklook-json
-    quicklook-csv
-    betterzipql
-    suspicious-package
+cask
