@@ -190,7 +190,9 @@
         "com.apple.systempreferences",
         "com.apple.appstore",
         "net.battle.app",
-        "unity.Blizzard Entertainment.Hearthstone"
+        "unity.Blizzard Entertainment.Hearthstone",
+        "com.macpaw.CleanMyMac2",
+        "com.apple.Console"
     ],
     "float-small-windows": true,
     "mouse-follows-focus": true
