@@ -192,7 +192,8 @@
         "net.battle.app",
         "unity.Blizzard Entertainment.Hearthstone",
         "com.macpaw.CleanMyMac2",
-        "com.apple.Console"
+        "com.apple.Console",
+        "com.valvesoftware.steam"
     ],
     "float-small-windows": true,
     "mouse-follows-focus": true
