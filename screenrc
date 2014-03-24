@@ -76,7 +76,7 @@ hardstatus off
 #                              the rest of the caption string is justified
 #                              against the right edge of the screen.
 #                              NOTE: doesn't appear to truncate previous text.
-caption always           "%?%F%{= Kw}%:%{=u kR}%?  %h %-024=%{+b} %c%a %D %d %M %Y%{= db}"
+caption always           "%?%F%{= Kw}%:%{=u kR}%?  %h %-024=%{+b} %c %D %d %M %Y%{= db}"
 # use the hardstatus line for the window list
 #    alwayslastline      - always display the hardstatus as the last line of the
 #                          terminal
