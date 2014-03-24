@@ -1,0 +1,10 @@
+global:
+    dispatch
+    node-static
+    yo
+    grunt-cli
+    coffee-script
+    generator-webapp
+    generator-angular
+    generator-karma
+local:

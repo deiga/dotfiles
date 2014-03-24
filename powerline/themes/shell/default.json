@@ -12,10 +12,20 @@
 		},
 		"branch": {
 			"before": " "
-		}
+		},
+                "system_load": {
+                    "args": {
+                        "threshold_bad": 6,
+                        "threshold_good": 2
+                    }
+                }
 	},
 	"segments": {
 		"left": [
+			{
+				"module": "powerline.segments.shell",
+				"name": "mode"
+			},
 			{
 				"name": "hostname"
 			},
@@ -30,6 +40,10 @@
 				"args": {
 					"dir_limit_depth": 3
 				}
+			},
+			{
+				"module": "powerline.segments.shell",
+				"name": "jobnum"
 			}
 		],
 		"right": [
@@ -39,7 +53,10 @@
 			},
 			{
 				"name": "branch"
-			}
+			},
+                        {
+                                "name": "system_load"
+                        }
 		]
 	}
 }

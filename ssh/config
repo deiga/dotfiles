@@ -1,5 +1,15 @@
 ### PRIVATE ###
 
+Host heroku.personal
+    Hostname heroku.com
+    IdentityFile ~/.ssh/keys/id_rsa
+    IdentitiesOnly yes
+
+Host zion
+    User deiga
+    HostName 84.248.79.84
+    Port 31337
+
 Host home
     User deiga
     HostName 89.27.99.220

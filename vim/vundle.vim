@@ -44,9 +44,7 @@ Bundle 'henrik/vim-indexed-search'
 "   Ruby
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-rvm'
 Bundle 'tpope/vim-bundler'
 
 "   JavaScript
@@ -57,8 +55,15 @@ Bundle 'leshill/vim-json'
 "   HTML
 Bundle 'othree/html5.vim'
 Bundle 'indenthtml.vim'
+Bundle 'mattn/emmet-vim'
 
 "   XML
 Bundle 'othree/xml.vim'
+
+" Robot Framework
+Bundle 'mfukar/robotframework-vim'
+
+" Utilities
+Bundle 'scrooloose/nerdcommenter'
 
 filetype plugin indent on

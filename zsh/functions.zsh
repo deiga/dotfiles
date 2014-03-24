@@ -17,3 +17,7 @@ growl() {
 man () {
 /usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
 }
+
+password() {
+    openssl rand -base64 32
+}

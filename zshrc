@@ -1,5 +1,8 @@
+#echo 'zshrc' $0 # Debug
 # Profiling
 # zmodload zsh/zprof
+
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -36,8 +39,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump gem heroku brew command-coloring ssh-agent screen npm node history-substring-search)
+plugins=(autojump bower brew coffee extract gem git-flow-avh git gitfast heroku history-substring-search node npm ssh-agent tmux zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
@@ -53,21 +55,16 @@ today=`date "+%m.%d.%Y"`
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
 # Colors
 autoload -U colors && colors
 setopt prompt_subst
-
-# Prompt
-#local smiley="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
-
-#PROMPT='
-#%~
-#${smiley} %{$reset_color%}$fg_bold[white]%n$fg[grey]@%{$fg[red]%}%m%{$reset_color%} %% '
-
-#RPROMPT='%{$fg[white]%} $(~/.rvm/bin/rvm-prompt)$(~/bin/git-cwd-info)%{$reset_color%}'
-
-# Replace the above with this if you use rbenv
-# RPROMPT='%{$fg[white]%} $(~/.rbenv/bin/rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 eval `dircolors ~/.dir_colors`
 
@@ -94,10 +91,13 @@ else
     source ~/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
 fi
 
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/helpfiles
 
 # Profiling end
 # zprof
 
+
+# added by travis gem
+[ -f /Users/timosand/.travis/travis.sh ] && source /Users/timosand/.travis/travis.sh

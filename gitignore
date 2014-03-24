@@ -47,8 +47,9 @@ tmp/*
 bundler_stubs
 rails_best_practices_output.html
 .hooves
+.rvmrc.local
 
-# IDE ignores #
+# IDE ignores 
 ###############
 *.prefs
 .classpath
@@ -56,6 +57,10 @@ rails_best_practices_output.html
 .settings/*
 MANIFEST.MF
 # bin/*
+
+# Maven ignores #
+#################
+!target/generated/
 target/*
 
 # Temporary files #
@@ -74,7 +79,3 @@ TAGS*
 #################
 .env
 .foreman
-
-# Java ignores #
-###############
-/target

@@ -1,3 +1,4 @@
 source ~/.profile
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# added by travis gem
+[ -f /Users/timosand/.travis/travis.sh ] && source /Users/timosand/.travis/travis.sh

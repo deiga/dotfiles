@@ -15,6 +15,9 @@ let g:ctrlp_working_path_mode = 0
 "let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window_reversed = 0
 
+" Search ctags
+nnoremap <leader>t :CtrlPTag<cr>
+
 " Exclude files and directories
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'

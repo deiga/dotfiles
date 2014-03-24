@@ -3,8 +3,8 @@ require 'open-uri'
 require 'json'
 origin_url = `git remote show origin | awk '/Fetch/ {print $3}'`
 # puts 'Origin:', origin_url
-origin_url.tr!("\n",'')
-repo_name = origin_url.gsub('github.com','').gsub(/http[s]:\/\//, '').gsub('.git','').gsub(':','').gsub('git@','')
+origin_url.tr!("\n", '')
+repo_name = origin_url.gsub('github.com', '').gsub(/http[s]:\/\//, '').gsub('.git', '').gsub(':', '').gsub('git@', '')
 # puts 'Repo name:', repo_name
 repo_parts = repo_name.split('/').reject(&:empty?)
 # puts 'Parts:', repo_parts
@@ -13,6 +13,4 @@ result = JSON.parse(open(url).read)
 # puts "Result", result
 parent =  result['parent']
 # puts "Parent:", parent
-if parent
-  system %Q{git remote add upstream #{parent['clone_url']}}
-end
+system %Q{git remote add upstream #{parent['clone_url']}} if parent

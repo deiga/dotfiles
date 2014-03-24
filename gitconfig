@@ -3,11 +3,12 @@
 	email = timo.j.sand@gmail.com
 [github]
 	user = deiga
-	token = 0e45cb3e6c875ec6d6833b52403e8f46cea91db6
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
 	whitespace = trailing-space,space-before-tab
+        autocrfl = input
+        safecrlf = true
 [color]
 	status = true
 	diff = true
@@ -30,6 +31,7 @@
     c = commit -m                     # commit with message
     ca = commit -am                   # commit all with message
     ci = commit                       # commit
+    cm = commit --amend
     amend = commit --amend            # ammend your last commit
     ammend = commit --amend           # ammend your last commit
 
@@ -45,16 +47,23 @@
 
     type = cat-file -t
     dump = cat-file -p
+
     cl = clone --recursive
 
     unstage = reset HEAD --
+
     disc = checkout --
+    discard = checkout --
 
     # history
     wc = whatchanged -p --abbrev-commit --pretty=medium
     lg = log --color --graph \n  --pretty=format:'%Cred%h%Creset \n  -%C(yellow)%d%Creset %s %Cgreen(%cr) \n  %C(bold blue)<%an>%Creset' \n  --abbrev-commit
     hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
     report = "log --author=Timo --since='2 sunday ago' --until='1 sunday ago' --format='%Cgreen%ci%Creset %s%Creset' --no-merges"
+
+    ctags = !.git/hooks/ctags
+    serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -102,3 +111,15 @@
         versiontag = 
 [git-up "bundler"]
 	check = true
+[gitflow "hotfix.finish"]
+	push = True
+	fetch = True
+[gitflow "hotfix.start"]
+	fetch = True
+[gitflow "release.finish"]
+	fetch = True
+	push = True
+[gitflow "release.start"]
+	fetch = True
+[gitflow "init"]
+	defaults = True

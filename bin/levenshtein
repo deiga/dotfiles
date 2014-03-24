@@ -30,7 +30,7 @@ def levenshtein_memo(s, i, len1, t, j, len2)
   dist = [
       levenshtein_memo(s, i + 1, len1 - 1, t, j, len2) + 1,
       levenshtein_memo(s , i, len1, t, j + 1, len2 - 1) + 1,
-      levenshtein_memo(s, i + 1 ,len1 - 1 ,t , j + 1, len2 - 1) + cost
+      levenshtein_memo(s, i + 1 , len1 - 1, t, j + 1, len2 - 1) + cost
     ].min
   @memo[key] = dist
   dist
@@ -46,6 +46,6 @@ with_timing do
   puts "Levenshtein distance between '#{ARGV[0]}' and '#{ARGV[1]}' is #{levenshtein(ARGV[0], ARGV[1])}"
 end
 with_timing do
-  puts "Levenshtein (memoization)"
+  puts 'Levenshtein (memoization)'
   levenshtein_prime(ARGV[0], ARGV[1])
 end
