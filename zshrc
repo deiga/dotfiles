@@ -100,6 +100,5 @@ HELPDIR=/usr/local/share/zsh/helpfiles
 # Profiling end
 # zprof
 
-
 # added by travis gem
 [ -f /Users/timosand/.travis/travis.sh ] && source /Users/timosand/.travis/travis.sh

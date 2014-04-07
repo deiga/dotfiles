@@ -1,9 +1,9 @@
+# vi:syntax=zsh
 #echo 'zprofile' $0 # Debug
 #setopt xtrace # Trace
 #setopt promptsubst
 #typeset -F SECONDS
 #PS4='+{$SECONDS}%N:%i> '
-
 # Locale settings
 export LANG="en_GB.UTF-8"
 export LC_ALL="en_GB.UTF-8"
@@ -15,11 +15,11 @@ CABAL_PATH=$HOME/.cabal/bin
 PATH=$BIN_PATH:$BOX_PATH:$PATH
 export GOPATH=$HOME/go
 
-source $(brew --prefix nvm)/nvm.sh
 PATH=$CABAL_PATH:$PATH
 
 case $OSTYPE in
     darwin*)
+#        source $(brew --prefix nvm)/nvm.sh
         COREUTILS_PATH=/usr/local/opt/coreutils/libexec/gnubin
         HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin
         PATH=$COREUTILS_PATH:$HOMEBREW_PATH:$PATH

@@ -24,3 +24,5 @@ case $OSTYPE in
         }
         ;;
 esac
+
+export ROO_OPTS="-Xms1G -Xmx1G"
