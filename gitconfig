@@ -71,7 +71,7 @@
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 	trustExitCode = true
 [push]
-	default = matching
+	default = simple
 [init]
 	templatedir = ~/.git_template
 [fetch]
