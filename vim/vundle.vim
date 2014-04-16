@@ -34,9 +34,6 @@ Bundle 'tpope/vim-markdown'
 " Syntax for nginx
 Bundle 'mutewinter/nginx.vim'
 
-"Solarized
-Bundle 'altercation/vim-colors-solarized'
-
 " Search helper
 Bundle 'henrik/vim-indexed-search'
 
