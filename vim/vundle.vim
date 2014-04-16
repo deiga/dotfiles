@@ -62,5 +62,6 @@ Bundle 'mfukar/robotframework-vim'
 
 " Utilities
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'editorconfig/editorconfig-vim'
 
 filetype plugin indent on
