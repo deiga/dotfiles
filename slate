@@ -36,7 +36,6 @@ alias hyper ctrl;shift;alt;cmd
 bind h:${hyper} ${lefthalf}
 bind k:${hyper} ${full}
 bind l:${hyper} ${righthalf}
-# bind r:${hyper} throw next Moves windows to next screen
 
 # Focus Bindings
 bind right:${hyper}    focus right
