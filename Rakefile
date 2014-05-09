@@ -198,10 +198,10 @@ def install_homebrew
 end
 
 def install_common_dotfiles
-    files = Dir['*'] - EXCLUDE_COMMON - Dir['*~'] - Dir['*.log']
-  files.each do |file|
-    install_dotfile(file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
-  end
+    files = Rake::FileList["*"].exclude("*.log").exclude("*~") - EXCLUDE_COMMON
+    files.each do |file|
+        install_dotfile(file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
+    end
 end
 
 def install_bin
@@ -215,20 +215,20 @@ def install_ssh
   if File.symlink?(File.join(ENV['HOME'], '.ssh'))
     LOGGER.info "~/.ssh already linked".green
   else
-    FileUtils.mv(Dir[File.join(ENV['HOME'], '.ssh','*')], File.join(Dir.pwd, 'ssh'))
+    mv(Dir[File.join(ENV['HOME'], '.ssh','*')], File.join(Dir.pwd, 'ssh'))
     install_dotfile(Dir['ssh'][0], File.join(ENV['HOME'], '.ssh'))
   end
 end
 
 def move_keys
   ssh_keys = Dir[File.join(ENV['HOME'], '.ssh', '*_rsa*')]
-  FileUtils.mv(ssh_keys, File.join(Dir.pwd, 'ssh', 'keys'))
+  mv(ssh_keys, File.join(Dir.pwd, 'ssh', 'keys'))
 end
 
 def install_kr4mb
   kr4mb_file = Dir['KeyRemap4MacBook/*'][0]
   target = File.join(ENV['HOME'],'Library/Application Support', kr4mb_file)
-  FileUtils.mkdir_p(File.join(ENV['HOME'],'Library/Application Support'))
+  mkdir_p(File.join(ENV['HOME'],'Library/Application Support'))
   install_dotfile(kr4mb_file, target)
 end
 
@@ -257,7 +257,7 @@ end
 def install_imagesnap
     LOGGER.info "\nInstalling imagesnap".blue
     system %Q{brew install imagesnap 2>/dev/null}
-    FileUtils.mkdir_p('~/.gitshots')
+    mkdir_p('~/.gitshots')
 end
 
 def install_slate
@@ -267,7 +267,7 @@ end
 
 def install_launch_agents
     LOGGER.info "\nInstalling LaunchAgents".blue
-    FileUtils.cp_r('config/launchAgents/.', File.join(ENV['HOME'], 'Library', 'LaunchAgents'))
+    cp_r('config/launchAgents/.', File.join(ENV['HOME'], 'Library', 'LaunchAgents'))
     Dir.entries('config/launchAgents').each do |file|
         if !File.directory? file
             system %Q{launchctl load #{File.join(ENV['HOME'], 'Library', 'LaunchAgents', file)}}
@@ -303,7 +303,7 @@ def install_packages
         system %{brew tap phinze/homebrew-cask && brew install brew-cask 2>/dev/null}
         system %{brew tap homebrew-science 2>/dev/null}
     else
-        system %{mkdir -p ~/local/bin ~/local/build}
+        mkdir_p %w[~/local/bin ~/local/build]
         ENV['LD_LIBRARY_PATH']=File.join(ENV['HOME'], 'local/lib')
         ENV['LD_RUN_PATH']=ENV['LD_LIBRARY_PATH']
         ENV['LDFLAGS'] = "-L"+File.join(ENV['HOME'], 'local/lib')
@@ -338,6 +338,6 @@ end
 
 def install_keybindings
     bindings_file = Dir['config/DefaultKeyBinding.dict'][0]
-    FileUtils.mkdir_p(File.join(ENV['HOME'],'Library', 'KeyBindings'))
+    mkdir_p(File.join(ENV['HOME'],'Library', 'KeyBindings'))
     install_dotfile(bindings_file, File.join(ENV['HOME'], 'Library', 'KeyBindings', bindings_file.split('/')[-1]))
 end

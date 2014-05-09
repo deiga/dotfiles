@@ -23,15 +23,15 @@ def install_rbenv
   if OSX
     system 'brew install rbenv ruby-build rbenv-readline'
   else
-    FileUtils.mkdir_p(File.join(ENV['HOME'], '.rbenv'))
+    mkdir_p(File.join(ENV['HOME'], '.rbenv'))
     system 'git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
-    FileUtils.mkdir_p(PLUGINS)
+    mkdir_p(PLUGINS)
     system 'git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
   end
 end
 
 def install_rbenv_plugins
-  FileUtils.mkdir_p(PLUGINS)
+  mkdir_p(PLUGINS)
   Dir.chdir(PLUGINS) do
     system 'git clone git://github.com/tpope/rbenv-communal-gems.git'
     system 'git clone https://github.com/ianheggie/rbenv-binstubs.git'

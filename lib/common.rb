@@ -1,4 +1,3 @@
-require 'fileutils'
 require 'logger'
 
 LOGGER = Logger.new(STDOUT)
@@ -59,7 +58,7 @@ end
 
 def clean_temp
   LOGGER.info "\nCleaning tmp".blue
-  FileUtils.rm_r(Dir['tmp/*'])
+  rm_r(Dir['tmp/*'])
 end
 
 def replace_file(file, target)
