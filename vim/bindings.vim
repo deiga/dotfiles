@@ -33,3 +33,12 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 command Wq :execute ':W' | :q
 command WQ :Wq
 command Q :execute ':q!'
+
+" xmpfilter
+autocmd FileType ruby nmap <buffer> <leader>m <Plug>(xmpfilter-mark)
+autocmd FileType ruby xmap <buffer> <leader>m <Plug>(xmpfilter-mark)
+autocmd FileType ruby imap <buffer> <leader>m <Plug>(xmpfilter-mark)
+
+autocmd FileType ruby nmap <buffer> <leader>r <Plug>(xmpfilter-run)
+autocmd FileType ruby xmap <buffer> <leader>r <Plug>(xmpfilter-run)
+autocmd FileType ruby imap <buffer> <leader>r <Plug>(xmpfilter-run)
