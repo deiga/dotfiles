@@ -28,3 +28,15 @@
 [submodule "config/oh-my-zsh/zsh-syntax-highlighting"]
 	path = config/oh-my-zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "config/base16/textmate"]
+	path = config/base16/textmate
+	url = https://github.com/chriskempson/base16-textmate
+[submodule "config/base16/iterm2"]
+	path = config/base16/iterm2
+	url = https://github.com/chriskempson/base16-iterm2
+[submodule "config/base16/shell"]
+	path = config/base16/shell
+	url = https://github.com/chriskempson/base16-shell
+[submodule "config/base16/vim"]
+	path = config/base16/vim
+	url = https://github.com/chriskempson/base16-vim
