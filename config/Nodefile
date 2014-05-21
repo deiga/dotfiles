@@ -7,4 +7,7 @@ global:
     generator-webapp
     generator-angular
     generator-karma
+    gulp
+    bower
+    generator-node-gulp
 local:

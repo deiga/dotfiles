@@ -63,7 +63,8 @@
 
     ctags = !.git/hooks/ctags
     serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
-	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
+    today = log --since=midnight --author=\"$(git config user.name)\" --oneline
+    split-subpath = filter-branch --prune-empty --subdirectory-filter
 [difftool "sourcetree"]
 	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
 	path = 

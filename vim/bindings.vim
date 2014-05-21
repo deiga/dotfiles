@@ -42,3 +42,6 @@ autocmd FileType ruby imap <buffer> <leader>m <Plug>(xmpfilter-mark)
 autocmd FileType ruby nmap <buffer> <leader>r <Plug>(xmpfilter-run)
 autocmd FileType ruby xmap <buffer> <leader>r <Plug>(xmpfilter-run)
 autocmd FileType ruby imap <buffer> <leader>r <Plug>(xmpfilter-run)
+
+" Open current file in Chrome
+nmap <leader>ch :exec 'silent !open -a "Google Chrome" % &'
