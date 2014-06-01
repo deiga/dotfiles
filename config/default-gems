@@ -9,3 +9,4 @@ gem-browse
 httparty
 bundler-audit
 lunchy
+tmuxinator

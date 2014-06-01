@@ -90,11 +90,6 @@ namespace :install do
       install_imagesnap if OSX
     end
 
-  desc "Install Slate.app"
-  task :slate do
-      install_slate if OSX
-    end
-
   desc "Switch to ZSH"
   task :zsh do
     switch_to_zsh
@@ -136,6 +131,7 @@ namespace :install do
   task :packages do
     install_homebrew if OSX
     install_packages
+    install_casks if OSX
   end
 
   desc "Install powerline (installs zsh and powerline-fonts)"
@@ -254,11 +250,6 @@ def install_imagesnap
     mkdir_p(File.join(ENV['HOME'],'.gitshots'))
 end
 
-def install_slate
-    LOGGER.info "\nInstalling slate".blue
-    system %Q{cd /Applications && curl http://www.ninjamonkeysoftware.com/slate/versions/slate-latest.tar.gz | tar -xz}
-end
-
 def install_launch_agents
     LOGGER.info "\nInstalling LaunchAgents".blue
     cp_r('config/launchAgents/.', File.join(ENV['HOME'], 'Library', 'LaunchAgents'))
@@ -271,7 +262,7 @@ end
 
 def install_node
     LOGGER.info "\nInstall node, npm, nvm".blue
-    OSX ? system('brew install nvm') : install_nvm
+    install_nvm
     system 'nvm install 0.10'
     system 'nvm alias default 0.10'
     system 'curl https://npmjs.org/install.sh | sh'
@@ -287,6 +278,9 @@ def install_node_packages
 end
 
 def install_nvm
+  if OSX
+    system('brew install nvm')
+  else
     nvm_dir = File.join(ENV['HOME'], '.nvm')
     if File.exist?(nvm_dir)
         LOGGER.info "=> NVM is already installed in #{nvm_dir}, trying to update".blue
@@ -294,15 +288,18 @@ def install_nvm
     else
         system %{git clone https://github.com/creationix/nvm.git #{nvm_dir}}
     end
+  end
 end
 
 def install_packages
     if OSX
-        system %{brew install hub git-flow-avh}
-        system %{brew install ctags coreutils git readline wget zsh vim autojump til zsh-completions ssh-copy-id 2>/dev/null}.blue
-
-        system %{brew tap phinze/homebrew-cask && brew install brew-cask 2>/dev/null}
-        system %{brew tap homebrew-science 2>/dev/null}
+        brews = Psych.load_file('config/Brewfile')
+        taps = brews['taps'] || []
+        packages = brews['packages'] || []
+        taps.each do |tap|
+          system %{brew tap #{tap} 2>/dev/null}
+        end
+        system %{brew install #{packages.join(' ')} 2>/dev/null} unless packages.empty?
     else
         mkdir_p %w[~/local/bin ~/local/build]
         ENV['LD_LIBRARY_PATH']=File.join(ENV['HOME'], 'local/lib')
@@ -342,3 +339,9 @@ def install_keybindings
     mkdir_p(File.join(ENV['HOME'],'Library', 'KeyBindings'))
     install_dotfile(bindings_file, File.join(ENV['HOME'], 'Library', 'KeyBindings', bindings_file.split('/')[-1]))
 end
+
+def install_casks
+  apps = Psych.load_file('config/Caskfile')
+  system %{brew cask install #{apps.join(' ')} 2>/dev/null} unless apps.empty?
+end
+

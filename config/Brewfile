@@ -1,30 +1,34 @@
-brew-cask
-autojump
-coreutils
-ctags
-git
-git-flow-avh
-growly
-heroku-toolbelt
-hub
-imagemagick
-mariadb
-mongodb
-namebench
-neovim
-nvm
-phantomjs
-python
-zsh
-zsh-completions
-rbenv
-rbenv-readline
-reattach-to-user-namespace
-redis
-ruby-build
-selecta
-ssh-copy-id
-tmux
-tree
-vim
-wget
+packages:
+  - git
+  - hub
+  - git-flow-avh
+  - zsh
+  - autojump
+  - coreutils
+  - ctags
+  - growly
+  - heroku-toolbelt
+  - imagemagick
+  - mariadb
+  - mongodb
+  - namebench
+  - vim
+  - neovim
+  - nvm
+  - phantomjs
+  - zsh-completions
+  - rbenv
+  - rbenv-readline
+  - reattach-to-user-namespace
+  - redis
+  - ruby-build
+  - ssh-copy-id
+  - selecta
+  - tmux
+  - tree
+  - wget
+  - brew-cask
+  - ctags coreutils git readline wget zsh vim autojump til zsh-completions ssh-copy-id
+taps:
+  - caskroom/cask
+  - homebrew/science
