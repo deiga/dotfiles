@@ -155,6 +155,7 @@ namespace :install do
                   common
                   packages
                   zsh
+                  ruby
                   gems
                   vim
                   kr4mb
