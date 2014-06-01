@@ -277,7 +277,7 @@ end
 
 def install_node
     LOGGER.info "\nInstall node, npm, nvm".blue
-    if OSX ? system 'brew install nvm' : install_nvm
+    OSX ? system('brew install nvm') : install_nvm
     system 'nvm install 0.10'
     system 'nvm alias default 0.10'
     system 'curl https://npmjs.org/install.sh | sh'
