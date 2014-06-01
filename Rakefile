@@ -25,7 +25,7 @@ namespace :update do
   task :powerline do
     LOGGER.info "\nUpdating powerline".blue
     update_python
-    update_powerline 
+    update_powerline
   end
 
   desc "Update Homebrew"
@@ -146,7 +146,7 @@ namespace :install do
 
   desc "Install powerline (installs zsh and powerline-fonts)"
   task :powerline => %w{ python zsh} do
-    install_powerline 
+    install_powerline
   end
 
   desc "Install ruby"
@@ -165,7 +165,6 @@ namespace :install do
                   common
                   packages
                   zsh
-                  rvm
                   gems
                   vim
                   kr4mb
@@ -183,7 +182,7 @@ desc "Create symbolic links and generate files in #{ENV['HOME']} without overwri
 task :install => ['install:all']
 
 desc "Update everything"
-task :update => ['update:all'] 
+task :update => ['update:all']
 
 task :default => :install
 
@@ -258,7 +257,7 @@ end
 def install_imagesnap
     LOGGER.info "\nInstalling imagesnap".blue
     system %Q{brew install imagesnap 2>/dev/null}
-    mkdir_p('~/.gitshots')
+    mkdir_p(File.join(ENV['HOME'],'.gitshots'))
 end
 
 def install_slate

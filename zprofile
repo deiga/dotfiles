@@ -24,10 +24,10 @@ PATH=$CABAL_PATH:$PATH
 
 case $OSTYPE in
     darwin*)
-        source $(brew --prefix nvm)/nvm.sh
         COREUTILS_PATH=/usr/local/opt/coreutils/libexec/gnubin
         HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin
         PATH=$COREUTILS_PATH:$HOMEBREW_PATH:$PATH
+        source $(brew --prefix nvm)/nvm.sh
         export RBENV_ROOT=/usr/local/var/rbenv
         export ARCHFLAGS="-arch x86_64"
         # export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
