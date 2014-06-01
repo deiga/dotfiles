@@ -1,13 +1,12 @@
 global:
-    dispatch
-    node-static
-    yo
-    grunt-cli
-    coffee-script
-    generator-webapp
-    generator-angular
-    generator-karma
-    gulp
-    bower
-    generator-node-gulp
+    - dispatch
+    - node-static
+    - yo
+    - grunt-cli
+    - coffee-script
+    - generator-webapp
+    - generator-boom
+    - gulp
+    - bower
+    - generator-node-gulp
 local:

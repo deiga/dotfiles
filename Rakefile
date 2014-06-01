@@ -1,5 +1,6 @@
 require 'rake'
 require 'erb'
+require 'psych'
 $LOAD_PATH << '.'
 Dir['lib/*.rb'].each { |lib| require lib }
 
@@ -277,12 +278,19 @@ end
 
 def install_node
     LOGGER.info "\nInstall node, npm, nvm".blue
-    # install_nvm
-    # system %{zsh -c 'nvm install 0.10; nvm alias default 0.10'}
-    system 'brew install nvm'
+    if OSX ? system 'brew install nvm' : install_nvm
     system 'nvm install 0.10'
+    system 'nvm alias default 0.10'
     system 'curl https://npmjs.org/install.sh | sh'
-    system %Q{npm install -g yo node-static coffee-script generator-webapp generator-angular generator-karma}
+    install_node_packages
+end
+
+def install_node_packages
+  packages = Psych.load_file('config/Nodefile')
+  local = packages['local'] || []
+  global = packages['global'] || []
+  system %Q{npm install -g #{global.join(' ')}} unless global.empty?
+  system %Q{npm install #{local.join(' ')}} unless local.empty?
 end
 
 def install_nvm
