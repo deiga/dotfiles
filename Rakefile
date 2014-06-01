@@ -71,12 +71,6 @@ namespace :install do
   task :force do
   end
 
-  desc "Install common used gems"
-  task :gems do
-      LOGGER.info "\nInstall gems".blue
-      system %Q{zsh -c 'gem install gem-ctags bundler rake git-up compass gem-browse httparty pry-plus;' }
-  end
-
   task :node do
       install_node
   end
