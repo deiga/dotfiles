@@ -19,10 +19,7 @@ def install_fonts
   LOGGER.info "\nInstalling Fonts".blue
   system 'brew install wget 2>/dev/null'
   system 'git submodule update --init --recursive config/powerline-fonts'
-  mkdir_p('tmp')
-  %x{wget -q http://sourceforge.net/projects/sourcecodepro.adobe/files/latest/download\?source\=files -O tmp/source_code_pro_latest.zip}
-  %x{unzip tmp/source_code_pro_latest.zip -d tmp/}
-  font_paths = Dir['tmp/SourceCodePro*/OTF/*'] + Dir[File.join('config', 'powerline-fonts', '*', '*.otf')]
+  system 'brew cask install font-source-code-pro'
+  font_paths = Dir[File.join('config', 'powerline-fonts', '*', '*.otf')]
   cp(font_paths, File.join(ENV['HOME'], 'Library', 'Fonts'))
-  clean_temp
 end
