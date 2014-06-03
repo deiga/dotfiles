@@ -2,7 +2,7 @@ require_relative 'common'
 
 def install_python
     if OSX
-        system 'brew install python --with-brewed-openssl'
+        system 'brew install python --with-brewed-openssl --build-from-source'
     else
         system 'cd ~/local/build; wget http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz; tar -zxf Python-2.7.5.tgz; cd Python-2.7.5; ./configure --prefix=$HOME/local && make -j 3 && make install'
         system 'cd ~/local/build; wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python '
