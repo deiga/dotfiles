@@ -1,5 +1,5 @@
 packages:
-  - git
+  - git --with-brewed-openssl --with-brewed-curl --with-persistent-https
   - hub
   - git-flow-avh
   - zsh
@@ -13,7 +13,6 @@ packages:
   - mongodb
   - namebench
   - vim
-  - neovim
   - nvm
   - phantomjs
   - zsh-completions
@@ -28,7 +27,9 @@ packages:
   - tree
   - wget
   - brew-cask
-  - ctags coreutils git readline wget zsh vim autojump til zsh-completions ssh-copy-id
 taps:
   - caskroom/cask
+  - caskroom/fonts
   - homebrew/science
+  - homebrew/binary
+  - homebrew/versions
