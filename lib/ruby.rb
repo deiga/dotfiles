@@ -54,7 +54,7 @@ def install_ruby
   install_rbenv
   install_rbenv_plugins
   link_default_gems
-  system 'rbenv install 2.0.0-p247'
+  system 'rbenv install 2.0.0-p451'
   system 'rbenv use 2.0 --global'
 end
 
