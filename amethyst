@@ -194,7 +194,8 @@
         "com.macpaw.CleanMyMac2",
         "com.apple.Console",
         "com.valvesoftware.steam",
-        "ParadoxDevelopment.CrusaderKings2"
+        "ParadoxDevelopment.CrusaderKings2",
+        "com.blacktree.Quicksilver"
     ],
     "float-small-windows": true,
     "mouse-follows-focus": true
