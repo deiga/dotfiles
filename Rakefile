@@ -156,7 +156,6 @@ namespace :install do
                   packages
                   zsh
                   ruby
-                  gems
                   vim
                   kr4mb
                   bin
@@ -178,6 +177,11 @@ task :update => ['update:all']
 task :default => :install
 
 def install_homebrew
+    rval = %x{pkgutil --pkg-info=com.apple.pkg.CLTools_Executables}
+    if rval.include?('does not exist')
+        system 'xcode-select --install'
+        system 'sudo xcodebuild -license'
+    end
   rval = %x{which brew}
   unless $?.success?
     LOGGER.info "\n======================================================".blue
@@ -218,8 +222,8 @@ end
 
 def install_kr4mb
   kr4mb_file = Dir['KeyRemap4MacBook/*'][0]
-  target = File.join(ENV['HOME'],'Library/Application Support', kr4mb_file)
-  mkdir_p(File.join(ENV['HOME'],'Library/Application Support'))
+  target = File.join(ENV['HOME'],'Library', 'Application Support', kr4mb_file)
+  mkdir_p(File.dirname(target))
   install_dotfile(kr4mb_file, target)
 end
 
@@ -264,9 +268,10 @@ end
 def install_node
     LOGGER.info "\nInstall node, npm, nvm".blue
     install_nvm
-    system 'nvm install 0.10'
-    system 'nvm alias default 0.10'
-    system 'curl https://npmjs.org/install.sh | sh'
+    # Needs a shell refresh here
+    system %{zsh -c 'nvm install 0.10'}
+    system %{zsh -c 'nvm alias default 0.10'}
+    system %{zsh -c 'curl https://npmjs.org/install.sh | sh'}
     install_node_packages
 end
 
@@ -293,14 +298,18 @@ def install_nvm
 end
 
 def install_packages
+    LOGGER.info 'Installing packages'.blue
+    # Xcode licence agreement here
     if OSX
         brews = Psych.load_file('config/Brewfile')
         taps = brews['taps'] || []
         packages = brews['packages'] || []
         taps.each do |tap|
-          system %{brew tap #{tap} 2>/dev/null}
+          system %{brew tap #{tap} }
         end
-        system %{brew install #{packages.join(' ')} 2>/dev/null} unless packages.empty?
+        packages.each do |package|
+            system %{brew install #{package}}
+        end
     else
         mkdir_p %w[~/local/bin ~/local/build]
         ENV['LD_LIBRARY_PATH']=File.join(ENV['HOME'], 'local/lib')
@@ -342,7 +351,11 @@ def install_keybindings
 end
 
 def install_casks
+    LOGGER.info 'Installing casks'.blue
   apps = Psych.load_file('config/Caskfile')
-  system %{brew cask install #{apps.join(' ')} 2>/dev/null} unless apps.empty?
+  system 'brew update && brew upgrade brew-cask'
+  apps.each do |app|
+      system %{brew cask install #{app}}
+  end
 end
 
