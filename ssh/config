@@ -133,3 +133,4 @@ Host *
     Cipher blowfish
     ControlMaster auto
     ControlPath /tmp/ssh-%r@%h:%p
+    VisualHostKey yes
