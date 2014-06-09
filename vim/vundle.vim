@@ -67,5 +67,6 @@ Bundle 'tpope/vim-heroku'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
 Bundle 't9md/vim-ruby-xmpfilter'
+Bundle 'markcornick/vim-vagrant'
 
 filetype plugin indent on
