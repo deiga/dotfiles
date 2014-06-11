@@ -26,10 +26,12 @@ packages:
   - tmux
   - tree
   - wget
+  - javarepl
   - brew-cask
 taps:
   - caskroom/cask
   - caskroom/fonts
+  - caskroom/versions
   - homebrew/science
   - homebrew/binary
   - homebrew/versions
