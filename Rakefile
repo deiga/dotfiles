@@ -225,6 +225,10 @@ def install_kr4mb
   target = File.join(ENV['HOME'],'Library', 'Application Support', kr4mb_file)
   mkdir_p(File.dirname(target))
   install_dotfile(kr4mb_file, target)
+  system '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli enable remap.controlL2controlL_escape'
+  system '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli enable space_cadet.left_control_to_hyper'
+  system '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli enable private.shifts_to_parens'
+  system '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli set parameter.keyoverlaidmodifier_timeout 700'
 end
 
 def switch_to_zsh
