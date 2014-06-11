@@ -188,7 +188,7 @@ def install_homebrew
     LOGGER.info "Installing Homebrew, the OSX package manager...If it's".blue
     LOGGER.info "already installed, this will do nothing.".blue
     LOGGER.info "======================================================".blue
-    system %{ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"}
+    system 'ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"'
   end
 end
 
