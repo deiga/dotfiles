@@ -50,12 +50,12 @@ def link_default_gems
 end
 
 def install_ruby
-  uninstall_rvm
   install_rbenv
   install_rbenv_plugins
   link_default_gems
-  system 'rbenv install 2.0.0-p451'
-  system 'rbenv use 2.0 --global'
+  system %{zsh -c 'rbenv install 2.0.0-p481'}
+  system %{zsh -c 'rbenv install 2.1.2'}
+  system %{zsh -c 'rbenv use 2.0 --global'}
 end
 
 def update_rbenv
