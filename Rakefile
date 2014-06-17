@@ -131,7 +131,6 @@ namespace :install do
   task :packages do
     install_homebrew if OSX
     install_packages
-    install_casks if OSX
   end
 
   desc "Install powerline (installs zsh and powerline-fonts)"
@@ -305,15 +304,7 @@ def install_packages
     LOGGER.info 'Installing packages'.blue
     # Xcode licence agreement here
     if OSX
-        brews = Psych.load_file('config/Brewfile')
-        taps = brews['taps'] || []
-        packages = brews['packages'] || []
-        taps.each do |tap|
-          system %{brew tap #{tap} }
-        end
-        packages.each do |package|
-            system %{brew install #{package}}
-        end
+        system 'brew bundle config/Brewfile'
     else
         mkdir_p %w[~/local/bin ~/local/build]
         ENV['LD_LIBRARY_PATH']=File.join(ENV['HOME'], 'local/lib')
@@ -353,13 +344,3 @@ def install_keybindings
     mkdir_p(File.join(ENV['HOME'],'Library', 'KeyBindings'))
     install_dotfile(bindings_file, File.join(ENV['HOME'], 'Library', 'KeyBindings', bindings_file.split('/')[-1]))
 end
-
-def install_casks
-    LOGGER.info 'Installing casks'.blue
-  apps = Psych.load_file('config/Caskfile')
-  system 'brew update && brew upgrade brew-cask'
-  apps.each do |app|
-      system %{brew cask install #{app}}
-  end
-end
-

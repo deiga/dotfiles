@@ -1,37 +1,70 @@
-packages:
-  - git --with-brewed-openssl --with-brewed-curl --with-persistent-https
-  - hub
-  - git-flow-avh
-  - zsh
-  - autojump
-  - coreutils
-  - ctags
-  - growly
-  - heroku-toolbelt
-  - imagemagick
-  - mariadb
-  - mongodb
-  - namebench
-  - vim
-  - nvm
-  - phantomjs
-  - zsh-completions
-  - rbenv
-  - rbenv-readline
-  - reattach-to-user-namespace
-  - redis
-  - ruby-build
-  - ssh-copy-id
-  - selecta
-  - tmux
-  - tree
-  - wget
-  - javarepl
-  - brew-cask
-taps:
-  - caskroom/cask
-  - caskroom/fonts
-  - caskroom/versions
-  - homebrew/science
-  - homebrew/binary
-  - homebrew/versions
+tap caskroom/cask
+tap caskroom/fonts
+tap caskroom/versions
+tap homebrew/science
+tap homebrew/binary
+tap homebrew/versions
+install git --with-brewed-openssl --with-brewed-curl --with-persistent-https
+install hub
+install git-flow-avh
+install zsh
+install autojump
+install coreutils
+install ctags
+install growly
+install heroku-toolbelt
+install imagemagick
+install mariadb
+install mongodb
+install namebench
+install vim
+install nvm
+install phantomjs
+install zsh-completions
+install rbenv
+install rbenv-readline
+install reattach-to-user-namespace
+install redis
+install ruby-build
+install ssh-copy-id
+install selecta
+install tmux
+install tree
+install wget
+install javarepl
+install brew-cask
+cask install quicksilver
+cask install qlcolorcode
+cask install qlstephen
+cask install qlmarkdown
+cask install quicklook-json
+cask install quicklook-csv
+cask install betterzipql
+cask install suspicious-package
+cask install keyremap4macbook
+cask install pckeyboardhack
+cask install rescuetime
+cask install dropbox
+cask install caffeine
+cask install slate
+cask install gfxcardstatus
+cask install flux
+cask install istat-menus
+cask install spotify
+cask install evernote
+cask install google-chrome
+cask install firefox
+cask install opera
+cask install steam
+cask install toggldesktop
+cask install fluid
+cask install sequel-pro
+cask install iterm2
+cask install sublime-text
+cask install skitch
+cask install sourcetree
+cask install Amethyst
+cask install Archiver
+cask install atom
+cask install lastpass-universal
+cask install java
