@@ -9,4 +9,5 @@ global:
     - gulp
     - bower
     - generator-node-gulp
+    - jshint
 local:
