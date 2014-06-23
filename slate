@@ -12,7 +12,7 @@ config windowHintsSpread true
 
 alias showNormalHint QWERTASDFGZXCVB
 
-alias editor 'Sublime Text 2'
+alias editor 'Atom'
 alias browser 'Google Chrome'
 
 # Position Aliases
@@ -46,6 +46,6 @@ bind down:${hyper}     focus down
 # App bindings
 bind t:${hyper} focus 'iTerm'
 bind b:${hyper} focus ${browser}
-bind s:${hyper} focus ${editor}
+bind e:${hyper} focus ${editor}
 
 bind r:${hyper} relaunch
