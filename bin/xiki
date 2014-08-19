@@ -1,0 +1,2 @@
+#!/usr/bin/env ruby
+load "/Users/timosand/dotfiles/config/xiki/bin/xiki"
