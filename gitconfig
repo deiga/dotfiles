@@ -4,7 +4,7 @@
 [github]
 	user = deiga
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/timosand/.gitignore
 	editor = vim
 	whitespace = trailing-space,space-before-tab
         autocrfl = false
@@ -65,11 +65,13 @@
     serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
     today = log --since=midnight --author=\"$(git config user.name)\" --oneline
     split-subpath = filter-branch --prune-empty --subdirectory-filter
+
+    pr = pull-request
 [difftool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	cmd = /Users/timosand/Library/Application Support/SourceTree/SourceTree 1.9.5/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
 	default = simple
@@ -97,7 +99,7 @@
                   end\n\
                   File.open(%(%A), %(w)) {|f| f.write(b)}\n\
                   exit 1 if b.include?(%(<)*%L)'"
-[hub]
+[gh]
 	protocol = https
 [web]
 	browser = open
