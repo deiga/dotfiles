@@ -19,6 +19,7 @@ BOX_PATH=$HOME/dotfiles/box/bin # Add path for box
 CABAL_PATH=$HOME/.cabal/bin
 PATH=$BIN_PATH:$BOX_PATH:$PATH
 export GOPATH=$HOME/go
+export NVM_DIR=~/.nvm
 
 PATH=$CABAL_PATH:$PATH
 
