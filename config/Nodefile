@@ -10,4 +10,5 @@ global:
     - bower
     - generator-node-gulp
     - jshint
+    - csslint
 local:

@@ -23,9 +23,6 @@ alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;scr
 # Window Hints
 bind esc:cmd hint ${showNormalHint}
 
-# Grid
-bind esc:alt grid padding:5 0:6,3
-
 # ====================================
 # The HYPER key
 # ====================================

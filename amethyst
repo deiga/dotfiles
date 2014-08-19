@@ -198,5 +198,6 @@
         "com.blacktree.Quicksilver"
     ],
     "float-small-windows": true,
-    "mouse-follows-focus": true
+    "mouse-follows-focus": true,
+    "focus-follows-mouse": true
 }

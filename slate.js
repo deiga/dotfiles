@@ -14,8 +14,6 @@ S.bnda({
 //    "r:"+hyper : S.op("relaunch"),
 //    // "d:"+hyper : S.op("switch"),
 
-    // Grid
-    "esc:alt" : S.op("grid")
 });
 
 // Log that we're done configuring

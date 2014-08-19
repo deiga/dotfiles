@@ -6,7 +6,7 @@ tap homebrew/binary
 tap homebrew/versions
 install git --with-brewed-openssl --with-brewed-curl --with-persistent-https
 install python --with-brewed-openssl
-install hub
+install gh
 install git-flow-avh
 install zsh
 install autojump
@@ -35,6 +35,7 @@ install wget
 install javarepl
 install brew-cask
 install httpie
+install rubocop
 cask install quicksilver
 cask install qlcolorcode
 cask install qlstephen
