@@ -23,7 +23,6 @@ install nvm
 install phantomjs
 install zsh-completions
 install rbenv
-install rbenv-readline
 install reattach-to-user-namespace
 install redis
 install ruby-build
