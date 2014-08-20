@@ -2,5 +2,5 @@
 set -e
 PATH="/usr/local/bin:$PATH"
 trap "rm -f .tags.$$" EXIT
-ctags -f$PWD/.tags.$$
+ctags --fields=+KSn -f$PWD/.tags.$$
 mv .tags.$$ .tags
