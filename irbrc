@@ -33,18 +33,6 @@ class Object
     end
 end
 
-# Colorise the output
-# https://github.com/blackwinter/wirble
-require 'wirble'
-Wirble.init
-Wirble.colorize
-colors = Wirble::Colorize.colors.merge({
-    object_class: :purple,
-    symbol: :purple,
-    symbol_prefix: :purple
-})
-Wirble::Colorize.colors = colors
-
 def copy(str)
     IO.popen('pbcopy', 'w') { |f| f << str.to_s }
 end
