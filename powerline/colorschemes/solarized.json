@@ -1,0 +1,32 @@
+{
+	"name": "Solarized Dark",
+	"groups": {
+		"jobnum":							 	{ "fg": "oldlace", "bg": "darkgreencopper", "attr": [] },
+		"user":								 	{ "fg": "oldlace", "bg": "blue", "attr": ["bold"] },
+		"superuser":						{ "fg": "oldlace", "bg": "red", "attr": ["bold"] },
+		"virtualenv":					 	{ "fg": "oldlace", "bg": "green", "attr": [] },
+		"branch":							 	{ "fg": "gray61", "bg": "royalblue5", "attr": [] },
+		"branch_dirty":				 	{ "fg": "yellow", "bg": "royalblue5", "attr": [] },
+		"branch_clean":				 	{ "fg": "gray61", "bg": "royalblue5", "attr": [] },
+		"continuation":				 	{ "fg": "lightyellow", "bg": "darkgreencopper", "attr": [] },
+		"continuation:current": { "fg": "oldlace", "bg": "darkgreencopper", "attr": ["bold"] },
+		"cwd":									{ "fg": "lightyellow", "bg": "darkgreencopper", "attr": [] },
+		"cwd:current_folder":	 	{ "fg": "oldlace", "bg": "darkgreencopper", "attr": ["bold"] },
+		"cwd:divider":					{ "fg": "gray61", "bg": "darkgreencopper", "attr": [] },
+		"hostname":						 	{ "fg": "oldlace", "bg": "darkgred", "attr": [] },
+		"exit_fail":						{ "fg": "oldlace", "bg": "red", "attr": [] },
+		"exit_success":				 	{ "fg": "oldlace", "bg": "green", "attr": [] },
+		"environment":					{ "fg": "oldlace", "bg": "green", "attr": [] },
+		"mode":								 	{ "fg": "oldlace", "bg": "green", "attr": ["bold"] },
+		"system_load_gradient": { "fg": "GREEN_Orange_red", "bg": "gray0", "attr": [] },
+		"background:divider":	 	{ "fg": "gray0", "bg": "darkcyan", "attr": [] }
+
+	},
+	"mode_translations": {
+		"vicmd": {
+			"groups": {
+				"mode": { "fg": "oldlace", "bg": "blue", "attr": ["bold"] }
+			}
+		}
+	}
+}
