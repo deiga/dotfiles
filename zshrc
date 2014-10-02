@@ -1,3 +1,4 @@
+eval "$(rbenv init - --no-rehash)"
 #echo 'zshrc' $0 # Debug
 # Profiling
 # zmodload zsh/zprof

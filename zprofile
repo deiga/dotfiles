@@ -33,11 +33,14 @@ case $OSTYPE in
         export ARCHFLAGS="-arch x86_64"
         # export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
         export JAVA_HOME=$(/usr/libexec/java_home)
+        export ATOM_REPOS_HOME=/Users/timosand/Dropbox/Documents/Projects
     ;;
     *)
         export RBENV_ROOT=~/.rbenv
     ;;
 esac
+
+PATH="$RBENV_ROOT/bin:$PATH"
 
 typeset -U PATH
 export PATH
@@ -49,5 +52,4 @@ case $OSTYPE in
     ;;
 esac
 
-eval "$(rbenv init - --no-rehash)"
-if [[ ! $(type perlbrew) =~ "shell function" ]]; then source ~/perl5/perlbrew/etc/bashrc; fi
+#if [[ ! $(type perlbrew) =~ "shell function" ]]; then source ~/perl5/perlbrew/etc/bashrc; fi

@@ -4,6 +4,7 @@ tap caskroom/versions
 tap homebrew/science
 tap homebrew/binary
 tap homebrew/versions
+tap peco/peco
 install git --with-brewed-openssl --with-brewed-curl --with-persistent-https
 install python --with-brewed-openssl
 install gh
@@ -35,6 +36,7 @@ install javarepl
 install brew-cask
 install httpie
 install rubocop
+install peco
 cask install quicksilver
 cask install qlcolorcode
 cask install qlstephen
