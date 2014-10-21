@@ -1,4 +1,6 @@
 eval "$(rbenv init - --no-rehash)"
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+
 #echo 'zshrc' $0 # Debug
 # Profiling
 # zmodload zsh/zprof

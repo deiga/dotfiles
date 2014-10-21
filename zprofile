@@ -21,6 +21,13 @@ PATH=$BIN_PATH:$BOX_PATH:$PATH
 export GOPATH=$HOME/go
 export NVM_DIR=~/.nvm
 
+# Python & Virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Dropbox/Documents/Projects
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
+export PYTHONSTARTUP=$HOME/.pythonrc
+
 PATH=$CABAL_PATH:$PATH
 
 case $OSTYPE in
