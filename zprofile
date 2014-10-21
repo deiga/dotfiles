@@ -35,12 +35,11 @@ case $OSTYPE in
         COREUTILS_PATH=/usr/local/opt/coreutils/libexec/gnubin
         HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin
         PATH=$COREUTILS_PATH:$HOMEBREW_PATH:$PATH
-        source $(brew --prefix nvm)/nvm.sh
+        if [[ ! $(type nvm) =~ "shell function" ]]; then source $(brew --prefix nvm)/nvm.sh; fi
         export RBENV_ROOT=/usr/local/var/rbenv
         export ARCHFLAGS="-arch x86_64"
-        # export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
         export JAVA_HOME=$(/usr/libexec/java_home)
-        export ATOM_REPOS_HOME=/Users/timosand/Dropbox/Documents/Projects
+        export ATOM_REPOS_HOME=$HOME/Dropbox/Documents/Projects
     ;;
     *)
         export RBENV_ROOT=~/.rbenv
