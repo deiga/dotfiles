@@ -93,7 +93,7 @@ Host ruuvi
 Host *.kapsi.fi hilla lakka karvin kirsi
     User deiga
     Port 22
-    IdentityFile ~/.ssh/keys/palvelin_rsa
+    IdentityFile ~/.ssh/keys/kapsi_rsa
 
 Host hilla
     HostName hilla.kapsi.fi
