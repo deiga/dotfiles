@@ -67,6 +67,8 @@
     split-subpath = filter-branch --prune-empty --subdirectory-filter
 
     pr = pull-request
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+        i = ignore
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -74,7 +76,7 @@
 	cmd = /Users/timosand/Library/Application Support/SourceTree/SourceTree 1.9.5/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
-	default = simple
+	default = current
 [init]
 	templatedir = ~/.git_template
 [fetch]
