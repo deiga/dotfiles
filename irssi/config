@@ -81,7 +81,6 @@ channels = (
   { name = "#kapsi.fi"; chatnet = "IRCnet"; autojoin = "yes"; },
   { name = "#bigwig"; chatnet = "IRCnet"; autojoin = "yes"; },
   { name = "#leftoutsidealone"; chatnet = "IRCnet"; autojoin = "yes"; },
-  { name = "#tkt-fuksit2010"; chatnet = "IRCnet"; },
   { name = "überfinns"; chatnet = "IRCnet"; autojoin = "yes"; },
   { name = "tko-äly"; chatnet = "IRCnet"; autojoin = "yes"; },
   { name = "#matrix-ry"; chatnet = "IRCnet"; autojoin = "yes"; },
@@ -90,15 +89,11 @@ channels = (
   { name = "&bitlbee"; chatnet = "BitlBee"; autojoin = "yes"; },
   { name = "#typo3"; chatnet = "Freenode"; },
   { name = "#überfinns"; chatnet = "IRCnet"; autojoin = "yes"; },
-  { name = "#tko-äly"; chatnet = "IRCnet"; },
+  { name = "#tko-äly"; chatnet = "IRCnet"; autojoin = "yes"; },
   { name = "#nethack"; chatnet = "IRCnet"; },
   { name = "#yasdoutsidealone"; chatnet = "IRCnet"; },
-  { name = "#tikirage"; chatnet = "IRCnet"; },
-  { name = "#logiikka"; chatnet = "IRCnet"; },
   { name = "#ammuu"; chatnet = "IRCnet"; },
-  { name = "#tkt-fuksti2011"; chatnet = "IRCnet"; },
   { name = "#interrail2012"; chatnet = "IRCnet"; },
-  { name = "#tkt-fuksit2011"; chatnet = "IRCnet"; },
   { name = "#tkt-saas"; chatnet = "IRCnet"; },
   { name = "#konkari"; chatnet = "IRCnet"; },
   { name = "#tkt-aktiivit"; chatnet = "IRCnet"; autojoin = "yes"; },
@@ -107,10 +102,8 @@ channels = (
   { name = "&kapsi"; chatnet = "BitlBee"; },
   { name = "#mongodb"; chatnet = "Freenode"; },
   { name = "#cre8/main"; chatnet = "Flowdock"; autojoin = "yes"; },
-  { name = "#loacraft"; chatnet = "IRCnet"; autojoin = "yes"; },
-  { name = "#bathmeshup"; chatnet = "IRCnet"; },
-  { name = "#BristBathNaNo"; chatnet = "Freenode"; },
-  { name = "#batcountry"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#loacraft"; chatnet = "IRCnet"; },
+  { name = "#batcountry"; chatnet = "IRCnet"; },
   { name = "#sublimetext"; chatnet = "Freenode"; },
   { name = "#git"; chatnet = "Freenode"; },
   { name = "#tkt-kandi"; chatnet = "IRCnet"; },
@@ -120,20 +113,37 @@ channels = (
   { name = "#tkt-casuaali"; chatnet = "IRCnet"; },
   { name = "#timonssi"; chatnet = "IRCnet"; },
   { name = "#tkt-javascript"; chatnet = "IRCnet"; },
-  { name = "#wadror"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#wadror"; chatnet = "IRCnet"; },
   { name = "#tkt-os"; chatnet = "IRCnet"; },
-  { name = "#algebra"; chatnet = "IRCnet"; autojoin = "yes"; },
-  { name = "#todari"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#algebra"; chatnet = "IRCnet"; },
+  { name = "#todari"; chatnet = "IRCnet"; },
   { name = "#tkt-node"; chatnet = "IRCnet"; },
   { name = "#carpenter"; chatnet = "IRCnet"; },
   { name = "#tko-Ã¤ly"; chatnet = "IRCnet"; autojoin = "yes"; },
   { name = "#Ã¼berfinns"; chatnet = "IRCnet"; },
   { name = "##atom-invitations"; chatnet = "IRCnet"; },
   { name = "#atom-invitations"; chatnet = "IRCnet"; },
-  { name = "#ml-class"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#tkt-kj"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#ml-class"; chatnet = "Freenode"; },
+  { name = "#tkt-kj"; chatnet = "IRCnet"; },
   { name = "#bundler"; chatnet = "Freenode"; },
-  { name = "#tkt-muntliga"; chatnet = "IRCnet"; autojoin = "yes"; }
+  { name = "#tkt-muntliga"; chatnet = "IRCnet"; },
+  { name = "#svenska"; chatnet = "IRCnet"; },
+  { name = "#tkt-angular"; chatnet = "IRCnet"; },
+  { name = "#maiagame"; chatnet = "QuakeNet"; },
+  { name = "#eficode"; chatnet = "QuakeNet"; },
+  { name = "#eficode"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#pyllyt"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#linis"; chatnet = "IRCnet"; autojoin = "yes"; },
+  { name = "#tkt-daa"; chatnet = "IRCnet"; },
+  { name = "#daa-2014"; chatnet = "IRCnet"; },
+  { name = "#tkt-daa2014"; chatnet = "IRCnet"; },
+  { name = "#analyysi"; chatnet = "IRCnet"; },
+  {
+    name = "#muinaistenpuollustajat";
+    chatnet = "IRCnet";
+    autojoin = "yes";
+  },
+  { name = "#fillarifoorumi"; chatnet = "IRCnet"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -328,7 +338,7 @@ settings = {
     beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
     bell_beeps = "yes";
     use_status_window = "yes";
-    activity_hide_targets = "#kapsi.fi #matrix-ry #typo3 #tko-äly";
+    activity_hide_targets = "#kapsi.fi #matrix-ry #tko-Ã¤ly #tkt-aktiivit #tko-ï¿½ly #tko-äly";
     # Solarized
     theme = "solarized-universal";
     hilight_color = "%R";
