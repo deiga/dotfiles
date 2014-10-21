@@ -1,8 +1,7 @@
 PS1(">>> ")
 PS2("... ")
 
-addpath("~/Octave")
-setenv ("GNUTERM", "X11")
+setenv("GNUTERM","X11")
 #graphics_toolkit ("fltk") 
 
 edit author "Timo Sand"
