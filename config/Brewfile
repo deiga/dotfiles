@@ -6,7 +6,7 @@ tap homebrew/binary
 tap homebrew/versions
 tap peco/peco
 install git --with-brewed-openssl --with-brewed-curl --with-persistent-https
-install python --with-brewed-openssl
+install python --with-brewed-openssl --universal --framework
 install gh
 install git-flow-avh
 install zsh
@@ -37,7 +37,8 @@ install brew-cask
 install httpie
 install rubocop
 install peco
-cask install quicksilver
+cask install alfred
+cask alfed link
 cask install qlcolorcode
 cask install qlstephen
 cask install qlmarkdown
@@ -49,7 +50,6 @@ cask install keyremap4macbook
 cask install seil
 cask install rescuetime
 cask install dropbox
-cask install caffeine
 cask install slate
 cask install gfxcardstatus
 cask install flux
