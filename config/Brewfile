@@ -37,6 +37,7 @@ install brew-cask
 install httpie
 install rubocop
 install peco
+install pup
 cask install alfred
 cask alfed link
 cask install qlcolorcode
