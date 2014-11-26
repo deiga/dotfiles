@@ -6,67 +6,65 @@ set nocompatible " be iMproved
 filetype off     " required!
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle, required
-Bundle 'gmarik/vundle'
-
-" ---------------
-" Plugin Bundles
-" ---------------
+Plugin 'gmarik/vundle'
 
 
 " Sensible vimrc defaults
-Bundle 'tpope/vim-sensible'
+Plugin 'tpope/vim-sensible'
 
 " Fuzzy file opener
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 
 " changing surrounding characters
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 
 " Gist!
-Bundle 'mattn/gist-vim'
+Plugin 'mattn/gist-vim'
 
 " Vim Markdown runtime files
-Bundle 'tpope/vim-markdown'
+Plugin 'tpope/vim-markdown'
 
 " Syntax for nginx
-Bundle 'mutewinter/nginx.vim'
+Plugin 'mutewinter/nginx.vim'
 
 " Search helper
-Bundle 'henrik/vim-indexed-search'
+Plugin 'henrik/vim-indexed-search'
 
 " Language additions
 "   Ruby
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-bundler'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-bundler'
 
 "   JavaScript
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'leshill/vim-json'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'leshill/vim-json'
 
 "   HTML
-Bundle 'othree/html5.vim'
-Bundle 'indenthtml.vim'
-Bundle 'mattn/emmet-vim'
+Plugin 'othree/html5.vim'
+Plugin 'indenthtml.vim'
+Plugin 'mattn/emmet-vim'
 
 "   XML
-Bundle 'othree/xml.vim'
+Plugin 'othree/xml.vim'
 
 " Robot Framework
-Bundle 'mfukar/robotframework-vim'
+Plugin 'mfukar/robotframework-vim'
 
 " Utilities
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'tpope/vim-heroku'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-fugitive'
-Bundle 't9md/vim-ruby-xmpfilter'
-Bundle 'markcornick/vim-vagrant'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'tpope/vim-heroku'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fugitive'
+Plugin 't9md/vim-ruby-xmpfilter'
+Plugin 'markcornick/vim-vagrant'
+
+call vundle#end()
 
 filetype plugin indent on
