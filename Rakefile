@@ -260,10 +260,12 @@ end
 
 def install_launch_agents
     LOGGER.info "\nInstalling LaunchAgents".blue
-    cp_r('config/launchAgents/.', File.join(ENV['HOME'], 'Library', 'LaunchAgents'))
-    Dir.entries('config/launchAgents').each do |file|
-        if !File.directory? file
-            system %Q{launchctl load #{File.join(ENV['HOME'], 'Library', 'LaunchAgents', file)}}
+    target_dir = File.join(ENV['HOME'], 'Library', 'LaunchAgents')
+    launchagents_dir = File.join('config', 'launchAgents')
+    Dir.entries(launchagents_dir).each do |file|
+        if !File.directory?(file) && !file.end_with?('~')
+            install_dotfile(File.join(launchagents_dir, file), File.join(target_dir, file))
+            system %Q{launchctl load #{File.join(target_dir, file)}}
         end
     end
 end
