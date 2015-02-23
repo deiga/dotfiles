@@ -67,8 +67,11 @@
     split-subpath = filter-branch --prune-empty --subdirectory-filter
 
     pr = pull-request
-	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-        i = ignore
+    ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+    i = ignore
+
+    update-submodule = submodule foreach git pull origin master
+    us = update-submodule
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
