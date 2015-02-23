@@ -9,6 +9,7 @@ case $OSTYPE in
         (git config --global credential.helper osxkeychain &) 2> /dev/null
 
         source ~/bin/osx_functions.sh
+        source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
 
         ;;
     *)
@@ -22,6 +23,7 @@ case $OSTYPE in
                 printf "%-26s%-8s%s\n" "${command}" "${percent}" "${rss}"; 
             done < <(ps -A --sort -rss -o comm,pmem,rss | head -n 20)
         }
+        source ~/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
         ;;
 esac
 

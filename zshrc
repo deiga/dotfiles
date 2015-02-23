@@ -90,11 +90,13 @@ do
   source $file
 done
 
-if [ `uname` = "Darwin" ]; then
-    source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
-else
-    source ~/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
-fi
+init_files=(~/.zsh/init/*.*sh)
+
+for file in $init_files
+do
+    echo "Running $file"
+    source $file || true
+done
 
 unalias run-help
 autoload run-help
