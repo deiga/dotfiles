@@ -16,7 +16,7 @@ alias la="ls ${colorflag} ${lsflags} -lA"
 alias ll="ls ${colorflag} ${lsflags} -l"
 
 # added interactive and verbose mode for common file operations
-alias cp="cp -iv"
+alias cp="cp -v"
 alias mv="mv -iv"
 alias rm="rm -vi"
 
