@@ -54,7 +54,7 @@ export PATH
 # Make path system wide for OS X
 case $OSTYPE in
     darwin*)
-        launchctl setenv PATH $PATH
+        # launchctl setenv PATH $PATH
     ;;
 esac
 
