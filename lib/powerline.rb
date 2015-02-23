@@ -12,7 +12,7 @@ end
 
 def update_powerline
   # system 'pip install -U --user git+git://github.com/Lokaltog/powerline'
-  system 'pip install -U git+git://github.com/Lokaltog/powerline'
+  system 'pip install -U powerline-status'
 end
 
 def install_fonts
