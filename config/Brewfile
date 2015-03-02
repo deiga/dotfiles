@@ -7,7 +7,7 @@ tap homebrew/versions
 tap peco/peco
 install git --with-brewed-openssl --with-brewed-curl --with-persistent-https
 install python --with-brewed-openssl --universal --framework
-install gh
+install hub
 install git-flow-avh
 install zsh
 install autojump
@@ -15,18 +15,14 @@ install coreutils
 install ctags
 install growly
 install heroku-toolbelt
-install imagemagick
-install mariadb
-install mongodb
 install namebench
 install vim
 install nvm
 install phantomjs
 install zsh-completions
+install ruby-build
 install rbenv
 install reattach-to-user-namespace
-install redis
-install ruby-build
 install ssh-copy-id
 install selecta
 install tmux
@@ -47,7 +43,7 @@ cask install quicklook-json
 cask install quicklook-csv
 cask install betterzipql
 cask install suspicious-package
-cask install keyremap4macbook
+cask install karabiner
 cask install seil
 cask install rescuetime
 cask install dropbox
