@@ -4,7 +4,7 @@ tap caskroom/versions
 tap homebrew/science
 tap homebrew/binary
 tap homebrew/versions
-tap peco/peco
+tap homebrew/dupes
 install git --with-brewed-openssl --with-brewed-curl --with-persistent-https
 install python --with-brewed-openssl --universal --framework
 install hub
@@ -34,6 +34,7 @@ install httpie
 install rubocop
 install peco
 install pup
+install tidy --HEAD
 cask install alfred
 cask alfed link
 cask install qlcolorcode
