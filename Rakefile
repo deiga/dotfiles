@@ -85,11 +85,6 @@ namespace :install do
     install_python
   end
 
-  desc 'Setup imagesnap to take pictrues of commits'
-  task :imagesnap do
-    install_imagesnap if OSX
-  end
-
   desc 'Switch to ZSH'
   task :zsh do
     switch_to_zsh
@@ -161,7 +156,6 @@ namespace :install do
     ssh
     fonts
     powerline
-    imagesnap
     node
   ) do
   end
@@ -250,12 +244,6 @@ end
 def install_submodules
   LOGGER.info "\nInstalling submodules".blue
   system %(git submodule update --init --recursive)
-end
-
-def install_imagesnap
-  LOGGER.info "\nInstalling imagesnap".blue
-  system %(brew install imagesnap 2>/dev/null)
-  mkdir_p(File.join(ENV['HOME'], '.gitshots'))
 end
 
 def install_launch_agents
