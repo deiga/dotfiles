@@ -131,3 +131,5 @@
 	fetch = True
 [gitflow "init"]
 	defaults = True
+[hub]
+	protocol = https
