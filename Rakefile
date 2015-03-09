@@ -6,7 +6,7 @@ Dir['lib/*.rb'].each { |lib| require lib }
 
 # TODO: Refactor tasks to dynamically call methods
 
-EXCLUDE_COMMON = %w(Rakefile README.md LICENSE TODO.md KeyRemap4MacBook bin box config ssh powerline tmp lib)
+EXCLUDE_COMMON = %w(Rakefile README.md LICENSE TODO.md Karabiner bin box config ssh powerline tmp lib)
 
 # Shorthand for darwin platform
 OSX = RUBY_PLATFORM.downcase.include?('darwin')
@@ -96,9 +96,9 @@ namespace :install do
     install_submodules
   end
 
-  desc 'Setup KeyRemap4MacBook profile'
-  task :kr4mb do
-    install_kr4mb if OSX
+  desc 'Setup Karabiner profile'
+  task :karabiner do
+    install_karabiner if OSX
   end
 
   desc 'Install Vundle and execute VundleInstall'
@@ -151,7 +151,7 @@ namespace :install do
     zsh
     ruby
     vim
-    kr4mb
+    karabiner
     bin
     ssh
     fonts
@@ -213,15 +213,15 @@ def move_keys
   mv(ssh_keys, File.join(Dir.pwd, 'ssh', 'keys'))
 end
 
-def install_kr4mb
-  kr4mb_file = Dir['KeyRemap4MacBook/*'][0]
-  target = File.join(ENV['HOME'], 'Library', 'Application Support', kr4mb_file)
+def install_karabiner
+  karabiner_file = Dir['Karabiner/*'][0]
+  target = File.join(ENV['HOME'], 'Library', 'Application Support', karabiner_file)
   mkdir_p(File.dirname(target))
-  install_dotfile(kr4mb_file, target)
-  system '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli enable remap.controlL2controlL_escape'
-  system '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli enable space_cadet.left_control_to_hyper'
-  system '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli enable private.shifts_to_parens'
-  system '/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_cli.app/Contents/MacOS/KeyRemap4MacBook_cli set parameter.keyoverlaidmodifier_timeout 700'
+  install_dotfile(karabiner_file, target)
+  system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable remap.controlL2controlL_escape'
+  system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable space_cadet.left_control_to_hyper'
+  system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable private.shifts_to_parens'
+  system '/Applications/Karabiner.app/Contents/Library/bin/karabiner set parameter.keyoverlaidmodifier_timeout 700'
 end
 
 def switch_to_zsh
