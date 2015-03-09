@@ -170,6 +170,7 @@ task :update => ['update:all']
 task :default => :install
 
 def install_homebrew
+    require 'English'
   rval = `pkgutil --pkg-info=com.apple.pkg.CLTools_Executables`
   if rval.include?('does not exist')
     system 'xcode-select --install'
@@ -181,7 +182,7 @@ def install_homebrew
     LOGGER.info "Installing Homebrew, the OSX package manager...If it's".blue
     LOGGER.info "already installed, this will do nothing.".blue
     LOGGER.info "======================================================".blue
-    system 'ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"'
+    system 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
   end
 end
 
@@ -218,6 +219,7 @@ def install_karabiner
   target = File.join(ENV['HOME'], 'Library', 'Application Support', karabiner_file)
   mkdir_p(File.dirname(target))
   install_dotfile(karabiner_file, target)
+  system 'open -a Karabiner'
   system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable remap.controlL2controlL_escape'
   system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable space_cadet.left_control_to_hyper'
   system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable private.shifts_to_parens'
@@ -262,9 +264,9 @@ def install_node
   LOGGER.info "\nInstall node, npm, nvm".blue
   install_nvm
   # Needs a shell refresh here
-  system %(zsh -c 'nvm install 0.10')
-  system %(zsh -c 'nvm alias default 0.10')
-  system %(zsh -c 'curl https://npmjs.org/install.sh | sh')
+  system %(zsh -lc 'nvm install 0.10')
+  system %(zsh -lc 'nvm alias default 0.10')
+  system %(zsh -lc 'curl https://npmjs.org/install.sh | sh')
   install_node_packages
 end
 
@@ -294,7 +296,7 @@ def install_packages
   LOGGER.info 'Installing packages'.blue
   # Xcode licence agreement here
   if OSX
-    system 'brew bundle config/Brewfile'
+    system 'while read line; do brew $line; done < config/Brewfile'
   else
     mkdir_p %w(~/local/bin ~/local/build)
     ENV['LD_LIBRARY_PATH'] = File.join(ENV['HOME'], 'local/lib')

@@ -1,6 +1,5 @@
 require_relative 'common'
 
-PLUGINS = File.join(ENV['RBENV_ROOT'], 'plugins') unless ENV['RBENV_ROOT'].nil?
 
 # Method to install RVM (Ruby Version Manager)
 def install_rvm
@@ -22,6 +21,7 @@ end
 def install_rbenv
   if OSX
     system 'brew install rbenv ruby-build rbenv-readline'
+    system 'export RBENV_ROOT=/usr/local/var/rbenv'
   else
     mkdir_p(File.join(ENV['HOME'], '.rbenv'))
     system 'git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
@@ -31,8 +31,9 @@ def install_rbenv
 end
 
 def install_rbenv_plugins
-  mkdir_p(PLUGINS)
-  Dir.chdir(PLUGINS) do
+  plugins = File.join(ENV['RBENV_ROOT'], 'plugins') unless ENV['RBENV_ROOT'].nil?
+  mkdir_p(plugins)
+  Dir.chdir(plugins) do
     system 'git clone git://github.com/tpope/rbenv-communal-gems.git'
     system 'git clone https://github.com/ianheggie/rbenv-binstubs.git'
     system 'git clone git://github.com/tpope/rbenv-ctags.git'
