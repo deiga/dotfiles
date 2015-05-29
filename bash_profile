@@ -1,1 +1,5 @@
 source ~/.profile
+
+
+source ~/.xsh
+
