@@ -4,7 +4,8 @@
         "tall",
         "fullscreen",
         "column",
-        "floating"
+        "floating",
+        "widescreen-tall"
     ],
 
     "MODIFIERS": "----------------------",
@@ -199,7 +200,8 @@
         "com.runningwithcrayons.Alfred-Preferences",
         "com.runningwithcrayons.Alfred-2",
         "org.eclipse.platform.ide",
-        "com.officedrop.ScanDrop"
+        "com.officedrop.ScanDrop",
+        "com.skitch.skitch"
     ],
     "float-small-windows": true,
     "mouse-follows-focus": true,
