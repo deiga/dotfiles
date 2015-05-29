@@ -1,5 +1,4 @@
 eval "$(rbenv init - --no-rehash)"
-source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 #echo 'zshrc' $0 # Debug
 # Profiling
@@ -96,7 +95,6 @@ init_files=(~/.zsh/init/*.*sh)
 
 for file in $init_files
 do
-    echo "Running $file"
     source $file || true
 done
 

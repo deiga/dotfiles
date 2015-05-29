@@ -16,15 +16,14 @@ case $OSTYPE in
         # Cache credentials for 60min for HTTPS git
         (git config credential.helper 'cache --timeout=3600' &) 2> /dev/null
         memrss () {
-            while read command percent rss; do 
-                if [[ "${command}" != "COMMAND" ]]; then 
-                    rss="$(bc <<< "scale=2;${rss}/1024")"; 
-                fi; 
-                printf "%-26s%-8s%s\n" "${command}" "${percent}" "${rss}"; 
+            while read command percent rss; do
+                if [[ "${command}" != "COMMAND" ]]; then
+                    rss="$(bc <<< "scale=2;${rss}/1024")";
+                fi;
+                printf "%-26s%-8s%s\n" "${command}" "${percent}" "${rss}";
             done < <(ps -A --sort -rss -o comm,pmem,rss | head -n 20)
         }
         source ~/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh # Add powerline to zsh
         ;;
 esac
 
-export ROO_OPTS="-Xms1G -Xmx1G"
