@@ -41,7 +41,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(autojump coffee extract git-flow-avh heroku npm ssh-agent tmux zsh-syntax-highlighting)
+plugins=(coffee extract git-flow-avh ssh-agent tmux zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
@@ -103,6 +103,7 @@ HELPDIR=/usr/local/share/zsh/helpfiles
 # Profiling end
 # zprof
 
+tmux list-sessions 2> /dev/null
 
 compinit
 # added by travis gem
