@@ -13,7 +13,6 @@ def install_python
 end
 
 def update_python
-    system 'pip install -U setuptools pip'
-    system 'pip install -U mercurial psutil==1.2.1'
+    system 'pip install -U setuptools pip mercurial psutil==1.2.1'
     system %{LIBGIT2="$HOME/local" LDFLAGS="-Wl,-rpath='$LIBGIT2/lib',--enable-new-dtags $LDFLAGS" pip install -U pygit2} unless OSX
 end
