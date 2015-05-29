@@ -5,6 +5,7 @@ tap homebrew/science
 tap homebrew/binary
 tap homebrew/versions
 tap homebrew/dupes
+tap homebrew/head-only
 install git --with-brewed-openssl --with-brewed-curl --with-persistent-https
 install python --with-brewed-openssl --universal --framework
 install hub
@@ -35,6 +36,7 @@ install peco
 install pup
 install tidy --HEAD
 install mosh
+install nmap
 cask install alfred
 cask install qlcolorcode
 cask install qlstephen
@@ -69,3 +71,4 @@ cask install archiver
 cask install atom
 cask install lastpass
 cask install java
+cask install controlplane
