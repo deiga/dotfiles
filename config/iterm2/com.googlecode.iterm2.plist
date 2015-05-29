@@ -748,9 +748,9 @@
 	<key>HotKeyBookmark</key>
 	<string>7B3313D7-BB20-4A19-8B0C-E53B37BA1317</string>
 	<key>HotKeyTogglesWindow</key>
-	<true/>
+	<false/>
 	<key>Hotkey</key>
-	<true/>
+	<false/>
 	<key>HotkeyChar</key>
 	<integer>63243</integer>
 	<key>HotkeyCode</key>
@@ -769,8 +769,6 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
-	<key>NSColorPanelMode</key>
-	<string>6</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/dotfiles/config/iterm2</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -790,22 +788,20 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>322</string>
+		<string>302</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
-	<key>NSWindow Frame NSColorPanel</key>
-	<string>427 410 214 309 0 0 1920 1178 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>699 240 918 512 0 0 1920 1177 </string>
-	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
-	<string>4 1003 616 174 0 0 1920 1177 </string>
-	<key>NSWindow Frame UKCrashReporter</key>
-	<string>240 150 1440 877 0 0 1920 1177 </string>
+	<string>519 238 924 485 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>4 3 1912 1174 0 0 1920 1177 </string>
+	<string>4 578 1916 599 0 0 1920 1177 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>183 426 570 451 0 0 1440 877 </string>
+	<key>NeverWarnAboutShortLivedSessions_DEFE4192-EB4F-4C32-BFEE-7B97CF7BC495</key>
+	<true/>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1285,7 +1281,7 @@
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>100000</integer>
+			<integer>10000</integer>
 			<key>Scrollback With Status Bar</key>
 			<true/>
 			<key>Scrollback in Alternate Screen</key>
@@ -2075,7 +2071,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.1791720599112426</real>
+			<real>0.17917205393314362</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
@@ -4669,16 +4665,8 @@
 			<string>/Users/timosand</string>
 		</dict>
 	</array>
-	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
-	<true/>
-	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
-	<integer>0</integer>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
-	<true/>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
-	<integer>0</integer>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -4744,14 +4732,12 @@
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
-	<key>SUFeedAlternateAppNameKey</key>
-	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/nightly.xml</string>
+	<string>http://iterm2.com/appcasts/testing.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-01-26T06:46:23Z</date>
+	<date>2015-04-13T23:31:26Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -4785,8 +4771,6 @@
 	<true/>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<true/>
-	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1419850368</real>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
@@ -4812,7 +4796,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20150108-nightly</string>
+	<string>2.0.0.20141103</string>
 	<key>kPreferenceKeyWindowStyle</key>
 	<integer>0</integer>
 </dict>
