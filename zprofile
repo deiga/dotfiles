@@ -59,3 +59,4 @@ case $OSTYPE in
 esac
 
 #if [[ ! $(type perlbrew) =~ "shell function" ]]; then source ~/perl5/perlbrew/etc/bashrc; fi
+eval "$(rbenv init - --no-rehash)"
