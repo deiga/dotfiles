@@ -1,14 +1,11 @@
 global:
     - dispatch
-    - node-static
+    - http-server
     - yo
     - grunt-cli
     - coffee-script
-    - generator-webapp
-    - generator-boom
     - gulp
     - bower
-    - generator-node-gulp
     - jshint
     - csslint
 local:
