@@ -16,10 +16,12 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # The following lines were added by compinstall
-# zstyle :compinstall filename '~/.zshrc'
 
-# autoload -Uz compinit
-# compinit
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle :compinstall filename '/Users/timosand/.zshrc'
+
+autoload -Uz compinit
+compinit
 # End of lines added by compinstall
 
 # oh-my-zsh
@@ -105,5 +107,7 @@ HELPDIR=/usr/local/share/zsh/helpfiles
 # Profiling end
 # zprof
 
+
+compinit
 # added by travis gem
 [ -f /Users/timosand/.travis/travis.sh ] && source /Users/timosand/.travis/travis.sh
