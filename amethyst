@@ -201,7 +201,8 @@
         "com.runningwithcrayons.Alfred-2",
         "org.eclipse.platform.ide",
         "com.officedrop.ScanDrop",
-        "com.skitch.skitch"
+        "com.skitch.skitch",
+        "com.playsaurus.heroclicker"
     ],
     "float-small-windows": true,
     "mouse-follows-focus": true,

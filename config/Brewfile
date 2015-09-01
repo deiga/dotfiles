@@ -37,6 +37,8 @@ install pup
 install tidy --HEAD
 install mosh
 install nmap
+install terminal-notifier
+install the_silver_searcher
 cask install alfred
 cask install qlcolorcode
 cask install qlstephen
