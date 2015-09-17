@@ -8,4 +8,5 @@ global:
     - bower
     - jshint
     - csslint
+    - eslint
 local:
