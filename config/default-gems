@@ -4,7 +4,6 @@ rake
 rdoc
 pry
 pry-plus
-git-up
 gem-browse
 httparty
 bundler-audit
