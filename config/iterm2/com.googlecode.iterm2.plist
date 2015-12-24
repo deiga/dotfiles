@@ -784,7 +784,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>268 435 924 485 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 7 1916 1170 0 0 1920 1177 </string>
+	<string>4 7 1912 1170 0 0 1920 1177 </string>
 	<key>NeverWarnAboutShortLivedSessions_DEFE4192-EB4F-4C32-BFEE-7B97CF7BC495</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -4671,7 +4671,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>462788784.552917</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>462788784.55310899</real>
+	<real>466336021.33841598</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -4733,6 +4733,8 @@
 	<integer>8</integer>
 	<key>RightOption</key>
 	<integer>3</integer>
+	<key>SUAutomaticallyUpdate</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
@@ -4740,7 +4742,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-09-01T08:26:17Z</date>
+	<date>2015-10-09T06:56:57Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -4785,7 +4787,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>Lucida Grande</string>
+	<string>.Helvetica Neue DeskInterface</string>
 	<key>Window Arrangements</key>
 	<dict/>
 	<key>WindowNumber</key>
