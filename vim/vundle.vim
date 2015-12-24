@@ -64,6 +64,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 't9md/vim-ruby-xmpfilter'
 Plugin 'markcornick/vim-vagrant'
+Bundle 'wakatime/vim-wakatime'
 
 call vundle#end()
 
