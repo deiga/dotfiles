@@ -72,6 +72,9 @@ setopt prompt_subst
 
 eval `dircolors ~/.dir_colors`
 
+# ZSH Hooks
+autoload -U add-zsh-hook
+
 # Disable correct
 if [ -f ~/.zsh_nocorrect ]; then
     while read -r COMMAND; do
