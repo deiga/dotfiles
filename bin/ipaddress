@@ -36,7 +36,7 @@ else
 { $output .= "Airport: INACTIVE \n";}
 
 $output .= "Bluetooth ";
-$output .= `/usr/local/bin/blueutil power`;
+$output .= `/usr/local/bin/blueutil status`;
 $output .= `date`;
 
 print "$output";
