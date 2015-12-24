@@ -133,3 +133,7 @@
 	defaults = True
 [hub]
 	protocol = https
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
