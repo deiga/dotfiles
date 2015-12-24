@@ -51,7 +51,6 @@ cask install karabiner
 cask install seil
 cask install rescuetime
 cask install dropbox
-cask install slate
 cask install gfxcardstatus
 cask install flux
 cask install istat-menus
