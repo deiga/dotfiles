@@ -264,8 +264,8 @@ def install_node
   LOGGER.info "\nInstall node, npm, nvm".blue
   install_nvm
   # Needs a shell refresh here
-  system %(zsh -lc 'nvm install 4')
-  system %(zsh -lc 'nvm alias default 4; nvm use default')
+  system %(zsh -lc 'nvm install node --reinstall-packages-from=node')
+  system %(zsh -lc 'nvm alias default node; nvm use default')
   system %(zsh -lc 'curl https://npmjs.org/install.sh | sh')
   install_node_packages
 end
