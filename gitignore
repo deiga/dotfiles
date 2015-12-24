@@ -48,13 +48,14 @@ rails_best_practices_output.html
 .hooves
 .rvmrc.local
 
-# IDE ignores 
+# IDE ignores
 ###############
 *.prefs
 .classpath
 .project
 .settings/*
 MANIFEST.MF
+.idea
 # bin/*
 
 # Maven ignores #
