@@ -5,13 +5,17 @@ if [ -n "$2" ]; then
     PORT=$2
 fi
 
+BK_FILENAME="/etc/pf.anchors/local-port.bk"
+
 case "$1" in
     "start" )
-        sudo ipfw add 100 fwd 127.0.0.1,$PORT tcp from any to any 80 in
-        ;;
+      if [ -f $BK_FILENAME ]; then sudo mv $BK_FILENAME ${BK_FILENAME%.bk}; fi
+      sudo sed -i .bk -e "s/4000/${PORT}/" /etc/pf.anchors/local-port
+      sudo pfctl -ef /etc/pf.conf
+      ;;
     "stop" )
-        sudo ipfw flush
-        ;;
+      sudo pfctl -df /etc/pf.conf
+      ;;
 esac
 
 exit 0
