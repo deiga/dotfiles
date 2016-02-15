@@ -38,6 +38,7 @@ install mosh
 install nmap
 install terminal-notifier
 install the_silver_searcher
+install thefuck
 cask install alfred
 cask install qlcolorcode
 cask install qlstephen

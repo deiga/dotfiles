@@ -60,3 +60,4 @@ esac
 
 #if [[ ! $(type perlbrew) =~ "shell function" ]]; then source ~/perl5/perlbrew/etc/bashrc; fi
 if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
+eval $(thefuck --alias)
