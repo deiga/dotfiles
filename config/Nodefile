@@ -1,7 +1,6 @@
 global:
     - dispatch
     - http-server
-    - yo
     - grunt-cli
     - coffee-script
     - gulp
@@ -9,4 +8,6 @@ global:
     - jshint
     - csslint
     - eslint
+    - now
+    - foreman
 local:
