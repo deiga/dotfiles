@@ -23,6 +23,7 @@
 [apply]
 	whitespace = nowarn
 [alias]
+		init = init --template=/Users/timosand/.git_template
     # checkout
     co = checkout                     # checkout
     nb = checkout -b                  # create and switch to a new branch (mnemonic: "git new branch branchname...")
@@ -80,8 +81,6 @@
 	trustExitCode = true
 [push]
 	default = simple
-[init]
-	templatedir = ~/.git_template
 [fetch]
 	recurseSubmodules = true
 [credential]
