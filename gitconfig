@@ -1,115 +1,115 @@
 [user]
-	name = Timo Sand
+  name = Timo Sand
   email = "(none)"
 [github]
-	user = deiga
+  user = deiga
 [core]
-	excludesfile = /Users/timosand/.gitignore
-	editor = vim
-	whitespace = trailing-space,space-before-tab
-        autocrfl = false
-        safecrlf = warn
+  excludesfile = /Users/timosand/.gitignore
+  editor = vim
+  whitespace = trailing-space,space-before-tab
+  autocrfl = false
+  safecrlf = warn
 [color]
-	status = true
-	diff = true
-	branch = true
-        ui = true
-        grep = true
-        showbranch = true
+  status = true
+  diff = true
+  branch = true
+  ui = true
+  grep = true
+  showbranch = true
 [merge]
-        conflictstyle = diff3
-	stat = true
-        tool = vimdiff
+  conflictstyle = diff3
+  stat = true
+  tool = vimdiff
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
 [alias]
-		init = init --template=/Users/timosand/.git_template
-    # checkout
-    co = checkout                     # checkout
-    nb = checkout -b                  # create and switch to a new branch (mnemonic: "git new branch branchname...")
-		checkout-pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
-		copr = checkout-pr
+  init = init --template=/Users/timosand/.git_template
+  # checkout
+  co = checkout                     # checkout
+  nb = checkout -b                  # create and switch to a new branch (mnemonic: "git new branch branchname...")
+  checkout-pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+  copr = checkout-pr
 
-    # commit
-    c = commit -m                     # commit with message
-    ca = commit -am                   # commit all with message
-    ci = commit                       # commit
-    cm = commit --amend
-    amend = commit --amend            # ammend your last commit
-    ammend = commit --amend           # ammend your last commit
+  # commit
+  c = commit -m                     # commit with message
+  ca = commit -am                   # commit all with message
+  ci = commit                       # commit
+  cm = commit --amend
+  amend = commit --amend            # ammend your last commit
+  ammend = commit --amend           # ammend your last commit
 
-    st = status
+  st = status
 
-    # branch
-    b = branch -v                     # branch (verbose)
+  # branch
+  b = branch -v                     # branch (verbose)
 
-    # diff
-    d = diff                          # diff unstaged changes
-    dc = diff --cached                # diff staged changes
-    last = diff HEAD^                 # diff last committed change
+  # diff
+  d = diff                          # diff unstaged changes
+  dc = diff --cached                # diff staged changes
+  last = diff HEAD^                 # diff last committed change
 
-    type = cat-file -t
-    dump = cat-file -p
+  type = cat-file -t
+  dump = cat-file -p
 
-    cl = clone --recursive
+  cl = clone --recursive
 
-    unstage = reset HEAD --
+  unstage = reset HEAD --
 
-    disc = checkout --
-    discard = checkout --
+  disc = checkout --
+  discard = checkout --
 
-    # history
-    wc = whatchanged -p --abbrev-commit --pretty=medium
-    lg = log --color --graph \n  --pretty=format:'%Cred%h%Creset \n  -%C(yellow)%d%Creset %s %Cgreen(%cr) \n  %C(bold blue)<%an>%Creset' \n  --abbrev-commit
-    hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
-    report = "log --author=Timo --since='2 sunday ago' --until='1 sunday ago' --format='%Cgreen%ci%Creset %s%Creset' --no-merges"
+  # history
+  wc = whatchanged -p --abbrev-commit --pretty=medium
+  lg = log --color --graph \n  --pretty=format:'%Cred%h%Creset \n  -%C(yellow)%d%Creset %s %Cgreen(%cr) \n  %C(bold blue)<%an>%Creset' \n  --abbrev-commit
+  hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
+  report = "log --author=Timo --since='2 sunday ago' --until='1 sunday ago' --format='%Cgreen%ci%Creset %s%Creset' --no-merges"
 
-    ctags = !.git/hooks/ctags
-    serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
-    today = log --since=midnight --author=\"$(git config user.name)\" --oneline
-    split-subpath = filter-branch --prune-empty --subdirectory-filter
+  ctags = !.git/hooks/ctags
+  serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+  today = log --since=midnight --author=\"$(git config user.name)\" --oneline
+  split-subpath = filter-branch --prune-empty --subdirectory-filter
 
-    pr = pull-request
-    ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-    i = ignore
+  pr = pull-request
+  ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+  i = ignore
 
-    update-submodule = submodule foreach git pull origin master
-    us = update-submodule
+  update-submodule = submodule foreach git pull origin master
+  us = update-submodule
 
-    # rebase
-    rc = rebase --continue
-    rs = rebase --skip
-    ra = rebase --abort
-    rc = rebase --continue
-    rs = rebase --skip
-    ra = rebase --abort
+  # rebase
+  rc = rebase --continue
+  rs = rebase --skip
+  ra = rebase --abort
+  rc = rebase --continue
+  rs = rebase --skip
+  ra = rebase --abort
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [push]
-	default = simple
+  default = simple
 [fetch]
-	recurseSubmodules = true
+  recurseSubmodules = true
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [diff]
-	renames = copies
-	mnemonicprefix = true
-	tool = vimdiff
+  renames = copies
+  mnemonicprefix = true
+  tool = vimdiff
 [branch]
-	autosetupmerge = true
+  autosetupmerge = true
 [rerere]
-	enabled = true
+  enabled = true
 [gh]
-	protocol = https
+  protocol = https
 [web]
-	browser = open
+  browser = open
 [hub]
-	protocol = https
+  protocol = https
 [pull]
-	rebase = true
+  rebase = true
 [rebase]
-	autoStash = true
+  autoStash = true
