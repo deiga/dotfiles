@@ -86,6 +86,24 @@
                 -->
                 <autogen>--KeyToKey-- KeyCode::SPACE, ModifierFlag::SHIFT_R, KeyCode::KEY_9, ModifierFlag::SHIFT_L, KeyCode::SPACE</autogen>
             </item>
+            <item>
+                <name>Alt+Shifts to Curly Brace</name>
+                <appendix>Alt+Shifts, when pressed alone, type curly braces.  When used with other keys they're normal shifts.</appendix>
+
+                <identifier>private.option_shifts_to_parens</identifier>
+
+                <!-- This is the basic mapping. -->
+                <autogen>
+                  --KeyOverlaidModifier--
+                  KeyCode::SHIFT_R, ModifierFlag::OPTION_L,  ModifierFlag::SHIFT_R,
+                  ModifierFlag::NONE, KeyCode::SHIFT_R, KeyCode::KEY_9, ModifierFlag::OPTION_L, ModifierFlag::SHIFT_L
+                </autogen>
+                <autogen>
+                  --KeyOverlaidModifier--
+                  KeyCode::SHIFT_L, ModifierFlag::OPTION_L, ModifierFlag::SHIFT_L,
+                  ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::KEY_8, ModifierFlag::OPTION_L, ModifierFlag::SHIFT_R
+                </autogen>
+            </item>
 
             <item>
                 <name>Restore [Shift-]Opt-(Left/Right)</name>
