@@ -17,8 +17,7 @@ bindkey -v
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle :compinstall filename '/Users/timosand/.zshrc'
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 # End of lines added by compinstall
 
 # oh-my-zsh
@@ -41,7 +40,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(coffee extract git-flow-avh ssh-agent tmux zsh-syntax-highlighting)
+plugins=(extract git-flow-avh ssh-agent tmux zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
@@ -103,14 +102,18 @@ unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/helpfiles
 
-# Profiling end
-# zprof
 
 tmux list-sessions 2> /dev/null
 
 compinit
+autoload -U +X bashcompinit && bashcompinit
 # added by travis gem
 [ -f /Users/timosand/.travis/travis.sh ] && source /Users/timosand/.travis/travis.sh
 
 
 source ~/.xsh
+
+# Profiling end
+# zprof
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

@@ -14,19 +14,12 @@ BASE16_SHELL="$HOME/dotfiles/config/base16/shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 # Customize to your needs...
-BIN_PATH=$HOME/bin:$HOME/local/bin # Add ~/bin to PATH
-BOX_PATH=$HOME/dotfiles/box/bin # Add path for box
-CABAL_PATH=$HOME/.cabal/bin
+BIN_PATH="$HOME/bin:$HOME/local/bin" # Add ~/bin to PATH
+BOX_PATH="$HOME/dotfiles/box/bin" # Add path for box
+CABAL_PATH="$HOME/.cabal/bin"
 PATH=$BIN_PATH:$BOX_PATH:$PATH
-export GOPATH=$HOME/go
-export NVM_DIR=~/.nvm
-
-# Python & Virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Dropbox/Documents/Projects
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
-export PYTHONSTARTUP=$HOME/.pythonrc
+export GOPATH="$HOME/go"
+export NVM_DIR="$HOME/.nvm"
 
 PATH=$CABAL_PATH:$PATH
 
@@ -35,10 +28,11 @@ case $OSTYPE in
         COREUTILS_PATH=/usr/local/opt/coreutils/libexec/gnubin
         HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin
         PATH=$COREUTILS_PATH:$HOMEBREW_PATH:$PATH
-        if [[ ! $(type nvm) =~ "shell function" ]]; then source $(brew --prefix nvm)/nvm.sh; fi
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
         export RBENV_ROOT=/usr/local/var/rbenv
         export ARCHFLAGS="-arch x86_64"
         export JAVA_HOME=$(/usr/libexec/java_home)
+        export SCALA_HOME=/usr/local/opt/scala
         export ATOM_REPOS_HOME=$HOME/Dropbox/Documents/Projects
     ;;
     *)
