@@ -27,6 +27,8 @@
     # checkout
     co = checkout                     # checkout
     nb = checkout -b                  # create and switch to a new branch (mnemonic: "git new branch branchname...")
+		checkout-pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+		copr = checkout-pr
 
     # commit
     c = commit -m                     # commit with message
@@ -73,11 +75,19 @@
 
     update-submodule = submodule foreach git pull origin master
     us = update-submodule
+
+    # rebase
+    rc = rebase --continue
+    rs = rebase --skip
+    ra = rebase --abort
+    rc = rebase --continue
+    rs = rebase --skip
+    ra = rebase --abort
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.5.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
 	default = simple
@@ -93,43 +103,10 @@
 	autosetupmerge = true
 [rerere]
 	enabled = true
-[merge "railsschema"]
-        name = newer Rails schema version
-        driver = "ruby -e '\n\
-                  system %(git), %(merge-file), %(--marker-size=%L), %(%A), %(%O), %(%B)\n\
-                  b = File.read(%(%A))\n\
-                  b.sub!(/^<+ .*\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n=+\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n>+ .*/) do\n\
-                    %(ActiveRecord::Schema.define(:version => #{[$1, $2].max}) do)\n\
-                  end\n\
-                  File.open(%(%A), %(w)) {|f| f.write(b)}\n\
-                  exit 1 if b.include?(%(<)*%L)'"
 [gh]
 	protocol = https
 [web]
 	browser = open
-[gitflow "branch"]
-        master = master
-        develop = develop
-[gitflow "prefix"]
-        feature = feature/
-        release = release/
-        hotfix = hotfix/
-        support = support/
-        versiontag = 
-[git-up "bundler"]
-	check = true
-[gitflow "hotfix.finish"]
-	push = True
-	fetch = True
-[gitflow "hotfix.start"]
-	fetch = True
-[gitflow "release.finish"]
-	fetch = True
-	push = True
-[gitflow "release.start"]
-	fetch = True
-[gitflow "init"]
-	defaults = True
 [hub]
 	protocol = https
 [pull]
