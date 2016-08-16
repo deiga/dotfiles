@@ -21,3 +21,7 @@ man () {
 password() {
     openssl rand -base64 32
 }
+
+gpip(){
+   PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
