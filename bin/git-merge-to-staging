@@ -1,0 +1,9 @@
+#!/bin/sh -ex
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git stash
+git checkout staging
+git fetch origin
+git reset --hard origin/staging
+git merge $BRANCH
+git push origin HEAD
+git checkout $BRANCH
