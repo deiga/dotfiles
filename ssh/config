@@ -1,5 +1,13 @@
 ### PRIVATE ###
 
+Host pi proxypi
+  Hostname deiga.club
+  Port 2288
+  User pi
+
+Host proxy*
+  ProxyCommand ssh hilla -W %h:%p
+
 Host heroku.personal
     Hostname heroku.com
     IdentityFile ~/.ssh/keys/id_rsa
@@ -37,7 +45,7 @@ Host bitbucket.org
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/keys/github_rsa
 
-Host leftoutsidealone.net loa
+Host leftoutsidealone.net loa local.loa.net
     User deiga
     Port 2255
     IdentityFile ~/.ssh/keys/loa_rsa
