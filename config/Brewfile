@@ -17,7 +17,6 @@ install growly
 install heroku-toolbelt
 install namebench
 install vim
-install nvm
 install phantomjs
 install zsh-completions
 install ruby-build

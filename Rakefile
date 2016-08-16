@@ -47,7 +47,8 @@ namespace :update do
   task :node do
     LOGGER.info "\nUpdate node".blue
     system %Q{npm update 2>/dev/null}
-    system %Q{npm update -g 2>/dev/null}
+    system %Q{npm -g install npm@latest 2>/dev/null}
+    system %Q{bin/npm-upgrade}
   end
 
   desc 'Update submodules'
@@ -279,17 +280,14 @@ def install_node_packages
 end
 
 def install_nvm
-  if OSX
-    system('brew install nvm')
+  nvm_dir = File.join(ENV['HOME'], '.nvm')
+  if File.exist?(nvm_dir)
+    LOGGER.info "=> NVM is already installed in #{nvm_dir}, trying to update".blue
+    system %(cd #{nvm_dir} && git fetch origin)
   else
-    nvm_dir = File.join(ENV['HOME'], '.nvm')
-    if File.exist?(nvm_dir)
-      LOGGER.info "=> NVM is already installed in #{nvm_dir}, trying to update".blue
-      system %(cd #{nvm_dir}; git pull)
-    else
-      system %(git clone https://github.com/creationix/nvm.git #{nvm_dir})
-    end
+    system %(git clone https://github.com/creationix/nvm.git #{nvm_dir})
   end
+  system %(cd #{nvm_dir} && git checkout `git describe --abbrev=0 --tags` && . #{nvm_dir}/nvm.sh)
 end
 
 def install_packages
