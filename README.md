@@ -6,11 +6,14 @@ Requirements:
   * rake
 
 Contains:
-    * Ruby (rbenv)
-    * Python
-    * ZSH
-    * Vim
-    * Powerline
+    
+  * Ruby (rbenv)
+  * Python
+  * ZSH
+  * Vim
+  * Powerline
+
+See [Brewfile](config/Brewfile) for all installed apps
 
 Usage:
 
