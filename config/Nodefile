@@ -1,9 +1,7 @@
 global:
     - dispatch
     - http-server
-    - grunt-cli
     - coffee-script
-    - gulp
     - bower
     - jshint
     - csslint
