@@ -17,11 +17,12 @@ BASE16_SHELL="$HOME/dotfiles/config/base16/shell/base16-$BASE16_SCHEME.dark.sh"
 BIN_PATH="$HOME/bin:$HOME/local/bin" # Add ~/bin to PATH
 BOX_PATH="$HOME/dotfiles/box/bin" # Add path for box
 CABAL_PATH="$HOME/.cabal/bin"
+STACK_INSTALL_PATH="$HOME/.local/bin/"
 PATH=$BIN_PATH:$BOX_PATH:$PATH
 export GOPATH="$HOME/go"
 export NVM_DIR="$HOME/.nvm"
 
-PATH=$CABAL_PATH:$PATH
+PATH=$CABAL_PATH:$STACK_INSTALL_PATH:$PATH
 
 case $OSTYPE in
     darwin*)
