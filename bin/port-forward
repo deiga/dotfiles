@@ -1,17 +1,30 @@
 #!/bin/sh
-PORT=8080
+HTTP_PORT=8080
+HTTPS_PORT=443
+
+if [ $# -eq 0 ]; then
+  echo "usage: port-forward <start|stop> [8080]"
+fi
 
 if [ -n "$2" ]; then
-    PORT=$2
+    HTTP_PORT=$2
+fi
+
+if [ -n "$3" ]; then
+    HTTPS_PORT=$3
 fi
 
 BK_FILENAME="/etc/pf.anchors/local-port.bk"
 
 case "$1" in
     "start" )
-      if [ -f $BK_FILENAME ]; then sudo mv $BK_FILENAME ${BK_FILENAME%.bk}; fi
-      sudo sed -i .bk -e "s/4000/${PORT}/" /etc/pf.anchors/local-port
-      sudo pfctl -ef /etc/pf.conf
+      # if [ -f $BK_FILENAME ]; then sudo mv $BK_FILENAME ${BK_FILENAME%.bk}; fi
+      # sudo sed -i .bk -e "s/4000/${HTTP_PORT}/" /etc/pf.anchors/local-port
+      # sudo pfctl -ef /etc/pf.conf
+      echo "
+rdr pass inet proto tcp from any to any port 80 -> 127.0.0.1 port ${HTTP_PORT}
+rdr pass inet proto tcp from any to any port 443 -> 127.0.0.1 port ${HTTPS_PORT}
+" | sudo pfctl -ef -
       ;;
     "stop" )
       sudo pfctl -df /etc/pf.conf
