@@ -33,7 +33,7 @@ namespace :update do
     if OSX
       LOGGER.info "\nUpdate brew".blue
       system %(brew update)
-      system %(brew upgrade --all)
+      system %(brew upgrade)
     end
   end
 
