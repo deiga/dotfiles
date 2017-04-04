@@ -1,4 +1,5 @@
 require 'logger'
+require 'fileutils'
 
 LOGGER = Logger.new(STDOUT)
 LOGGER.formatter = proc do |s, dt, p, msg|
@@ -32,10 +33,12 @@ end
 # * Checks for exitence of target file
 # * Compares equality and asks for overwrite
 def install_dotfile(file, target_file)
-  if File.exist?(target_file) or File.symlink?(target_file)
+  if File.exist?(target_file) || File.symlink?(target_file)
     if File.identical? file, target_file
       LOGGER.info "identical #{target_file.replace_home}".green
     elsif @replace_all
+      replace_file(file, target_file)
+    elsif !File.directory?(target_file) && FileUtils.compare_file(file, target_file)
       replace_file(file, target_file)
     else
       print "overwrite #{target_file.replace_home}? [ynaq] "
