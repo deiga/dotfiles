@@ -8,7 +8,6 @@ tap homebrew/head-only
 install git --with-brewed-openssl --with-brewed-curl --with-persistent-https
 install python --with-brewed-openssl --universal --framework
 install hub
-install git-flow-avh
 install zsh
 install autojump
 install coreutils
@@ -32,12 +31,13 @@ install brew-cask
 install httpie
 install peco
 install pup
-install tidy --HEAD
+install tidy-html5
 install mosh
 install nmap
 install terminal-notifier
-install the_silver_searcher
 install thefuck
+install mackup
+install ripgrep
 cask install alfred
 cask install qlcolorcode
 cask install qlstephen
@@ -72,3 +72,11 @@ cask install atom
 cask install lastpass
 cask install java
 cask install controlplane
+cask install keybase
+cask install black-screen
+cask install dash
+cask install rambox
+cask install freedome
+cask install insomnia
+cask install font-source-code-pro
+cask install slack
