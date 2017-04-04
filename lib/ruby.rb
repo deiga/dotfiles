@@ -36,9 +36,8 @@ def install_ruby
   install_rbenv
   install_rbenv_plugins
   link_default_gems
-  system %{zsh -lc 'rbenv install 2.0.0-p647'}
-  system %{zsh -lc 'rbenv install 2.1.7'}
-  system %{zsh -lc 'rbenv use 2.0 --global'}
+  system %{zsh -lc 'rbenv install 2.4.0'}
+  system %{zsh -lc 'rbenv use 2.4 --global'}
   system %{zsh -lc 'rbenv rehash'}
 end
 
