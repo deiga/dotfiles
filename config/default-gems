@@ -5,9 +5,7 @@ rdoc
 pry
 pry-plus
 gem-browse
-httparty
 bundler-audit
 lunchy
 tmuxinator
-seeing_is_believing
 rubocop
