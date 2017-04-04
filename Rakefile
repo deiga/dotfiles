@@ -116,6 +116,7 @@ namespace :install do
   desc "Symlink dotfiles and folders to #{ENV['HOME']}"
   task :common do
     install_common_dotfiles
+    system './config/.macos'
     install_keybindings
   end
 
