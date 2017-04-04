@@ -2,10 +2,13 @@ global:
     - dispatch
     - http-server
     - coffee-script
-    - bower
-    - jshint
-    - csslint
     - eslint
     - now
     - foreman
+    - yarn
+    - local-ssl-proxy
+    - node-static
+    - serverless
+    - stylelint
+    - webpack
 local:
