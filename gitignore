@@ -79,3 +79,7 @@ TAGS*
 #################
 .env
 .foreman
+
+# Ansible files #
+#################
+*.retry
