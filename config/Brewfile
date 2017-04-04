@@ -38,6 +38,7 @@ install terminal-notifier
 install thefuck
 install mackup
 install ripgrep
+install mas
 cask install alfred
 cask install qlcolorcode
 cask install qlstephen
@@ -80,3 +81,4 @@ cask install freedome
 cask install insomnia
 cask install font-source-code-pro
 cask install slack
+cask install fsmonitor
