@@ -66,3 +66,7 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # Enable HiDPI display modes (requires restart)
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
+# Enable iTerm2 to load prefs from folder
+defaults write com.googlecode.iterm2 PrefsCustomFolder "/Users/timosand/dotfiles/config/iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -int 1
