@@ -2,8 +2,9 @@
 --tag-relative
 --exclude=.git
 --exclude=*.app
+--exclude=node_modules
+--exclude='*\.min\.*'
 --languages=-sql
--f ./.tags
 
 --langdef=css
 --langmap=css:.css.scss.less
