@@ -1,6 +1,7 @@
 [user]
   name = Timo Sand
   email = "(none)"
+	signingkey = 491877A4
 [github]
   user = deiga
 [core]
@@ -113,3 +114,6 @@
   rebase = true
 [rebase]
   autoStash = true
+[commit]
+	gpgsign = true
+	template = /Users/timosand/.stCommitMsg
