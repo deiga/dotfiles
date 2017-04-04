@@ -1,3 +1,11 @@
+### Uusi Muste ###
+Host uusimuste
+  User  ubuntu
+  Hostname ec2-52-212-207-196.eu-west-1.compute.amazonaws.com
+  IdentityFile ~/.ssh/keys/uusimuste-prod
+
+### END ###
+
 ### PRIVATE ###
 
 Host pi proxypi
