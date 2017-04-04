@@ -17,15 +17,9 @@ sudo nvram SystemAudioVolume=" "
 
 # Menu bar: hide the Time Machine, Volume, and User icons
 for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-  defaults write "${domain}" dontAutoLoad -array \
-    "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-    "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-    "/System/Library/CoreServices/Menu Extras/Battery.menu"
-    "/System/Library/CoreServices/Menu Extras/Clock.menu"
+  defaults write "${domain}" dontAutoLoad -array  "/System/Library/CoreServices/Menu Extras/TimeMachine.menu"  "/System/Library/CoreServices/Menu Extras/Volume.menu"  "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/Clock.menu"
 done
-defaults write com.apple.systemuiserver menuExtras -array \
-  "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-  "/System/Library/CoreServices/Menu Extras/AirPort.menu"
+defaults write com.apple.systemuiserver menuExtras -array  "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"  "/System/Library/CoreServices/Menu Extras/AirPort.menu"
 
 # Disable opening and closing window animations
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
@@ -89,7 +83,7 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 defaults write com.apple.finder EmptyTrashSecurely -bool true
 
 # Set wallpaper
-defaults write com.apple.systempreferences DSKDesktopPrefPane '{ UserFolderPaths = ( "/Users/timosand/Dropbox/Wallpapers" ); };'
+defaults write com.apple.systempreferences DSKDesktopPrefPane -dict UserFolderPaths  '("/Users/timosand/Dropbox/Wallpapers")'
 
 # Alfred sync config
 # defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder "~/Dropbox"
@@ -117,15 +111,7 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 '{ en
 # SSD-specific tweaks                                                         #
 ###############################################################################
 
-# Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
-
-# Remove the sleep image file to save disk space
-sudo rm /private/var/vm/sleepimage
-# Create a zero-byte file instead…
-sudo touch /private/var/vm/sleepimage
-# …and make sure it can’t be rewritten
-sudo chflags uchg /private/var/vm/sleepimage
+sudo pmset -a hibernatemode 3
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
