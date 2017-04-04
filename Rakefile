@@ -148,9 +148,9 @@ namespace :install do
 
   desc 'Install all'
   task :all => %w(
-    submodule
     common
     packages
+    submodule
     zsh
     ruby
     vim
