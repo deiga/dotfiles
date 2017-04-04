@@ -1,7 +1,7 @@
 [user]
-  name = Timo Sand
-  email = "(none)"
+	name = Timo Sand
 	signingkey = 491877A4
+	useConfigOnly = true
 [github]
   user = deiga
 [core]
