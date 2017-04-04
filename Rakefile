@@ -49,6 +49,7 @@ namespace :update do
     system %Q{npm update 2>/dev/null}
     system %Q{npm -g install npm@latest 2>/dev/null}
     system %Q{bin/npm-upgrade}
+    install_nvm
   end
 
   desc 'Update submodules'
@@ -287,7 +288,7 @@ def install_nvm
   else
     system %(git clone https://github.com/creationix/nvm.git #{nvm_dir})
   end
-  system %(cd #{nvm_dir} && git checkout `git describe --abbrev=0 --tags` && . #{nvm_dir}/nvm.sh)
+  system %(cd #{nvm_dir} && git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" origin` && . #{nvm_dir}/nvm.sh)
 end
 
 def install_packages
