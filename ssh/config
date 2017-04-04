@@ -58,12 +58,6 @@ Host nethack
     HostName nethack.fi
     PubkeyAuthentication false
 
-Host heroku.com
-    User git
-    Hostname heroku.com
-    PreferredAuthentications publickey
-    IdentityFile ~/.ssh/keys/heroku_rsa
-
 ### END ###
 
 ### CS ###
@@ -121,10 +115,6 @@ Host kirsi
 ### END ###
 
 ### SANDSTONE ###
-
-Host heroku.com
-    HostName heroku.com
-    IdentityFile ~/.ssh/keys/roydon_rsa
 
 Host gitlab.cre8.fi
     Hostname gitlab.cre8.fi
