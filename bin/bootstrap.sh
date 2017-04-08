@@ -13,15 +13,18 @@ do
   check=$( (xcode-\select --install || true) 2>&1)
 done
 
-echo "Cloning into ~/dotfiles"
-git clone https://github.com/deiga/dotfiles.git ~/dotfiles || true
+DOTFILES_REPO=~/dotfiles
 
-if [[ $? != 0 ]]; then
-  cd ~/dotfiles
-  git pull
+echo "Cloning into ~/dotfiles"
+if [ ! -d $DOTFILES_REPO/.git ]
+then
+    git clone https://github.com/deiga/dotfiles.git $DOTFILES_REPO
+else
+    cd $DOTFILES_REPO
+    git pull
 fi
 
-cd ~/dotfiles
+cd $DOTFILES_REPO
 
 echo "Ask for assistive access"
 osascript -e 'tell application "System Events" to click at {0,0}' || true
