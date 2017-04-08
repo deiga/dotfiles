@@ -4,6 +4,13 @@ set -e
 set -x
 set -u
 
+echo "Running 'xcode-select --install'"
+xcode-select --install
+sleep 1
+
+echo "Sleeping for 30sec"
+sleep 1m
+
 echo "Cloning into ~/dotfiles"
 git clone https://github.com/deiga/dotfiles.git ~/dotfiles
 
