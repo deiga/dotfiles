@@ -146,8 +146,24 @@ namespace :install do
     install_fonts if OSX
   end
 
+  desc 'Install xcode-select'
+  task :'xcode-select' do
+    system 'osascript lib/install_xcode_select.scpt' if OSX
+  end
+
+  desc 'Adds 4 Spaces'
+  task :spaces do
+    system 'osascript lib/add_spaces.scpt' if OSX
+  end
+
+  desc 'Symlink outside files'
+  task :symlink do
+    system %(ln -s ~/Dropbox/atom ~/.atom)
+  end
+
   desc 'Install all'
   task :all => %w(
+    xcode-select
     common
     packages
     submodule
@@ -160,6 +176,8 @@ namespace :install do
     fonts
     powerline
     node
+    spaces
+    symlink
   ) do
   end
 end
@@ -237,6 +255,8 @@ def switch_to_zsh
     case $stdin.gets.chomp
     when 'y'
       LOGGER.info 'switching to zsh'.blue
+      system %(if ! fgrep -q '/usr/local/bin/zsh' /etc/shells; then echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells; fi;)
+      # system %(sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh)
       system %(chsh -s `which zsh`)
     when 'q'
       exit
@@ -307,8 +327,6 @@ def install_packages
     ENV['CFLAGS'] = ENV['CPPFLAGS']
     # hub
     system %(curl http://hub.github.com/standalone -sLo ~/local/bin/hub && chmod +x ~/local/bin/hub)
-    # gitflow-avh
-    system %(wget --no-check-certificate -q  https://raw.github.com/petervanderdoes/gitflow/develop/contrib/gitflow-installer.sh && PREFIX="$HOME/local" REPO_NAME="$PREFIX/build/gitflow" bash gitflow-installer.sh install stable; rm gitflow-installer.sh)
     # ctags
     system %(cd ~/local/build; wget http://prdownloads.sourceforge.net/ctags/ctags-5.8.tar.gz; tar -zxf ctags-5.8.tar.gz; cd ctags-5.8; ./configure --prefix=$HOME/local && make -j 3 && make install)
     # readline
