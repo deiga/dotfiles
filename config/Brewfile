@@ -8,6 +8,7 @@ tap homebrew/head-only
 install git --with-brewed-openssl --with-brewed-curl --with-persistent-https
 install python --with-brewed-openssl --universal --framework
 install hub
+install mtr
 install zsh
 install autojump
 install coreutils
@@ -15,7 +16,7 @@ install ctags
 install growly
 install heroku-toolbelt
 install namebench
-install vim
+install vim --with-override-system-vi
 install phantomjs
 install zsh-completions
 install ruby-build
@@ -25,7 +26,7 @@ install ssh-copy-id
 install selecta
 install tmux
 install tree
-install wget
+install wget --with-iri
 install javarepl
 install brew-cask
 install httpie
@@ -39,6 +40,7 @@ install thefuck
 install mackup
 install ripgrep
 install mas
+install gnu-sed --with-default-names
 cask install alfred
 cask install qlcolorcode
 cask install qlstephen
@@ -82,3 +84,4 @@ cask install insomnia
 cask install font-source-code-pro
 cask install slack
 cask install fsmonitor
+cleanup
