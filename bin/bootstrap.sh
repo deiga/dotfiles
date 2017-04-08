@@ -11,6 +11,7 @@ str="xcode-select: note: install requested for command line developer tools"
 while [[ "$check" == "$str" ]];
 do
   echo "Waiting for installation to finish..."
+  sleep 5
 done
 
 echo "Cloning into ~/dotfiles"
@@ -29,4 +30,4 @@ fi
 
 
 echo "Running rake install"
-rake install
+#rake install
