@@ -28,7 +28,6 @@ install tmux
 install tree
 install wget --with-iri
 install javarepl
-install brew-cask
 install httpie
 install peco
 install pup
