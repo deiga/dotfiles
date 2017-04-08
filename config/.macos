@@ -77,7 +77,7 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Enable Fast User Switching
-defaults write /Library/Preferences/.GlobalPreferences MultipleSessionEnabled -bool Yes
+sudo defaults write /Library/Preferences/.GlobalPreferences MultipleSessionEnabled -bool Yes
 
 # Alfred sync config
 # defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder "~/Dropbox"
