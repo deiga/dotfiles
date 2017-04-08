@@ -76,36 +76,14 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-# Finder: allow text selection in Quick Look
-defaults write com.apple.finder QLEnableTextSelection -bool true
-
-# Empty Trash securely by default
-defaults write com.apple.finder EmptyTrashSecurely -bool true
-
-# Set wallpaper
-defaults write com.apple.systempreferences DSKDesktopPrefPane -dict UserFolderPaths  '("/Users/timosand/Dropbox/Wallpapers")'
+# Enable Fast User Switching
+defaults write /Library/Preferences/.GlobalPreferences MultipleSessionEnabled -bool Yes
 
 # Alfred sync config
 # defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder "~/Dropbox"
 
 # Disable spaces switching animation
 defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
-
-# Disable press and hold (http://www.defaults-write.com/disable-press-and-hold-option-in-mac-os-x-10-7/)
-defaults write -g ApplePressAndHoldEnabled -bool false
-
-# Switch to space keyboard shortcuts
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 118 '{enabled = 1; value = { parameters = (65535, 18, 262144); type = "standard"; }; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 119 '{enabled = 1; value = { parameters = (65535, 19, 262144); type = "standard"; }; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 120 '{enabled = 1; value = { parameters = (65535, 20, 262144); type = "standard"; }; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 121 '{enabled = 1; value = { parameters = (65535, 21, 262144); type = "standard"; }; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 122 '{enabled = 1; value = { parameters = (65535, 22, 262144); type = "standard"; }; }'
-# Switch spaces left/right
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 79 '{ enabled = 0; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 '{ enabled = 0; }'
-
-# Move focus to the next window in application - Option+Tab
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 '{ enabled = 1; value = { parameters = ( 65535, 48, 524288 ); type = standard; }; }'
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
@@ -167,6 +145,20 @@ defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool true
 # Set function keys to F1,F2, etc.
 defaults write -g com.apple.keyboard.fnState -bool true
 
+# Switch to space keyboard shortcuts
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 118 '{enabled = 1; value = { parameters = (65535, 18, 262144); type = "standard"; }; }'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 119 '{enabled = 1; value = { parameters = (65535, 19, 262144); type = "standard"; }; }'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 120 '{enabled = 1; value = { parameters = (65535, 20, 262144); type = "standard"; }; }'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 121 '{enabled = 1; value = { parameters = (65535, 21, 262144); type = "standard"; }; }'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 122 '{enabled = 1; value = { parameters = (65535, 22, 262144); type = "standard"; }; }'
+
+# Switch spaces left/right
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 79 '{ enabled = 0; }'
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 '{ enabled = 0; }'
+
+# Move focus to the next window in application - Option+Tab
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 '{ enabled = 1; value = { parameters = ( 65535, 48, 524288 ); type = standard; }; }'
+
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -185,6 +177,16 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
+
+# Finder: allow text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# Empty Trash securely by default
+defaults write com.apple.finder EmptyTrashSecurely -bool true
+
+# Set wallpaper
+defaults write com.apple.systempreferences DSKDesktopPrefPane -dict UserFolderPaths  '("/Users/timosand/Dropbox/Wallpapers")'
+
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 # defaults write com.apple.finder QuitMenuItem -bool true
