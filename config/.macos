@@ -164,6 +164,9 @@ defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool true
 defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool false
 defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool true
 
+# Set function keys to F1,F2, etc.
+defaults write -g com.apple.keyboard.fnState -bool true
+
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
