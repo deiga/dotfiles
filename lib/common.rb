@@ -38,7 +38,7 @@ def install_dotfile(file, target_file)
       LOGGER.info "identical #{target_file.replace_home}".green
     elsif @replace_all
       replace_file(file, target_file)
-    elsif !File.directory?(target_file) && FileUtils.compare_file(file, target_file)
+    elsif !File.directory?(target_file) && File.size? && FileUtils.identical?(file, target_file)
       replace_file(file, target_file)
     else
       print "overwrite #{target_file.replace_home}? [ynaq] "

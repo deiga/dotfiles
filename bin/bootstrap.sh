@@ -10,6 +10,7 @@ while [[ $check == *"install requested"* ]];
 do
   echo "Waiting for installation to finish..."
   sleep 5
+  check=$( (xcode-\select --install || true) 2>&1)
 done
 
 echo "Cloning into ~/dotfiles"
