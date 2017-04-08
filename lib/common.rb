@@ -42,7 +42,7 @@ def install_dotfile(file, target_file)
       replace_file(file, target_file)
     else
       print "overwrite #{target_file.replace_home}? [ynaq] "
-      case $stdin.gets.chomp
+      case gets.chomp
       when 'a'
         @replace_all = true
         replace_file(file, target_file)
