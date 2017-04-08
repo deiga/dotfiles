@@ -7,20 +7,23 @@
 [core]
   excludesfile = /Users/timosand/.gitignore
   editor = vim
-  whitespace = trailing-space,space-before-tab
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
   autocrfl = false
   safecrlf = warn
+  trustctime = false
 [color]
   status = true
   diff = true
   branch = true
-  ui = true
+  ui = auto
   grep = true
   showbranch = true
 [merge]
   conflictstyle = diff3
   stat = true
   tool = vimdiff
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
 [apply]
   whitespace = nowarn
 [alias]
@@ -92,6 +95,8 @@
   trustExitCode = true
 [push]
   default = simple
+  # Make `git push` push relevant annotated tags when pushing branches out.
+  followTags = true
 [fetch]
   recurseSubmodules = true
 [credential]
@@ -100,6 +105,15 @@
   renames = copies
   mnemonicprefix = true
   tool = vimdiff
+  # Enable an experimental heuristic that shifts the hunk boundary in an
+  # attempt to make the resulting patch easier to read.
+  indentHeuristic = true
+[diff "bin"]
+  # Use `hexdump` to diff binary files
+  textconv = hexdump -v -C
+[help]
+  # Automatically correct and execute mistyped commands
+  autocorrect = 1
 [branch]
   autosetupmerge = true
 [rerere]
@@ -114,6 +128,7 @@
   rebase = true
 [rebase]
   autoStash = true
+  autosquash = true
 [commit]
 	gpgsign = true
 	template = /Users/timosand/.stCommitMsg
