@@ -9,7 +9,7 @@ xcode-select --install || true
 
 if [[ $? == 0 ]]; then
   echo "Waiting for installation to finish"
-  sleep 1m
+  sleep 60
 fi
 
 echo "Cloning into ~/dotfiles"
@@ -23,7 +23,7 @@ osascript -e 'tell application "System Events" to click (every button whose valu
 if [[ $? == 0 ]]; then
   echo "Waiting for assistive access"
   osascript -e 'tell app "System Preferences"' -e 'activate' -e 'set current pane to pane "com.apple.preference.security"' -e 'end tell'
-  sleep 30s
+  sleep 30
 fi
 
 
