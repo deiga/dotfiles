@@ -5,15 +5,16 @@ set -x
 set -u
 
 echo "Running 'xcode-select --install'"
-xcode-select --install || true
-
-if [[ $? == 0 ]]; then
-  echo "Waiting for installation to finish"
-  sleep 60
-fi
+check=$( (xcode-\select --install || true) 2>&1)
+echo $check
+str="xcode-select: note: install requested for command line developer tools"
+while [[ "$check" == "$str" ]];
+do
+  echo "Waiting for installation to finish..."
+done
 
 echo "Cloning into ~/dotfiles"
-git clone https://github.com/deiga/dotfiles.git ~/dotfiles
+git clone https://github.com/deiga/dotfiles.git ~/dotfiles || true
 
 cd ~/dotfiles
 
