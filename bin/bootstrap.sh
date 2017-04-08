@@ -16,6 +16,11 @@ done
 echo "Cloning into ~/dotfiles"
 git clone https://github.com/deiga/dotfiles.git ~/dotfiles || true
 
+if [[ $? != 0 ]]; then
+  cd ~/dotfiles
+  git pull
+fi
+
 cd ~/dotfiles
 
 echo "Ask for assistive access"
