@@ -31,7 +31,7 @@ if has("autocmd")
         au BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2
         au BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2
     " }
-    
+
     " XML {
         au FileType xml set omnifunc=xmlcomplete#CompleteTags
     " }
@@ -46,7 +46,10 @@ if has("autocmd")
         au FileType hs set nojoinspaces
     " }
 
-    
+    " Git Commit message spellchecking and wrapping at 72 columns
+    autocmd Filetype gitcommit setlocal spell textwidth=72
+
+
     " Crontab http://vim.wikia.com/wiki/Editing_crontab
     au BufEnter /private/tmp/crontab.* setl backupcopy=yes
 
