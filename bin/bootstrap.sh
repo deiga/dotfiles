@@ -5,7 +5,7 @@ set -x
 set -u
 
 echo "Running 'xcode-select --install'"
-xcode-select --install
+xcode-select --install || true
 sleep 1
 
 echo "Sleeping for 30sec"
