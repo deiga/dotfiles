@@ -6,9 +6,7 @@ set -u
 
 echo "Running 'xcode-select --install'"
 check=$( (xcode-\select --install || true) 2>&1)
-echo $check
-str="xcode-select: note: install requested for command line developer tools"
-while [[ "$check" == "$str" ]];
+while [[ $check == *"install requested"* ]];
 do
   echo "Waiting for installation to finish..."
   sleep 5
