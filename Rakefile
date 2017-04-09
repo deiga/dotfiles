@@ -7,7 +7,7 @@ Dir['lib/*.rb'].each { |lib| require lib }
 # TODO: Refactor tasks to dynamically call methods
 
 # List of files and folders to exclude from linking
-EXCLUDE_FILES_FROM_COMMON = %w(Rakefile README.md LICENSE TODO.md Karabiner bin box config ssh powerline tmp lib).freeze
+EXCLUDE_FILES_FROM_COMMON = %w(Rakefile README.md LICENSE TODO.md Karabiner bin config ssh powerline tmp lib).freeze
 
 # Shorthand for darwin platform
 OSX = RUBY_PLATFORM.downcase.include?('darwin')
