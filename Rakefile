@@ -6,7 +6,8 @@ Dir['lib/*.rb'].each { |lib| require lib }
 
 # TODO: Refactor tasks to dynamically call methods
 
-EXCLUDE_COMMON = %w(Rakefile README.md LICENSE TODO.md Karabiner bin box config ssh powerline tmp lib)
+# List of files and folders to exclude from linking
+EXCLUDE_FILES_FROM_COMMON = %w(Rakefile README.md LICENSE TODO.md Karabiner bin box config ssh powerline tmp lib).freeze
 
 # Shorthand for darwin platform
 OSX = RUBY_PLATFORM.downcase.include?('darwin')
@@ -46,16 +47,16 @@ namespace :update do
   desc 'Update Node'
   task :node do
     LOGGER.info "\nUpdate node".blue
-    system %Q{npm update 2>/dev/null}
-    system %Q{npm -g install npm@latest 2>/dev/null}
-    system %Q{bin/npm-upgrade}
+    system %(npm update 2>/dev/null)
+    system %(npm -g install npm@latest 2>/dev/null)
+    system %(bin/npm-upgrade)
     install_nvm
   end
 
   desc 'Update submodules'
   task :submodule do
     LOGGER.info "\nUpdate submodules".blue
-    system %Q{git submodule foreach git pull origin master 2>/dev/null}
+    system %(git submodule foreach git pull origin master 2>/dev/null)
   end
 
   desc 'Updated rbenv'
@@ -64,7 +65,7 @@ namespace :update do
   end
 
   desc 'Update all'
-  task :all => [:vundle, :powerline, :node, :brew, :gems, :submodule, :rbenv] do
+  task all: %i(vundle powerline node brew gems submodule rbenv) do
   end
 end
 
@@ -83,7 +84,7 @@ namespace :install do
   end
 
   desc 'Install Python'
-  task :python => %w( packages ) do
+  task python: %w(packages) do
     install_python
   end
 
@@ -132,13 +133,13 @@ namespace :install do
   end
 
   desc 'Install powerline (installs zsh and powerline-fonts)'
-  task :powerline => %w( python zsh ) do
+  task powerline: %w(python zsh) do
     install_powerline
   end
 
   desc 'Install ruby'
-  task :ruby => %w( packages ) do
-      install_ruby
+  task ruby: %w(packages) do
+    install_ruby
   end
 
   desc 'Install fonts'
@@ -162,7 +163,7 @@ namespace :install do
   end
 
   desc 'Install all'
-  task :all => %w(
+  task all: %w(
     xcode-select
     common
     packages
@@ -183,32 +184,34 @@ namespace :install do
 end
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
-task :install => ['install:all']
+task install: ['install:all']
 
 desc 'Update everything'
-task :update => ['update:all']
+task update: ['update:all']
 
-task :default => :install
+task default: :install
 
 def install_homebrew
-    require 'English'
+  require 'English'
   rval = `pkgutil --pkg-info=com.apple.pkg.CLTools_Executables`
   if rval.include?('does not exist')
     system 'xcode-select --install'
     system 'sudo xcodebuild -license'
   end
   `which brew`
-  unless $CHILD_STATUS.success?
-    LOGGER.info "\n======================================================".blue
-    LOGGER.info "Installing Homebrew, the OSX package manager...If it's".blue
-    LOGGER.info "already installed, this will do nothing.".blue
-    LOGGER.info "======================================================".blue
-    system 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-  end
+  run_homebrew_install unless $CHILD_STATUS.success?
+end
+
+def run_homebrew_install
+  LOGGER.info "\n======================================================".blue
+  LOGGER.info "Installing Homebrew, the OSX package manager...If it's".blue
+  LOGGER.info 'already installed, this will do nothing.'.blue
+  LOGGER.info '======================================================'.blue
+  system 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
 end
 
 def install_common_dotfiles
-  files = Rake::FileList['*'].exclude('*.log').exclude('*~') - EXCLUDE_COMMON
+  files = Rake::FileList['*'].exclude('*.log').exclude('*~') - EXCLUDE_FILES_FROM_COMMON
   files.each do |file|
     install_dotfile(file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
   end
@@ -248,7 +251,7 @@ def install_karabiner
 end
 
 def switch_to_zsh
-  if `ps -p #{Process::ppid}` =~ /zsh/
+  if `ps -p #{Process.ppid}` =~ /zsh/
     LOGGER.info 'Already using ZSH'.green
   else
     print 'switch to zsh? (recommended) [ynq] '

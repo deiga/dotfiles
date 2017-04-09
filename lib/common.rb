@@ -2,7 +2,7 @@ require 'logger'
 require 'fileutils'
 
 LOGGER = Logger.new(STDOUT)
-LOGGER.formatter = proc do |s, dt, p, msg|
+LOGGER.formatter = proc do |_s, _dt, _p, msg|
   "#{msg}\n"
 end
 
@@ -64,12 +64,14 @@ def clean_temp
   rm_r(Dir['tmp/*'])
 end
 
+# Replace target file with given file
 def replace_file(file, target)
   LOGGER.info "Replacing #{file}".blue
-  system %Q{rm -rf "#{target}"}
+  system %(rm -rf "#{target}")
   link_file(file, target)
 end
 
+# Create symlink or generate file to target directory
 def link_file(file, target = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
   if file =~ /.erb$/
     LOGGER.info "generating #{target.replace_home}".blue
@@ -78,6 +80,6 @@ def link_file(file, target = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"
     end
   else
     LOGGER.info "linking #{target.replace_home}".blue
-    File.symlink(File.join(Dir.pwd, file), target) # system %Q{ln -s "$PWD/#{file}" "#{target}"}
+    File.symlink(File.join(Dir.pwd, file), target)
   end
 end
