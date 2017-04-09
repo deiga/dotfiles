@@ -16,9 +16,6 @@
 [submodule "config/irssi-trackbar"]
 	path = config/irssi-trackbar
 	url = https://github.com/mjholtkamp/irssi-trackbar
-[submodule "config/powerline-fonts"]
-	path = config/powerline-fonts
-	url = https://github.com/Lokaltog/powerline-fonts
 [submodule "config/xiki"]
 	path = config/xiki
 	url = git://github.com/trogdoro/xiki.git

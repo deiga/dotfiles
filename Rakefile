@@ -132,19 +132,14 @@ namespace :install do
     install_packages
   end
 
-  desc 'Install powerline (installs zsh and powerline-fonts)'
-  task powerline: %w(python zsh) do
+  desc 'Install powerline'
+  task powerline: %w[python zsh] do
     install_powerline
   end
 
   desc 'Install ruby'
-  task ruby: %w(packages) do
+  task ruby: %w[packages] do
     install_ruby
-  end
-
-  desc 'Install fonts'
-  task :fonts do
-    install_fonts if OSX
   end
 
   desc 'Install xcode-select'
@@ -163,7 +158,7 @@ namespace :install do
   end
 
   desc 'Install all'
-  task all: %w(
+  task all: %w[
     xcode-select
     common
     packages
@@ -174,12 +169,11 @@ namespace :install do
     karabiner
     bin
     ssh
-    fonts
     powerline
     node
     spaces
     symlink
-  ) do
+  ] do
   end
 end
 

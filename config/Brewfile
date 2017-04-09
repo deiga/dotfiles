@@ -76,6 +76,7 @@ cask install rambox
 cask install freedome
 cask install insomnia
 cask install font-source-code-pro
+cask install font-source-code-pro-for-powerline
 cask install slack
 cask install fsmonitor
 cleanup

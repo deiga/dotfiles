@@ -11,15 +11,5 @@ def install_powerline
 end
 
 def update_powerline
-  # system 'pip install -U --user git+git://github.com/Lokaltog/powerline'
   system 'gpip install -U powerline-status'
-end
-
-def install_fonts
-  LOGGER.info "\nInstalling Fonts".blue
-  system 'brew install wget 2>/dev/null'
-  system 'git submodule update --init --recursive config/powerline-fonts'
-  system 'brew cask install font-source-code-pro'
-  font_paths = Dir[File.join('config', 'powerline-fonts', '*', '*.otf')]
-  cp(font_paths, File.join(ENV['HOME'], 'Library', 'Fonts'))
 end
