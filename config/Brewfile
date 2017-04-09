@@ -13,11 +13,9 @@ install zsh
 install autojump
 install coreutils
 install ctags
-install growly
 install heroku-toolbelt
 install namebench
 install vim --with-override-system-vi
-install phantomjs
 install zsh-completions
 install ruby-build
 install rbenv
@@ -52,7 +50,6 @@ cask install karabiner
 cask install seil
 cask install rescuetime
 cask install dropbox
-cask install gfxcardstatus
 cask install flux
 cask install istat-menus
 cask install spotify
@@ -61,11 +58,9 @@ cask install google-chrome
 cask install firefox
 cask install opera
 cask install steam
-cask install toggldesktop
 cask install fluid
 cask install sequel-pro
 cask install iterm2
-cask install sublime-text
 cask install skitch
 cask install sourcetree
 cask install amethyst
