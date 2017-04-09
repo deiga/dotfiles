@@ -37,6 +37,12 @@ install thefuck
 install mackup
 install ripgrep
 install mas
+install awscli
+install ansible
+install jq
+install watchman
+install shfmt
+install shellcheck
 install gnu-sed --with-default-names
 cask install alfred
 cask install qlcolorcode
@@ -79,4 +85,5 @@ cask install font-source-code-pro
 cask install font-source-code-pro-for-powerline
 cask install slack
 cask install fsmonitor
+cask install docker
 cleanup
