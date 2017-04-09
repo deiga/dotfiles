@@ -187,20 +187,15 @@ task default: :install
 
 def install_homebrew
   require 'English'
-  rval = `pkgutil --pkg-info=com.apple.pkg.CLTools_Executables`
-  if rval.include?('does not exist')
-    system 'xcode-select --install'
-    system 'sudo xcodebuild -license'
-  end
   `which brew`
   run_homebrew_install unless $CHILD_STATUS.success?
 end
 
 def run_homebrew_install
   LOGGER.info "\n======================================================".blue
-  LOGGER.info "Installing Homebrew, the OSX package manager...If it's".blue
-  LOGGER.info 'already installed, this will do nothing.'.blue
-  LOGGER.info '======================================================'.blue
+  LOGGER.info 'Installing Homebrew, the OSX package manager...         '.blue
+  LOGGER.info 'If it\'s already installed, this will do nothing.       '.blue
+  LOGGER.info '========================================================'.blue
   system 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
 end
 
