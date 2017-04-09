@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.timosand.keeprunning.controlplane</string>
+    <string>com.deiga.keeprunning.controlplane</string>
     <key>KeepAlive</key>
     <dict>
         <key>SuccessfulExit</key>
@@ -17,5 +17,3 @@
     <true/>
 </dict>
 </plist>
-
-
