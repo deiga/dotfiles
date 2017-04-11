@@ -148,6 +148,7 @@ namespace :install do
 
   desc 'Adds 4 Spaces'
   task :spaces do
+    LOGGER.info "\nAdding 4 Spaces".blue
     system 'osascript lib/add_spaces.scpt' if OSX
   end
 
@@ -186,6 +187,7 @@ task default: :install
 
 Rake::Task['install:packages'].enhance do
   restart_quicklook
+  system %(sudo xcodebuild -license accept)
   system %(open '/usr/local/Caskroom/lastpass/latest/LastPass Installer.app')
   system %(open -a Dropbox)
   system %(open -a Evernote)
@@ -255,7 +257,7 @@ end
 
 def link_karabiner_binary
   karabiner_binary = File.join('/', 'Applications', 'Karabiner.app', 'Contents', 'Library', 'bin', 'karabiner')
-  homebrew_bin_path = File.join('/', 'usr', 'local', 'bin')
+  homebrew_bin_path = File.join('/', 'usr', 'local', 'bin', 'karabiner')
   install_dotfile(karabiner_binary, homebrew_bin_path)
 end
 
