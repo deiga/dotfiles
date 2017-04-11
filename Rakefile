@@ -276,10 +276,16 @@ def install_launch_agents
 end
 
 def install_node
+  require 'English'
   LOGGER.info "\nInstall node, npm, nvm".blue
   install_nvm
   # Needs a shell refresh here
-  system %(zsh -lc 'nvm install node --reinstall-packages-from=node')
+  system %(command -p -v node)
+  if $CHILD_STATUS.success?
+    system %(zsh -lc 'nvm install node --reinstall-packages-from=node')
+  else
+    system %(zsh -lc 'nvm install node')
+  end
   system %(zsh -lc 'nvm alias default node; nvm use default')
   system %(zsh -lc 'curl https://npmjs.org/install.sh | sh')
   install_node_packages
