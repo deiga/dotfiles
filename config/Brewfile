@@ -79,7 +79,7 @@ cask 'insomnia'
 cask 'istat-menus'
 cask 'iterm2'
 cask 'java'
-cask 'karabiner', args: ['no-binaries']
+cask 'karabiner', args: { 'no-binaries' => true }
 cask 'keybase'
 cask 'lastpass'
 cask 'opera'

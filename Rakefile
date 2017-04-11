@@ -189,7 +189,7 @@ Rake::Task['install:packages'].enhance do
   system %(open '/usr/local/Caskroom/lastpass/latest/LastPass Installer.app')
   system %(open -a Dropbox)
   system %(open -a Evernote)
-  system %(open -a Google Chrome)
+  system %(open -a 'Google Chrome')
 end
 
 def restart_quicklook
