@@ -5,8 +5,8 @@ tap homebrew/binary
 tap homebrew/versions
 tap homebrew/dupes
 tap homebrew/head-only
-install git --with-brewed-openssl --with-brewed-curl --with-persistent-https
-install python --with-brewed-openssl --universal --framework
+install git --with-brewed-openssl --with-brewed-curl --with-persistent-https --with-blk-sha1
+install python
 install hub
 install mtr
 install zsh
@@ -15,13 +15,12 @@ install coreutils
 install ctags
 install heroku-toolbelt
 install namebench
-install vim --with-override-system-vi
+install vim --with-override-system-vi --with-python3 --with-custom-ruby
 install zsh-completions
 install ruby-build
 install rbenv
-install reattach-to-user-namespace
+install reattach-to-user-namespace # tmux Copy & Paste support
 install ssh-copy-id
-install selecta
 install tmux
 install tree
 install wget --with-iri
@@ -43,6 +42,7 @@ install jq
 install watchman
 install shfmt
 install shellcheck
+install gnupg --with-readline
 install gnu-sed --with-default-names
 cask install alfred
 cask install qlcolorcode
@@ -70,7 +70,6 @@ cask install iterm2
 cask install skitch
 cask install sourcetree
 cask install amethyst
-cask install archiver
 cask install atom
 cask install lastpass
 cask install java
