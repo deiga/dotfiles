@@ -255,7 +255,7 @@ end
 def link_karabiner_binary
   karabiner_binary = File.join('/', 'Applications', 'Karabiner.app', 'Contents', 'Library', 'bin', 'karabiner')
   homebrew_bin_path = File.join('/', 'usr', 'local', 'bin')
-  link_file(karabiner_binary, homebrew_bin_path)
+  install_dotfile(karabiner_binary, homebrew_bin_path)
 end
 
 def switch_to_zsh
