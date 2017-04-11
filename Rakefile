@@ -330,7 +330,7 @@ end
 def install_packages
   LOGGER.info 'Installing packages'.blue
   if OSX
-    system 'brew bundle --file config/Brewfile'
+    system 'brew bundle --file=config/Brewfile'
   else
     mkdir_p %w(~/local/bin ~/local/build)
     ENV['LD_LIBRARY_PATH'] = File.join(ENV['HOME'], 'local/lib')
