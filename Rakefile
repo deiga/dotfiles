@@ -228,6 +228,7 @@ def move_keys
 end
 
 def install_karabiner
+  link_karabiner_binary
   karabiner_file = Dir['Karabiner/*'][0]
   target = File.join(ENV['HOME'], 'Library', 'Application Support', karabiner_file)
   mkdir_p(File.dirname(target))
@@ -237,6 +238,12 @@ def install_karabiner
   system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable space_cadet.left_control_to_hyper'
   system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable private.shifts_to_parens'
   system '/Applications/Karabiner.app/Contents/Library/bin/karabiner set parameter.keyoverlaidmodifier_timeout 700'
+end
+
+def link_karabiner_binary
+  karabiner_binary = File.join('/', 'Applications', 'Karabiner.app', 'Contents', 'Library', 'bin', 'karabiner')
+  homebrew_bin_path = File.join('/', 'usr', 'local', 'bin')
+  link_file(karabiner_binary, homebrew_bin_path)
 end
 
 def switch_to_zsh

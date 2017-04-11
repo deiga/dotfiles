@@ -52,7 +52,7 @@ cask install quicklook-json
 cask install quicklook-csv
 cask install betterzipql
 cask install suspicious-package
-cask install karabiner
+cask install karabiner --no-binaries
 cask install seil
 cask install rescuetime
 cask install dropbox
