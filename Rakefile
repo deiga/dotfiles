@@ -185,6 +185,14 @@ task update: ['update:all']
 
 task default: :install
 
+Rake::Task['install:packages'].enhance do
+  restart_quicklook
+end
+
+def restart_quicklook
+  system %(qlmanage -r)
+end
+
 def install_homebrew
   require 'English'
   `which brew`
