@@ -13,6 +13,7 @@ do
   check=$( (xcode-\select --install || true) 2>&1)
 done
 
+
 DOTFILES_REPO=~/dotfiles
 
 echo "Cloning into ~/dotfiles"
@@ -26,8 +27,10 @@ fi
 
 cd $DOTFILES_REPO
 
+set +e
 echo "Ask for assistive access"
-osascript -e 'tell application "System Events" to click at {0,0}' || true
+osascript -e 'tell application "System Events" to click at {0,0}'
+set -e
 
 if [[ $? != 0 ]]; then
   echo "Waiting for assistive access"
@@ -35,6 +38,8 @@ if [[ $? != 0 ]]; then
   sleep 30
 fi
 
+echo "Updateing rake"
+sudo gem upgrade rake
 
 echo "Running rake install"
 rake install
