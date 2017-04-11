@@ -2,7 +2,7 @@ require_relative 'common'
 
 def install_rbenv
   if OSX
-    system 'brew install rbenv ruby-build rbenv-readline'
+    system 'brew install rbenv ruby-build rbenv-binstubs rbenv-ctags rbenv-use rbenv-default-gems rbenv-communal-gems rbenv-whatis rbenv-vars rbenv-aliases'
     system 'export RBENV_ROOT=/usr/local/var/rbenv'
   else
     mkdir_p(File.join(ENV['HOME'], '.rbenv'))
@@ -16,15 +16,15 @@ def install_rbenv_plugins
   plugins = File.join(ENV['RBENV_ROOT'], 'plugins') unless ENV['RBENV_ROOT'].nil?
   mkdir_p(plugins)
   Dir.chdir(plugins) do
-    system 'git clone git://github.com/tpope/rbenv-communal-gems.git'
+    system 'git clone https://github.com/tpope/rbenv-communal-gems.git'
     system 'git clone https://github.com/ianheggie/rbenv-binstubs.git'
-    system 'git clone git://github.com/tpope/rbenv-ctags.git'
+    system 'git clone https://github.com/tpope/rbenv-ctags.git'
     system 'git clone https://github.com/sstephenson/rbenv-default-gems.git'
-    system 'git clone https://github.com/sstephenson/rbenv-gem-rehash.git'
     system 'git clone https://github.com/rkh/rbenv-update.git'
     system 'git clone https://github.com/rkh/rbenv-whatis.git'
     system 'git clone https://github.com/rkh/rbenv-use.git'
     system 'git clone https://github.com/sstephenson/rbenv-vars.git'
+    system 'git clone https://github.com/tpope/rbenv-aliases.git'
   end
 end
 
@@ -34,7 +34,7 @@ end
 
 def install_ruby
   install_rbenv
-  install_rbenv_plugins
+  install_rbenv_plugins unless OSX
   link_default_gems
   system %{zsh -lc 'rbenv install 2.4.0'}
   system %{zsh -lc 'rbenv use 2.4 --global'}
