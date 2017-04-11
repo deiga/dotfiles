@@ -118,7 +118,6 @@ namespace :install do
   task :common do
     install_common_dotfiles
     system './config/.macos'
-    install_keybindings
   end
 
   desc 'Setup ~/.ssh folder without overwriting currently existing files'
@@ -362,10 +361,4 @@ def install_omz_plugins
   omz_plugins.each do |plugin|
     install_dotfile(plugin, File.join(ENV['HOME'], '.oh-my-zsh', 'custom', 'plugins', plugin.split('/')[-1]))
   end
-end
-
-def install_keybindings
-  bindings_file = Dir['config/DefaultKeyBinding.dict'][0]
-  mkdir_p(File.join(ENV['HOME'], 'Library', 'KeyBindings'))
-  install_dotfile(bindings_file, File.join(ENV['HOME'], 'Library', 'KeyBindings', bindings_file.split('/')[-1]))
 end
