@@ -298,7 +298,6 @@ def install_node
   require 'English'
   LOGGER.info "\nInstall node, npm, nvm".blue
   install_nvm
-  # Needs a shell refresh here
   system %(command -p -v node)
   if $CHILD_STATUS.success?
     system %(zsh -lc 'nvm install node --reinstall-packages-from=node')
@@ -331,9 +330,8 @@ end
 
 def install_packages
   LOGGER.info 'Installing packages'.blue
-  # Xcode licence agreement here
   if OSX
-    system 'while read line; do brew $line; done < config/Brewfile'
+    system 'brew bundle --file config/Brewfile'
   else
     mkdir_p %w(~/local/bin ~/local/build)
     ENV['LD_LIBRARY_PATH'] = File.join(ENV['HOME'], 'local/lib')

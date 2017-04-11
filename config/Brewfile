@@ -1,88 +1,107 @@
-tap caskroom/fonts
-tap caskroom/versions
-tap homebrew/science
-tap homebrew/binary
-tap homebrew/versions
-tap homebrew/dupes
-tap homebrew/head-only
-install git --with-brewed-openssl --with-brewed-curl --with-persistent-https --with-blk-sha1
-install python
-install hub
-install mtr
-install zsh
-install autojump
-install coreutils
-install ctags
-install heroku-toolbelt
-install namebench
-install vim --with-override-system-vi --with-python3 --with-custom-ruby
-install zsh-completions
-install ruby-build
-install rbenv
-install reattach-to-user-namespace # tmux Copy & Paste support
-install ssh-copy-id
-install tmux
-install tree
-install wget --with-iri
-install javarepl
-install httpie
-install peco
-install pup
-install tidy-html5
-install mosh
-install nmap
-install terminal-notifier
-install thefuck
-install mackup
-install ripgrep
-install mas
-install awscli
-install ansible
-install jq
-install watchman
-install shfmt
-install shellcheck
-install gnupg --with-readline
-install gnu-sed --with-default-names
-cask install alfred
-cask install qlcolorcode
-cask install qlstephen
-cask install qlmarkdown
-cask install quicklook-json
-cask install quicklook-csv
-cask install betterzipql
-cask install suspicious-package
-cask install karabiner --no-binaries
-cask install seil
-cask install rescuetime
-cask install dropbox
-cask install flux
-cask install istat-menus
-cask install spotify
-cask install evernote
-cask install google-chrome
-cask install firefox
-cask install opera
-cask install steam
-cask install fluid
-cask install sequel-pro
-cask install iterm2
-cask install skitch
-cask install sourcetree
-cask install amethyst
-cask install atom
-cask install lastpass
-cask install java
-cask install controlplane
-cask install keybase
-cask install black-screen
-cask install dash
-cask install rambox
-cask install freedome
-cask install insomnia
-cask install font-source-code-pro
-cask install font-source-code-pro-for-powerline
-cask install slack
-cask install fsmonitor
-cask install docker
-cleanup
+tap 'caskroom/cask'
+tap 'caskroom/fonts'
+tap 'caskroom/versions'
+tap 'homebrew/binary'
+tap 'homebrew/boneyard'
+tap 'homebrew/bundle'
+tap 'homebrew/core'
+tap 'homebrew/dupes'
+tap 'homebrew/head-only'
+tap 'homebrew/php'
+tap 'homebrew/science'
+tap 'homebrew/versions'
+brew 'openssl', args: ['universal']
+brew 'sqlite'
+brew 'python', args: ['universal']
+brew 'ansible'
+brew 'autojump'
+brew 'awscli'
+brew 'coreutils'
+brew 'ctags'
+brew 'curl'
+brew 'git', args: ['with-brewed-curl', 'with-brewed-openssl', 'with-persistent-https', 'with-blk-sha1']
+brew 'git-crypt'
+brew 'gnu-sed', args: ['with-default-names']
+brew 'gnupg', args: ['with-readline']
+brew 'heroku'
+brew 'python3'
+brew 'httpie'
+brew 'hub'
+brew 'perl'
+brew 'javarepl'
+brew 'jq'
+brew 'mackup'
+brew 'mas'
+brew 'mobile-shell'
+brew 'mtr'
+brew 'namebench'
+brew 'nmap'
+brew 'nodenv'
+brew 'nvm'
+brew 'peco'
+brew 'pinentry-mac'
+brew 'pup'
+brew 'reattach-to-user-namespace'
+brew 'ripgrep'
+brew 'shellcheck'
+brew 'shfmt'
+brew 'ssh-copy-id'
+brew 'terminal-notifier'
+brew 'thefuck'
+brew 'tidy-html5'
+brew 'tmux'
+brew 'tree'
+brew 'vim', args: ['with-custom-ruby', 'with-python3']
+brew 'watchman'
+brew 'wget' args: ['with-iri']
+brew 'zsh'
+brew 'zsh-completions'
+cask 'alfred'
+cask 'amethyst'
+cask 'atom'
+cask 'betterzipql'
+cask 'black-screen'
+cask 'controlplane'
+cask 'dash'
+cask 'dotnet'
+cask 'dropbox'
+cask 'evernote'
+cask 'firefox'
+cask 'fluid'
+cask 'flux'
+cask 'font-source-code-pro'
+cask 'font-source-code-pro-for-powerline'
+cask 'freedome'
+cask 'fsmonitor'
+cask 'google-chrome'
+cask 'harvest'
+cask 'insomnia'
+cask 'istat-menus'
+cask 'iterm2'
+cask 'java'
+cask 'karabiner', args: ['no-binaries']
+cask 'keybase'
+cask 'lastpass'
+cask 'opera'
+cask 'qlcolorcode'
+cask 'qlmarkdown'
+cask 'qlstephen'
+cask 'quicklook-csv'
+cask 'quicklook-json'
+cask 'rambox'
+cask 'rescuetime'
+cask 'seil'
+cask 'skitch'
+cask 'slack'
+cask 'sourcetree'
+cask 'spotify'
+cask 'steam'
+cask 'suspicious-package'
+cask 'vagrant'
+cask 'virtualbox'
+cask 'vivaldi'
+mas 'Amphetamine', id: 937984704
+mas 'DaisyDisk', id: 411643860
+mas 'Gemini', id: 463541543
+mas 'Microsoft Remote Desktop', id: 715768417
+mas 'Xcode', id: 497799835
