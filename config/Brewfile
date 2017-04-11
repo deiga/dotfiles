@@ -53,7 +53,7 @@ brew 'tmux'
 brew 'tree'
 brew 'vim', args: ['with-custom-ruby', 'with-python3']
 brew 'watchman'
-brew 'wget' args: ['with-iri']
+brew 'wget', args: ['with-iri']
 brew 'zsh'
 brew 'zsh-completions'
 cask 'alfred'
