@@ -7,7 +7,6 @@ tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'homebrew/dupes'
 tap 'homebrew/head-only'
-tap 'homebrew/php'
 tap 'homebrew/science'
 tap 'homebrew/versions'
 brew 'openssl', args: ['universal']
