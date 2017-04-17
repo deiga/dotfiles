@@ -152,6 +152,12 @@ namespace :install do
     system 'osascript lib/add_spaces.scpt' if OSX
   end
 
+  desc 'Changes Caps Lock to Control'
+  task :capslock do
+    LOGGER.info "\nChanging Caps Lock to Control".blue
+    system 'osascript bin/change_caps_lock_to_ctrl_l.scpt' if OSX
+  end
+
   desc 'Symlink outside files'
   task :symlink do
     system %(ln -s ~/Dropbox/atom ~/.atom)
@@ -173,6 +179,7 @@ namespace :install do
     node
     spaces
     symlink
+    capslock
   ] do
   end
 end
