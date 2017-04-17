@@ -35,3 +35,4 @@ Manual labour:
   * Login to Dropbox
   * Login to Evernote
   * Login to Google Chrome
+  * Login to SourceTree
