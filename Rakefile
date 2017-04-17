@@ -164,6 +164,19 @@ namespace :install do
     system 'osascript bin/set_to_max_resolution.scpt' if OSX
   end
 
+  desc 'Set up login items'
+  task :loginitems do
+    LOGGER.info "\nSetting up login items".blue
+    system %(brew install OJFord/formulae/loginitems)
+    system %(zsh -lc 'loginitems -a Karabiner -s')
+    system %(zsh -lc 'loginitems -a Seil -s')
+    system %(zsh -lc 'loginitems -a Amethyst')
+    system %(zsh -lc 'loginitems -a RescueTime')
+    system %(zsh -lc 'loginitems -a Dropbox')
+    system %(zsh -lc 'loginitems -a Flux')
+    system %(zsh -lc 'loginitems -a "Alfred 3"')
+  end
+
   desc 'Symlink outside files'
   task :symlink do
     dropbox_atom_path = File.join('~', '/', 'Dropbox', 'atom')
@@ -189,6 +202,7 @@ namespace :install do
     symlink
     capslock
     resolution
+    loginitems
   ] do
   end
 end
