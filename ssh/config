@@ -140,7 +140,7 @@ Host *
     Port 22
     Compression yes
     CompressionLevel 7
-    Cipher blowfish
+    Cipher aes128-gcm@openssh.com
     ControlMaster auto
     ControlPath /tmp/ssh-%r@%h:%p
     VisualHostKey yes
