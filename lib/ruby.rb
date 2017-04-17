@@ -3,7 +3,6 @@ require_relative 'common'
 def install_rbenv
   if OSX
     system 'brew install rbenv ruby-build rbenv-binstubs rbenv-ctags rbenv-use rbenv-default-gems rbenv-communal-gems rbenv-whatis rbenv-vars rbenv-aliases'
-    system 'export RBENV_ROOT=/usr/local/var/rbenv'
   else
     mkdir_p(File.join(ENV['HOME'], '.rbenv'))
     system 'git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
