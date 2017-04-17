@@ -158,6 +158,12 @@ namespace :install do
     system 'osascript bin/change_caps_lock_to_ctrl_l.scpt' if OSX
   end
 
+  desc 'Changes to max Resolution'
+  task :resolution do
+    LOGGER.info "\nChanging to max resolution".blue
+    system 'osascript bin/set_to_max_resolution.scpt' if OSX
+  end
+
   desc 'Symlink outside files'
   task :symlink do
     system %(ln -s ~/Dropbox/atom ~/.atom)
@@ -180,6 +186,7 @@ namespace :install do
     spaces
     symlink
     capslock
+    resolution
   ] do
   end
 end
