@@ -168,8 +168,8 @@ namespace :install do
   task :loginitems do
     LOGGER.info "\nSetting up login items".blue
     system %(brew install OJFord/formulae/loginitems)
-    system %(zsh -lc 'loginitems -a Karabiner -s')
-    system %(zsh -lc 'loginitems -a Seil -s')
+    system %(zsh -lc 'loginitems -a Karabiner -s false')
+    system %(zsh -lc 'loginitems -a Seil -s false')
     system %(zsh -lc 'loginitems -a Amethyst')
     system %(zsh -lc 'loginitems -a RescueTime')
     system %(zsh -lc 'loginitems -a Dropbox')
