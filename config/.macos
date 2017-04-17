@@ -142,20 +142,6 @@ defaults write com.apple.AppleMultitouchTrackpad ActuateDetents -bool true
 # Set function keys to F1,F2, etc.
 defaults write -g com.apple.keyboard.fnState -bool true
 
-# Switch to space keyboard shortcuts
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 118 '{enabled = 1; value = { parameters = (65535, 18, 262144); type = "standard"; }; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 119 '{enabled = 1; value = { parameters = (65535, 19, 262144); type = "standard"; }; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 120 '{enabled = 1; value = { parameters = (65535, 20, 262144); type = "standard"; }; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 121 '{enabled = 1; value = { parameters = (65535, 21, 262144); type = "standard"; }; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 122 '{enabled = 1; value = { parameters = (65535, 22, 262144); type = "standard"; }; }'
-
-# Switch spaces left/right
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 79 '{ enabled = 0; }'
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 '{ enabled = 0; }'
-
-# Move focus to the next window in application - Option+Tab
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 '{ enabled = 1; value = { parameters = ( 65535, 48, 524288 ); type = standard; }; }'
-
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
