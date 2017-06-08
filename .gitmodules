@@ -1,9 +1,6 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
-[submodule "config/solarized"]
-	path = config/solarized
-	url = https://github.com/altercation/solarized
 [submodule "config/dircolors-solarized"]
 	path = config/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
