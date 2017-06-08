@@ -79,8 +79,6 @@ sudo defaults write /Library/Preferences/.GlobalPreferences MultipleSessionEnabl
 # Alfred sync config
 defaults write com.runningwithcrayons.Alfred-Preferences-3 syncfolder "~/Dropbox"
 
-# Disable spaces switching animation
-defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
@@ -281,6 +279,12 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
+
+# Disable spaces switching animation
+defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
+
+# Disables bouncing dock icons
+defaults write com.apple.dock no-bouncing -bool TRUE
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true

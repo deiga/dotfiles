@@ -11,6 +11,7 @@ EXCLUDE_FILES_FROM_COMMON = %w(Rakefile README.md LICENSE TODO.md Karabiner bin 
 
 # Shorthand for darwin platform
 OSX = RUBY_PLATFORM.downcase.include?('darwin')
+MAC_OS_VERSION = `defaults read loginwindow SystemVersionStampAsString`.chomp
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
 task '' => :install
@@ -50,7 +51,6 @@ namespace :update do
     system %(npm update 2>/dev/null)
     system %(npm -g install npm@latest 2>/dev/null)
     system %(bin/npm-upgrade)
-    install_nvm
   end
 
   desc 'Update submodules'
@@ -120,6 +120,11 @@ namespace :install do
     system './config/.macos'
   end
 
+  desc "Run macOS configs"
+  task :macos do
+    system './config/.macos' if OSX
+  end
+
   desc 'Setup ~/.ssh folder without overwriting currently existing files'
   task :ssh do
     install_ssh
@@ -169,7 +174,6 @@ namespace :install do
     LOGGER.info "\nSetting up login items".blue
     system %(brew install OJFord/formulae/loginitems)
     system %(zsh -lc 'loginitems -a Karabiner -s false')
-    system %(zsh -lc 'loginitems -a Seil -s false')
     system %(zsh -lc 'loginitems -a Amethyst')
     system %(zsh -lc 'loginitems -a RescueTime')
     system %(zsh -lc 'loginitems -a Dropbox')
@@ -188,6 +192,7 @@ namespace :install do
   task all: %w[
     xcode-select
     common
+    macos
     packages
     submodule
     zsh
@@ -273,16 +278,22 @@ def move_keys
 end
 
 def install_karabiner
-  link_karabiner_binary
-  karabiner_file = Dir['Karabiner/*'][0]
-  target = File.join(ENV['HOME'], 'Library', 'Application Support', karabiner_file)
-  mkdir_p(File.dirname(target))
-  install_dotfile(karabiner_file, target)
-  system 'open -a Karabiner'
-  system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable remap.controlL2controlL_escape'
-  system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable space_cadet.left_control_to_hyper'
-  system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable private.shifts_to_parens'
-  system '/Applications/Karabiner.app/Contents/Library/bin/karabiner set parameter.keyoverlaidmodifier_timeout 700'
+  if MAC_OS_VERSION > "10.12.0"
+    system %(brew cask install karabiner-elements)
+  else
+    system %(brew cask install karabiner --no-binaries)
+    system %(brew cask install seil)
+    link_karabiner_binary
+    karabiner_file = Dir['Karabiner/*'][0]
+    target = File.join(ENV['HOME'], 'Library', 'Application Support', karabiner_file)
+    mkdir_p(File.dirname(target))
+    install_dotfile(karabiner_file, target)
+    system 'open -a Karabiner'
+    system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable remap.controlL2controlL_escape'
+    system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable space_cadet.left_control_to_hyper'
+    system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable private.shifts_to_parens'
+    system '/Applications/Karabiner.app/Contents/Library/bin/karabiner set parameter.keyoverlaidmodifier_timeout 700'
+  end
 end
 
 def link_karabiner_binary
