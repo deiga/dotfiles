@@ -1,4 +1,5 @@
-# vi:syntax=zsh
+# vim syn=zsh
+
 #echo 'zprofile' $0 # Debug
 #setopt xtrace # Trace
 #setopt promptsubst
@@ -25,7 +26,8 @@ case $OSTYPE in
         PATH=$COREUTILS_PATH:$HOMEBREW_PATH:$PATH
         export RBENV_ROOT=/usr/local/var/rbenv
         export ARCHFLAGS="-arch x86_64"
-        export JAVA_HOME=$(/usr/libexec/java_home)
+        export JAVA_HOME
+        JAVA_HOME=$(/usr/libexec/java_home)
         export SCALA_HOME=/usr/local/opt/scala
         export ATOM_REPOS_HOME=$HOME/Dropbox/Documents/Projects
     ;;
