@@ -99,6 +99,7 @@
   followTags = true
 [fetch]
   recurseSubmodules = true
+	prune = true
 [credential]
   helper = osxkeychain
 [diff]
