@@ -8,11 +8,6 @@
 export LANG="en_GB.UTF-8"
 export LC_ALL="en_GB.UTF-8"
 
-# Base16 Shell
-BASE16_SCHEME="flat"
-BASE16_SHELL="$HOME/dotfiles/config/base16/shell/base16-$BASE16_SCHEME.dark.sh"
-[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
-
 # Customize to your needs...
 BIN_PATH="$HOME/bin:$HOME/local/bin" # Add ~/bin to PATH
 BOX_PATH="$HOME/dotfiles/box/bin" # Add path for box
@@ -45,12 +40,6 @@ PATH="$RBENV_ROOT/bin:$PATH"
 
 typeset -U PATH
 export PATH
-
-# Make path system wide for OS X
-case $OSTYPE in
-    darwin*)
-    ;;
-esac
 
 #if [[ ! $(type perlbrew) =~ "shell function" ]]; then source ~/perl5/perlbrew/etc/bashrc; fi
 if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
