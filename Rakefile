@@ -329,36 +329,26 @@ end
 
 def install_node
   require 'English'
-  LOGGER.info "\nInstall node, npm, nvm".blue
-  install_nvm
-  system %(command -p -v node)
+  LOGGER.info "\nInstall node, npm".blue
+  node_version='7.10.0'
+  system %(nodenv update-version-defs >/dev/null)
+  system %(nodenv prune-version-defs)
+  mkdir_p(File.join('~','.nodenv'))
+  install_dotfile(Dir['config/default-packages'][0], File.join('~/.nodenv', 'default-packages'))
+  system %(command -p -v node > /dev/null)
   if $CHILD_STATUS.success?
-    system %(zsh -lc 'nvm install node --reinstall-packages-from=node')
+    version=`node -v`.chomp.gsub(/v.*?/,'')
+    system %(zsh -lc 'nodenv install -s #{node_version}')
+    system %(zsh -lc 'nodenv migrate #{version} #{node_version}')
   else
-    system %(zsh -lc 'nvm install node')
+    system %(zsh -lc 'nodenv install #{node_version}')
   end
-  system %(zsh -lc 'nvm alias default node; nvm use default')
-  system %(zsh -lc 'curl https://npmjs.org/install.sh | sh')
-  install_node_packages
-end
-
-def install_node_packages
-  packages = Psych.load_file('config/Nodefile')
-  local = packages['local'] || []
-  global = packages['global'] || []
-  system %(npm install -g #{global.join(' ')}) unless global.empty?
-  system %(npm install #{local.join(' ')}) unless local.empty?
-end
-
-def install_nvm
-  nvm_dir = File.join(ENV['HOME'], '.nvm')
-  if File.exist?(nvm_dir)
-    LOGGER.info "=> NVM is already installed in #{nvm_dir}, trying to update".blue
-    system %(cd #{nvm_dir} && git fetch origin)
-  else
-    system %(git clone https://github.com/creationix/nvm.git #{nvm_dir})
+  system %(zsh -lc 'nodenv alias --auto;')
+  system %(zsh -lc 'nodenv global #{node_version}')
+  system %(command -p -v npm > /dev/null)
+  if not $CHILD_STATUS.success?
+    system %(zsh -lc 'curl https://npmjs.org/install.sh | sh')
   end
-  system %(cd #{nvm_dir} && git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" origin` && . #{nvm_dir}/nvm.sh)
 end
 
 def install_packages

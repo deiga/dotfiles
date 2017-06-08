@@ -15,7 +15,6 @@ CABAL_PATH="$HOME/.cabal/bin"
 STACK_INSTALL_PATH="$HOME/.local/bin/"
 PATH=$BIN_PATH:$BOX_PATH:$PATH
 export GOPATH="$HOME/go"
-export NVM_DIR="$HOME/.nvm"
 
 PATH=$CABAL_PATH:$STACK_INSTALL_PATH:$PATH
 
@@ -24,7 +23,6 @@ case $OSTYPE in
         COREUTILS_PATH=/usr/local/opt/coreutils/libexec/gnubin
         HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin
         PATH=$COREUTILS_PATH:$HOMEBREW_PATH:$PATH
-        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
         export RBENV_ROOT=/usr/local/var/rbenv
         export ARCHFLAGS="-arch x86_64"
         export JAVA_HOME=$(/usr/libexec/java_home)
@@ -43,4 +41,5 @@ export PATH
 
 #if [[ ! $(type perlbrew) =~ "shell function" ]]; then source ~/perl5/perlbrew/etc/bashrc; fi
 if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
-eval $(thefuck --alias)
+if type nodenv > /dev/null; then eval "$(nodenv init - --no-rehash)"; fi
+eval "$(thefuck --alias)"
