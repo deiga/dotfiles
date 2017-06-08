@@ -58,6 +58,7 @@ namespace :update do
     LOGGER.info "\nUpdate submodules & subtrees".blue
     system %(git submodule foreach git pull origin master 2>/dev/null)
     system %(g subtree pull --prefix config/oh-my-zsh/zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git master --squash)
+    system %(g subtree pull --prefix config/solarized https://github.com/altercation/solarized.git master --squash)
   end
 
   desc 'Updated rbenv'
