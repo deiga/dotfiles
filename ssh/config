@@ -132,6 +132,8 @@ Host gitlab.cre8.fi
 ### END ###
 
 Host *
+    AddKeysToAgent yes
+    UseKeychain yes
     IdentitiesOnly yes
     ExitOnForwardFailure yes
     Protocol 2
@@ -142,5 +144,7 @@ Host *
     CompressionLevel 7
     Cipher aes128-gcm@openssh.com
     ControlMaster auto
+    ControlPersist 10m
     ControlPath /tmp/ssh-%r@%h:%p
     VisualHostKey yes
+    StrictHostKeyChecking no
