@@ -49,7 +49,7 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
-alias bower="noglob bower"
 alias epoch="date +%s"
 alias g="git"
 alias gcl="GIT_TEMPLATE_DIR=$HOME/.git_template g cl"
+alias j="z"

@@ -44,4 +44,5 @@ export PATH
 #if [[ ! $(type perlbrew) =~ "shell function" ]]; then source ~/perl5/perlbrew/etc/bashrc; fi
 if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 if type nodenv > /dev/null; then eval "$(nodenv init - --no-rehash)"; fi
+if type fasd > /dev/null; then eval "$(fasd --init auto)"; fi
 eval "$(thefuck --alias)"
