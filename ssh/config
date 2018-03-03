@@ -41,6 +41,12 @@ Host patch-tag.com
     IdentityFile ~/.ssh/keys/patchtag_rsa
     TCPKeepAlive yes
 
+Host gitlab.com
+    User git
+    Hostname gitlab.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/keys/gitlab_rsa
+
 Host github.com
     User git
     Hostname github.com
