@@ -119,7 +119,6 @@ namespace :install do
   desc "Symlink dotfiles and folders to #{ENV['HOME']}"
   task :common do
     install_common_dotfiles
-    system './config/.macos'
   end
 
   desc "Run macOS configs"
