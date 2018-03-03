@@ -50,27 +50,8 @@ export EDITOR=vim
 set -o vi
 
 # Announces todays date
-today=`date "+%m.%d.%Y"`
+today=$(date "+%m.%d.%Y")
 
-# Keybindings
-bindkey '\e[3~' delete-char
-bindkey '^R' history-incremental-search-backward
-
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "$terminfo[kcuu1]" up-line-or-beginning-search # Up
-bindkey "$terminfo[kcud1]" down-line-or-beginning-search # Down
-bindkey "^P" up-line-or-beginning-search
-bindkey "^N" down-line-or-beginning-search
-
-fzf-open-file-with-vim() {
-  vim $(fzf)
-}
-
-zle -N fzf-open-file-with-vim
-# bindkey "^P"  fzf-open-file-with-vim
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
@@ -80,7 +61,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 autoload -U colors && colors
 setopt prompt_subst
 
-eval `dircolors ~/.dir_colors`
+eval $(dircolors ~/.dir_colors)
 
 # ZSH Hooks
 autoload -U add-zsh-hook
@@ -99,14 +80,14 @@ config_files=(~/.zsh/*.zsh)
 # load the path files
 for file in $config_files
 do
-  source $file
+  source "$file"
 done
 
 init_files=(~/.zsh/init/*.*sh)
 
 for file in $init_files
 do
-    source $file || true
+    source "$file" || true
 done
 
 unalias run-help
