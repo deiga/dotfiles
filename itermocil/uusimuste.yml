@@ -1,0 +1,12 @@
+windows:
+  - name: uusimuste
+    root: ~/Dropbox/Documents/Projects/uusimuste
+    layout: main-vertical-flipped
+    panes:
+      - commands:
+        - cd uusimuste
+        - npm run build:watch
+      - open https://localhost:8888
+      - commands:
+        - vagrant up --provision
+        - vagrant ssh

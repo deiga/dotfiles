@@ -1,0 +1,21 @@
+windows:
+  - name: kin
+    root: ~/Dropbox/Documents/Projects/
+    layout: tiled
+    panes:
+      - commands:
+        - cd kin-api-server
+        - npm run build:dev
+        - npm run start
+        - npm run watch:dev
+      - commands:
+        - cd kin-web-client
+        - npm run watch:dev
+      - commands:
+        - cd kin-api-server
+        - pm2 logs --timestamp --lines 30 --out  0
+      - commands:
+        - cd kin-web-client
+      - commands:
+        - cd kin-api-server
+        - pm2 logs --timestamp --lines 30 --err  0

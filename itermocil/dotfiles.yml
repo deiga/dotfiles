@@ -1,0 +1,6 @@
+windows:
+  - name: dotfiles
+    root: ~/dotfiles
+    layout: main-vertical
+    panes:
+      - rake update
