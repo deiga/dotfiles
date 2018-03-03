@@ -53,10 +53,9 @@ namespace :update do
     system %(bin/npm-upgrade)
   end
 
-  desc 'Update submodules'
+  desc 'Update subtrees'
   task :submodule do
-    LOGGER.info "\nUpdate submodules & subtrees".blue
-    system %(git submodule foreach git pull origin master 2>/dev/null)
+    LOGGER.info "\nUpdate subtrees".blue
     system %(git subtree pull --prefix config/oh-my-zsh/zsh-autosuggestions zsh-autosuggestions master --squash)
     system %(git subtree pull --prefix config/solarized solarized master --squash)
     system %(git subtree pull --prefix config/git-fzf git-fzf master --squash)
