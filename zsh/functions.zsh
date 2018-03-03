@@ -22,6 +22,14 @@ password() {
     openssl rand -base64 32
 }
 
+gpip2(){
+   PIP_REQUIRE_VIRTUALENV="" pip2 "$@"
+}
+
+gpip3(){
+   PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+}
+
 gpip(){
-   PIP_REQUIRE_VIRTUALENV="" pip "$@"
+  gpip3 "$@"
 }

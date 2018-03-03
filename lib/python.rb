@@ -13,6 +13,6 @@ def install_python
 end
 
 def update_python
-    system %(PIP_REQUIRE_VIRTUALENV="" pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | PIP_REQUIRE_VIRTUALENV="" xargs -n1 pip install -U)
+    system %(PIP_REQUIRE_VIRTUALENV="" pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | PIP_REQUIRE_VIRTUALENV="" xargs -n1 pip3 install -U)
     system %{LIBGIT2="$HOME/local" LDFLAGS="-Wl,-rpath='$LIBGIT2/lib',--enable-new-dtags $LDFLAGS" pip install -U pygit2} unless OSX
 end
