@@ -57,9 +57,15 @@ namespace :update do
   task :submodule do
     LOGGER.info "\nUpdate submodules & subtrees".blue
     system %(git submodule foreach git pull origin master 2>/dev/null)
-    system %(git subtree pull --prefix config/oh-my-zsh/zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git master --squash)
-    system %(git subtree pull --prefix config/solarized https://github.com/altercation/solarized.git master --squash)
-    system %(git subtree pull --prefix config/git-fzf https://gist.github.com/8b572b8d4b5eddd8b85e5f4d40f17236.git master --squash)
+    system %(git subtree pull --prefix config/oh-my-zsh/zsh-autosuggestions zsh-autosuggestions master --squash)
+    system %(git subtree pull --prefix config/solarized solarized master --squash)
+    system %(git subtree pull --prefix config/git-fzf git-fzf master --squash)
+    system %(git subtree pull --prefix config/xiki xiki master --squash)
+    system %(git subtree pull --prefix config/dircolors-solarized dircolors-solarized master --squash)
+    system %(git subtree pull --prefix config/irssi-colors-solarized irssi-colors-solarized master --squash)
+    system %(git subtree pull --prefix config/oh-my-zsh oh-my-zsh master --squash)
+    system %(git subtree pull --prefix config/irssi-trackbar irssi-trackbar master --squash)
+    system %(git subtree pull --prefix config/oh-my-zsh/zsh-syntax-highlighting zsh-syntax-highlighting master --squash)
   end
 
   desc 'Updated rbenv'
