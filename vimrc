@@ -48,6 +48,7 @@ set sm             " show matching braces, somewhat annoying...
     else
         set t_Co=16
     endif
+    let g:solarized_termtrans=1
     colorscheme solarized
     syntax on " syntax highlighting on
 " }

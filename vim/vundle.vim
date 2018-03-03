@@ -42,7 +42,6 @@ Plugin 'tpope/vim-bundler'
 
 "   JavaScript
 Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'leshill/vim-json'
 
 "   HTML
