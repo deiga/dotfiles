@@ -59,22 +59,6 @@
         "mod": "mod1",
         "key": "space"
     },
-    "select-tall-layout": {
-        "mod": "mod1",
-        "key": "a"
-    },
-    "select-wide-layout": {
-        "mod": "mod1",
-        "key": "s"
-    },
-    "select-fullscreen-layout": {
-        "mod": "mod1",
-        "key": "d"
-    },
-    "select-column-layout": {
-        "mod": "mod1",
-        "key": "f"
-    },
     "focus-screen-1": {
         "mod": "mod1",
         "key": "w"
@@ -183,8 +167,6 @@
         "mod": "mod1",
         "key": "i"
     },
-
-    "MISC": "----------------------",
     "floating": [
         "com.torusknot.SourceTreeNotMAS",
         "com.apple.systempreferences",
@@ -204,7 +186,7 @@
         "com.playsaurus.heroclicker",
         "unity.White Wizard Games LLC.Star Realms"
     ],
-    "float-small-windows": true,
     "mouse-follows-focus": true,
+    "send-crash-reports": true,
     "focus-follows-mouse": false
 }
