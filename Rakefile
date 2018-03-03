@@ -62,7 +62,7 @@ namespace :update do
     system %(git subtree pull --prefix config/xiki xiki master --squash)
     system %(git subtree pull --prefix config/dircolors-solarized dircolors-solarized master --squash)
     system %(git subtree pull --prefix config/irssi-colors-solarized irssi-colors-solarized master --squash)
-    system %(git subtree pull --prefix config/oh-my-zsh oh-my-zsh master --squash)
+    system %(git subtree pull --prefix oh-my-zsh oh-my-zsh master --squash)
     system %(git subtree pull --prefix config/irssi-trackbar irssi-trackbar master --squash)
     system %(git subtree pull --prefix config/oh-my-zsh/zsh-syntax-highlighting zsh-syntax-highlighting master --squash)
   end
