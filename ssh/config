@@ -133,18 +133,19 @@ Host gitlab.cre8.fi
 
 Host *
     AddKeysToAgent yes
+    IgnoreUnknown UseKeychain
     UseKeychain yes
     IdentitiesOnly yes
     ExitOnForwardFailure yes
     Protocol 2
     ServerAliveInterval 60
+    ServerAliveCountMax 3
     TCPKeepAlive yes
     Port 22
     Compression yes
-    CompressionLevel 7
     Cipher aes128-gcm@openssh.com
     ControlMaster auto
-    ControlPersist 10m
+    ControlPersist 5m
     ControlPath /tmp/ssh-%r@%h:%p
     VisualHostKey yes
     StrictHostKeyChecking no
