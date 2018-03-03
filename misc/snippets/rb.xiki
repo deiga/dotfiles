@@ -1,0 +1,38 @@
+- files/
+  - read/
+    | File.read "/tmp/t.txt"
+  - write/
+    | File.open("/tmp/t.txt", "w") { |f| f << "abc" }
+- class/
+  | class Foo
+  |   def self.foo
+  |     "hi"
+  |   end
+  | end
+- methods/
+  - instance/
+    | def foo
+    |  "hi"
+    | end
+  - class/
+    | def self.foo
+    |   "hi"
+    | end
+- decisions/
+  - case/
+    | case a
+    | when /^a-z*$/; puts "Lower case\n"
+    | when /^A-Z*$/; puts "Upper case\n"
+    | else; puts "Mixed case\n"
+    | end
+- specs/
+  - describe/
+    | describe Line, "#foo" do
+    |   it "bars" do
+    |     1.should == 2
+    |   end
+    | end
+  - it/
+    |   it "bars" do
+    |     1.should == 2
+    |   end

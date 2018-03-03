@@ -1,0 +1,2 @@
+#!/usr/bin/env ruby
+load "(xiki_dir)/bin/xiki"
