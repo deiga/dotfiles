@@ -19,6 +19,3 @@
 [submodule "config/oh-my-zsh/zsh-syntax-highlighting"]
 	path = config/oh-my-zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "config/irb-config"]
-	path = config/irb-config
-	url = git://github.com/nviennot/irb-config.git
