@@ -65,6 +65,17 @@ bindkey "$terminfo[kcud1]" down-line-or-beginning-search # Down
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search
 
+fzf-open-file-with-vim() {
+  vim $(fzf)
+}
+
+zle -N fzf-open-file-with-vim
+# bindkey "^P"  fzf-open-file-with-vim
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # Colors
 autoload -U colors && colors
 setopt prompt_subst
