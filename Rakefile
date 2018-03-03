@@ -310,9 +310,8 @@ def switch_to_zsh
     case $stdin.gets.chomp
     when 'y'
       LOGGER.info 'switching to zsh'.blue
-      system %(if ! fgrep -q '/usr/local/bin/zsh' /etc/shells; then echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells; fi;)
-      # system %(sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh)
-      system %(chsh -s `which zsh`)
+      system %(echo $(brew --prefix)/bin/zsh | sudo tee -a /etc/shells)
+      system %(chsh -s $(brew --prefix)/bin/bash)
     when 'q'
       exit
     else
