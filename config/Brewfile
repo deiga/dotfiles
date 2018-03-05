@@ -75,13 +75,12 @@ cask 'alfred'
 cask 'amethyst'
 cask 'betterzipql'
 cask 'controlplane'
+cask 'daisydisk'
 cask 'dash'
 cask 'dotnet'
 cask 'dropbox'
 cask 'evernote'
 cask 'firefox'
-cask 'fluid'
-cask 'flux'
 cask 'font-meslo-nerd-font'
 cask 'font-source-code-pro-nerd-font'
 cask 'freedome'
@@ -112,7 +111,6 @@ cask 'vagrant'
 cask 'virtualbox'
 cask 'visual-studio-code'
 mas 'Amphetamine', id: 937984704
-mas 'DaisyDisk', id: 411643860
 mas 'Gemini', id: 463541543
 mas 'Microsoft Remote Desktop', id: 715768417
 mas 'Xcode', id: 497799835
