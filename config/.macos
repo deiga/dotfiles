@@ -526,10 +526,6 @@ defaults write com.apple.terminal FocusFollowsMouse -bool true
 # See: https://security.stackexchange.com/a/47786/8918
 defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
-# Enable iTerm2 to load prefs from folder
-defaults write com.googlecode.iterm2 PrefsCustomFolder "/Users/timosand/dotfiles/config/iterm2"
-defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -int 1
-
 ###############################################################################
 # TextEdit, and Disk Utility, QuickTime                                       #
 ###############################################################################
