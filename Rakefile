@@ -190,9 +190,9 @@ namespace :install do
 
   desc 'Symlink outside files'
   task :symlink do
-    dropbox_atom_path = File.join('~', '/', 'Dropbox', 'atom')
-    atom_path = File.join('~', '/', '.atom')
-    install_dotfile(dropbox_atom_path, atom_path)
+    # dropbox_atom_path = File.join('~', '/', 'Dropbox', 'atom')
+    # atom_path = File.join('~', '/', '.atom')
+    # install_dotfile(dropbox_atom_path, atom_path)
   end
 
   desc 'Install all'
