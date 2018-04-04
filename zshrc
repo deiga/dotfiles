@@ -90,10 +90,6 @@ do
     source "$file" || true
 done
 
-unalias run-help
-autoload run-help
-HELPDIR=/usr/local/share/zsh/helpfiles
-
 
 tmux list-sessions 2> /dev/null
 
