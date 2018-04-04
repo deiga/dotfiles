@@ -149,7 +149,6 @@ Host *
     TCPKeepAlive yes
     Port 22
     Compression yes
-    Cipher aes128-gcm@openssh.com
     ControlMaster auto
     ControlPersist 5m
     ControlPath /tmp/ssh-%r@%h:%p
