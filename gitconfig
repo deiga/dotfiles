@@ -101,7 +101,7 @@
   recurseSubmodules = true
   prune = true
 [credential]
-  helper = osxkeychain
+	helper = osxkeychain
 [diff]
   renames = copies
   mnemonicprefix = true
