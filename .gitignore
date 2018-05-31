@@ -4,3 +4,16 @@ known_hosts
 ssh/keys/*
 ssh/environment*
 ssh/authorized_keys
+
+# Created by https://www.gitignore.io/api/visualstudiocode
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
+
+
+# End of https://www.gitignore.io/api/visualstudiocode
