@@ -346,11 +346,11 @@ end
 def install_node
   require 'English'
   LOGGER.info "\nInstall node, npm".blue
-  node_version='7.10.0'
+  node_version='10.6.0'
   system %(nodenv update-version-defs >/dev/null)
   system %(nodenv prune-version-defs)
   mkdir_p(File.join('~','.nodenv'))
-  install_dotfile(Dir['config/default-packages'][0], File.join('~/.nodenv', 'default-packages'))
+  install_dotfile(Dir['config/default-packages'][0], File.join(ENV['HOME'], '.nodenv', 'default-packages'))
   system %(command -p -v node > /dev/null)
   if $CHILD_STATUS.success?
     version=`node -v`.chomp.gsub(/v.*?/,'')
