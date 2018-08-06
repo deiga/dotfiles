@@ -135,3 +135,6 @@
 	template = /Users/timosand/.stCommitMsg
 [gpg]
   program = /usr/local/bin/gpg
+[ghq]
+  root = /Users/timosand/Dropbox/Documents/Projects
+  root = /Users/timosand/go/src
