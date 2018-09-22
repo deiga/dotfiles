@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 # vim syn=zsh
 
 #echo 'zprofile' $0 # Debug

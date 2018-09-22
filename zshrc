@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 #echo 'zshrc' $0 # Debug
 # Profiling
 # zmodload zsh/zprof
