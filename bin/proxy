@@ -1,0 +1,60 @@
+#!/bin/sh
+
+set -e
+
+
+# Proxy Toggle from https://gist.github.com/dgoguerra/66d496345ee7e53169ad
+
+PROXY_INTERFACE="Wi-Fi"
+PROXY_HOST=${PROXY_HOST:-127.0.0.1}
+PROXY_PORT=${PROXY_PORT:-8888}
+
+# A host where ssh can login without interaction, with a key-based
+# authentication.
+SOCKS_PROC_HOST=${PROXY_REMOTE_HOST:-example.com}
+
+SOCKS_PROC_LOG=/tmp/ssh-socks-proxy-log.txt
+SOCKS_PROC_PIDFILE=/tmp/ssh-socks-proxy-pid.txt
+
+SOCKS_PROC_CMD="ssh -t -f -N -D $PROXY_HOST:$PROXY_PORT $SOCKS_PROC_HOST"
+
+if [[ $1 == "on" ]]; then
+    nohup $SOCKS_PROC_CMD > "$SOCKS_PROC_LOG" 2>&1
+    echo $! > "$SOCKS_PROC_PIDFILE"
+
+    sudo networksetup -setsocksfirewallproxy "$PROXY_INTERFACE" $PROXY_HOST $PROXY_PORT
+    echo "SOCKS proxy enabled"
+
+elif [[ $1 == "off" ]]; then
+    sudo kill -9 $(cat "$SOCKS_PROC_PIDFILE")
+    rm "$SOCKS_PROC_PIDFILE"
+
+    sudo networksetup -setsocksfirewallproxystate "$PROXY_INTERFACE" off
+    echo "SOCKS proxy disabled"
+
+elif [[ $1 == "status" ]]; then
+    echo "======================================================"
+    echo "Network Services:"
+    echo "======================================================"
+    networksetup -listallnetworkservices
+    echo
+    echo "======================================================"
+    echo "Current SOCKS Proxy Settings:"
+    echo "======================================================"
+    networksetup -getsocksfirewallproxy "$PROXY_INTERFACE"
+    echo
+
+else
+    echo "`basename $0` toggles SOCKS proxy settings on OS X"
+    echo
+    echo "Usage: "
+    echo "  $ proxy on           # turns SOCKS proxy on"
+    echo "  $ proxy off          # turns SOCKS proxy off"
+    echo "  $ proxy status       # prints status of proxy settings"
+    echo
+    echo "proxy interface:      " $PROXY_INTERFACE
+    echo "proxy host:           " $PROXY_HOST
+    echo "proxy port:           " $PROXY_PORT
+    echo
+    exit 65 # end process with error to indicate incorrect arguments
+fi
