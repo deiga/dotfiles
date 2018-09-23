@@ -45,19 +45,19 @@ Host gitlab.com
     User git
     Hostname gitlab.com
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/keys/gitlab_rsa
+    IdentityFile ~/.ssh/keys/gitlab_ed25519
 
 Host github.com
     User git
     Hostname github.com
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/keys/github_rsa
+    IdentityFile ~/.ssh/keys/github_ed25519
 
 Host bitbucket.org
     User git
     Hostname bitbucket.org
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/keys/github_rsa
+    IdentityFile ~/.ssh/keys/bitbucket_ed25519
 
 Host leftoutsidealone.net loa local.loa.net
     User deiga
@@ -113,7 +113,7 @@ Host ruuvi
 Host *.kapsi.fi hilla lakka karvin kirsi
     User deiga
     Port 22
-    IdentityFile ~/.ssh/keys/kapsi_rsa
+    IdentityFile ~/.ssh/keys/kapsi_ed25519
 
 Host hilla
     HostName hilla.kapsi.fi
