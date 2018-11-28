@@ -71,6 +71,7 @@ brew 'watchman'
 brew 'wget', args: ['with-iri']
 brew 'zsh-completions'
 brew 'zsh'
+brew 'yarn', args: ['without-node']
 cask 'alfred'
 cask 'amethyst'
 cask 'betterzipql'
