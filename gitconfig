@@ -40,6 +40,8 @@
   cm = commit --amend
   amend = commit --amend            # ammend your last commit
   ammend = commit --amend           # ammend your last commit
+  extend = commit --amend -C HEAD   # Use commit message
+  reword = commit --amend --only    # reword commit message
 
   st = status
 
@@ -70,6 +72,7 @@
   ctags = !.git/hooks/ctags
   serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
   today = log --since=midnight --author=\"$(git config user.name)\" --oneline
+  day = log --reverse --no-merges --branches=* --date=local --since=midnight --author=\"$(git config --get user.name)\"
   split-subpath = filter-branch --prune-empty --subdirectory-filter
 
   mr = pull-request
