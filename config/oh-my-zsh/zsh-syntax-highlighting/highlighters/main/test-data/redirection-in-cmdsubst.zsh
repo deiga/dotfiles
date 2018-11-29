@@ -33,4 +33,9 @@ BUFFER=$': $(<foo)'
 expected_region_highlight=(
   '1 1 builtin' # :
   '3 9 default' # $(<foo)
+  '3 9 command-substitution-unquoted' # $(<foo)
+  '3 4 command-substitution-delimiter-unquoted' # $(
+  '5 5 redirection' # <
+  '6 8 default' # foo
+  '9 9 command-substitution-delimiter-unquoted' # )
 )

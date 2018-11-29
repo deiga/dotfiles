@@ -1,5 +1,6 @@
+#!/usr/bin/env zsh
 # -------------------------------------------------------------------------------------------------
-# Copyright (c) 2015 zsh-syntax-highlighting contributors
+# Copyright (c) 2018 zsh-syntax-highlighting contributors
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without modification, are permitted
@@ -27,28 +28,24 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
-alias alias1="ls"
-alias -s alias2="echo"
-function alias1() {} # to check that it's highlighted as an alias, not as a function
+BUFFER='echo =(:) a=(:) =(echo foo'
 
-BUFFER='x.alias2; alias1; alias2'
-
-# Set expected_region_highlight as a function of zsh version.
-#
-# Highlight of suffix alias requires zsh-5.1.1 or newer; see issue #126,
-# and commit 36403 to zsh itself.  Therefore, check if the requisite zsh
-# functionality is present, and skip verifying suffix-alias highlighting
-# if it isn't.
-expected_region_highlight=()
-if zmodload -e zsh/parameter || [[ "$(type -w x.alias2)" == *suffix* ]]; then
-  expected_region_highlight+=(
-    "1 8 suffix-alias" # x.alias2
-  )
-fi
-expected_region_highlight+=(
-  "9 9 commandseparator" # ;
-  "11 16 alias" # alias1
-  "11 16 command" # alias1 (ls)
-  "17 17 commandseparator" # ;
-  "19 24 unknown-token" # alias2
+expected_region_highlight=(
+  '1 4 builtin' # echo
+  '6 9 default' # =(:)
+  '6 9 process-substitution' # =(:)
+  '6 7 process-substitution-delimiter' # =(
+  '8 8 builtin' # :
+  '9 9 process-substitution-delimiter' # )
+  '11 15 default' # a=(:)
+  '17 26 default' # =(echo foo
+  '17 26 process-substitution' # =(echo foo
+  '17 18 process-substitution-delimiter' # =(
+  '19 22 builtin' # echo
+  '24 26 default' # foo
 )
+
+if [[ ${(z):-'$('} == '$( ' ]]; then # ignore zsh 5.0.8 bug
+  expected_region_highlight[8]='17 27 default' # =(echo foo
+  expected_region_highlight[9]='17 27 process-substitution' # =(echo foo
+fi
