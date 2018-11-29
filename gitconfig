@@ -44,6 +44,7 @@
   reword = commit --amend --only    # reword commit message
 
   st = status
+  s = status
 
   # branch
   b = branch --verbose                     # branch (verbose)
@@ -51,7 +52,12 @@
   # diff
   d = diff                          # diff unstaged changes
   dc = diff --cached                # diff staged changes
+  ds = diff --staged
   last = diff HEAD^                 # diff last committed change
+
+  # fetch
+  f = fetch
+  zap = f -p
 
   type = cat-file -t
   dump = cat-file -p
@@ -61,13 +67,15 @@
   unstage = reset HEAD --
 
   disc = checkout --
-  discard = checkout --
+  discard = disc
 
   # history
   wc = whatchanged -p --abbrev-commit --pretty=medium
   lg = log --color --graph \n  --pretty=format:'%Cred%h%Creset \n  -%C(yellow)%d%Creset %s %Cgreen(%cr) \n  %C(bold blue)<%an>%Creset' \n  --abbrev-commit
   hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
   report = "log --author=Timo --since='2 sunday ago' --until='1 sunday ago' --format='%Cgreen%ci%Creset %s%Creset' --no-merges"
+  loll = log --graph --decorate --pretty=oneline --abbrev-commit
+  unpushed = log @{u}
 
   ctags = !.git/hooks/ctags
   serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
@@ -86,6 +94,8 @@
   rc = rebase --continue
   rs = rebase --skip
   ra = rebase --abort
+  wip = rebase -i @{u}
+  outstanding = wip
 
   #push
   publish = push -u origin HEAD
