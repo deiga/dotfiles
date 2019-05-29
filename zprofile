@@ -32,7 +32,6 @@ case $OSTYPE in
         export JAVA_HOME
         JAVA_HOME=$(/usr/libexec/java_home)
         export SCALA_HOME=/usr/local/opt/scala
-        export ATOM_REPOS_HOME=$HOME/Dropbox/Documents/Projects
     ;;
     *)
         export RBENV_ROOT=~/.rbenv
@@ -45,7 +44,8 @@ typeset -U PATH
 export PATH
 
 #if [[ ! $(type perlbrew) =~ "shell function" ]]; then source ~/perl5/perlbrew/etc/bashrc; fi
-if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
+if type rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 if type nodenv > /dev/null; then eval "$(nodenv init - --no-rehash)"; fi
 if type fasd > /dev/null; then eval "$(fasd --init auto)"; fi
-eval "$(thefuck --alias)"
+if type thefuck > /dev/null; then eval "$(thefuck --alias)"; fi
+if type direnv > /dev/null; then eval "$(direnv hook zsh)"; fi

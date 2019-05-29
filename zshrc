@@ -3,8 +3,6 @@
 # Profiling
 # zmodload zsh/zprof
 
-fpath=(/usr/local/share/zsh-completions $fpath)
-
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
@@ -107,3 +105,4 @@ autoload -U +X bashcompinit && bashcompinit
 # zprof
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+neofetch
