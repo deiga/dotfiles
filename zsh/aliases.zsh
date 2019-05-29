@@ -54,3 +54,5 @@ alias g="git"
 alias gcl="GIT_TEMPLATE_DIR=$HOME/.git_template g cl"
 alias j="z"
 alias gtt="gittower ."
+
+alias time='gtime -f '\''%Us user %Ss system %es real %MkB mem -- %C'\'
