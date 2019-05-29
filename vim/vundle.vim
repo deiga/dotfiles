@@ -5,11 +5,11 @@
 set nocompatible " be iMproved
 filetype off     " required!
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 
 " Sensible vimrc defaults
@@ -52,17 +52,12 @@ Plugin 'mattn/emmet-vim'
 "   XML
 Plugin 'othree/xml.vim'
 
-" Robot Framework
-Plugin 'mfukar/robotframework-vim'
-
 " Utilities
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tpope/vim-heroku'
 Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fugitive'
 Plugin 't9md/vim-ruby-xmpfilter'
-Plugin 'markcornick/vim-vagrant'
 Bundle 'wakatime/vim-wakatime'
 
 call vundle#end()
