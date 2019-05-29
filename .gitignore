@@ -17,3 +17,5 @@ ssh/authorized_keys
 
 
 # End of https://www.gitignore.io/api/visualstudiocode
+/bin/datagrip
+/bin/idea
