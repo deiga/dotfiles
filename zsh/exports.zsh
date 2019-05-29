@@ -8,4 +8,4 @@ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 export PYTHONSTARTUP=$HOME/.pythonrc
 
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+if [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ]; then source /usr/local/bin/virtualenvwrapper_lazy.sh; fi
