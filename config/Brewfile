@@ -66,12 +66,14 @@ brew 'tidy-html5'
 brew 'tmux'
 brew 'TomAnthony/brews/itermocil'
 brew 'tree'
-brew 'vim', args: ['with-custom-ruby', 'with-python3']
+brew 'vim', args: ['with-custom-ruby', 'with-python']
 brew 'watchman'
 brew 'wget', args: ['with-iri']
 brew 'zsh-completions'
 brew 'zsh'
-brew 'yarn', args: ['without-node']
+brew 'yarn', args: ['ignore-dependencies']
+brew 'asdf'
+brew 'direnv'
 cask 'alfred'
 cask 'amethyst'
 cask 'betterzipql'
