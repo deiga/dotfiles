@@ -15,6 +15,7 @@ BIN_PATH="$HOME/bin:$HOME/local/bin" # Add ~/bin to PATH
 BOX_PATH="$HOME/dotfiles/box/bin" # Add path for box
 CABAL_PATH="$HOME/.cabal/bin"
 STACK_INSTALL_PATH="$HOME/.local/bin/"
+PYTHON_BIN_PATH="$HOME/Library/Python/3.7/bin"
 PATH=$BIN_PATH:$BOX_PATH:$PATH
 export GOPATH="$HOME/go"
 
@@ -22,9 +23,10 @@ PATH=$GOPATH/bin:$CABAL_PATH:$STACK_INSTALL_PATH:$PATH
 
 case $OSTYPE in
     darwin*)
+        PYTHON_HOMEBREW_PATH=/usr/local/opt/python/libexec/bin
         COREUTILS_PATH=/usr/local/opt/coreutils/libexec/gnubin
         HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin
-        PATH=$COREUTILS_PATH:$HOMEBREW_PATH:$PATH
+        PATH=$COREUTILS_PATH:$PYTHON_HOMEBREW_PATH:$HOMEBREW_PATH:$PATH
         export RBENV_ROOT=/usr/local/var/rbenv
         export ARCHFLAGS="-arch x86_64"
         export JAVA_HOME
