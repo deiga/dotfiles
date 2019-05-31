@@ -7,7 +7,7 @@ Dir['lib/*.rb'].each { |lib| require lib }
 # TODO: Refactor tasks to dynamically call methods
 
 # List of files and folders to exclude from linking
-EXCLUDE_FILES_FROM_COMMON = %w(Rakefile README.md LICENSE TODO.md Karabiner bin config ssh powerline tmp lib).freeze
+EXCLUDE_FILES_FROM_COMMON = %w(Rakefile README.md LICENSE TODO.md bin config ssh powerline tmp lib).freeze
 
 # Shorthand for darwin platform
 OSX = RUBY_PLATFORM.downcase.include?('darwin')
@@ -105,11 +105,6 @@ namespace :install do
   desc 'Setup submodules'
   task :submodule do
     install_submodules
-  end
-
-  desc 'Setup Karabiner profile'
-  task :karabiner do
-    install_karabiner if OSX
   end
 
   desc 'Install Vundle and execute VundleInstall'
@@ -281,31 +276,6 @@ end
 def move_keys
   ssh_keys = Dir[File.join(ENV['HOME'], '.ssh', '*_rsa*')]
   mv(ssh_keys, File.join(Dir.pwd, 'ssh', 'keys'))
-end
-
-def install_karabiner
-  if MAC_OS_VERSION > "10.12.0"
-    system %(brew cask install karabiner-elements)
-  else
-    system %(brew cask install karabiner --no-binaries)
-    system %(brew cask install seil)
-    link_karabiner_binary
-    karabiner_file = Dir['Karabiner/*'][0]
-    target = File.join(ENV['HOME'], 'Library', 'Application Support', karabiner_file)
-    mkdir_p(File.dirname(target))
-    install_dotfile(karabiner_file, target)
-    system 'open -a Karabiner'
-    system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable remap.controlL2controlL_escape'
-    system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable space_cadet.left_control_to_hyper'
-    system '/Applications/Karabiner.app/Contents/Library/bin/karabiner enable private.shifts_to_parens'
-    system '/Applications/Karabiner.app/Contents/Library/bin/karabiner set parameter.keyoverlaidmodifier_timeout 700'
-  end
-end
-
-def link_karabiner_binary
-  karabiner_binary = File.join('/', 'Applications', 'Karabiner.app', 'Contents', 'Library', 'bin', 'karabiner')
-  homebrew_bin_path = File.join('/', 'usr', 'local', 'bin', 'karabiner')
-  install_dotfile(karabiner_binary, homebrew_bin_path)
 end
 
 def switch_to_zsh
