@@ -34,7 +34,7 @@ case $OSTYPE in
         export SCALA_HOME=/usr/local/opt/scala
     ;;
     *)
-        export RBENV_ROOT=~/.rbenv
+        export RBENV_ROOT=$HOME/.rbenv
     ;;
 esac
 
@@ -43,7 +43,7 @@ PATH="$RBENV_ROOT/bin:$PATH"
 typeset -U PATH
 export PATH
 
-#if [[ ! $(type perlbrew) =~ "shell function" ]]; then source ~/perl5/perlbrew/etc/bashrc; fi
+if [ -f $HOME/dotfiles/config/enhancd/init.sh ]; then source $HOME/dotfiles/config/enhancd/init.sh; fi
 if type rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 if type nodenv > /dev/null; then eval "$(nodenv init - --no-rehash)"; fi
 if type fasd > /dev/null; then eval "$(fasd --init auto)"; fi
