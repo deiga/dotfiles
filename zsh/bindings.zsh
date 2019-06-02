@@ -10,4 +10,6 @@ bindkey "^N" down-line-or-beginning-search
 
 # bindkey "^P"  fzf-open-file-with-vim
 
+bindkey "^[c" fzf-cd-widget
+
 source $HOME/dotfiles/config/git-fzf/key-binding.zsh
