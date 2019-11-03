@@ -52,6 +52,9 @@ Plugin 'mattn/emmet-vim'
 "   XML
 Plugin 'othree/xml.vim'
 
+"   Elixir
+Plugin 'elixir-editors/vim-elixir'
+
 " Utilities
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'editorconfig/editorconfig-vim'
