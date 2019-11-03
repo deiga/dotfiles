@@ -31,7 +31,7 @@
 
   # checkout
   co = checkout                     # checkout
-  nb = checkout --track -b           # create and switch to a new branch (mnemonic: "git new branch branchname...")
+  nb = switch --track --create            # create and switch to a new branch (mnemonic: "git new branch branchname...")
 
   # commit
   c = commit
