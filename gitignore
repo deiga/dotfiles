@@ -83,3 +83,8 @@ TAGS*
 # Ansible files #
 #################
 *.retry
+
+# Node.js files #
+################
+.yarn-meta
+node_modules/
