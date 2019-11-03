@@ -1,115 +1,289 @@
-tap 'homebrew/bundle'
-tap 'homebrew/cask'
-tap 'homebrew/cask-drivers'
-tap 'homebrew/cask-fonts'
-tap 'homebrew/cask-versions'
-tap 'homebrew/core'
-tap 'homebrew/services'
-tap 'nodenv/nodenv'
-brew 'openssl', args: ['universal']
-brew 'python', args: ['universal']
-brew 'ansible'
-brew 'awscli'
-brew 'coreutils'
-brew 'ctags'
-brew 'curl'
-brew 'fasd'
-brew 'fzf'
-brew 'git-crypt'
-brew 'git', args: ['with-brewed-curl', 'with-brewed-openssl', 'with-persistent-https', 'with-blk-sha1']
-brew 'gnu-sed', args: ['with-default-names']
-brew 'gnupg', args: ['with-readline']
-brew 'heroku/brew/heroku'
-brew 'kryptco/tap/kr'
-brew 'httpie'
-brew 'hub'
-brew 'jq'
-brew 'lastpass-cli'
-brew 'mackup'
-brew 'mas'
-brew 'mkcert'
-brew 'mosh'
-brew 'mtr'
-brew 'ojford/formulae/loginitems'
-brew 'neofetch'
-brew 'namebench'
-brew 'nmap'
-brew 'nodenv'
-brew 'nodenv/nodenv/node-build-update-defs'
-brew 'nodenv/nodenv/nodenv-aliases'
-brew 'nodenv/nodenv/nodenv-default-packages'
-brew 'nodenv/nodenv/nodenv-each'
-brew 'nodenv/nodenv/nodenv-npm-migrate'
-brew 'nodenv/nodenv/nodenv-package-json-engine'
-brew 'nodenv/nodenv/nodenv-package-rehash'
-brew 'nodenv/nodenv/nodenv-vars'
-brew 'pinentry-mac'
-brew 'pup'
-brew 'rbenv-aliases'
-brew 'rbenv-binstubs'
-brew 'rbenv-communal-gems'
-brew 'rbenv-ctags'
-brew 'rbenv-default-gems'
-brew 'rbenv-use'
-brew 'rbenv-vars'
-brew 'rbenv-whatis'
-brew 'rbenv'
-brew 'reattach-to-user-namespace'
-brew 'ripgrep'
-brew 'shellcheck'
-brew 'shfmt'
-brew 'ssh-copy-id'
-brew 'sshpass'
-brew 'telnet'
-brew 'terminal-notifier'
-brew 'thefuck'
-brew 'tmux'
-brew 'TomAnthony/brews/itermocil'
-brew 'tree'
-brew 'vim', args: ['with-custom-ruby', 'with-python']
-brew 'wagoodman/dive/dive'
-brew 'watch'
-brew 'wget', args: ['with-iri']
-brew 'zsh-completions'
-brew 'zsh'
-brew 'yarn', args: ['ignore-dependencies']
-brew 'asdf'
-brew 'direnv'
-cask 'alfred'
-cask 'amethyst'
-cask 'controlplane'
-cask 'daisydisk'
-cask 'dash'
-cask 'dotnet'
-cask 'dropbox'
-cask 'docker'
-cask 'docker-edge'
-cask 'evernote'
-cask 'firefox'
-cask 'font-meslo-nerd-font'
-cask 'font-source-code-pro-nerd-font'
-cask 'fsmonitor'
-cask 'google-chrome'
-cask 'harvest'
-cask 'insomnia'
-cask 'istat-menus'
-cask 'iterm2'
-cask 'java'
-cask 'karabiner-elements'
-cask 'keybase'
-cask 'lastpass'
-cask 'licecap'
-cask 'ngrok'
-cask 'opera'
-cask 'rescuetime'
-cask 'slack'
-cask 'spotify'
-cask 'steam'
-cask 'suspicious-package'
-cask 'tower'
-cask 'visual-studio-code'
-mas 'Amphetamine', id: 937984704
-mas 'Gemini', id: 463541543
-mas 'Microsoft Remote Desktop', id: 715768417
-mas 'Todoist', id: 585829637
-mas 'Xcode', id: 497799835
+tap "beeftornado/rmtree"
+tap "caffix/amass"
+tap "datawire/blackbird"
+tap "goreleaser/tap"
+tap "heroku/brew"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "kryptco/tap"
+tap "nodenv/nodenv"
+tap "ojford/formulae"
+tap "tomanthony/brews"
+tap "vitorgalvao/tiny-scripts"
+tap "wagoodman/dive"
+cask "osxfuse"
+# Automatic configure script builder
+brew "autoconf"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Generic library support script
+brew "libtool"
+# YAML Parser
+brew "libyaml"
+# SSL/TLS cryptography library
+brew "openssl"
+# Library for command-line editing
+brew "readline"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
+brew "asdf"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# Interpreted, interactive, object-oriented programming language
+brew "python"
+# Official Amazon AWS command-line interface
+brew "awscli"
+# Parser generator
+brew "bison@2.7"
+# Portable Foreign Function Interface library
+brew "libffi"
+# Statistics utility to count lines of code
+brew "cloc"
+# Reimplementation of ctags(1)
+brew "ctags"
+# Top-like interface for container metrics
+brew "ctop"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl-openssl"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Utilities for the ext2, ext3, and ext4 file systems
+brew "e2fsprogs"
+# CLI tool for quick access to files and directories
+brew "fasd"
+# Protocol for interfacing interactive programs with a web server
+brew "fd"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Distributed revision control system
+brew "git"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# GNU implementation of time utility
+brew "gnu-time"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
+# Add GitHub support to git on the command-line
+brew "hub"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# Peer-to-peer hypermedia protocol
+brew "ipfs"
+# Regular expressions library
+brew "oniguruma"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
+# Production Grade K8s Installation, Upgrades, and Management
+brew "kops"
+# Tool that can switch between kubectl contexts easily and create aliases
+brew "kubectx"
+# The Kubernetes package manager
+brew "kubernetes-helm"
+# LastPass command-line interface tool
+brew "lastpass-cli"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2"
+# Swiss Army Knife for macOS
+brew "m-cli"
+# Keep your Mac's application settings in sync
+brew "mackup", args: ["HEAD"]
+# Mac App Store command-line interface
+brew "mas"
+# TCP port scanner, scans entire Internet in under 5 minutes
+brew "masscan"
+# Fast and user friendly build system
+brew "meson"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
+# Remote terminal application
+brew "mosh"
+# 'traceroute' and 'ping' in a single tool
+brew "mtr"
+# DNS benchmark utility
+brew "namebench"
+# Fast, highly customisable system info script
+brew "neofetch"
+# Port scanning utility for large networks
+brew "nmap"
+# Manage compile and link flags for libraries
+brew "pkg-config"
+# Install NodeJS versions
+brew "node-build"
+# Libraries for security-enabled client and server applications
+brew "nss"
+# Generate clients, server & docs from an OpenAPI spec (v2, v3)
+brew "openapi-generator"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Simplistic interactive filtering tool
+brew "peco"
+# Highly capable, feature-rich programming language
+brew "perl"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+# pgrep, pkill, and pfind for OpenBSD and Darwin (macOS)
+brew "proctools"
+# Parse HTML at the command-line
+brew "pup"
+# Interpreted, interactive, object-oriented programming language
+brew "python@2"
+# Reattach process (e.g., tmux) to background
+brew "reattach-to-user-namespace"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# Autoformat shell script source code
+brew "shfmt"
+# HTTP regression testing and benchmarking utility
+brew "siege"
+# netcat on steroids
+brew "socat"
+# Add a public key to a remote machine's authorized_keys file
+brew "ssh-copy-id"
+# User interface to the TELNET protocol (built from macOS Sierra sources)
+brew "telnet"
+# Send macOS User Notifications from the command-line
+brew "terminal-notifier"
+# Programatically correct mistyped console commands
+brew "thefuck"
+# Granddaddy of HTML tools, with support for modern standards
+brew "tidy-html5"
+# Terminal multiplexer
+brew "tmux"
+brew "tmuxinator"
+# Command-line client for Travis CI
+brew "travis"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Load testing for HTTP, PostgreSQL, Jabber, and others
+brew "tsung"
+# Extraction utility for .zip compressed archives
+brew "unzip"
+# Vi 'workalike' with many additional features
+brew "vim"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
+# Internet file retriever
+brew "wget"
+# JavaScript package manager
+brew "yarn"
+# Process YAML documents from the CLI
+brew "yq"
+# General-purpose lossless data-compression library
+brew "zlib"
+# UNIX shell (command interpreter)
+brew "zsh"
+# Additional completion definitions for zsh
+brew "zsh-completions"
+# In-depth Attack Surface Mapping and Asset Discovery
+brew "caffix/amass/amass"
+# Everything you need to get started with Heroku
+brew "heroku/brew/heroku"
+# Krypton command-line client, daemon, and SSH integration
+brew "kryptco/tap/kr"
+# Scrape build definitions from nodejs.org and iojs.org
+brew "nodenv/nodenv/node-build-update-defs"
+# Create aliases for nodenv Node versions
+brew "nodenv/nodenv/nodenv-aliases"
+# Auto-installs packages for Node installs
+brew "nodenv/nodenv/nodenv-default-packages"
+# Run a command against all installed versions of Node
+brew "nodenv/nodenv/nodenv-each"
+# Migrate npm packages from one Node version to another
+brew "nodenv/nodenv/nodenv-npm-migrate"
+# Pick a node version from package.json engines
+brew "nodenv/nodenv/nodenv-package-json-engine"
+# Automatically runs `nodenv rehash`
+brew "nodenv/nodenv/nodenv-package-rehash"
+# Safely sets global and per-project environment variables
+brew "nodenv/nodenv/nodenv-vars"
+# Tool for managing login items
+brew "ojford/formulae/loginitems"
+brew "tomanthony/brews/itermocil"
+# Quickly repair outdated/broken Casks from homebrew-cask
+brew "vitorgalvao/tiny-scripts/cask-repair"
+# A tool for exploring each layer in a docker image
+brew "wagoodman/dive/dive"
+cask "1password"
+cask "1password-cli"
+cask "airfoil"
+cask "alfred"
+cask "amethyst"
+cask "aware"
+cask "battle-net"
+cask "brave-browser"
+cask "captain"
+cask "chromium"
+cask "controlplane"
+cask "daisydisk"
+cask "dash"
+cask "datagrip"
+cask "dbeaver-community"
+cask "discord"
+cask "docker"
+cask "docker-edge"
+cask "dotnet"
+cask "dropbox"
+cask "evernote"
+cask "firefox"
+cask "flash-ppapi"
+cask "font-meslo-nerd-font"
+cask "font-sourcecodepro-nerd-font"
+cask "fsmonitor"
+cask "garmin-express"
+cask "gas-mask"
+cask "google-chrome"
+cask "graphiql"
+cask "harvest"
+cask "hosts"
+cask "insomnia"
+cask "istat-menus"
+cask "iterm2"
+cask "java"
+cask "jetbrains-toolbox"
+cask "karabiner-elements"
+cask "keybase"
+cask "kindle"
+cask "lastpass"
+cask "launchrocket"
+cask "licecap"
+cask "mactex"
+cask "ngrok"
+cask "opera"
+cask "plex-media-player"
+cask "prey"
+cask "rdm"
+cask "rescuetime"
+cask "signal"
+cask "skitch"
+cask "skype"
+cask "slack"
+cask "spotify"
+cask "steam"
+cask "suspicious-package"
+cask "switchhosts"
+cask "telegram"
+cask "tower"
+cask "tunnelblick"
+cask "visual-studio-code"
+cask "visual-studio-code-insiders"
+cask "vlc"
+cask "whatsapp"
+mas "Amphetamine", id: 937984704
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "The Unarchiver", id: 425424353
+mas "Todoist", id: 585829637
+mas "Xcode", id: 497799835
