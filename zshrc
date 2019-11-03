@@ -12,19 +12,19 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory autocd nomatch
+# zle uses vi mode
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # The following lines were added by compinstall
 
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
-zstyle :compinstall filename '/Users/timosand/.zshrc'
+# zstyle ':completion:*' completer _expand _complete _ignored _approximate
+# zstyle :compinstall filename '/Users/timosand/.zshrc'
 
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 # End of lines added by compinstall
 
 # oh-my-zsh
-
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -36,6 +36,10 @@ ZSH=$HOME/.oh-my-zsh
 # Comment this out to disable weekly auto-update checks
 DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
+
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
@@ -43,7 +47,13 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(extract ssh-agent tmux zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(
+  extract
+  ssh-agent
+  tmux
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
@@ -93,10 +103,8 @@ done
 
 tmux list-sessions 2> /dev/null
 
-compinit
-autoload -U +X bashcompinit && bashcompinit
-# added by travis gem
-[ -f /Users/timosand/.travis/travis.sh ] && source /Users/timosand/.travis/travis.sh
+# compinit
+# autoload -U +X bashcompinit && bashcompinit
 
 # Profiling end
 # zprof
