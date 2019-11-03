@@ -48,6 +48,8 @@ plugins=(extract ssh-agent tmux zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
 
+if [ -f $HOME/dotfiles/config/enhancd/init.sh ]; then source $HOME/dotfiles/config/enhancd/init.sh; fi
+
 # Set editor
 set -o vi
 

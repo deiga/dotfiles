@@ -43,8 +43,6 @@ PATH="$RBENV_ROOT/bin:$PATH"
 typeset -U PATH
 export PATH
 
-if [ -f $HOME/dotfiles/config/enhancd/init.sh ]; then source $HOME/dotfiles/config/enhancd/init.sh; fi
-if [ -f ~/.fzf.zsh ]; then source ~/.fzf.zsh; fi
 if type rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
 if type nodenv > /dev/null; then eval "$(nodenv init - --no-rehash)"; fi
 if type fasd > /dev/null; then eval "$(fasd --init auto)"; fi
