@@ -17,9 +17,10 @@ CABAL_PATH="$HOME/.cabal/bin"
 STACK_INSTALL_PATH="$HOME/.local/bin/"
 PYTHON_BIN_PATH="$HOME/Library/Python/3.7/bin"
 PATH=$BIN_PATH:$BOX_PATH:$PATH
-export GOPATH="$HOME/go:$HOME/Dropbox/Documents/Projects"
+# export GOPATH="$HOME/go:$HOME/Dropbox/Documents/Projects"
 
-PATH=${GOPATH//://bin:}/bin:$CABAL_PATH:$STACK_INSTALL_PATH:$PYTHON_BIN_PATH:$PATH
+#PATH=${GOPATH//://bin:}/bin:$CABAL_PATH:$STACK_INSTALL_PATH:$PYTHON_BIN_PATH:$PATH
+PATH=$CABAL_PATH:$STACK_INSTALL_PATH:$PYTHON_BIN_PATH:$PATH
 
 case $OSTYPE in
     darwin*)
@@ -27,6 +28,7 @@ case $OSTYPE in
         COREUTILS_PATH=/usr/local/opt/coreutils/libexec/gnubin
         HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin
         PATH=$COREUTILS_PATH:$PYTHON_HOMEBREW_PATH:$HOMEBREW_PATH:$PATH
+        # PATH=$PYTHON_HOMEBREW_PATH:$HOMEBREW_PATH:$PATH
         export RBENV_ROOT=/usr/local/var/rbenv
         export ARCHFLAGS="-arch x86_64"
         export JAVA_HOME
