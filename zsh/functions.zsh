@@ -43,6 +43,11 @@ fzf-open-file-with-vim() {
   vim $(fzf)
 }
 
+function iterm2_print_user_vars() {
+  iterm2_set_user_var k8s_context $(kubectl config current-context)
+  iterm2_set_user_var k8s_namespace $(kubectl config view --minify --output 'jsonpath={..namespace}')
+}
+
 zle -N fzf-open-file-with-vim
 
 source $HOME/dotfiles/config/git-fzf/functions.sh
