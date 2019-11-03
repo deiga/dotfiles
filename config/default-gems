@@ -6,6 +6,5 @@ pry
 gem-browse
 bundler-audit
 lunchy
-tmuxinator
 rubocop
-travis
+solargraph
