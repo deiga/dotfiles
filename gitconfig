@@ -1,7 +1,7 @@
-[user]
-	name = Timo Sand
-	signingkey = 491877A4
-	useConfigOnly = true
+[include]
+  path = .gitconfig.personal
+[includeIf "gitdir:**/amboss/**/.git"]
+  path = .gitconfig.amboss
 [github]
   user = deiga
 [core]
