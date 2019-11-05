@@ -271,6 +271,7 @@ def install_ssh
     mv(Dir[File.join(ENV['HOME'], '.ssh', '*')], File.join(Dir.pwd, 'ssh'))
     install_dotfile(Dir['ssh'][0], File.join(ENV['HOME'], '.ssh'))
   end
+  ensure_ssh_keys_permissions
 end
 
 def move_keys
@@ -371,4 +372,8 @@ def install_omz_plugins
   omz_plugins.each do |plugin|
     install_dotfile(plugin, File.join(ENV['HOME'], '.oh-my-zsh', 'custom', 'plugins', plugin.split('/')[-1]))
   end
+end
+
+def ensure_ssh_keys_permissions
+  system %(zsh -c 'setopt extendedglob; chmod 0700 ssh/keys/^*.pub')
 end
