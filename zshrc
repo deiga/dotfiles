@@ -100,6 +100,7 @@ do
     source "$file" || true
 done
 
+setopt extendedglob
 
 tmux list-sessions 2> /dev/null
 
