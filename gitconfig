@@ -5,7 +5,7 @@
 [github]
   user = deiga
 [core]
-  excludesfile = /Users/timosand/.gitignore
+  excludesfile = ~/.gitignore
   editor = vim
   whitespace = space-before-tab,-indent-with-non-tab,trailing-space
   autocrfl = false
@@ -27,7 +27,7 @@
 [apply]
   whitespace = nowarn
 [alias]
-  init = init --template=/Users/timosand/.git_template
+  init = init --template=~/.git_template
 
   # checkout
   co = checkout                     # checkout
@@ -145,9 +145,8 @@
   autosquash = true
 [commit]
 	gpgsign = true
-	template = /Users/timosand/.stCommitMsg
+	template = ~/.stCommitMsg
 [gpg]
   program = /usr/local/bin/gpg
 [ghq]
-  root = /Users/timosand/Dropbox/Documents/Projects
-  root = /Users/timosand/go/src
+  root = ~/Dropbox/Documents/Projects
