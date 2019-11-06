@@ -288,7 +288,7 @@ def switch_to_zsh
     when 'y'
       LOGGER.info 'switching to zsh'.blue
       system %(echo $(brew --prefix)/bin/zsh | sudo tee -a /etc/shells)
-      system %(chsh -s $(brew --prefix)/bin/bash)
+      system %(chsh -s $(brew --prefix)/bin/zsh)
     when 'q'
       exit
     else
