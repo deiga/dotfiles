@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Install plugins
+grep "^plugin" <"$HOME/dotfiles/config/Asdffile" | while read -r line; do
+  plugin=$(echo "$line" | awk '{print $2}')
+  asdf plugin-add "$plugin"
+done
+
+# Install versions
+grep "^version" <"$HOME/dotfiles/config/Asdffile" | while read -r line; do
+  versions=$(echo "$line" | awk '{print $2 " " $3}')
+  asdf install $versions
+done
+
+# Set global versions
+grep "^global" <"$HOME/dotfiles/config/Asdffile" | while read -r line; do
+  versions=$(echo "$line" | awk '{print $2 " " $3}')
+  asdf global $versions
+done

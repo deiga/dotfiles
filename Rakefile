@@ -138,6 +138,11 @@ namespace :install do
     install_packages
   end
 
+  desc 'Setup version managers'
+  task version_managers: %[packages] do
+    setup_asdf
+  end
+
   desc 'Install powerline'
   task powerline: %w[python zsh] do
     install_powerline
@@ -196,6 +201,7 @@ namespace :install do
     common
     macos
     packages
+    version_managers
     submodule
     zsh
     ruby
@@ -365,6 +371,10 @@ def install_packages
     # bzip2
     system %(cd ~/local/build; wget http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz; tar -zxf bzip-1.0.6.tar.gz; cd bzip2-1.0.6; make -j 3 && make install PREFIX=$HOME/local)
   end
+end
+
+def setup_asdf
+  system 'asdf-bundle'
 end
 
 def install_omz_plugins

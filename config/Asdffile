@@ -1,0 +1,10 @@
+plugin direnv
+plugin golang
+plugin helm
+plugin ruby
+version direnv 2.20.0
+version helm 2.14.3
+version helm 3.0.0
+version ruby 2.6.5
+global direnv 2.20.0
+global helm 2.14.3
