@@ -56,3 +56,17 @@ alias j="z"
 alias gtt="gittower ."
 
 alias time='gtime -f '\''%Us user %Ss system %es real %MkB mem -- %C'\'
+
+alias less="less -N"
+
+# k8s aliases
+alias k="kubectl"
+alias kx="kubectx"
+alias kns="kubens"
+
+alias tf="terraform"
+alias tfw="terraform workspace"
+alias tfws="terraform workspace select"
+
+alias av="aws-vault"
+
