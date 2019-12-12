@@ -88,3 +88,7 @@ TAGS*
 ################
 .yarn-meta
 node_modules/
+
+# direnv config #
+#################
+.envrc
