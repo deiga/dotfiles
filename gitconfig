@@ -1,152 +1,172 @@
 [include]
-  path = .gitconfig.personal
+path = .gitconfig.personal
+
 [includeIf "gitdir:**/amboss/**/.git"]
-  path = .gitconfig.amboss
+path = .gitconfig.amboss
+
 [github]
-  user = deiga
+user = deiga
+
 [core]
-  excludesfile = ~/.gitignore
-  editor = vim
-  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-  autocrfl = false
-  safecrlf = warn
-  trustctime = false
+excludesfile = ~/.gitignore
+editor = vim
+whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+autocrfl = false
+safecrlf = warn
+trustctime = false
+
 [color]
-  status = true
-  diff = true
-  branch = true
-  ui = auto
-  grep = true
-  showbranch = true
+status = true
+diff = true
+branch = true
+ui = auto
+grep = true
+showbranch = true
+
 [merge]
-  conflictstyle = diff3
-  stat = true
-  tool = vimdiff
-  # Include summaries of merged commits in newly created merge commit messages
-  log = true
+conflictstyle = diff3
+stat = true
+tool = vimdiff
+# Include summaries of merged commits in newly created merge commit messages
+log = true
+
 [apply]
-  whitespace = nowarn
+whitespace = nowarn
+
 [alias]
-  init = init --template=~/.git_template
+init = init --template=~/.git_template
 
-  # checkout
-  co = checkout                     # checkout
-  nb = switch --track --create            # create and switch to a new branch (mnemonic: "git new branch branchname...")
+# checkout
+co = checkout                # checkout
+nb = switch --track --create # create and switch to a new branch (mnemonic: "git new branch branchname...")
 
-  # commit
-  c = commit
-  ca = commit --all
-  ci = commit
-  cm = commit --amend
-  amend = commit --amend            # ammend your last commit
-  ammend = commit --amend           # ammend your last commit
-  extend = commit --amend -C HEAD   # Use commit message
-  reword = commit --amend --only    # reword commit message
+# commit
+c = commit
+ca = commit --all
+ci = commit
+cm = commit --amend
+amend = commit --amend          # ammend your last commit
+ammend = commit --amend         # ammend your last commit
+extend = commit --amend -C HEAD # Use commit message
+reword = commit --amend --only  # reword commit message
 
-  st = status
-  s = status
+st = status
+s = status
 
-  # branch
-  b = branch --verbose                     # branch (verbose)
+# branch
+b = branch --verbose # branch (verbose)
 
-  # diff
-  d = diff                          # diff unstaged changes
-  dc = diff --cached                # diff staged changes
-  ds = diff --staged
-  last = diff HEAD^                 # diff last committed change
+# diff
+d = diff           # diff unstaged changes
+dc = diff --cached # diff staged changes
+ds = diff --staged
+last = diff HEAD^ # diff last committed change
 
-  # fetch
-  f = fetch
-  zap = f -p
+# fetch
+f = fetch
+zap = f -p
 
-  type = cat-file -t
-  dump = cat-file -p
+type = cat-file -t
+dump = cat-file -p
 
-  cl = clone --recursive
+cl = clone --recursive
 
-  unstage = reset HEAD --
+unstage = reset HEAD --
 
-  disc = checkout --
-  discard = disc
+disc = checkout --
+discard = disc
 
-  # history
-  wc = whatchanged -p --abbrev-commit --pretty=medium
-  lg = log --color --graph \n  --pretty=format:'%Cred%h%Creset \n  -%C(yellow)%d%Creset %s %Cgreen(%cr) \n  %C(bold blue)<%an>%Creset' \n  --abbrev-commit
-  hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
-  report = "log --author=Timo --since='2 sunday ago' --until='1 sunday ago' --format='%Cgreen%ci%Creset %s%Creset' --no-merges"
-  loll = log --graph --decorate --pretty=oneline --abbrev-commit
-  unpushed = log @{u}
+# history
+wc = whatchanged -p --abbrev-commit --pretty=medium
+lg = log --color --graph \n --pretty=format:'%Cred%h%Creset \n  -%C(yellow)%d%Creset %s %Cgreen(%cr) \n  %C(bold blue)<%an>%Creset' \n --abbrev-commit
+hist = log --pretty=format:\"%h %ad | %s%d [%an] \" --graph --date=short
+report = "log --author=Timo --since='2 sunday ago' --until='1 sunday ago' --format='%Cgreen%ci%Creset %s%Creset' --no-merges"
+loll = log --graph --decorate --pretty=oneline --abbrev-commit
+unpushed = log @{u}
 
-  ctags = !.git/hooks/ctags
-  serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
-  today = log --since=midnight --author=\"$(git config user.name)\" --oneline
-  day = log --reverse --no-merges --branches=* --date=local --since=midnight --author=\"$(git config --get user.name)\"
-  split-subpath = filter-branch --prune-empty --subdirectory-filter
+ctags = !.git/hooks/ctags
+serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+today = log --since=midnight --author=\"$(git config user.name)\" --oneline
+day = log --reverse --no-merges --branches=* --date=local --since=midnight --author=\"$(git config --get user.name)\"
+split-subpath = filter-branch --prune-empty --subdirectory-filter
 
-  mr = pull-request
-  ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-  i = ignore
+mr = pull-request
+ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+i = ignore
 
-  update-submodule = submodule foreach git pull origin master
-  us = update-submodule
+update-submodule = submodule foreach git pull origin master
+us = update-submodule
 
-  # rebase
-  rc = rebase --continue
-  rs = rebase --skip
-  ra = rebase --abort
-  wip = rebase -i @{u}
-  outstanding = wip
+# rebase
+rc = rebase --continue
+rs = rebase --skip
+ra = rebase --abort
+wip = rebase -i @{u}
+outstanding = wip
 
-  #push
-  publish = push -u origin HEAD
-  pub = publish
+#push
+publish = push -u origin HEAD
+pub = publish
 [difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-[mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
+cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+path =
+
 [push]
-  default = simple
-  # Make `git push` push relevant annotated tags when pushing branches out.
-  followTags = true
+default = simple
+# Make `git push` push relevant annotated tags when pushing branches out.
+followTags = true
+
 [fetch]
-  recurseSubmodules = true
-  prune = true
+recurseSubmodules = true
+prune = true
+
 [credential]
-	helper = osxkeychain
+helper = osxkeychain
+
 [diff]
-  renames = copies
-  mnemonicprefix = true
-  tool = vimdiff
-  # Enable an experimental heuristic that shifts the hunk boundary in an
-  # attempt to make the resulting patch easier to read.
-  indentHeuristic = true
+renames = copies
+mnemonicprefix = true
+tool = vimdiff
+# Enable an experimental heuristic that shifts the hunk boundary in an
+# attempt to make the resulting patch easier to read.
+indentHeuristic = true
+
 [diff "bin"]
-  # Use `hexdump` to diff binary files
-  textconv = hexdump -v -C
+# Use `hexdump` to diff binary files
+textconv = hexdump -v -C
+
 [help]
-  # Automatically correct and execute mistyped commands
-  autocorrect = 1
+# Automatically correct and execute mistyped commands
+autocorrect = 1
+
 [branch]
-  autosetupmerge = true
+autosetupmerge = true
+
 [rerere]
-  enabled = true
+enabled = true
+
 [gh]
-  protocol = https
+protocol = https
+
 [web]
-  browser = open
+browser = open
+
 [hub]
-  protocol = https
+protocol = https
+
 [pull]
-  rebase = true
+rebase = true
+
 [rebase]
-  autoStash = true
-  autosquash = true
+autoStash = true
+autosquash = true
+
 [commit]
-	gpgsign = true
-	template = ~/.stCommitMsg
+gpgsign = true
+template = ~/.stCommitMsg
+
 [gpg]
-  program = /usr/local/bin/gpg
+program = /usr/local/bin/gpg
+
 [ghq]
-  root = ~/Dropbox/Documents/Projects
+root = ~/Dropbox/Documents/Projects
