@@ -163,18 +163,18 @@ namespace :install do
   task :resolution do
     LOGGER.info "\nChanging to max resolution".blue
     system 'osascript bin/set_to_max_resolution.scpt' if OSX
+    system %(osascript -e 'quit application "System Preferences"')
   end
 
   desc 'Set up login items'
   task :loginitems do
     LOGGER.info "\nSetting up login items".blue
     system %(brew install OJFord/formulae/loginitems)
-    system %(zsh -lc 'loginitems -a Karabiner -s false')
+    system %(zsh -lc 'loginitems -a Karabiner-Elements -s false')
     system %(zsh -lc 'loginitems -a Amethyst')
     system %(zsh -lc 'loginitems -a RescueTime')
     system %(zsh -lc 'loginitems -a Dropbox')
-    system %(zsh -lc 'loginitems -a Flux')
-    system %(zsh -lc 'loginitems -a "Alfred 3"')
+    system %(zsh -lc 'loginitems -a "Alfred 4"')
   end
 
   desc 'Symlink outside files'
@@ -182,6 +182,10 @@ namespace :install do
     # dropbox_atom_path = File.join('~', '/', 'Dropbox', 'atom')
     # atom_path = File.join('~', '/', '.atom')
     # install_dotfile(dropbox_atom_path, atom_path)
+    dropbox_ssh_keys_path = File.join('~', '/', 'Dropbox', 'Avaimet', 'ssh', 'keys')
+    ssh_keys_path = File.join('~', '/', 'dotfiles', 'ssh', 'keys')
+    install_dotfile(dropbox_ssh_keys_path, ssh_keys_path)
+  end
 
   desc 'Install subtrees'
   task :subtree  do
@@ -217,8 +221,14 @@ namespace :install do
     capslock
     resolution
     loginitems
+    reload
   ] do
   end
+end
+
+desc "Reload ZSH session"
+task :reload do
+  system 'exec zsh'
 end
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
@@ -232,7 +242,7 @@ task default: :install
 Rake::Task['install:packages'].enhance do
   restart_quicklook
   system %(sudo xcodebuild -license accept)
-  system %(open '/usr/local/Caskroom/lastpass/latest/LastPass Installer.app')
+  system %(open -a LastPass')
   system %(open -a Dropbox)
   system %(open -a Evernote)
   system %(open -a 'Google Chrome')
@@ -319,7 +329,7 @@ end
 def install_node
   require 'English'
   LOGGER.info "\nInstall node, npm".blue
-  node_version='10.6.0'
+  node_version='12.13.0'
   system %(nodenv update-version-defs >/dev/null)
   system %(nodenv prune-version-defs)
   mkdir_p(File.join('~','.nodenv'))
