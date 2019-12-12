@@ -55,25 +55,24 @@ namespace :update do
 
   desc 'Update subtrees'
   task :submodule do
-    LOGGER.info "\nUpdate subtrees".blue
-    system %(git subtree pull --prefix config/oh-my-zsh/zsh-autosuggestions zsh-autosuggestions master --squash)
-    system %(git subtree pull --prefix config/solarized solarized master --squash)
-    system %(git subtree pull --prefix config/git-fzf git-fzf master --squash)
-    system %(git subtree pull --prefix config/xiki xiki master --squash)
-    system %(git subtree pull --prefix config/dircolors-solarized dircolors-solarized master --squash)
-    system %(git subtree pull --prefix config/irssi-colors-solarized irssi-colors-solarized master --squash)
-    system %(git subtree pull --prefix oh-my-zsh oh-my-zsh master --squash)
-    system %(git subtree pull --prefix config/irssi-trackbar irssi-trackbar master --squash)
-    system %(git subtree pull --prefix config/oh-my-zsh/zsh-syntax-highlighting zsh-syntax-highlighting master --squash)
+    Rake::Task['update:subtree'].invoke
   end
 
-  desc 'Updated rbenv'
-  task :rbenv do
-    update_rbenv
+  desc 'Update subtrees'
+  task :subtree  do
+    LOGGER.info "\nUpdate subtrees".blue
+    update_subtree('zsh-autosuggestions', 'config/oh-my-zsh/zsh-autosuggestions')
+    update_subtree('git-fzf', 'config/git-fzf')
+    update_subtree('xiki', 'config/xiki')
+    update_subtree('dircolors-solarized', 'config/dircolors-solarized')
+    update_subtree('irssi-colors-solarized', 'config/irssi-colors-solarized')
+    update_subtree('oh-my-zsh/zsh-syntax-highlighting', 'config/oh-my-zsh/zsh-syntax-highlighting')
+    update_subtree('irssi-trackbar', 'config/irssi-trackbar')
+    update_subtree('oh-my-zsh', 'oh-my-zsh')
   end
 
   desc 'Update all'
-  task all: %i(vundle powerline node brew gems submodule rbenv) do
+  task all: %i(vundle powerline node brew gems submodule) do
   end
 end
 
@@ -100,11 +99,6 @@ namespace :install do
   task :zsh do
     switch_to_zsh
     install_omz_plugins
-  end
-
-  desc 'Setup submodules'
-  task :submodule do
-    install_submodules
   end
 
   desc 'Install Vundle and execute VundleInstall'
@@ -188,11 +182,25 @@ namespace :install do
     # dropbox_atom_path = File.join('~', '/', 'Dropbox', 'atom')
     # atom_path = File.join('~', '/', '.atom')
     # install_dotfile(dropbox_atom_path, atom_path)
+
+  desc 'Install subtrees'
+  task :subtree  do
+    LOGGER.info "\Installing subtrees".blue
+    install_subtree('solarized', 'https://github.com/altercation/solarized.git', 'config/solarized')
+    install_subtree('zsh-autosuggestions', 'https://github.com/zsh-users/zsh-autosuggestions.git', 'config/oh-my-zsh/zsh-autosuggestions')
+    install_subtree('git-fzf', 'https://gist.github.com/8b572b8d4b5eddd8b85e5f4d40f17236.git', 'config/git-fzf')
+    install_subtree('xiki', 'https://github.com/trogdoro/xiki.git', 'config/xiki')
+    install_subtree('dircolors-solarized', 'https://github.com/seebi/dircolors-solarized.git', 'config/dircolors-solarized')
+    install_subtree('irssi-colors-solarized', 'https://github.com/huyz/irssi-colors-solarized', 'config/irssi-colors-solarized')
+    install_subtree('oh-my-zsh', 'https://github.com/ohmyzsh/ohmyzsh.git', 'oh-my-zsh')
+    install_subtree('irssi-trackbar', 'https://github.com/mjholtkamp/irssi-trackbar.git', 'config/irssi-trackbar')
+    install_subtree('zsh-syntax-highlighting', 'https://github.com/zsh-users/zsh-syntax-highlighting.git', 'config/oh-my-zsh/zsh-syntax-highlighting')
   end
 
   desc 'Install all'
   task all: %w[
     xcode-select
+    subtree
     common
     macos
     packages
@@ -296,11 +304,6 @@ def switch_to_zsh
   end
 end
 
-def install_submodules
-  LOGGER.info "\nInstalling submodules".blue
-  system %(git submodule update --init --recursive)
-end
-
 def install_launch_agents
   LOGGER.info "\nInstalling LaunchAgents".blue
   target_dir = File.join(ENV['HOME'], 'Library', 'LaunchAgents')
@@ -375,6 +378,17 @@ def install_omz_plugins
   omz_plugins.each do |plugin|
     install_dotfile(plugin, File.join(ENV['HOME'], '.oh-my-zsh', 'custom', 'plugins', plugin.split('/')[-1]))
   end
+end
+
+def install_subtree(name, repo, path)
+  system "git remote add -f #{name} #{repo}"
+  if !File.exist?(path)
+    system "git subtree add --prefix #{path} #{name} master --squash"
+  end
+end
+
+def update_subtree(name, path)
+  system %(git subtree pull --prefix #{path} #{name} master --squash)
 end
 
 def ensure_ssh_keys_permissions
