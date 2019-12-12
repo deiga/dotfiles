@@ -148,11 +148,6 @@ namespace :install do
     install_powerline
   end
 
-  desc 'Install ruby'
-  task ruby: %w[packages] do
-    install_ruby
-  end
-
   desc 'Install xcode-select'
   task :'xcode-select' do
     system 'osascript lib/install_xcode_select.scpt' if OSX
@@ -204,9 +199,7 @@ namespace :install do
     version_managers
     submodule
     zsh
-    ruby
     vim
-    karabiner
     bin
     ssh
     powerline
@@ -386,4 +379,8 @@ end
 
 def ensure_ssh_keys_permissions
   system %(zsh -c 'setopt extendedglob; chmod 0700 ssh/keys/^*.pub')
+end
+
+def update_gems
+  system %{zsh -lc 'gem update --system; gem update'}
 end
