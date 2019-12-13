@@ -107,8 +107,10 @@ tmux list-sessions 2> /dev/null
 # compinit
 # autoload -U +X bashcompinit && bashcompinit
 
-# Profiling end
-# zprof
+if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 neofetch
+
+# Profiling end
+# zprof

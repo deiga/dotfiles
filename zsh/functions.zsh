@@ -32,7 +32,7 @@ gpip2(){
 }
 
 gpip3(){
-   PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+   PIP_REQUIRE_VIRTUALENV="" python -m pip "$@"
 }
 
 gpip(){
@@ -43,9 +43,15 @@ fzf-open-file-with-vim() {
   vim $(fzf)
 }
 
-function iterm2_print_user_vars() {
+iterm2_print_user_vars() {
   iterm2_set_user_var k8s_context $(kubectl config current-context)
   iterm2_set_user_var k8s_namespace $(kubectl config view --minify --output 'jsonpath={..namespace}')
+  iterm2_set_user_var tf_workspace $(tf workspace show)
+}
+
+dockerfilelint() {
+  local DOCKERFILE=${1:-Dockerfile}
+  docker run -v $(pwd)/$DOCKERFILE:/Dockerfile replicated/dockerfilelint /Dockerfile
 }
 
 zle -N fzf-open-file-with-vim
