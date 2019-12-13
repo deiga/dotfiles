@@ -1,7 +1,7 @@
 eval "$(hub alias -s)"
 
 # Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
+if ls --color >/dev/null 2>&1; then # GNU `ls`
   colorflag="--color"
 else # OS X `ls`
   colorflag="-G"
@@ -70,3 +70,27 @@ alias tfws="terraform workspace select"
 
 alias av="aws-vault"
 
+# amboss
+alias tfp="terraform workspace select production; terraform"
+alias tfs="terraform workspace select staging; terraform"
+alias tfq="terraform workspace select qa; terraform"
+
+alias as="aws-vault exec amboss-staging-mfa --"
+alias aq="aws-vault exec amboss-qa-mfa --"
+alias ap="aws-vault exec amboss-prod-mfa --"
+
+alias ks="as kubectl --context amboss-staging-de"
+alias kq="aq kubectl --context amboss-qa-de"
+alias kp="ap kubectl --context amboss-prod-de"
+alias ksu="as kubectl --context amboss-staging-us"¡
+alias kqu="aq kubectl --context amboss-qa-us"
+alias kpu="ap kubectl --context amboss-prod-us"
+alias ki="ap kubectl --context infrastructure"
+
+alias hs="as helm --kube-context amboss-staging-de"
+alias hq="aq helm --kube-context amboss-qa-de"
+alias hp="ap helm --kube-context amboss-prod-de"
+alias hsu="as helm --kube-context amboss-staging-us"
+alias hqu="aq helm --kube-context amboss-qa-us"
+alias hpu="ap helm --kube-context amboss-prod-us"
+alias hi="ASDF_HELM_VERSION=3.0.0 ap helm --kube-context amboss-infrastructure"
