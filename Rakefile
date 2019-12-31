@@ -13,6 +13,15 @@ EXCLUDE_FILES_FROM_COMMON = %w(Rakefile README.md LICENSE TODO.md bin config ssh
 OSX = RUBY_PLATFORM.downcase.include?('darwin')
 MAC_OS_VERSION = `defaults read loginwindow SystemVersionStampAsString`.chomp
 
+SUBTREE_CONFIG = [
+  { name: 'git-fzf', path: 'config/git-fzf', git: 'https://gist.github.com/8b572b8d4b5eddd8b85e5f4d40f17236.git'},
+  { name: 'xiki', path: 'config/xiki', git: 'https://github.com/trogdoro/xiki.git'},
+  { name: 'dircolors-solarized', path: 'config/dircolors-solarized', git: 'https://github.com/seebi/dircolors-solarized.git'},
+  { name: 'irssi-colors-solarized', path: 'config/irssi-colors-solarized', git: 'https://github.com/huyz/irssi-colors-solarized'},
+  { name: 'irssi-trackbar', path: 'config/irssi-trackbar', git: 'https://github.com/mjholtkamp/irssi-trackbar.git'},
+  { name: 'solarized', git: 'https://github.com/altercation/solarized.git', path: 'config/solarized'},
+]
+
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
 task '' => :install
 
@@ -61,11 +70,9 @@ namespace :update do
   desc 'Update subtrees'
   task :subtree  do
     LOGGER.info "\nUpdate subtrees".blue
-    update_subtree('git-fzf', 'config/git-fzf')
-    update_subtree('xiki', 'config/xiki')
-    update_subtree('dircolors-solarized', 'config/dircolors-solarized')
-    update_subtree('irssi-colors-solarized', 'config/irssi-colors-solarized')
-    update_subtree('irssi-trackbar', 'config/irssi-trackbar')
+    SUBTREE_CONFIG.each do |subtree|
+      update_subtree(subtree[:name], subtree[:path])
+    end
   end
 
   desc 'Update all'
@@ -182,12 +189,10 @@ namespace :install do
   desc 'Install subtrees'
   task :subtree  do
     LOGGER.info "\Installing subtrees".blue
-    install_subtree('solarized', 'https://github.com/altercation/solarized.git', 'config/solarized')
-    install_subtree('git-fzf', 'https://gist.github.com/8b572b8d4b5eddd8b85e5f4d40f17236.git', 'config/git-fzf')
-    install_subtree('xiki', 'https://github.com/trogdoro/xiki.git', 'config/xiki')
-    install_subtree('dircolors-solarized', 'https://github.com/seebi/dircolors-solarized.git', 'config/dircolors-solarized')
-    install_subtree('irssi-colors-solarized', 'https://github.com/huyz/irssi-colors-solarized', 'config/irssi-colors-solarized')
-    install_subtree('irssi-trackbar', 'https://github.com/mjholtkamp/irssi-trackbar.git', 'config/irssi-trackbar')
+    SUBTREE_CONFIG.each do |subtree|
+      install_subtree(subtree[:name], subtree[:git], subtree[:path])
+    end
+  end
   end
 
   desc 'Install all'
