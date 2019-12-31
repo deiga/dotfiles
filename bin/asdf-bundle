@@ -1,9 +1,14 @@
 #!/bin/sh
 
+asdf plugin update --all
+
 # Install plugins
 grep "^plugin" <"$HOME/dotfiles/config/Asdffile" | while read -r line; do
   plugin=$(echo "$line" | awk '{print $2}')
-  asdf plugin-add "$plugin"
+  asdf plugin add "$plugin"
+  if [ $plugin = "nodejs" ]; then
+    bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring >/dev/null
+  fi
 done
 
 # Install versions

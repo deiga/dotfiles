@@ -11,7 +11,6 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "kryptco/tap"
-tap "nodenv/nodenv"
 tap "ojford/formulae"
 tap "tomanthony/brews"
 tap "vitorgalvao/tiny-scripts"
@@ -175,22 +174,6 @@ brew "caffix/amass/amass"
 brew "heroku/brew/heroku"
 # Krypton command-line client, daemon, and SSH integration
 brew "kryptco/tap/kr"
-# Scrape build definitions from nodejs.org and iojs.org
-brew "nodenv/nodenv/node-build-update-defs"
-# Create aliases for nodenv Node versions
-brew "nodenv/nodenv/nodenv-aliases"
-# Auto-installs packages for Node installs
-brew "nodenv/nodenv/nodenv-default-packages"
-# Run a command against all installed versions of Node
-brew "nodenv/nodenv/nodenv-each"
-# Migrate npm packages from one Node version to another
-brew "nodenv/nodenv/nodenv-npm-migrate"
-# Pick a node version from package.json engines
-brew "nodenv/nodenv/nodenv-package-json-engine"
-# Automatically runs `nodenv rehash`
-brew "nodenv/nodenv/nodenv-package-rehash"
-# Safely sets global and per-project environment variables
-brew "nodenv/nodenv/nodenv-vars"
 # Tool for managing login items
 brew "ojford/formulae/loginitems"
 brew "tomanthony/brews/itermocil"

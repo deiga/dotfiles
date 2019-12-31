@@ -48,9 +48,9 @@ namespace :update do
   desc 'Update Node'
   task :node do
     LOGGER.info "\nUpdate node".blue
-    system %(npm update 2>/dev/null)
-    system %(npm -g install npm@latest 2>/dev/null)
-    system %(bin/npm-upgrade)
+    # system %(npm update 2>/dev/null)
+    # system %(npm -g install npm@latest 2>/dev/null)
+    # system %(bin/npm-upgrade)
   end
 
   desc 'Update subtrees'
@@ -76,10 +76,6 @@ end
 namespace :install do
   desc "Delete and recreate symbolic links and generated files in #{ENV['HOME']}"
   task :force do
-  end
-
-  task :node do
-    install_node
   end
 
   desc 'Copy and launch LaunchAgent scripts'
@@ -208,7 +204,6 @@ namespace :install do
     bin
     ssh
     powerline
-    node
     spaces
     symlink
     capslock
@@ -316,30 +311,6 @@ def install_launch_agents
       install_dotfile(File.join(launchagents_dir, file), File.join(target_dir, file))
       system %(launchctl load #{File.join(target_dir, file)})
     end
-  end
-end
-
-def install_node
-  require 'English'
-  LOGGER.info "\nInstall node, npm".blue
-  node_version='12.13.0'
-  system %(nodenv update-version-defs >/dev/null)
-  system %(nodenv prune-version-defs)
-  mkdir_p(File.join('~','.nodenv'))
-  install_dotfile(Dir['config/default-packages'][0], File.join(ENV['HOME'], '.nodenv', 'default-packages'))
-  system %(command -p -v node > /dev/null)
-  if $CHILD_STATUS.success?
-    version=`node -v`.chomp.gsub(/v.*?/,'')
-    system %(zsh -lc 'nodenv install -s #{node_version}')
-    system %(zsh -lc 'nodenv migrate #{version} #{node_version}')
-  else
-    system %(zsh -lc 'nodenv install #{node_version}')
-  end
-  system %(zsh -lc 'nodenv alias --auto;')
-  system %(zsh -lc 'nodenv global #{node_version}')
-  system %(command -p -v npm > /dev/null)
-  if not $CHILD_STATUS.success?
-    system %(zsh -lc 'curl https://npmjs.org/install.sh | sh')
   end
 end
 
