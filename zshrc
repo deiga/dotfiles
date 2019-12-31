@@ -15,8 +15,6 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 source $HOME/.zsh/plugins/antigen.zsh
 
-if [ -f $HOME/dotfiles/config/enhancd/init.sh ]; then source $HOME/dotfiles/config/enhancd/init.sh; fi
-
 # Set editor
 set -o vi
 
