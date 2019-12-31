@@ -39,6 +39,7 @@ brew "xz"
 brew "python"
 # Official Amazon AWS command-line interface
 brew "awscli"
+brew "antigen"
 # Parser generator
 brew "bison@2.7"
 # Portable Foreign Function Interface library

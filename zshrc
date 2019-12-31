@@ -42,6 +42,8 @@ HYPHEN_INSENSITIVE="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+# zstyle :omz:plugins:ssh-agent identities keys/github_ed25519 keys/bitbucket_ed25519 keys/kapsi_ed25519 keys/gitlab_ed25519 keys/heroku_ed25519
 
 # Uncomment following line if you want disable red dots displayed while waiting for completion
 # DISABLE_COMPLETION_WAITING_DOTS="true"
@@ -57,6 +59,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 # end oh-my-zsh
+source $HOME/.zsh/plugins/antigen.zsh
 
 if [ -f $HOME/dotfiles/config/enhancd/init.sh ]; then source $HOME/dotfiles/config/enhancd/init.sh; fi
 

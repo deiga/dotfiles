@@ -98,7 +98,6 @@ namespace :install do
   desc 'Switch to ZSH'
   task :zsh do
     switch_to_zsh
-    install_omz_plugins
   end
 
   desc 'Install Vundle and execute VundleInstall'
