@@ -61,14 +61,11 @@ namespace :update do
   desc 'Update subtrees'
   task :subtree  do
     LOGGER.info "\nUpdate subtrees".blue
-    update_subtree('zsh-autosuggestions', 'config/oh-my-zsh/zsh-autosuggestions')
     update_subtree('git-fzf', 'config/git-fzf')
     update_subtree('xiki', 'config/xiki')
     update_subtree('dircolors-solarized', 'config/dircolors-solarized')
     update_subtree('irssi-colors-solarized', 'config/irssi-colors-solarized')
-    update_subtree('oh-my-zsh/zsh-syntax-highlighting', 'config/oh-my-zsh/zsh-syntax-highlighting')
     update_subtree('irssi-trackbar', 'config/irssi-trackbar')
-    update_subtree('oh-my-zsh', 'oh-my-zsh')
   end
 
   desc 'Update all'
@@ -190,14 +187,11 @@ namespace :install do
   task :subtree  do
     LOGGER.info "\Installing subtrees".blue
     install_subtree('solarized', 'https://github.com/altercation/solarized.git', 'config/solarized')
-    install_subtree('zsh-autosuggestions', 'https://github.com/zsh-users/zsh-autosuggestions.git', 'config/oh-my-zsh/zsh-autosuggestions')
     install_subtree('git-fzf', 'https://gist.github.com/8b572b8d4b5eddd8b85e5f4d40f17236.git', 'config/git-fzf')
     install_subtree('xiki', 'https://github.com/trogdoro/xiki.git', 'config/xiki')
     install_subtree('dircolors-solarized', 'https://github.com/seebi/dircolors-solarized.git', 'config/dircolors-solarized')
     install_subtree('irssi-colors-solarized', 'https://github.com/huyz/irssi-colors-solarized', 'config/irssi-colors-solarized')
-    install_subtree('oh-my-zsh', 'https://github.com/ohmyzsh/ohmyzsh.git', 'oh-my-zsh')
     install_subtree('irssi-trackbar', 'https://github.com/mjholtkamp/irssi-trackbar.git', 'config/irssi-trackbar')
-    install_subtree('zsh-syntax-highlighting', 'https://github.com/zsh-users/zsh-syntax-highlighting.git', 'config/oh-my-zsh/zsh-syntax-highlighting')
   end
 
   desc 'Install all'

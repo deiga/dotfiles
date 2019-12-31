@@ -3,62 +3,16 @@
 # Profiling
 # zmodload zsh/zprof
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
-
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory autocd nomatch
 # zle uses vi mode
 bindkey -v
-# End of lines configured by zsh-newuser-install
 
-# The following lines were added by compinstall
-
-# zstyle ':completion:*' completer _expand _complete _ignored _approximate
-# zstyle :compinstall filename '/Users/timosand/.zshrc'
-
-# autoload -Uz compinit && compinit
-# End of lines added by compinstall
-
-# oh-my-zsh
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-
-# Comment this out to disable weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 # zstyle :omz:plugins:ssh-agent identities keys/github_ed25519 keys/bitbucket_ed25519 keys/kapsi_ed25519 keys/gitlab_ed25519 keys/heroku_ed25519
 
-# Uncomment following line if you want disable red dots displayed while waiting for completion
-# DISABLE_COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(
-  extract
-  ssh-agent
-  tmux
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-)
-
-source $ZSH/oh-my-zsh.sh
-# end oh-my-zsh
 source $HOME/.zsh/plugins/antigen.zsh
 
 if [ -f $HOME/dotfiles/config/enhancd/init.sh ]; then source $HOME/dotfiles/config/enhancd/init.sh; fi
@@ -111,9 +65,17 @@ tmux list-sessions 2> /dev/null
 # autoload -U +X bashcompinit && bashcompinit
 
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle :compinstall filename '/Users/timosand/.zshrc'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 neofetch
+if command brew >/dev/null 2>&1; then
+  fpath+=$(brew --prefix)/share/zsh/site-functions
+fi
+fpath+=~/.zsh/Completion
+
+autoload -Uz compinit && compinit
 
 # Profiling end
 # zprof
