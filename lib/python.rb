@@ -1,18 +1,13 @@
 require_relative 'common'
 
 def install_python
-    if OSX
-        system 'brew install python --build-from-source'
-    else
-        system 'cd ~/local/build; wget http://www.python.org/ftp/python/2.7.5/Python-2.7.5.tgz; tar -zxf Python-2.7.5.tgz; cd Python-2.7.5; ./configure --prefix=$HOME/local && make -j 3 && make install'
-        system 'cd ~/local/build; wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python '
-        system 'cd ~/local/build; curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python '
-        system 'cd ~/local/build; git clone git://github.com/libgit2/libgit2.git -b master; cd libgit2; git pull origin; mkdir build; cd build; cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/local && cmake --build . --target install'
-    end
+    system 'brew install python'
+    system 'curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python'
     update_python
 end
 
 def update_python
-    system %(PIP_REQUIRE_VIRTUALENV="" pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | PIP_REQUIRE_VIRTUALENV="" xargs -n1 pip3 install -U)
-    system %{LIBGIT2="$HOME/local" LDFLAGS="-Wl,-rpath='$LIBGIT2/lib',--enable-new-dtags $LDFLAGS" pip install -U pygit2} unless OSX
+    system %(python -m pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 python -m pip install -U)
+    system %{LIBGIT2="$HOME/local" LDFLAGS="-Wl,-rpath='$LIBGIT2/lib',--enable-new-dtags $LDFLAGS" python -m pip install -U pygit2} unless OSX
+    system 'poetry self update'
 end

@@ -3,7 +3,7 @@
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 
-bindkey "$terminfo[kcuu1]" up-line-or-beginning-search # Up
+bindkey "$terminfo[kcuu1]" up-line-or-beginning-search   # Up
 bindkey "$terminfo[kcud1]" down-line-or-beginning-search # Down
 bindkey "^P" up-line-or-beginning-search
 bindkey "^N" down-line-or-beginning-search

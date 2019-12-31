@@ -11,5 +11,5 @@ def install_powerline
 end
 
 def update_powerline
-  system %(zsh -lc 'PIP_REQUIRE_VIRTUALENV="" pip3 install -U --user powerline-status')
+  system %(zsh -lc 'python -m pip install -U --user powerline-status')
 end

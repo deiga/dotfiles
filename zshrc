@@ -31,9 +31,9 @@ autoload -U add-zsh-hook
 
 # Disable correct
 if [ -f ~/.zsh_nocorrect ]; then
-    while read -r COMMAND; do
-        alias $COMMAND="nocorrect $COMMAND"
-    done < ~/.zsh_nocorrect
+  while read -r COMMAND; do
+    alias $COMMAND="nocorrect $COMMAND"
+  done <~/.zsh_nocorrect
 fi
 
 # all of our zsh files
@@ -41,28 +41,25 @@ typeset -U config_files
 config_files=(~/.zsh/*.zsh)
 
 # load the path files
-for file in $config_files
-do
+for file in "${config_files[@]}"; do
   source "$file"
 done
 
 init_files=(~/.zsh/init/*.*sh)
 
-for file in $init_files
-do
-    source "$file" || true
+for file in "${init_files[@]}"; do
+  source "$file" || true
 done
 
 setopt extendedglob
 
-tmux list-sessions 2> /dev/null
+tmux list-sessions 2>/dev/null
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle :compinstall filename '/Users/timosand/.zshrc'
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 if command brew >/dev/null 2>&1; then
   fpath+=$(brew --prefix)/share/zsh/site-functions
 fi
