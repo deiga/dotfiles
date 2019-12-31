@@ -24,19 +24,7 @@ man () {
 }
 
 password() {
-    openssl rand -base64 32
-}
-
-gpip2(){
-   PIP_REQUIRE_VIRTUALENV="" pip2 "$@"
-}
-
-gpip3(){
-   PIP_REQUIRE_VIRTUALENV="" python -m pip "$@"
-}
-
-gpip(){
-  gpip3 "$@"
+  openssl rand -base64 32
 }
 
 fzf-open-file-with-vim() {

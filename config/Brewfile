@@ -78,18 +78,10 @@ brew "hub"
 brew "imagemagick"
 # Peer-to-peer hypermedia protocol
 brew "ipfs"
-# Regular expressions library
-brew "oniguruma"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Kubernetes command-line interface
-brew "kubernetes-cli"
-# Production Grade K8s Installation, Upgrades, and Management
-brew "kops"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
-# The Kubernetes package manager
-brew "kubernetes-helm"
 # LastPass command-line interface tool
 brew "lastpass-cli"
 # C library of Git core methods that is re-entrant and linkable
@@ -102,8 +94,6 @@ brew "mackup", args: ["HEAD"]
 brew "mas"
 # TCP port scanner, scans entire Internet in under 5 minutes
 brew "masscan"
-# Fast and user friendly build system
-brew "meson"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Remote terminal application
@@ -118,26 +108,18 @@ brew "neofetch"
 brew "nmap"
 # Manage compile and link flags for libraries
 brew "pkg-config"
-# Install NodeJS versions
-brew "node-build"
 # Libraries for security-enabled client and server applications
 brew "nss"
 # Generate clients, server & docs from an OpenAPI spec (v2, v3)
 brew "openapi-generator"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Simplistic interactive filtering tool
-brew "peco"
-# Highly capable, feature-rich programming language
-brew "perl"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # pgrep, pkill, and pfind for OpenBSD and Darwin (macOS)
 brew "proctools"
 # Parse HTML at the command-line
 brew "pup"
-# Interpreted, interactive, object-oriented programming language
-brew "python@2"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Search tool like grep and The Silver Searcher
@@ -226,15 +208,12 @@ cask "aware"
 cask "battle-net"
 cask "brave-browser"
 cask "captain"
-cask "chromium"
 cask "controlplane"
 cask "daisydisk"
 cask "dash"
-cask "datagrip"
 cask "dbeaver-community"
 cask "discord"
 cask "docker"
-cask "docker-edge"
 cask "dotnet"
 cask "dropbox"
 cask "evernote"
@@ -243,7 +222,6 @@ cask "flash-ppapi"
 cask "font-meslo-nerd-font"
 cask "font-sourcecodepro-nerd-font"
 cask "fsmonitor"
-cask "garmin-express"
 cask "gas-mask"
 cask "google-chrome"
 cask "graphiql"

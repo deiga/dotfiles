@@ -20,10 +20,6 @@ if [ -f $HOME/dotfiles/config/enhancd/init.sh ]; then source $HOME/dotfiles/conf
 # Set editor
 set -o vi
 
-# Announces todays date
-today=$(date "+%m.%d.%Y")
-
-
 # Colors
 autoload -U colors && colors
 setopt prompt_subst
@@ -61,15 +57,12 @@ setopt extendedglob
 
 tmux list-sessions 2> /dev/null
 
-# compinit
-# autoload -U +X bashcompinit && bashcompinit
 
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle :compinstall filename '/Users/timosand/.zshrc'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-neofetch
 if command brew >/dev/null 2>&1; then
   fpath+=$(brew --prefix)/share/zsh/site-functions
 fi

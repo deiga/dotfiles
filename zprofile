@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 # vim syn=zsh
-
 #echo 'zprofile' $0 # Debug
 #setopt xtrace # Trace
 #setopt promptsubst
@@ -15,10 +14,7 @@ BIN_PATH="$HOME/bin:$HOME/local/bin" # Add ~/bin to PATH
 CABAL_PATH="$HOME/.cabal/bin"
 STACK_INSTALL_PATH="$HOME/.local/bin/"
 PYTHON_BIN_PATH="$HOME/Library/Python/3.7/bin"
-PATH=$BIN_PATH:$BOX_PATH:$PATH
-# export GOPATH="$HOME/go:$HOME/Dropbox/Documents/Projects"
 
-#PATH=${GOPATH//://bin:}/bin:$CABAL_PATH:$STACK_INSTALL_PATH:$PYTHON_BIN_PATH:$PATH
 PATH=$CABAL_PATH:$STACK_INSTALL_PATH:$PYTHON_BIN_PATH:$PATH
 
 case $OSTYPE in

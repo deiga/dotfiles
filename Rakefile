@@ -239,7 +239,7 @@ Rake::Task['install:packages'].enhance do
   system %(open -a Dropbox)
   system %(open -a Evernote)
   system %(open -a 'Google Chrome')
-  system %(PIP_REQUIRE_VIRTUALENV="" pip3 install --upgrade pip setuptools wheel)
+  system %(python -m pip install --upgrade pip setuptools wheel)
 end
 
 def restart_quicklook
