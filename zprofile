@@ -14,6 +14,7 @@ BIN_PATH="$HOME/bin:$HOME/local/bin" # Add ~/bin to PATH
 CABAL_PATH="$HOME/.cabal/bin"
 STACK_INSTALL_PATH="$HOME/.local/bin/"
 PYTHON_BIN_PATH="$HOME/Library/Python/3.7/bin"
+KREW_PATH="${KREW_ROOT:-$HOME/.krew}/bin"
 
 PATH=$CABAL_PATH:$STACK_INSTALL_PATH:$PYTHON_BIN_PATH:$PATH
 
@@ -36,6 +37,5 @@ esac
 typeset -U PATH
 export PATH
 
-if type nodenv >/dev/null; then eval "$(nodenv init - --no-rehash)"; fi
 if type fasd >/dev/null; then eval "$(fasd --init auto)"; fi
 if type thefuck >/dev/null; then eval "$(thefuck --alias)"; fi

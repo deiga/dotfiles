@@ -43,8 +43,7 @@ namespace :update do
   task :brew do
     if OSX
       LOGGER.info "\nUpdate brew".blue
-      system %(brew update)
-      system %(brew upgrade)
+      system %(brew upgrade && brew cask upgrade && brew cleanup)
     end
   end
 
@@ -193,6 +192,10 @@ namespace :install do
       install_subtree(subtree[:name], subtree[:git], subtree[:path])
     end
   end
+
+  task :krew do
+    LOGGER.info "\Installing kubectl plugin manager Krew".blue
+    install_krew
   end
 
   desc 'Install all'
@@ -352,28 +355,28 @@ def setup_asdf
   system 'asdf-bundle'
 end
 
-def install_omz_plugins
-  omz_plugins = Dir['config/oh-my-zsh/*']
-  omz_plugins.each do |plugin|
-    install_dotfile(plugin, File.join(ENV['HOME'], '.oh-my-zsh', 'custom', 'plugins', plugin.split('/')[-1]))
-  end
-end
-
-def install_subtree(name, repo, path)
-  system "git remote add -f #{name} #{repo}"
-  if !File.exist?(path)
-    system "git subtree add --prefix #{path} #{name} master --squash"
-  end
-end
-
-def update_subtree(name, path)
-  system %(git subtree pull --prefix #{path} #{name} master --squash)
-end
-
 def ensure_ssh_keys_permissions
   system %(zsh -c 'setopt extendedglob; chmod 0700 ssh/keys/^*.pub')
 end
 
 def update_gems
   system %{zsh -lc 'gem update --system; gem update'}
+end
+
+
+def install_krew
+  system %(
+    set -x; cd "$(mktemp -d)" &&
+    curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/download/v0.3.3/krew.{tar.gz,yaml}" &&
+    tar zxvf krew.tar.gz &&
+    KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
+    "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
+    "$KREW" update
+  )
+end
+
+def install_zsh_completions
+  system %(poetry completions zsh > ~/.zsh/Completion/_poetry)
+  system %(kubectl completions zsh > ~/.zsh/Completion/_kubectl)
+  system %(helm completions zsh > ~/.zsh/Completion/_helm)
 end

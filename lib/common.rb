@@ -39,6 +39,7 @@ def install_dotfile(file, target_file)
     elsif @replace_all
       replace_file(file, target_file)
     elsif !File.directory?(target_file) && File.size?(target_file) && FileUtils.identical?(file, target_file)
+      LOGGER.info "File identical - replacing with symlink".blue
       replace_file(file, target_file)
     else
       print "overwrite #{target_file.replace_home}? [ynaq] "
