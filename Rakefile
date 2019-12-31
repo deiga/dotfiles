@@ -14,7 +14,6 @@ OSX = RUBY_PLATFORM.downcase.include?('darwin')
 MAC_OS_VERSION = `defaults read loginwindow SystemVersionStampAsString`.chomp
 
 SUBTREE_CONFIG = [
-  { name: 'git-fzf', path: 'config/git-fzf', git: 'https://gist.github.com/8b572b8d4b5eddd8b85e5f4d40f17236.git'},
   { name: 'xiki', path: 'config/xiki', git: 'https://github.com/trogdoro/xiki.git'},
   { name: 'dircolors-solarized', path: 'config/dircolors-solarized', git: 'https://github.com/seebi/dircolors-solarized.git'},
   { name: 'irssi-colors-solarized', path: 'config/irssi-colors-solarized', git: 'https://github.com/huyz/irssi-colors-solarized'},
@@ -326,6 +325,7 @@ def install_packages
   LOGGER.info 'Installing packages'.blue
   if OSX
     system 'brew bundle --file=config/Brewfile'
+    system '$(brew --prefix)/opt/fzf/install --no-bash --no-fish --no-update-rc --key-bindings --completion'
   else
     mkdir_p %w(~/local/bin ~/local/build)
     ENV['LD_LIBRARY_PATH'] = File.join(ENV['HOME'], 'local/lib')

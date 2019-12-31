@@ -44,5 +44,4 @@ dockerfilelint() {
 
 zle -N fzf-open-file-with-vim
 
-source $HOME/dotfiles/config/git-fzf/functions.sh
 source $HOME/dotfiles/config/docker-fzf/functions.sh
