@@ -62,17 +62,13 @@ namespace :update do
   end
 
   desc 'Update subtrees'
-  task :submodule do
-    Rake::Task['update:subtree'].invoke
-  end
-
-  desc 'Update subtrees'
   task :subtree  do
     LOGGER.info "\nUpdate subtrees".blue
     SUBTREE_CONFIG.each do |subtree|
       update_subtree(subtree[:name], subtree[:path])
     end
   end
+  task submodule: :subtree
 
   desc 'Update all'
   task all: %i(vundle powerline node brew gems submodule) do
@@ -201,6 +197,10 @@ namespace :install do
     install_krew
   end
 
+  task :autohosts do
+    setup_autohosts
+  end
+
   desc 'Install all'
   task all: %w[
     xcode-select
@@ -221,6 +221,7 @@ namespace :install do
     resolution
     loginitems
     reload
+    autohosts
   ] do
   end
 end
@@ -384,4 +385,9 @@ def install_zsh_completions
   system %(kubectl completions zsh > ~/.zsh/Completion/_kubectl)
   system %(helm completion zsh > ~/.zsh/Completion/_helm)
   system %(op completion zsh > ~/.zsh/Completion/_op)
+end
+
+
+def setup_autohosts
+  system %(cd config/autohosts && sudo ./autohosts)
 end
