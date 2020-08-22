@@ -34,8 +34,6 @@ brew "bats"
 brew "bison@2.7"
 # Statistics utility to count lines of code
 brew "cloc"
-# Dependency Manager for PHP
-brew "composer"
 # Reimplementation of ctags(1)
 brew "ctags"
 # Top-like interface for container metrics
@@ -58,8 +56,6 @@ brew "fzf"
 brew "ghq"
 # Distributed revision control system
 brew "git"
-# Enable transparent encryption/decryption of files in a git repo
-brew "git-crypt"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU Pretty Good Privacy (PGP) package
@@ -108,8 +104,6 @@ brew "namebench"
 brew "neofetch"
 # Port scanning utility for large networks
 brew "nmap"
-# Libraries for security-enabled client and server applications
-brew "nss"
 # Kubernetes introspection tool for developers
 brew "octant"
 # Development kit for the Java programming language
@@ -120,8 +114,6 @@ brew "pandoc"
 brew "parallel"
 # Granddaddy of HTML tools, with support for modern standards
 brew "tidy-html5"
-# General-purpose scripting language
-brew "php@7.3"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
