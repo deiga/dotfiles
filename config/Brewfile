@@ -1,6 +1,5 @@
 tap "beeftornado/rmtree"
 tap "caffix/amass"
-tap "datawire/blackbird"
 tap "goreleaser/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -11,72 +10,76 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "kryptco/tap"
+tap "liamg/tfsec"
 tap "ojford/formulae"
+tap "sambadevi/powerlevel9k"
+tap "scottrigby/macos-configurator"
+tap "teamookla/speedtest"
 tap "tomanthony/brews"
 tap "vitorgalvao/tiny-scripts"
 tap "wagoodman/dive"
-cask "osxfuse"
-# Automatic configure script builder
-brew "autoconf"
-# Tool for generating GNU Standards-compliant Makefiles
-brew "automake"
+# Plugin manager for zsh, inspired by oh-my-zsh and vundle
+brew "antigen"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Generic library support script
-brew "libtool"
-# YAML Parser
-brew "libyaml"
-# SSL/TLS cryptography library
-brew "openssl"
-# Library for command-line editing
-brew "readline"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
-# General-purpose data compression with high compression ratio
-brew "xz"
-# Interpreted, interactive, object-oriented programming language
-brew "python"
 # Official Amazon AWS command-line interface
 brew "awscli"
-brew "antigen"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# TAP-compliant test framework for Bash scripts
+brew "bats"
 # Parser generator
 brew "bison@2.7"
-# Portable Foreign Function Interface library
-brew "libffi"
 # Statistics utility to count lines of code
 brew "cloc"
+# Dependency Manager for PHP
+brew "composer"
 # Reimplementation of ctags(1)
 brew "ctags"
 # Top-like interface for container metrics
 brew "ctop"
 # Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+# Get a file from an HTTP, HTTPS or FTP server
 brew "curl-openssl"
+# Converts boring normal dates to fun Discordian Date
+brew "ddate"
 # Utilities for the ext2, ext3, and ext4 file systems
 brew "e2fsprogs"
 # CLI tool for quick access to files and directories
 brew "fasd"
-# Protocol for interfacing interactive programs with a web server
+# Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# Remote repository management made easy
+brew "ghq"
 # Distributed revision control system
 brew "git"
+# Enable transparent encryption/decryption of files in a git repo
+brew "git-crypt"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# GNU implementation of time utility
-brew "gnu-time"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Add GitHub support to git on the command-line
 brew "hub"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
+# Database of common MIME types
+brew "shared-mime-info"
 # Peer-to-peer hypermedia protocol
 brew "ipfs"
+# Json incremental digger
+brew "jid"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Domain specific configuration language for defining JSON data
+brew "jsonnet"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
 # LastPass command-line interface tool
@@ -86,11 +89,13 @@ brew "libgit2"
 # Swiss Army Knife for macOS
 brew "m-cli"
 # Keep your Mac's application settings in sync
-brew "mackup", args: ["HEAD"]
+brew "mackup"
 # Mac App Store command-line interface
 brew "mas"
 # TCP port scanner, scans entire Internet in under 5 minutes
 brew "masscan"
+# Run a Kubernetes cluster locally
+brew "minikube"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Remote terminal application
@@ -103,17 +108,23 @@ brew "namebench"
 brew "neofetch"
 # Port scanning utility for large networks
 brew "nmap"
-# Manage compile and link flags for libraries
-brew "pkg-config"
 # Libraries for security-enabled client and server applications
 brew "nss"
-# Generate clients, server & docs from an OpenAPI spec (v2, v3)
-brew "openapi-generator"
+# Kubernetes introspection tool for developers
+brew "octant"
+# Development kit for the Java programming language
+brew "openjdk"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Shell command parallelization utility
+brew "parallel"
+# Granddaddy of HTML tools, with support for modern standards
+brew "tidy-html5"
+# General-purpose scripting language
+brew "php@7.3"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# pgrep, pkill, and pfind for OpenBSD and Darwin (macOS)
+# OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Parse HTML at the command-line
 brew "pup"
@@ -125,29 +136,30 @@ brew "ripgrep"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
-# HTTP regression testing and benchmarking utility
-brew "siege"
-# netcat on steroids
+# SOcket CAT: netcat on steroids
 brew "socat"
 # Add a public key to a remote machine's authorized_keys file
-brew "ssh-copy-id"
-# User interface to the TELNET protocol (built from macOS Sierra sources)
+brew "ssh-copy-id", link: true
+# User interface to the TELNET protocol
 brew "telnet"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
+# Tool to build, change, and version infrastructure
+brew "terraform"
+# CLI tool to generate terraform files from existing infrastructure
+brew "terraformer"
+# Linter for Terraform files
+brew "tflint"
 # Programatically correct mistyped console commands
 brew "thefuck"
-# Granddaddy of HTML tools, with support for modern standards
-brew "tidy-html5"
 # Terminal multiplexer
 brew "tmux"
+# Manage complex tmux sessions easily
 brew "tmuxinator"
 # Command-line client for Travis CI
 brew "travis"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Load testing for HTTP, PostgreSQL, Jabber, and others
-brew "tsung"
 # Extraction utility for .zip compressed archives
 brew "unzip"
 # Vi 'workalike' with many additional features
@@ -156,8 +168,6 @@ brew "vim"
 brew "watch"
 # Internet file retriever
 brew "wget"
-# JavaScript package manager
-brew "yarn"
 # Process YAML documents from the CLI
 brew "yq"
 # General-purpose lossless data-compression library
@@ -174,24 +184,30 @@ brew "heroku/brew/heroku"
 brew "kryptco/tap/kr"
 # Tool for managing login items
 brew "ojford/formulae/loginitems"
+# A badass zsh theme with more power than a normal earthling
+brew "sambadevi/powerlevel9k/powerlevel9k"
+# Compares plist files line by line
+brew "scottrigby/macos-configurator/pldiff"
+# Ookla Speedtest
+brew "teamookla/speedtest/speedtest"
 brew "tomanthony/brews/itermocil"
 # Quickly repair outdated/broken Casks from homebrew-cask
 brew "vitorgalvao/tiny-scripts/cask-repair"
 # A tool for exploring each layer in a docker image
 brew "wagoodman/dive/dive"
-brew "scottrigby/macos-configurator/pldiff"
 cask "1password"
 cask "1password-cli"
-cask "airfoil"
 cask "alfred"
 cask "amethyst"
+cask "another-redis-desktop-manager"
 cask "aware"
+cask "aws-vault"
 cask "battle-net"
 cask "brave-browser"
-cask "captain"
 cask "controlplane"
 cask "daisydisk"
 cask "dash"
+cask "datagrip"
 cask "dbeaver-community"
 cask "discord"
 cask "docker"
@@ -203,15 +219,12 @@ cask "flash-ppapi"
 cask "font-meslo-nerd-font"
 cask "font-sourcecodepro-nerd-font"
 cask "fsmonitor"
-cask "gas-mask"
 cask "google-chrome"
+cask "google-cloud-sdk"
 cask "graphiql"
-cask "harvest"
-cask "hosts"
 cask "insomnia"
 cask "istat-menus5"
 cask "iterm2"
-cask "java"
 cask "jetbrains-toolbox"
 cask "karabiner-elements"
 cask "keybase"
@@ -221,12 +234,15 @@ cask "launchrocket"
 cask "licecap"
 cask "mactex"
 cask "ngrok"
+cask "notion"
 cask "opera"
+cask "osxfuse"
 cask "plex-media-player"
 cask "prey"
-cask "rdm"
+cask "qbittorrent"
 cask "rescuetime"
 cask "signal"
+cask "silicon-labs-vcp-driver"
 cask "skitch"
 cask "skype"
 cask "slack"
@@ -241,10 +257,14 @@ cask "visual-studio-code"
 cask "visual-studio-code-insiders"
 cask "vlc"
 cask "whatsapp"
+cask "zoomus"
 mas "Amphetamine", id: 937984704
+mas "Gemini", id: 463541543
 mas "Keynote", id: 409183694
+mas "Microsoft Remote Desktop", id: 715768417
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
+mas "Trello", id: 1278508951
 mas "Xcode", id: 497799835
