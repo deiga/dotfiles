@@ -116,6 +116,7 @@ namespace :install do
 
   desc "Run macOS configs"
   task :macos do
+    LOGGER.info "\Installing macOS config".blue
     system './config/.macos' if OSX
   end
 
@@ -192,6 +193,8 @@ namespace :install do
       install_subtree(subtree[:name], subtree[:git], subtree[:path])
     end
   end
+
+  task submodule: :subtree
 
   task :krew do
     LOGGER.info "\Installing kubectl plugin manager Krew".blue
