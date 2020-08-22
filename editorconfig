@@ -20,6 +20,13 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
-[{Makefile,**.mk}]
+[*.py]
+indent_style = space
+indent_size = 4
+
+[{makefile,Makefile,**.mk}]
 # Use tabs for indentation (Makefiles require tabs)
 indent_style = tab
+
+[{Jenkinsfile,Jenkinsfile.*,*.jenkinsfile}]
+indent_size = 4
