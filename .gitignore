@@ -15,8 +15,8 @@ ssh/authorized_keys
 !.vscode/extensions.json
 .history
 
-
 # End of https://www.gitignore.io/api/visualstudiocode
 /bin/datagrip
 /bin/idea
 *.zwc
+zsh/Completion/*
