@@ -19,6 +19,7 @@ SUBTREE_CONFIG = [
   { name: 'irssi-colors-solarized', path: 'config/irssi-colors-solarized', git: 'https://github.com/huyz/irssi-colors-solarized'},
   { name: 'irssi-trackbar', path: 'config/irssi-trackbar', git: 'https://github.com/mjholtkamp/irssi-trackbar.git'},
   { name: 'solarized', git: 'https://github.com/altercation/solarized.git', path: 'config/solarized'},
+  { name: 'autohosts', git: 'https://github.com/angela-d/autohosts', path: 'config/autohosts'},
 ]
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
