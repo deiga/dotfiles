@@ -25,6 +25,10 @@ SELF_CMD="$0"
 
 KUBENS_DIR="${XDG_CACHE_HOME:-$HOME/.kube}/kubens"
 
+CONTEXT=""
+CONTEXT_ARG=""
+KUBECONFIG=""
+
 usage() {
   local SELF
   SELF="kubens"
@@ -62,11 +66,15 @@ current_namespace() {
 }
 
 current_context() {
-  $KUBECTL config current-context
+  if [[ -z "$CONTEXT" ]]; then
+    $KUBECTL config current-context
+  else
+    echo $CONTEXT
+  fi
 }
 
 get_namespaces() {
-  $KUBECTL get namespaces -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}'
+  $KUBECTL get namespaces -o=jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}' $CONTEXT_ARG $CONTEXT
 }
 
 escape_context_name() {
@@ -183,6 +191,33 @@ swap_namespace() {
 }
 
 main() {
+  POSITIONAL=()
+  while [[ $# -gt 0 ]]; do
+    key="$1"
+
+    case $key in
+    --context)
+      CONTEXT="$2"
+      CONTEXT_ARG="--context"
+      shift
+      shift
+      ;;
+    --kubeconfig)
+      KUBECONFIG="--kubconfig $2"
+      shift
+      shift
+      ;;
+    *)
+      POSITIONAL+=("$1")
+      shift
+      ;;
+    esac
+  done
+
+  if [ ${#POSITIONAL[@]} -gt 0 ]; then
+    set -- "${POSITIONAL[@]}" # restore positional parameters
+  fi
+
   if [[ -z "${KUBECTL:-}" ]]; then
     if hash kubectl 2>/dev/null; then
       KUBECTL=kubectl
