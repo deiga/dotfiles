@@ -6,7 +6,7 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
 growl() {
-  if [ $# -eq 1 ] ; then
+  if [ $# -eq 1 ]; then
     param="-m ${1}"
     growlnotify -m "$1"
   else
@@ -19,8 +19,8 @@ growl() {
 }
 
 # all-round man
-man () {
-/usr/bin/man "$@" || (help "$@" 2> /dev/null && help "$@" | less)
+man() {
+  /usr/bin/man "$@" || (help "$@" 2>/dev/null && help "$@" | less)
 }
 
 password() {
@@ -32,9 +32,9 @@ fzf-open-file-with-vim() {
 }
 
 iterm2_print_user_vars() {
-  iterm2_set_user_var k8s_context $(kubectl config current-context)
-  iterm2_set_user_var k8s_namespace $(kubectl config view --minify --output 'jsonpath={..namespace}')
-  iterm2_set_user_var tf_workspace $(tf workspace show)
+  # iterm2_set_user_var k8s_context $(kubectl config current-context)
+  # iterm2_set_user_var k8s_namespace $(kubectl config view --minify --output 'jsonpath={..namespace}')
+  # iterm2_set_user_var tf_workspace $(tf workspace show)
 }
 
 dockerfilelint() {
