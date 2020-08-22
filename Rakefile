@@ -378,5 +378,6 @@ end
 def install_zsh_completions
   system %(poetry completions zsh > ~/.zsh/Completion/_poetry)
   system %(kubectl completions zsh > ~/.zsh/Completion/_kubectl)
-  system %(helm completions zsh > ~/.zsh/Completion/_helm)
+  system %(helm completion zsh > ~/.zsh/Completion/_helm)
+  system %(op completion zsh > ~/.zsh/Completion/_op)
 end
