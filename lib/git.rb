@@ -1,4 +1,4 @@
-require 'common'
+require_relative 'common'
 
 def install_subtree(name, repo, path)
   system "git remote add -f #{name} #{repo}"
