@@ -62,7 +62,6 @@ alias less="less -N"
 # k8s aliases
 alias k="kubectl"
 alias kx="kubectx"
-alias kns="kubens"
 
 alias tf="terraform"
 alias tfw="terraform workspace"
@@ -71,26 +70,9 @@ alias tfws="terraform workspace select"
 alias av="aws-vault"
 
 # amboss
+# alias tfp="terraform workspace select production; aws-vault exec amboss-prod-mfa -- terraform"
+# alias tfs="terraform workspace select staging; aws-vault exec amboss-staging-mfa -- terraform"
+# alias tfq="terraform workspace select qa; aws-vault exec amboss-qa-mfa -- terraform"
 alias tfp="terraform workspace select production; terraform"
 alias tfs="terraform workspace select staging; terraform"
 alias tfq="terraform workspace select qa; terraform"
-
-alias as="aws-vault exec amboss-staging-mfa --"
-alias aq="aws-vault exec amboss-qa-mfa --"
-alias ap="aws-vault exec amboss-prod-mfa --"
-
-alias ks="as kubectl --context amboss-staging-de"
-alias kq="aq kubectl --context amboss-qa-de"
-alias kp="ap kubectl --context amboss-prod-de"
-alias ksu="as kubectl --context amboss-staging-us"¡
-alias kqu="aq kubectl --context amboss-qa-us"
-alias kpu="ap kubectl --context amboss-prod-us"
-alias ki="ap kubectl --context infrastructure"
-
-alias hs="as helm --kube-context amboss-staging-de"
-alias hq="aq helm --kube-context amboss-qa-de"
-alias hp="ap helm --kube-context amboss-prod-de"
-alias hsu="as helm --kube-context amboss-staging-us"
-alias hqu="aq helm --kube-context amboss-qa-us"
-alias hpu="ap helm --kube-context amboss-prod-us"
-alias hi="ASDF_HELM_VERSION=3.0.0 ap helm --kube-context amboss-infrastructure"
