@@ -77,6 +77,8 @@ namespace :update do
   task :antibody do
     system %(antibody bundle <$HOME/.zsh/plugins/plugins.txt >$HOME/.zsh/plugins.zsh)
   end
+
+  task completions: "install:completions"
 end
 
 namespace :install do
@@ -203,6 +205,10 @@ namespace :install do
 
   task :autohosts do
     setup_autohosts
+  end
+
+  task :completions do
+    install_zsh_completions
   end
 
   desc 'Install all'
@@ -386,9 +392,10 @@ end
 
 def install_zsh_completions
   system %(poetry completions zsh > ~/.zsh/Completion/_poetry)
-  system %(kubectl completions zsh > ~/.zsh/Completion/_kubectl)
+  system %(kubectl completion zsh > ~/.zsh/Completion/_kubectl)
   system %(helm completion zsh > ~/.zsh/Completion/_helm)
   system %(op completion zsh > ~/.zsh/Completion/_op)
+  system %(npm completion > ~/.zsh/Completion/_npm)
 end
 
 
