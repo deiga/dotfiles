@@ -81,7 +81,8 @@ setopt noshwordsplit
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 # zstyle :omz:plugins:ssh-agent identities keys/github_ed25519 keys/bitbucket_ed25519 keys/kapsi_ed25519 keys/gitlab_ed25519 keys/heroku_ed25519
 
-source $HOME/.zsh/plugins/antigen.zsh
+# source $HOME/.zsh/plugins/antigen.zsh
+source $HOME/.zsh/plugins.zsh
 
 # Set editor
 set -o vi

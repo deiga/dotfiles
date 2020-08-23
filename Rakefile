@@ -71,7 +71,11 @@ namespace :update do
   task submodule: :subtree
 
   desc 'Update all'
-  task all: %i(vundle powerline node brew gems submodule) do
+  task all: %i(vundle powerline node brew gems submodule antibody) do
+  end
+
+  task :antibody do
+    system %(antibody bundle <$HOME/.zsh/plugins/plugins.txt >$HOME/.zsh/plugins.zsh)
   end
 end
 

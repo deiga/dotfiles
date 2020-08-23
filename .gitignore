@@ -20,3 +20,4 @@ ssh/authorized_keys
 /bin/idea
 *.zwc
 zsh/Completion/*
+zsh/plugins.zsh
