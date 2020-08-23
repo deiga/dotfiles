@@ -22,3 +22,5 @@ asdf-use() {
     eval $command
   )
 }
+
+direnv() { asdf exec direnv "$@"; }
