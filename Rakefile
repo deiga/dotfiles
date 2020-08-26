@@ -173,7 +173,6 @@ namespace :install do
     system %(brew install OJFord/formulae/loginitems)
     system %(zsh -lc 'loginitems -a Karabiner-Elements -s false')
     system %(zsh -lc 'loginitems -a Amethyst')
-    system %(zsh -lc 'loginitems -a RescueTime')
     system %(zsh -lc 'loginitems -a Dropbox')
     system %(zsh -lc 'loginitems -a "Alfred 4"')
   end
