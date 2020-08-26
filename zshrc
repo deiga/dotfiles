@@ -5,13 +5,21 @@
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle :compinstall filename '/Users/timosand/.zshrc'
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 
-if command brew >/dev/null 2>&1; then
-  fpath+=$(brew --prefix)/share/zsh/site-functions
+if type brew >/dev/null 2>&1; then
+  fpath+=$BREW_PREFIX/share/zsh/site-functions
 fi
 fpath+=~/.zsh/Completion
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-${HOME}}/.zcompdump(.mh1) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
 
 HISTFILE=~/.histfile
 HISTSIZE=10000
