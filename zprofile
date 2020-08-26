@@ -45,6 +45,3 @@ esac
 # eliminates duplicates in *paths
 typeset -gU PATH cdpath fpath path
 export PATH
-
-if type fasd >/dev/null; then eval "$(fasd --init auto)"; fi
-if type thefuck >/dev/null; then eval "$(thefuck --alias)"; fi
