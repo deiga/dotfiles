@@ -32,15 +32,15 @@ PATH="$HOME/.poetry/bin:$PATH"
 
 case $OSTYPE in
 darwin*)
-  PYTHON_HOMEBREW_PATH=/usr/local/opt/python/libexec/bin
-  COREUTILS_PATH=/usr/local/opt/coreutils/libexec/gnubin
-  HOMEBREW_PATH=/usr/local/sbin:/usr/local/bin
+  PYTHON_HOMEBREW_PATH=$BREW_PREFIX/opt/python/libexec/bin
+  COREUTILS_PATH=$BREW_PREFIX/opt/coreutils/libexec/gnubin
+  HOMEBREW_PATH=$BREW_PREFIX/sbin:$BREW_PREFIX/bin
   PATH=$COREUTILS_PATH:$PYTHON_HOMEBREW_PATH:$HOMEBREW_PATH:$PATH
   # PATH=$PYTHON_HOMEBREW_PATH:$HOMEBREW_PATH:$PATH
   export ARCHFLAGS="-arch x86_64"
   export JAVA_HOME
-  JAVA_HOME=$(/usr/libexec/java_home)
-  export SCALA_HOME=/usr/local/opt/scala
+  JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home # Update with /usr/libexec/java_home
+  export SCALA_HOME=$BREW_PREFIX/opt/scala
   ;;
 *) ;;
 
