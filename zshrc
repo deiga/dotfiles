@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -7,7 +9,7 @@ fi
 
 #echo 'zshrc' $0 # Debug
 # Profiling
-#zmodload zsh/zprof
+# zmodload zsh/zprof
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle :compinstall filename '/Users/timosand/.zshrc'
@@ -93,9 +95,7 @@ setopt noglobdots
 setopt noshwordsplit
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-# zstyle :omz:plugins:ssh-agent identities keys/github_ed25519 keys/bitbucket_ed25519 keys/kapsi_ed25519 keys/gitlab_ed25519 keys/heroku_ed25519
 
-# source $HOME/.zsh/plugins/antigen.zsh
 source $HOME/.zsh/plugins.zsh
 
 # Set editor
@@ -132,8 +132,6 @@ for file in "${init_files[@]}"; do
   source "$file" || true
 done
 
-setopt extendedglob
-
 tmux list-sessions 2>/dev/null
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -142,4 +140,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Profiling end
-#zprof
+# zprof
+# unsetopt XTRACE
+# exec 2>&3 3>&-

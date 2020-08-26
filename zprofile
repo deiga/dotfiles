@@ -1,10 +1,6 @@
-#!/usr/bin/bash
 # vim syn=zsh
 #echo 'zprofile' $0 # Debug
-#setopt xtrace # Trace
-#setopt promptsubst
-#typeset -F SECONDS
-#PS4='+{$SECONDS}%N:%i> '
+# zmodload zsh/zprof
 # Locale settings
 if [[ -z "$LANG" ]]; then
   export LANG="en_GB.UTF-8"
@@ -46,7 +42,8 @@ darwin*)
 
 esac
 
-typeset -U PATH
+# eliminates duplicates in *paths
+typeset -gU PATH cdpath fpath path
 export PATH
 
 if type fasd >/dev/null; then eval "$(fasd --init auto)"; fi
