@@ -1,18 +1,50 @@
-ohmyzsh/ohmyzsh path:plugins/tmux
-ohmyzsh/ohmyzsh path:plugins/tmuxinator
-ohmyzsh/ohmyzsh path:plugins/dash
-ohmyzsh/ohmyzsh path:plugins/terraform
-# ohmyzsh/ohmyzsh path:plugins/thefuck
+spwhitt/nix-zsh-completions
+zsh-users/zsh-completions
+
+belak/zsh-utils path:history
+belak/zsh-utils path:utility
 
 sorin-ionescu/prezto path:modules/ssh
 
-zsh-users/zsh-completions
-zsh-users/zsh-autosuggestions
-https://gist.github.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236 # git-fzf
-b4b4r07/enhancd
-jimhester/per-directory-history
+# git-fzf
+https://gist.github.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236 path:functions.sh
+https://gist.github.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236 path:key-binding.zsh
 
+jimhester/per-directory-history
 romkatv/powerlevel10k
 
+ohmyzsh/ohmyzsh path:plugins/tmuxinator
+ohmyzsh/ohmyzsh path:plugins/fzf
+# ohmyzsh/ohmyzsh path:plugins/thefuck
+
+Aloxaf/fzf-tab
+
+blimmer/zsh-aws-vault
+zpm-zsh/colorize
+zuxfoucault/colored-man-pages_mod
+joel-porquet/zsh-dircolors-solarized
+laggardkernel/git-ignore
+
+zpm-zsh/dropbox
+wbingli/zsh-wakatime
+reegnz/jq-zsh-plugin
+droctothorpe/kubecolor
+gko/ssh-connect
+MichaelAquilina/zsh-you-should-use
+mwilliammyers/plugin-osx
+
+# Compint as late as possible
+belak/zsh-utils path:completion
+
+# Needs to run after compinit
+svenXY/timewarrior
+b4b4r07/enhancd
+ohmyzsh/ohmyzsh path:plugins/tmux
+ohmyzsh/ohmyzsh path:plugins/dash
+macunha1/zsh-terraform
+
 # Must be loaded last
-zsh-users/zsh-syntax-highlighting
+
+zsh-users/zsh-autosuggestions
+zdharma/fast-syntax-highlighting
+

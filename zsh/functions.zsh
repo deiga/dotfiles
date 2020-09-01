@@ -31,6 +31,15 @@ fzf-open-file-with-vim() {
   vim $(fzf)
 }
 
+zle -N fzf-open-file-with-vim
+
+# fasd & fzf change directory - jump using `fasd` if given argument, filter output of `fasd` using `fzf` else
+z() {
+  [ $# -gt 0 ] && fasd_cd -d "$*" && return
+  local dir
+  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
+
 iterm2_print_user_vars() {
   # iterm2_set_user_var k8s_context $(kubectl config current-context)
   # iterm2_set_user_var k8s_namespace $(kubectl config view --minify --output 'jsonpath={..namespace}')
@@ -42,25 +51,7 @@ dockerfilelint() {
   docker run -v $(pwd)/$DOCKERFILE:/Dockerfile replicated/dockerfilelint /Dockerfile
 }
 
-zle -N fzf-open-file-with-vim
-
 source $HOME/dotfiles/config/docker-fzf/functions.sh
-
-awsvl() {
-  # This function opens a new separate browser to the AWS console with your logged in user
-  # It requires one parameter, the name of the aws-vault profile to use
-  local aws_profile=$1
-  local CHROME_PATH
-  case $(uname) in
-  "Darwin")
-    CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-    ;;
-  "Linux")
-    CHROME_PATH=$(which google-chrome)
-    ;;
-  esac
-  aws-vault --debug login $aws_profile --stdout | xargs -t nohup "$CHROME_PATH" %U --no-first-run --new-window --disk-cache-dir=$(mktemp -d /tmp/chrome.XXXXXX) --user-data-dir=$(mktemp -d /tmp/chrome.XXXXXX) >/dev/null 2>&1 &
-}
 
 aq() {
   aws-vault exec amboss-qa-mfa -- "$@"

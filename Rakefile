@@ -15,7 +15,6 @@ MAC_OS_VERSION = `defaults read loginwindow SystemVersionStampAsString`.chomp
 
 SUBTREE_CONFIG = [
   { name: 'xiki', path: 'config/xiki', git: 'https://github.com/trogdoro/xiki.git'},
-  { name: 'dircolors-solarized', path: 'config/dircolors-solarized', git: 'https://github.com/seebi/dircolors-solarized.git'},
   { name: 'irssi-colors-solarized', path: 'config/irssi-colors-solarized', git: 'https://github.com/huyz/irssi-colors-solarized'},
   { name: 'irssi-trackbar', path: 'config/irssi-trackbar', git: 'https://github.com/mjholtkamp/irssi-trackbar.git'},
   { name: 'solarized', git: 'https://github.com/altercation/solarized.git', path: 'config/solarized'},

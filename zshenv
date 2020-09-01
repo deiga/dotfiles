@@ -11,6 +11,7 @@
 # setopt XTRACE
 
 export SYSTEM=$(uname -s)
+export ZHISTFILE=.histfile
 export BREW_PREFIX=/usr/local
 
 # https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zshenv
