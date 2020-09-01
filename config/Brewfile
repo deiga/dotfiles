@@ -141,10 +141,6 @@ brew "terraformer"
 brew "tflint"
 # Terminal multiplexer
 brew "tmux"
-# Manage complex tmux sessions easily
-brew "tmuxinator"
-# Command-line client for Travis CI
-brew "travis"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Extraction utility for .zip compressed archives

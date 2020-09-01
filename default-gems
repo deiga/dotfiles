@@ -8,3 +8,5 @@ bundler-audit
 lunchy
 rubocop
 solargraph
+tmuxinator
+travis
