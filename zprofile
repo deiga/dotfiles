@@ -20,10 +20,9 @@ export LESSCHARSET=utf-8
 BIN_PATH="$HOME/bin:$HOME/local/bin" # Add ~/bin to PATH
 CABAL_PATH="$HOME/.cabal/bin"
 STACK_INSTALL_PATH="$HOME/.local/bin/"
-PYTHON_BIN_PATH="$HOME/Library/Python/3.7/bin"
 KREW_PATH="${KREW_ROOT:-$HOME/.krew}/bin"
 
-PATH=$CABAL_PATH:$STACK_INSTALL_PATH:$PYTHON_BIN_PATH:$BIN_PATH:$KREW_PATH:$PATH
+PATH=$CABAL_PATH:$STACK_INSTALL_PATH:$BIN_PATH:$KREW_PATH:$PATH
 PATH="$HOME/.poetry/bin:$PATH"
 
 case $OSTYPE in
@@ -32,7 +31,6 @@ darwin*)
   COREUTILS_PATH=$BREW_PREFIX/opt/coreutils/libexec/gnubin
   HOMEBREW_PATH=$BREW_PREFIX/sbin:$BREW_PREFIX/bin
   PATH=$COREUTILS_PATH:$PYTHON_HOMEBREW_PATH:$HOMEBREW_PATH:$PATH
-  # PATH=$PYTHON_HOMEBREW_PATH:$HOMEBREW_PATH:$PATH
   export ARCHFLAGS="-arch x86_64"
   export JAVA_HOME
   JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home # Update with /usr/libexec/java_home

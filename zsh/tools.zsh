@@ -1,8 +1,9 @@
 #!/bin/sh
 
 # Dont source `~/.asdf/asdf.sh`
-PATH="$PATH:$BREW_PREFIX/opt/asdf/bin"
-source "$BREW_PREFIX/opt/asdf/lib/asdf.sh" # just load the asdf wrapper function
+# PATH="$PATH:$BREW_PREFIX/opt/asdf/bin"
+# source "$BREW_PREFIX/opt/asdf/lib/asdf.sh" # just load the asdf wrapper function
+source "$BREW_PREFIX/opt/asdf/asdf.sh"
 
 # Hook direnv into your shell.
 eval "$(asdf exec direnv hook zsh)"

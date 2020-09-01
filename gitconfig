@@ -91,7 +91,7 @@ day = log --reverse --no-merges --branches=* --date=local --since=midnight --aut
 split-subpath = filter-branch --prune-empty --subdirectory-filter
 
 mr = pull-request
-ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+ignore = "!git-ignore"
 i = ignore
 
 update-submodule = submodule foreach git pull origin master
@@ -121,7 +121,7 @@ recurseSubmodules = true
 prune = true
 
 [credential]
-helper = osxkeychain
+	helper = osxkeychain
 
 [diff]
 renames = copies

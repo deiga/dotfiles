@@ -53,6 +53,10 @@ alias av="aws-vault"
 # alias tfp="terraform workspace select production; aws-vault exec amboss-prod-mfa -- terraform"
 # alias tfs="terraform workspace select staging; aws-vault exec amboss-staging-mfa -- terraform"
 # alias tfq="terraform workspace select qa; aws-vault exec amboss-qa-mfa -- terraform"
-alias tfp="terraform workspace select production; terraform"
-alias tfs="terraform workspace select staging; terraform"
-alias tfq="terraform workspace select qa; terraform"
+alias tfp="tfws production; terraform"
+alias tfs="tfws staging; terraform"
+alias tfq="tfws qa; terraform"
+
+alias awsvl=avli
+
+alias mux=tmuxinator

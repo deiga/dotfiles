@@ -1,5 +1,7 @@
 tap "beeftornado/rmtree"
 tap "caffix/amass"
+tap "deiga/versions", "git@github.com:deiga/homebrew-versions.git"
+tap "getantibody/tap"
 tap "goreleaser/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -18,11 +20,12 @@ tap "teamookla/speedtest"
 tap "tomanthony/brews"
 tap "vitorgalvao/tiny-scripts"
 tap "wagoodman/dive"
-brew "antibody"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.8", link: false
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -55,6 +58,8 @@ brew "fzf"
 brew "ghq"
 # Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # GNU Pretty Good Privacy (PGP) package
@@ -67,8 +72,6 @@ brew "httpie"
 brew "hub"
 # Database of common MIME types
 brew "shared-mime-info"
-# Peer-to-peer hypermedia protocol
-brew "ipfs"
 # Json incremental digger
 brew "jid"
 # Lightweight and flexible command-line JSON processor
@@ -97,8 +100,6 @@ brew "mosh"
 brew "mtr"
 # DNS benchmark utility
 brew "namebench"
-# Fast, highly customisable system info script
-brew "neofetch"
 # Port scanning utility for large networks
 brew "nmap"
 # Kubernetes introspection tool for developers
@@ -109,8 +110,6 @@ brew "openjdk"
 brew "pandoc"
 # Shell command parallelization utility
 brew "parallel"
-# Granddaddy of HTML tools, with support for modern standards
-brew "tidy-html5"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
@@ -139,14 +138,16 @@ brew "terraform"
 brew "terraformer"
 # Linter for Terraform files
 brew "tflint"
+# Granddaddy of HTML tools, with support for modern standards
+brew "tidy-html5"
+# Command-line time tracking application
+brew "timewarrior"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Extraction utility for .zip compressed archives
 brew "unzip"
-# Vi 'workalike' with many additional features
-brew "vim"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
@@ -161,14 +162,14 @@ brew "zsh"
 brew "zsh-completions"
 # In-depth Attack Surface Mapping and Asset Discovery
 brew "caffix/amass/amass"
+# The fastest shell plugin manager
+brew "getantibody/tap/antibody"
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
 # Krypton command-line client, daemon, and SSH integration
 brew "kryptco/tap/kr"
 # Tool for managing login items
 brew "ojford/formulae/loginitems"
-# A badass zsh theme with more power than a normal earthling
-brew "sambadevi/powerlevel9k/powerlevel9k"
 # Compares plist files line by line
 brew "scottrigby/macos-configurator/pldiff"
 # Ookla Speedtest
@@ -186,6 +187,8 @@ cask "aware"
 cask "aws-vault"
 cask "battle-net"
 cask "brave-browser"
+cask "cakebrew"
+cask "chromedriver"
 cask "controlplane"
 cask "daisydisk"
 cask "dash"
@@ -221,6 +224,7 @@ cask "qbittorrent"
 cask "signal"
 cask "silicon-labs-vcp-driver"
 cask "skitch"
+cask "skype"
 cask "slack"
 cask "spotify"
 cask "steam"
@@ -233,7 +237,11 @@ cask "vlc"
 cask "whatsapp"
 cask "zoomus"
 mas "Amphetamine", id: 937984704
+mas "Cyph", id: 1480070821
+mas "GarageBand", id: 682658836
 mas "Gemini", id: 463541543
+mas "iMovie", id: 408981434
+mas "Jira", id: 1475897096
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 715768417
 mas "Numbers", id: 409203825
