@@ -21,6 +21,17 @@ asdf-use() {
   )
 }
 
+asdf-each() {
+  local plugin=$1
+  shift
+  local command=$@
+
+  for version in $(asdf list $plugin); do
+    echo "Running '$command' for $plugin version $version"
+    asdf-use $plugin $version $command
+  done
+}
+
 direnv() { asdf exec direnv "$@"; }
 
 if type fasd >/dev/null; then
