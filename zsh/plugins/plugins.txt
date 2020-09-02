@@ -38,7 +38,6 @@ belak/zsh-utils path:completion
 
 # Needs to run after compinit
 svenXY/timewarrior
-b4b4r07/enhancd
 ohmyzsh/ohmyzsh path:plugins/tmux
 ohmyzsh/ohmyzsh path:plugins/dash
 macunha1/zsh-terraform
