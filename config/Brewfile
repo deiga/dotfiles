@@ -1,6 +1,6 @@
 tap "beeftornado/rmtree"
 tap "caffix/amass"
-tap "deiga/versions", "git@github.com:deiga/homebrew-versions.git"
+tap "deiga/versions", "https://github.com/deiga/homebrew-versions.git"
 tap "getantibody/tap"
 tap "goreleaser/tap"
 tap "heroku/brew"
