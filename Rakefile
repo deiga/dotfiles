@@ -19,7 +19,7 @@ SUBTREE_CONFIG = [
   { name: 'irssi-trackbar', path: 'config/irssi-trackbar', git: 'https://github.com/mjholtkamp/irssi-trackbar.git'},
   { name: 'solarized', git: 'https://github.com/altercation/solarized.git', path: 'config/solarized'},
   { name: 'autohosts', git: 'https://github.com/angela-d/autohosts', path: 'config/autohosts'},
-  { name: 'tpm', git: 'https://github.com/tmux-plugins/tpms', path: 'tmux/plugins/tpm'},
+  { name: 'tpm', git: 'https://github.com/tmux-plugins/tpm', path: 'tmux/plugins/tpm'},
 ]
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
