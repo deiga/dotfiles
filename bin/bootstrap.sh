@@ -4,15 +4,17 @@ set -e
 set -x
 set -u
 
-echo "Running 'xcode-select --install'"
-check=$( (xcode-\select --install || true) 2>&1)
-while [[ $check == *"install requested"* ]];
-do
-  echo "Waiting for installation to finish..."
-  sleep 5
+if [ ! $(xcodebuild -version) ]; 
+then
+  echo "Running 'xcode-select --install'"
   check=$( (xcode-\select --install || true) 2>&1)
-done
-
+  while [[ $check == *"install requested"* ]];
+  do
+    echo "Waiting for installation to finish..."
+    sleep 5
+    check=$( (xcode-\select --install || true) 2>&1)
+  done
+fi
 
 DOTFILES_REPO=~/dotfiles
 
