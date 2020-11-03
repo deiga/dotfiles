@@ -40,8 +40,8 @@ if [[ $? != 0 ]]; then
   sleep 30
 fi
 
-echo "Updateing rake"
-sudo gem upgrade rake
+echo "Updating rake"
+sudo gem update rake
 
 echo "Running rake install"
 rake install
