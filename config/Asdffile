@@ -10,12 +10,13 @@ plugin elixir
 plugin mysql
 plugin mongodb
 plugin python
+plugin tfsec
+plugin kubectl
 version direnv latest
-version helm 3.0.0
+version helm latest
 # version ruby latest
 version nodejs latest
 version yarn latest
-global direnv latest
-global helm 3.0.0
-global nodejs latest
-global yarn latest
+version kubectl latest
+version kubectl 1.16.15
+global kubectl 1.16.15
