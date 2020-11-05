@@ -12,7 +12,7 @@ fi
 # zmodload zsh/zprof
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
-zstyle :compinstall filename '/Users/timosand/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 zstyle ':completion:*' accept-exact '*(N)'
 
 if type brew >/dev/null 2>&1; then
