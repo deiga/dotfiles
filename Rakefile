@@ -145,25 +145,25 @@ namespace :install do
 
   desc 'Install xcode-select'
   task :'xcode-select' do
-    system 'osascript lib/install_xcode_select.scpt' if OSX
+    system 'osascript lib/install_xcode_select.applescript' if OSX
   end
 
   desc 'Adds 4 Spaces'
   task :spaces do
     LOGGER.info "\nAdding 4 Spaces".blue
-    system 'osascript lib/add_spaces.scpt' if OSX
+    system 'osascript lib/add_spaces.applescript' if OSX
   end
 
   desc 'Changes Caps Lock to Control'
   task :capslock do
     LOGGER.info "\nChanging Caps Lock to Control".blue
-    system 'osascript bin/change_caps_lock_to_ctrl_l.scpt' if OSX
+    system 'osascript bin/change_caps_lock_to_ctrl_l.applescript' if OSX
   end
 
   desc 'Changes to max Resolution'
   task :resolution do
     LOGGER.info "\nChanging to max resolution".blue
-    system 'osascript bin/set_to_max_resolution.scpt' if OSX
+    system 'osascript bin/set_to_max_resolution.applescript' if OSX
     system %(osascript -e 'quit application "System Preferences"')
   end
 
@@ -179,11 +179,8 @@ namespace :install do
 
   desc 'Symlink outside files'
   task :symlink do
-    # dropbox_atom_path = File.join('~', '/', 'Dropbox', 'atom')
-    # atom_path = File.join('~', '/', '.atom')
-    # install_dotfile(dropbox_atom_path, atom_path)
-    dropbox_ssh_keys_path = File.join('~', '/', 'Dropbox', 'Avaimet', 'ssh', 'keys')
-    ssh_keys_path = File.join('~', '/', 'dotfiles', 'ssh', 'keys')
+    dropbox_ssh_keys_path = File.join(ENV['HOME'], '/', 'Dropbox', 'Avaimet', 'ssh', 'keys')
+    ssh_keys_path = File.join(ENV['HOME'], '/', 'dotfiles', 'ssh', 'keys')
     install_dotfile(dropbox_ssh_keys_path, ssh_keys_path)
   end
 
