@@ -134,7 +134,7 @@ namespace :install do
   end
 
   desc 'Setup version managers'
-  task version_managers: %[packages] do
+  task :version_managers do
     setup_asdf
   end
 
