@@ -94,7 +94,7 @@ fi
 
 # all of our zsh files
 typeset -U config_files
-config_files=(~/.zsh/*.zsh)
+config_files=(~/.zsh/*.zsh~*/plugins.zsh) # Exlude .zsh/plugins.zsh from sourcing again
 
 # load the path files
 for file in "${config_files[@]}"; do
@@ -113,6 +113,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+. ~/.asdf/plugins/java/set-java-home.zsh
 
 # Profiling end
 # zprof
