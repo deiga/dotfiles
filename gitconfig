@@ -1,7 +1,11 @@
+[user]
+name =
+email =
+
 [include]
 path = .gitconfig.personal
 
-[includeIf "gitdir:**/amboss/**/.git"]
+[includeIf "gitdir:**/amboss/**/*"]
 path = .gitconfig.amboss
 
 [github]
@@ -170,3 +174,5 @@ program = /usr/local/bin/gpg
 
 [ghq]
 root = ~/Dropbox/Documents/Projects
+[init]
+	defaultBranch = main

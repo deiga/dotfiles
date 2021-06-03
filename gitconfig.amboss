@@ -1,5 +1,5 @@
 [user]
-	name = Timo Sand
+  name = Timo Sand
   email = tsd@amboss.com
-	signingkey = 2F132698
-	useConfigOnly = true
+  signingkey = 0x61F118357E7F11D36690E4FCA9A4F4CA7A0DB372
+  useConfigOnly = true

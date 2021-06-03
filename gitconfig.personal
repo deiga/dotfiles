@@ -1,3 +1,4 @@
 [user]
-	name = Timo Sand
-	useConfigOnly = true
+  name = Timo Sand
+  useConfigOnly = true
+  signingkey = 0x61F118357E7F11D36690E4FCA9A4F4CA7A0DB372
