@@ -31,7 +31,7 @@ log/*
 .DS_Store?
 .DS_Store
 ehthumbs.db
-Icon?
+Icon\?
 Thumbs.db
 
 # Python ignores #
@@ -93,3 +93,4 @@ node_modules/
 # direnv config #
 #################
 .envrc
+.tool-versions
