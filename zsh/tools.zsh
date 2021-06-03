@@ -4,42 +4,42 @@
 # PATH="$PATH:$BREW_PREFIX/opt/asdf/bin"
 # source "$BREW_PREFIX/opt/asdf/lib/asdf.sh" # just load the asdf wrapper function
 source "$BREW_PREFIX/opt/asdf/asdf.sh"
-export PATH=${PATH#$HOME/.asdf/shims}
+# export PATH=${PATH#$HOME/.asdf/shims}
 
 # Hook direnv into your shell.
 eval "$(asdf exec direnv hook zsh)"
 
 asdf-use() {
-  plugin=$1
-  shift
-  version=$1
-  shift
-  command=$@
+    plugin=$1
+    shift
+    version=$1
+    shift
+    command=$@
 
-  (
-    asdf shell $plugin $version
-    eval $command
-  )
+    (
+        asdf shell $plugin $version
+        eval $command
+    )
 }
 
 asdf-each() {
-  local plugin=$1
-  shift
-  local command=$@
+    local plugin=$1
+    shift
+    local command=$@
 
-  for version in $(asdf list $plugin); do
-    echo "Running '$command' for $plugin version $version"
-    asdf-use $plugin $version $command
-  done
+    for version in $(asdf list $plugin); do
+        echo "Running '$command' for $plugin version $version"
+        asdf-use $plugin $version $command
+    done
 }
 
 direnv() { asdf exec direnv "$@"; }
 
 if type fasd >/dev/null; then
-  eval "$(fasd --init auto)"
+    eval "$(fasd --init auto)"
 fi
 
 if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 fi
