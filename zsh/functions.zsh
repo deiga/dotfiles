@@ -73,24 +73,10 @@ environments=(
   ap:i:infrastructure        #ki hi
 )
 
-aqs() {
-  aws-vault exec --server amboss-qa-mfa -- "$@"
-}
-ass() {
-  aws-vault exec --server amboss-staging-mfa -- "$@"
-}
-aps() {
-  aws-vault exec --server amboss-prod-mfa -- "$@"
-}
-
-aq-gui() {
-  aws-vault exec --server --prompt=osascript amboss-qa-mfa -- open -a "$@"
-}
-as-gui() {
-  aws-vault exec --server --prompt=osascript amboss-staging-mfa -- open -a "$@"
-}
-ap-gui() {
-  aws-vault exec --server --prompt=osascript amboss-prod-mfa -- open -a "$@"
+av-gui() {
+  local aws_profile=${1:-amboss-qa-mfa}
+  shift
+  aws-vault exec --server --prompt=osascript $aws_profile -- "$@"
 }
 
 for e in ${environments[@]}; do
@@ -114,15 +100,15 @@ ocp() {
 }
 
 lensq() {
-  aq /Applications/Lens.app/Contents/MacOS/Lens
+  av-gui amboss-qa-mfa /Applications/Lens.app/Contents/MacOS/Lens
 }
 
 lenss() {
-  as /Applications/Lens.app/Contents/MacOS/Lens
+  av-gui amboss-staging-mfa /Applications/Lens.app/Contents/MacOS/Lens
 }
 
 lensp() {
-  ap /Applications/Lens.app/Contents/MacOS/Lens
+  av-gui amboss-prod-mfa /Applications/Lens.app/Contents/MacOS/Lens
 }
 
 kres() {
