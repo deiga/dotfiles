@@ -32,9 +32,6 @@ darwin*)
   HOMEBREW_PATH=$BREW_PREFIX/sbin:$BREW_PREFIX/bin
   PATH=$COREUTILS_PATH:$PYTHON_HOMEBREW_PATH:$HOMEBREW_PATH:$PATH
   export ARCHFLAGS="-arch x86_64"
-  export JAVA_HOME
-  JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home # Update with /usr/libexec/java_home
-  export SCALA_HOME=$BREW_PREFIX/opt/scala
   ;;
 *) ;;
 
