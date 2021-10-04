@@ -2,3 +2,4 @@ editorconfig-tools
 eslint
 prettier
 npm-check-updates
+typescript
