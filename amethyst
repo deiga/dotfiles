@@ -1,10 +1,9 @@
 {
     "LAYOUTS": "----------------------",
     "layouts": [
-        "tall",
         "fullscreen",
-        "floating",
-        "widescreen-tall"
+        "widescreen-tall",
+        "tall"
     ],
 
     "MODIFIERS": "----------------------",
