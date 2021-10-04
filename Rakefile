@@ -388,11 +388,13 @@ def install_krew
 end
 
 def install_zsh_completions
+  mkdir_p %w(zsh/Completion/)
   system %(poetry completions zsh > ~/.zsh/Completion/_poetry)
   system %(kubectl completion zsh > ~/.zsh/Completion/_kubectl)
   system %(helm completion zsh > ~/.zsh/Completion/_helm)
   system %(op completion zsh > ~/.zsh/Completion/_op)
   system %(npm completion > ~/.zsh/Completion/_npm)
+  system %(register-python-argcomplete pipx > ~/.zsh/Completion/_pipx)
 end
 
 

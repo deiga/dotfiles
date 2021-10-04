@@ -85,6 +85,10 @@ setopt prompt_subst
 # ZSH Hooks
 autoload -U add-zsh-hook
 
+# BASH completions (used for pipx)
+autoload -U bashcompinit
+bashcompinit
+
 # Disable correct
 if [ -f ~/.zsh_nocorrect ]; then
   while read -r COMMAND; do
