@@ -68,6 +68,7 @@ target/*
 *.swp
 *~
 *.old
+.watchman-*
 
 # CTags files #
 ###############
