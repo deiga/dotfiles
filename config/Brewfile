@@ -1,7 +1,6 @@
 tap "beeftornado/rmtree"
 tap "caffix/amass"
 tap "deiga/versions", "https://github.com/deiga/homebrew-versions.git"
-tap "getantibody/tap"
 tap "goreleaser/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -163,7 +162,7 @@ brew "zsh-completions"
 # In-depth Attack Surface Mapping and Asset Discovery
 brew "caffix/amass/amass"
 # The fastest shell plugin manager
-brew "getantibody/tap/antibody"
+brew "antibody"
 # Everything you need to get started with Heroku
 brew "heroku/brew/heroku"
 # Krypton command-line client, daemon, and SSH integration

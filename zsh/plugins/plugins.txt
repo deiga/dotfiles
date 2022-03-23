@@ -45,5 +45,5 @@ macunha1/zsh-terraform
 # Must be loaded last
 
 zsh-users/zsh-autosuggestions
-zdharma/fast-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
 
