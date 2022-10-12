@@ -17,14 +17,11 @@ tap "sambadevi/powerlevel9k"
 tap "scottrigby/macos-configurator"
 tap "teamookla/speedtest"
 tap "tomanthony/brews"
-tap "vitorgalvao/tiny-scripts"
 tap "wagoodman/dive"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.8", link: false
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -32,7 +29,7 @@ brew "bat"
 # TAP-compliant test framework for Bash scripts
 brew "bats"
 # Parser generator
-brew "bison@2.7"
+brew "bison"
 # Statistics utility to count lines of code
 brew "cloc"
 # Reimplementation of ctags(1)
@@ -53,8 +50,6 @@ brew "fasd"
 brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Remote repository management made easy
-brew "ghq"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -101,8 +96,6 @@ brew "mtr"
 brew "namebench"
 # Port scanning utility for large networks
 brew "nmap"
-# Kubernetes introspection tool for developers
-brew "octant"
 # Development kit for the Java programming language
 brew "openjdk"
 # Swiss-army knife of markup format conversion
@@ -131,14 +124,8 @@ brew "ssh-copy-id", link: true
 brew "telnet"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
-# Tool to build, change, and version infrastructure
-brew "terraform"
 # CLI tool to generate terraform files from existing infrastructure
 brew "terraformer"
-# Linter for Terraform files
-brew "tflint"
-# Granddaddy of HTML tools, with support for modern standards
-brew "tidy-html5"
 # Command-line time tracking application
 brew "timewarrior"
 # Terminal multiplexer
@@ -174,8 +161,6 @@ brew "scottrigby/macos-configurator/pldiff"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
 brew "tomanthony/brews/itermocil"
-# Quickly repair outdated/broken Casks from homebrew-cask
-brew "vitorgalvao/tiny-scripts/cask-repair"
 # A tool for exploring each layer in a docker image
 brew "wagoodman/dive/dive"
 cask "1password"
