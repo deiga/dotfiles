@@ -1,13 +1,7 @@
 #!/bin/sh
 
-# Dont source `~/.asdf/asdf.sh`
-# PATH="$PATH:$BREW_PREFIX/opt/asdf/bin"
-# source "$BREW_PREFIX/opt/asdf/lib/asdf.sh" # just load the asdf wrapper function
+# https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 source "$BREW_PREFIX/opt/asdf/libexec/asdf.sh"
-# export PATH=${PATH#$HOME/.asdf/shims}
-
-# Hook direnv into your shell.
-eval "$(asdf exec direnv hook zsh)"
 
 asdf-use() {
   plugin=$1
