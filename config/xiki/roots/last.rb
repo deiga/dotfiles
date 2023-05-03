@@ -1,1 +1,0 @@
-Launcher.last options[:path]

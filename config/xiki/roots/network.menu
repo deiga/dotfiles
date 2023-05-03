@@ -1,5 +1,0 @@
-= ip/
-= curl/
-= ports/
-+  pairing location/
-  ! `scselect pairing`

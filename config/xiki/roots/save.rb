@@ -1,3 +1,0 @@
-DiffLog.save
-
-""
