@@ -126,7 +126,6 @@ namespace :install do
 
   desc 'Install Packages'
   task :packages do
-    LOGGER.info "Installing packages".blue
     install_homebrew if OSX
     install_packages
   end
@@ -200,15 +199,9 @@ namespace :install do
     ssh
     symlink
     loginitems
-    reload
     autohosts
   ] do
   end
-end
-
-desc "Reload ZSH session"
-task :reload do
-  system 'exec zsh'
 end
 
 desc "Create symbolic links and generate files in #{ENV['HOME']} without overwriting existing files"
