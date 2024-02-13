@@ -1,22 +1,41 @@
+plugin awscli
+plugin bats
+plugin checkov
 plugin direnv
-plugin golang
-plugin helm
-plugin ruby
-plugin yarn
-plugin nodejs
-plugin erlang
-plugin elm
 plugin elixir
-plugin mysql
-plugin mongodb
-plugin python
-plugin tfsec
+plugin elm
+plugin erlang
+plugin golang
+plugin gradle
+plugin groovy
+plugin helm
+plugin java
+plugin krew
 plugin kubectl
+plugin mongodb
+plugin mysql
+plugin nodejs
+plugin nova
+plugin pipenv
+plugin pnpm
+plugin python
+plugin ruby
+plugin rust
+plugin shellcheck
+plugin shfmt
+plugin terraform-docs
+plugin terraform
+plugin terragrunt
+plugin tflint
+plugin tfsec
+plugin tfupdate
+plugin yarn
 version direnv latest
 version helm latest
 # version ruby latest
 version nodejs latest
 version yarn latest
 version kubectl latest
-version kubectl 1.16.15
-global kubectl 1.16.15
+version krew latest
+version kubectl 1.26.10
+global kubectl 1.26.10
