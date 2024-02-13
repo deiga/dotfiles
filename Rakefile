@@ -143,16 +143,10 @@ namespace :install do
     system 'osascript lib/install_xcode_select.applescript' if OSX
   end
 
-  desc 'Adds 4 Spaces'
-  task :spaces do
-    LOGGER.info "\nAdding 4 Spaces".blue
-    system 'osascript lib/add_spaces.applescript' if OSX
-  end
-
   desc 'Changes Caps Lock to Control'
   task :capslock do
-    LOGGER.info "\nChanging Caps Lock to Control".blue
-    system 'osascript bin/change_caps_lock_to_ctrl_l.applescript' if OSX
+    # LOGGER.info "\nChanging Caps Lock to Control".blue
+    # system 'osascript bin/change_caps_lock_to_ctrl_l.applescript' if OSX
   end
 
   desc 'Changes to max Resolution'
