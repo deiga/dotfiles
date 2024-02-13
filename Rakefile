@@ -191,12 +191,12 @@ namespace :install do
     common
     macos
     packages
-    version_managers
     submodule
     zsh
     vim
     bin
     ssh
+    version_managers
     symlink
     loginitems
     autohosts

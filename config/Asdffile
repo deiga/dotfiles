@@ -16,7 +16,7 @@ plugin mongodb
 plugin mysql
 plugin nodejs
 plugin nova
-plugin pipenv
+plugin pipenv https://github.com/and-semakin/asdf-pipenv.git
 plugin pnpm
 plugin python
 plugin ruby
