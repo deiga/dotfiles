@@ -6,7 +6,7 @@ def setup_vim
 end
 
 def clone_vundle
-  if File.exist?('vim/bundle/vundle/.git')
+  if File.exist?('vim/bundle/Vundle.vim/.git')
     LOGGER.info 'Vundle already installed'.green
   else
     not(system 'git clone https://github.com/VundleVim/Vundle.vim.git vim/bundle/Vundle.vim') && 'Could not clone Vundle'
