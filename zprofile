@@ -27,10 +27,9 @@ PATH="$HOME/.poetry/bin:$PATH"
 
 case $OSTYPE in
 darwin*)
-  PYTHON_HOMEBREW_PATH=$BREW_PREFIX/opt/python/libexec/bin
   COREUTILS_PATH=$BREW_PREFIX/opt/coreutils/libexec/gnubin
-  HOMEBREW_PATH=$BREW_PREFIX/sbin:$BREW_PREFIX/bin
-  PATH=$COREUTILS_PATH:$PYTHON_HOMEBREW_PATH:$HOMEBREW_PATH:$PATH
+  PATH=$COREUTILS_PATH:$PATH
+  [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
   export ARCHFLAGS="-arch x86_64"
   ;;
 *) ;;

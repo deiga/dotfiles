@@ -259,7 +259,7 @@ def run_homebrew_install
   LOGGER.info 'Installing Homebrew, the OSX package manager...         '.blue
   LOGGER.info 'If it\'s already installed, this will do nothing.       '.blue
   LOGGER.info '========================================================'.blue
-  system '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
+  system '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 end
 
 def install_common_dotfiles
