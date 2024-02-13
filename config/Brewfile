@@ -5,7 +5,6 @@ tap "goreleaser/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
@@ -22,16 +21,9 @@ tap "wagoodman/dive"
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# TAP-compliant test framework for Bash scripts
-brew "bats"
-# Parser generator
-brew "bison"
-# Statistics utility to count lines of code
-brew "cloc"
+
 # Reimplementation of ctags(1)
 brew "ctags"
 # Top-like interface for container metrics
@@ -42,10 +34,8 @@ brew "curl"
 brew "curl-openssl"
 # Converts boring normal dates to fun Discordian Date
 brew "ddate"
-# Utilities for the ext2, ext3, and ext4 file systems
-brew "e2fsprogs"
 # CLI tool for quick access to files and directories
-brew "fasd"
+brew "zoxide"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
@@ -70,8 +60,6 @@ brew "shared-mime-info"
 brew "jid"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Domain specific configuration language for defining JSON data
-brew "jsonnet"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
 # C library of Git core methods that is re-entrant and linkable
@@ -84,16 +72,12 @@ brew "mackup"
 brew "mas"
 # TCP port scanner, scans entire Internet in under 5 minutes
 brew "masscan"
-# Run a Kubernetes cluster locally
-brew "minikube"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
 # Remote terminal application
 brew "mosh"
 # 'traceroute' and 'ping' in a single tool
 brew "mtr"
-# DNS benchmark utility
-brew "namebench"
 # Port scanning utility for large networks
 brew "nmap"
 # Development kit for the Java programming language
@@ -112,10 +96,6 @@ brew "pup"
 brew "reattach-to-user-namespace"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
-# Autoformat shell script source code
-brew "shfmt"
 # SOcket CAT: netcat on steroids
 brew "socat"
 # Add a public key to a remote machine's authorized_keys file
@@ -124,8 +104,6 @@ brew "ssh-copy-id", link: true
 brew "telnet"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
-# CLI tool to generate terraform files from existing infrastructure
-brew "terraformer"
 # Command-line time tracking application
 brew "timewarrior"
 # Terminal multiplexer
@@ -140,76 +118,50 @@ brew "watch"
 brew "wget"
 # Process YAML documents from the CLI
 brew "yq"
-# General-purpose lossless data-compression library
-brew "zlib"
-# UNIX shell (command interpreter)
-brew "zsh"
+
 # Additional completion definitions for zsh
 brew "zsh-completions"
 # In-depth Attack Surface Mapping and Asset Discovery
 brew "caffix/amass/amass"
 # The fastest shell plugin manager
-brew "antibody"
-# Everything you need to get started with Heroku
-brew "heroku/brew/heroku"
+brew "antidote"
 # Krypton command-line client, daemon, and SSH integration
 brew "kryptco/tap/kr"
 # Tool for managing login items
 brew "ojford/formulae/loginitems"
 # Compares plist files line by line
 brew "scottrigby/macos-configurator/pldiff"
-# Ookla Speedtest
-brew "teamookla/speedtest/speedtest"
-brew "tomanthony/brews/itermocil"
 # A tool for exploring each layer in a docker image
 brew "wagoodman/dive/dive"
 cask "1password"
 cask "1password-cli"
 cask "alfred"
 cask "amethyst"
-cask "aware"
-cask "aws-vault"
-cask "battle-net"
-cask "brave-browser"
-cask "cakebrew"
 cask "chromedriver"
 cask "controlplane"
+cask "cursor"
 cask "daisydisk"
 cask "dash"
-cask "datagrip"
 cask "dbeaver-community"
 cask "discord"
 cask "docker"
 cask "dropbox"
 cask "evernote"
-cask "firefox"
-cask "flash-ppapi"
 cask "font-meslo-lg-nerd-font"
 cask "font-sauce-code-pro-nerd-font"
 cask "fsmonitor"
-cask "google-chrome"
+cask "gemini"
 cask "google-cloud-sdk"
 cask "insomnia"
-cask "istat-menus5"
-cask "iterm2"
-cask "jetbrains-toolbox"
+cask "istat-menus"
 cask "karabiner-elements"
 cask "keybase"
-cask "kindle"
-cask "launchrocket"
 cask "licecap"
-cask "mactex"
 cask "ngrok"
 cask "notion"
-cask "opera"
-cask "osxfuse"
-cask "prey"
 cask "qbittorrent"
 cask "signal"
-cask "silicon-labs-vcp-driver"
-cask "skitch"
 cask "skype"
-cask "slack"
 cask "spotify"
 cask "steam"
 cask "suspicious-package"
@@ -218,19 +170,12 @@ cask "telegram"
 cask "tower"
 cask "visual-studio-code"
 cask "vlc"
-cask "whatsapp"
-cask "zoomus"
 mas "Amphetamine", id: 937984704
-mas "Cyph", id: 1480070821
-mas "GarageBand", id: 682658836
-mas "Gemini", id: 463541543
-mas "iMovie", id: 408981434
-mas "Jira", id: 1475897096
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 715768417
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
-mas "Todoist", id: 585829637
-mas "Trello", id: 1278508951
+mas "Kindle", id: 302584613
+mas "Slack", id: 803453959
 mas "Xcode", id: 497799835
