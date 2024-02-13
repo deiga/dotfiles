@@ -198,7 +198,6 @@ namespace :install do
     vim
     bin
     ssh
-    spaces
     symlink
     loginitems
     reload
