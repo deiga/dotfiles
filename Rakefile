@@ -69,8 +69,7 @@ namespace :update do
   task antibody: :subtree
 
   task :antidote do
-    system %(antidote update)
-    system %(antidote bundle <$HOME/.zsh/plugins/plugins.txt >$HOME/.zsh/plugins.zsh)
+    system %(zsh -c 'source ${ZDOTDIR:-~}/.antidote/antidote.zsh; antidote update &; antidote bundle <$HOME/.zsh/plugins/plugins.txt >$HOME/.zsh/plugins.zsh')
   end
 
   task completions: "install:completions"
@@ -160,9 +159,9 @@ namespace :install do
   task :loginitems do
     LOGGER.info "\nSetting up login items".blue
     system %(brew install OJFord/formulae/loginitems)
-    system %(zsh -lc 'loginitems -a Karabiner-Elements -s false')
-    system %(zsh -lc 'loginitems -a Amethyst')
-    system %(zsh -lc 'loginitems -a "Alfred 5"')
+    system %(zsh -c 'loginitems -a Karabiner-Elements -s false')
+    system %(zsh -c 'loginitems -a Amethyst')
+    system %(zsh -c 'loginitems -a "Alfred 5"')
   end
 
   desc 'Symlink outside files'
