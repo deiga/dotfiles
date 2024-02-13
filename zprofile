@@ -29,7 +29,7 @@ case $OSTYPE in
 darwin*)
   COREUTILS_PATH=$BREW_PREFIX/opt/coreutils/libexec/gnubin
   PATH=$COREUTILS_PATH:$PATH
-  [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+  [ -x $BREW_PREFIX/bin/brew ] && eval "$($BREW_PREFIX/bin/brew shellenv)"
   export ARCHFLAGS="-arch x86_64"
   ;;
 *) ;;

@@ -33,7 +33,7 @@ if type zoxide >/dev/null; then
   eval "$(zoxide init zsh --cmd j)"
 fi
 
-if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-  source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+if [ -d "$BREW_PREFIX/share/google-cloud-sdk" ]; then
+  source "$BREW_PREFIX/share/google-cloud-sdk/path.zsh.inc"
+  source "$BREW_PREFIX/share/google-cloud-sdk/completion.zsh.inc"
 fi

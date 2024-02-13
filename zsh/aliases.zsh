@@ -37,7 +37,6 @@ alias gtts="gt trunk && gt sync"
 alias gtt="gt trunk"
 alias gts="gt sync"
 alias gcl="GIT_TEMPLATE_DIR=$HOME/.git_template g cl"
-alias j="z"
 
 alias time='gtime -f '\''%Us user %Ss system %es real %MkB mem -- %C'\'
 

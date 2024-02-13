@@ -11,9 +11,9 @@ export VISUAL=code
 
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
-export CLOUDSDK_PYTHON=$(asdf where python 3.12.1)/bin/python
+export CLOUDSDK_PYTHON=$(asdf where python 3.12.1)/bin/python # When updating this version mach it with the version in Asdffile
 
-export FZF_BASE=/usr/local/opt/fzf
+# export FZF_BASE=/usr/local/opt/fzf
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 

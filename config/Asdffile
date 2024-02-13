@@ -32,6 +32,8 @@ plugin tfupdate
 plugin yarn
 version direnv latest
 version helm latest
+version python latest
+version python 3.12.1 # When updating this version mach it with the version in exports.zsh
 # version ruby latest
 version nodejs latest
 version yarn latest

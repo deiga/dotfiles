@@ -12,7 +12,11 @@
 
 export SYSTEM=$(uname -s)
 export ZHISTFILE=.histfile
-export BREW_PREFIX=/usr/local
+if [[ -n $(whence -p brew) ]]; then
+  export BREW_PREFIX=$(brew --prefix)
+else
+  export BREW_PREFIX=/opt/homebrew
+fi
 
 # https://github.com/sorin-ionescu/prezto/blob/master/runcoms/zshenv
 # Ensure that a non-login, non-interactive shell has a defined environment.

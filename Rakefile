@@ -381,7 +381,7 @@ def install_zsh_completions
 end
 
 def update_antidote
-  system %(zsh -c 'source ${ZDOTDIR:-~}/.antidote/antidote.zsh; antidote update &; antidote bundle <$HOME/.zsh/plugins/plugins.txt >$HOME/.zsh/plugins.zsh')
+  system %(zsh -c 'source ${ZDOTDIR:-~}/.antidote/antidote.zsh; antidote update; antidote bundle <$HOME/.zsh/plugins/plugins.txt >$HOME/.zsh/plugins.zsh')
 end
 
 def setup_autohosts
