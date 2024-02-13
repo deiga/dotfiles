@@ -127,12 +127,14 @@ namespace :install do
 
   desc 'Install Packages'
   task :packages do
+    LOGGER.info "Installing packages".blue
     install_homebrew if OSX
     install_packages
   end
 
   desc 'Setup version managers'
   task :version_managers do
+    LOGGER.info "Installing version managers".blue
     setup_asdf
   end
 
@@ -243,10 +245,10 @@ task default: :install
 Rake::Task['install:packages'].enhance do
   restart_quicklook
   system %(sudo xcodebuild -license accept)
-  system %(open -a LastPass')
+  system %(open -a 1Password')
   system %(open -a Dropbox)
   system %(open -a Evernote)
-  system %(open -a 'Google Chrome')
+  system %(open -a Arc)
   system %(python -m pip install --upgrade pip setuptools wheel)
 end
 
