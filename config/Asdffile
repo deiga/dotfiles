@@ -30,6 +30,8 @@ plugin tflint
 plugin tfsec
 plugin tfupdate
 plugin yarn
+version java latest:openjdk
+global java latest:openjdk
 version direnv latest
 version helm latest
 version python latest

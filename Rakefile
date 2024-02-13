@@ -347,6 +347,7 @@ end
 
 def setup_asdf
   system 'bin/asdf-bundle'
+  system 'asdf direnv setup --shell zsh --version latest'
 end
 
 def ensure_ssh_keys_permissions
