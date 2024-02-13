@@ -142,19 +142,6 @@ namespace :install do
     system 'osascript lib/install_xcode_select.applescript' if OSX
   end
 
-  desc 'Changes Caps Lock to Control'
-  task :capslock do
-    # LOGGER.info "\nChanging Caps Lock to Control".blue
-    # system 'osascript bin/change_caps_lock_to_ctrl_l.applescript' if OSX
-  end
-
-  desc 'Changes to max Resolution'
-  task :resolution do
-    LOGGER.info "\nChanging to max resolution".blue
-    system 'osascript bin/set_to_max_resolution.applescript' if OSX
-    system %(osascript -e 'quit application "System Preferences"')
-  end
-
   desc 'Set up login items'
   task :loginitems do
     LOGGER.info "\nSetting up login items".blue
@@ -213,8 +200,6 @@ namespace :install do
     ssh
     spaces
     symlink
-    capslock
-    resolution
     loginitems
     reload
     autohosts
