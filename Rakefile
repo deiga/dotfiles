@@ -80,6 +80,9 @@ namespace :install do
   desc "Delete and recreate symbolic links and generated files in #{ENV['HOME']}"
   task :force do
   end
+  task :antidote do
+    install_shell_plugin_manager
+  end
 
   desc 'Copy and launch LaunchAgent scripts'
   task :agents do
@@ -330,10 +333,11 @@ end
 
 def install_shell_plugin_manager
   if OSX
-    unless File.exist?('/usr/local/bin/antidote')
+    unless File.join(ENV['HOME'], '.antidote')
       LOGGER.info 'Installing antidote'.blue
       system 'git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote'
     else
+      LOGGER.info 'Updating antidote'.blue
       system 'git -C ${ZDOTDIR:-~}/.antidote pull origin'
     end
   end
