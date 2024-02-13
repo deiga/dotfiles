@@ -69,7 +69,7 @@ namespace :update do
   task antibody: :subtree
 
   task :antidote do
-    system %(zsh -c 'source ${ZDOTDIR:-~}/.antidote/antidote.zsh; antidote update &; antidote bundle <$HOME/.zsh/plugins/plugins.txt >$HOME/.zsh/plugins.zsh')
+    update_antidote
   end
 
   task completions: "install:completions"
@@ -304,15 +304,14 @@ def install_launch_agents
 end
 
 def install_shell_plugin_manager
-  if OSX
-    unless File.join(ENV['HOME'], '.antidote')
-      LOGGER.info 'Installing antidote'.blue
-      system 'git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote'
-    else
-      LOGGER.info 'Updating antidote'.blue
-      system 'git -C ${ZDOTDIR:-~}/.antidote pull origin'
-    end
+  unless File.join(ENV['HOME'], '.antidote')
+    LOGGER.info 'Installing antidote'.blue
+    system 'git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote'
+  else
+    LOGGER.info 'Updating antidote'.blue
+    system 'git -C ${ZDOTDIR:-~}/.antidote pull origin'
   end
+  update_antidote
 end
 
 def install_packages
@@ -381,6 +380,9 @@ def install_zsh_completions
   system %(register-python-argcomplete pipx > ~/.zsh/Completion/_pipx)
 end
 
+def update_antidote
+  system %(zsh -c 'source ${ZDOTDIR:-~}/.antidote/antidote.zsh; antidote update &; antidote bundle <$HOME/.zsh/plugins/plugins.txt >$HOME/.zsh/plugins.zsh')
+end
 
 def setup_autohosts
   system %(cd config/autohosts && sudo ./autohosts)
