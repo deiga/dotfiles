@@ -95,3 +95,9 @@ node_modules/
 #################
 .envrc
 .tool-versions
+!amboss/**/.tool-versions
+
+
+# generated files #
+###################
+generated/*

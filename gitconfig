@@ -18,6 +18,8 @@ whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 autocrfl = false
 safecrlf = warn
 trustctime = false
+untrackedCache = true
+fsmonitor = true
 
 [color]
 status = true
@@ -41,8 +43,8 @@ whitespace = nowarn
 init = init --template=~/.git_template
 
 # checkout
-co = checkout                # checkout
-nb = switch --track --create # create and switch to a new branch (mnemonic: "git new branch branchname...")
+co = checkout                                         # checkout
+nb = !git pull && git switch --track --create $1 && : # pull latest version and create and switch to a new branch (mnemonic: "git new branch branchname...")
 
 # commit
 c = commit
@@ -119,6 +121,7 @@ path =
 default = simple
 # Make `git push` push relevant annotated tags when pushing branches out.
 followTags = true
+autoSetupRemote = true
 
 [fetch]
 recurseSubmodules = true
@@ -175,4 +178,6 @@ program = /usr/local/bin/gpg
 [ghq]
 root = ~/Dropbox/Documents/Projects
 [init]
-	defaultBranch = main
+defaultBranch = main
+[url "https://github.com"]
+insteadOf = ssh://github.com

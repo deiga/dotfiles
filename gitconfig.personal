@@ -1,4 +1,5 @@
 [user]
   name = Timo Sand
   useConfigOnly = true
+  email = timo.sand@iki.fi
   signingkey = 0x61F118357E7F11D36690E4FCA9A4F4CA7A0DB372
