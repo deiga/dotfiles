@@ -346,7 +346,7 @@ def install_packages
 end
 
 def setup_asdf
-  system 'asdf-bundle'
+  system 'bin/asdf-bundle'
 end
 
 def ensure_ssh_keys_permissions
