@@ -163,14 +163,17 @@ namespace :install do
     system %(brew install OJFord/formulae/loginitems)
     system %(zsh -lc 'loginitems -a Karabiner-Elements -s false')
     system %(zsh -lc 'loginitems -a Amethyst')
-    system %(zsh -lc 'loginitems -a Dropbox')
-    system %(zsh -lc 'loginitems -a "Alfred 4"')
+    system %(zsh -lc 'loginitems -a "Alfred 5"')
   end
 
   desc 'Symlink outside files'
   task :symlink do
     dropbox_ssh_keys_path = File.join(ENV['HOME'], '/', 'Dropbox', 'Avaimet', 'ssh', 'keys')
     ssh_keys_path = File.join(ENV['HOME'], '/', 'dotfiles', 'ssh', 'keys')
+    until Dir.exist?(dropbox_ssh_keys_path) do
+      LOGGER.info "Waiting for #{dropbox_ssh_keys_path} to exist".yellow
+      sleep 15
+    end
     install_dotfile(dropbox_ssh_keys_path, ssh_keys_path)
   end
 
@@ -251,7 +254,11 @@ end
 def install_homebrew
   require 'English'
   `which brew`
-  run_homebrew_install unless $CHILD_STATUS.success?
+  unless $CHILD_STATUS.success?
+    run_homebrew_install
+    LOGGER.info "Homebrew installed. Please run the `eval` command from the instructions to source brew".green
+    exit
+  end
 end
 
 def run_homebrew_install
@@ -321,12 +328,23 @@ def install_launch_agents
   end
 end
 
+def install_shell_plugin_manager
+  if OSX
+    unless File.exist?('/usr/local/bin/antidote')
+      LOGGER.info 'Installing antidote'.blue
+      system 'git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote'
+    else
+      system 'git -C ${ZDOTDIR:-~}/.antidote pull origin'
+    end
+  end
+end
+
 def install_packages
   LOGGER.info 'Installing packages'.blue
   if OSX
     system 'brew bundle --file=config/Brewfile'
     system '$(brew --prefix)/opt/fzf/install --no-bash --no-fish --no-update-rc --key-bindings --completion'
-    system 'git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote'
+    install_shell_plugin_manager
   else
     mkdir_p %w(~/local/bin ~/local/build)
     ENV['LD_LIBRARY_PATH'] = File.join(ENV['HOME'], 'local/lib')
