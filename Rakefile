@@ -7,7 +7,7 @@ Dir['lib/*.rb'].each { |lib| require lib }
 # TODO: Refactor tasks to dynamically call methods
 
 # List of files and folders to exclude from linking
-EXCLUDE_FILES_FROM_COMMON = %w(Rakefile README.md LICENSE TODO.md bin config ssh powerline tmp lib).freeze
+EXCLUDE_FILES_FROM_COMMON = %w(Rakefile README.md LICENSE TODO.md bin config ssh tmp lib).freeze
 
 # Shorthand for darwin platform
 OSX = RUBY_PLATFORM.downcase.include?('darwin')
@@ -30,13 +30,6 @@ namespace :update do
   task :vundle do
     @update_vundle = true
     Rake::Task['install:vim'].invoke
-  end
-
-  desc 'Update Powerline'
-  task :powerline do
-    LOGGER.info "\nUpdating powerline".blue
-    update_python
-    update_powerline
   end
 
   desc 'Update Homebrew'
@@ -71,11 +64,14 @@ namespace :update do
   task submodule: :subtree
 
   desc 'Update all'
-  task all: %i(vundle powerline node brew gems submodule antibody) do
+  task all: %i(vundle node brew gems submodule antidote) do
   end
 
-  task :antibody do
-    system %(antibody bundle <$HOME/.zsh/plugins/plugins.txt >$HOME/.zsh/plugins.zsh)
+  task antibody: :subtree
+
+  task :antidote do
+    system %(antidote update)
+    system %(antidote bundle <$HOME/.zsh/plugins/plugins.txt >$HOME/.zsh/plugins.zsh)
   end
 
   task completions: "install:completions"
@@ -136,11 +132,6 @@ namespace :install do
   desc 'Setup version managers'
   task :version_managers do
     setup_asdf
-  end
-
-  desc 'Install powerline'
-  task powerline: %w[python zsh] do
-    install_powerline
   end
 
   desc 'Install xcode-select'
@@ -220,7 +211,6 @@ namespace :install do
     vim
     bin
     ssh
-    powerline
     spaces
     symlink
     capslock
