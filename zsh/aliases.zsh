@@ -33,9 +33,11 @@ alias hax="osascript -e 'Display notification \"WTF R U DOIN\" with title \"Acti
 
 alias epoch="date +%s"
 alias g="git"
+alias gtts="gt trunk && gt sync"
+alias gtt="gt trunk"
+alias gts="gt sync"
 alias gcl="GIT_TEMPLATE_DIR=$HOME/.git_template g cl"
 alias j="z"
-alias gtt="gittower ."
 
 alias time='gtime -f '\''%Us user %Ss system %es real %MkB mem -- %C'\'
 
@@ -46,17 +48,11 @@ alias k="kubectl"
 alias kx="kubectx"
 
 alias tfws="terraform workspace select"
-
-alias av="aws-vault"
+alias tfwl="terraform workspace list"
 
 # amboss
-# alias tfp="terraform workspace select production; aws-vault exec amboss-prod-mfa -- terraform"
-# alias tfs="terraform workspace select staging; aws-vault exec amboss-staging-mfa -- terraform"
-# alias tfq="terraform workspace select qa; aws-vault exec amboss-qa-mfa -- terraform"
 alias tfp="tfws production; terraform"
 alias tfs="tfws staging; terraform"
 alias tfq="tfws qa; terraform"
-
-alias awsvl=avli
 
 alias mux=tmuxinator

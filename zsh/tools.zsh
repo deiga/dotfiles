@@ -29,8 +29,8 @@ asdf-each() {
 
 direnv() { asdf exec direnv "$@"; }
 
-if type fasd >/dev/null; then
-  eval "$(fasd --init auto)"
+if type zoxide >/dev/null; then
+  eval "$(zoxide init zsh --cmd j)"
 fi
 
 if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then

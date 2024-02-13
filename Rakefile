@@ -14,7 +14,6 @@ OSX = RUBY_PLATFORM.downcase.include?('darwin')
 MAC_OS_VERSION = `defaults read loginwindow SystemVersionStampAsString`.chomp
 
 SUBTREE_CONFIG = [
-  { name: 'xiki', path: 'config/xiki', git: 'https://github.com/trogdoro/xiki.git'},
   { name: 'irssi-colors-solarized', path: 'config/irssi-colors-solarized', git: 'https://github.com/huyz/irssi-colors-solarized'},
   { name: 'irssi-trackbar', path: 'config/irssi-trackbar', git: 'https://github.com/mjholtkamp/irssi-trackbar.git'},
   { name: 'solarized', git: 'https://github.com/altercation/solarized.git', path: 'config/solarized'},
@@ -327,6 +326,7 @@ def install_packages
   if OSX
     system 'brew bundle --file=config/Brewfile'
     system '$(brew --prefix)/opt/fzf/install --no-bash --no-fish --no-update-rc --key-bindings --completion'
+    system 'git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote'
   else
     mkdir_p %w(~/local/bin ~/local/build)
     ENV['LD_LIBRARY_PATH'] = File.join(ENV['HOME'], 'local/lib')

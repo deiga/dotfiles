@@ -1,5 +1,4 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+
 #!/usr/bin/zsh
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -91,6 +90,9 @@ autoload -U add-zsh-hook
 autoload -U bashcompinit
 bashcompinit
 
+# source antidote
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+
 # Disable correct
 if [ -f ~/.zsh_nocorrect ]; then
   while read -r COMMAND; do
@@ -122,12 +124,33 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 . ~/.asdf/plugins/java/set-java-home.zsh
 
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+source /Users/TSD/.config/op/plugins.sh
+
 # Profiling end
 # zprof
 # unsetopt XTRACE
 # exec 2>&3 3>&-
 
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+#compdef gt
+###-begin-gt-completions-###
+#
+# yargs command completion script
+#
+# Installation: gt completion >> ~/.zshrc
+#    or gt completion >> ~/.zprofile on OSX.
+#
+_gt_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _gt_yargs_completions gt
+###-end-gt-completions-###
+

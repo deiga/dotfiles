@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && . "$HOME/.fig/shell/zprofile.pre.zsh"
 # vim syn=zsh
 #echo 'zprofile' $0 # Debug
 # zmodload zsh/zprof
@@ -42,6 +40,3 @@ esac
 # eliminates duplicates in *paths
 typeset -gU PATH cdpath fpath path
 export PATH
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zprofile.post.zsh" ]] && . "$HOME/.fig/shell/zprofile.post.zsh"
