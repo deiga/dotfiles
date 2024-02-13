@@ -2,6 +2,7 @@ tap "beeftornado/rmtree"
 tap "caffix/amass"
 tap "deiga/versions", "https://github.com/deiga/homebrew-versions.git"
 tap "goreleaser/tap"
+tap "hashicorp/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -11,59 +12,73 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "kryptco/tap"
 tap "liamg/tfsec"
+tap "noovolari/brew"
 tap "ojford/formulae"
 tap "sambadevi/powerlevel9k"
 tap "scottrigby/macos-configurator"
 tap "teamookla/speedtest"
 tap "tomanthony/brews"
+tap "vitorgalvao/tiny-scripts"
 tap "wagoodman/dive"
+tap "withgraphite/tap"
+# In-depth Attack Surface Mapping and Asset Discovery
+brew "caffix/amass/amass"
+# Plugin manager for zsh, inspired by antigen and antibody
+brew "antidote"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-
 # Reimplementation of ctags(1)
 brew "ctags"
 # Top-like interface for container metrics
 brew "ctop"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl-openssl"
-# Converts boring normal dates to fun Discordian Date
-brew "ddate"
-# CLI tool for quick access to files and directories
-brew "zoxide"
+# Tool for exploring each layer in a docker image
+brew "dive"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Monitor a directory for changes and run a shell command
+brew "fswatch"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
+brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
+# Json incremental digger
+brew "jid"
+# GNU implementation of time utility
+brew "gnu-time"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
+# Language server for Helm
+brew "helm-ls"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
 # Add GitHub support to git on the command-line
 brew "hub"
+# Command-line benchmarking tool
+brew "hyperfine"
 # Database of common MIME types
 brew "shared-mime-info"
-# Json incremental digger
-brew "jid"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
-# C library of Git core methods that is re-entrant and linkable
-brew "libgit2"
+# Text-based web browser
+brew "lynx"
 # Swiss Army Knife for macOS
 brew "m-cli"
 # Keep your Mac's application settings in sync
@@ -74,20 +89,24 @@ brew "mas"
 brew "masscan"
 # Simple tool to make locally trusted development certificates
 brew "mkcert"
-# Remote terminal application
-brew "mosh"
 # 'traceroute' and 'ping' in a single tool
 brew "mtr"
 # Port scanning utility for large networks
 brew "nmap"
 # Development kit for the Java programming language
 brew "openjdk"
+# Performant, and portable jq wrapper to support formats other than JSON
+brew "oq"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Shell command parallelization utility
 brew "parallel"
+# Parallel gzip
+brew "pigz"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Framework for managing multi-language pre-commit hooks
+brew "pre-commit"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
 # Parse HTML at the command-line
@@ -99,9 +118,7 @@ brew "ripgrep"
 # SOcket CAT: netcat on steroids
 brew "socat"
 # Add a public key to a remote machine's authorized_keys file
-brew "ssh-copy-id", link: true
-# User interface to the TELNET protocol
-brew "telnet"
+brew "ssh-copy-id"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
 # Command-line time tracking application
@@ -114,68 +131,140 @@ brew "tree"
 brew "unzip"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
+# Watch files and take action when they change
+brew "watchman"
 # Internet file retriever
 brew "wget"
-# Process YAML documents from the CLI
-brew "yq"
-
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # Additional completion definitions for zsh
 brew "zsh-completions"
-# In-depth Attack Surface Mapping and Asset Discovery
-brew "caffix/amass/amass"
-# The fastest shell plugin manager
-brew "antidote"
+# Dagger is an integrated platform to orchestrate the delivery of applications
+brew "dagger/tap/dagger"
+# Vault
+brew "hashicorp/tap/vault"
 # Krypton command-line client, daemon, and SSH integration
 brew "kryptco/tap/kr"
+# Install Leapp CLI
+brew "noovolari/brew/leapp-cli"
 # Tool for managing login items
 brew "ojford/formulae/loginitems"
 # Compares plist files line by line
 brew "scottrigby/macos-configurator/pldiff"
-# A tool for exploring each layer in a docker image
-brew "wagoodman/dive/dive"
+# Ookla Speedtest
+brew "teamookla/speedtest/speedtest"
+# Allows you to manage your stacked changes and submit them for review on GitHub
+brew "withgraphite/tap/graphite"
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Command-line interface for 1Password
 cask "1password-cli"
+# Application launcher and productivity software
 cask "alfred"
+# Automatic tiling window manager similar to xmonad
 cask "amethyst"
+# Redis desktop manager
+cask "another-redis-desktop-manager"
+# Chromium based browser
+cask "arc"
+# Automated testing of webapps for Google Chrome
 cask "chromedriver"
+# Context-sensitive application launcher
 cask "controlplane"
+# Write, edit, and chat about your code with AI
 cask "cursor"
+# JSON Viewer
+cask "dadroit-json-viewer"
+# Disk space visualizer
 cask "daisydisk"
+# API documentation browser and code snippet manager
 cask "dash"
+# Universal database tool and SQL client
 cask "dbeaver-community"
+# Voice and text chat software
 cask "discord"
+# App to build and share containerized applications and microservices
 cask "docker"
+# Client for the Dropbox cloud storage service
 cask "dropbox"
+# App for note taking, organizing, task lists, and archiving
 cask "evernote"
+# Collaborative team software
+cask "figma"
+# Developer targeted fonts with a high number of glyphs
 cask "font-meslo-lg-nerd-font"
+# Developer targeted fonts with a high number of glyphs
 cask "font-sauce-code-pro-nerd-font"
-cask "fsmonitor"
-cask "gemini"
+# VPN client
+cask "freedome"
+# Set of tools to manage resources and applications hosted on Google Cloud
 cask "google-cloud-sdk"
+# HTTP and GraphQL Client
 cask "insomnia"
+# System monitoring app
 cask "istat-menus"
+# Open-source screen recorder built with web technology
+cask "kap"
+# Keyboard customizer
 cask "karabiner-elements"
+# End-to-end encryption software
 cask "keybase"
-cask "licecap"
+# Cloud credentials manager
+cask "leapp"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
+# WiFi site survey software and WiFi scanner
+cask "netspot"
+# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# App to write, plan, collaborate, and get organized
 cask "notion"
+# Calendar for professionals and teams
+cask "notion-calendar"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Open source build of Lens Kubernetes IDE
+cask "openlens"
+# Home media server
+cask "plex-media-server"
+# Peer to peer Bitorrent client
 cask "qbittorrent"
+# Plugin for AWS CLI to start and end sessions that connect to managed instances
+cask "session-manager-plugin"
+# Instant messaging application focusing on security
 cask "signal"
+# Video chat, voice call and instant messaging application
 cask "skype"
+# Music streaming service
 cask "spotify"
+# Video game digital distribution service
 cask "steam"
+# Daily planner and calendar
+cask "sunsama"
+# Application for inspecting installer packages
 cask "suspicious-package"
+# App to switch hosts
 cask "switchhosts"
+# Messaging app with a focus on speed and security
 cask "telegram"
+# Git client focusing on power and productivity
 cask "tower"
+# Open-source code editor
 cask "visual-studio-code"
+# Multimedia player
 cask "vlc"
+# Rust-based terminal
+cask "warp"
+# Network protocol analyzer
+cask "wireshark"
+# Video communication and virtual meeting platform
+cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Keynote", id: 409183694
+mas "Kindle", id: 302584613
 mas "Microsoft Remote Desktop", id: 715768417
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "The Unarchiver", id: 425424353
-mas "Kindle", id: 302584613
 mas "Slack", id: 803453959
+mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
