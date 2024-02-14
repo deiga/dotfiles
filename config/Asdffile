@@ -33,6 +33,7 @@ plugin yarn
 version java latest:openjdk
 global java latest:openjdk
 version direnv latest
+global direnv latest
 version helm latest
 version python latest
 version python 3.12.1 # When updating this version mach it with the version in exports.zsh
