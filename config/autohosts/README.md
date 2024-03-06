@@ -5,17 +5,11 @@ Automate hosts file updates on Linux-based and MacOS systems.
 ![Linux](./img/linux.png)
 ![Mac](./img/mac.png)
 
-## v3.0.1 Changes
+## v3.1.0 Changes
 
-The example whitelist was impeding blockage of improving.duckduckgo.com tracking.
-
-*If you previously installed Autohosts, running this update won't block improving.duckduckgo.com*
-
-To block improving.duckduckgo.com (for existing installs):
-
-- Edit your `~/autohosts/whitelist` and remove **duckduckgo** (and any other example filter you don't care to whitelist).
-
-This release is primarily to fix the minor bug for future installs.
+- Nothing of interest to Linux users
+- Use LaunchAgents instead of cron (Mac)
+- [MDM helper scripts](./mac-mdm-deployment/) added to repo for mass deployment
 
 ### Purpose of Hosts Files
 Hosts files will reroute unwanted traffic from ad farms, behavioral tracking firms and malware sites to a blackhole; routing to 0.0.0.0 (localhost; your PC) when a request is made to a URL on the blacklist.
@@ -25,6 +19,8 @@ Which means any traffic that would have left your system for that destination, i
 Despite what some may suggest, hosts files are not "1980s technology" and still very useful today, as an additional *layer* of security.
 
 Hosts file are a useful redundancy when coupled with ad blockers like [uBlock Origin](https://github.com/gorhill/uBlock) and [uMatrix](https://github.com/gorhill/uMatrix) - while debugging or 'Temporarily Allow All on this Site' with [Noscript](https://noscript.net/) can open you up to underlying attacks or privacy intrusions.
+
+- If you're a Safari user and want a pretty pre-made GUI for your adblocking, try [AdGuard](https://adguard.com/en/blog/adguard-safari-extension.html) - *note that this app is a plugin for Safari only; if you want cross-browser blocking, they have paid options, or you can use something like Autohosts for free (this very repo!).*
 
 **In-browser filters won't protect you if the [browser itself](https://spyware.neocities.org/articles/firefox.html) is [phoning home](https://dustri.org/b/mozilla-is-still-screwing-around-with-privacy-in-firefox.html).**
 
@@ -75,21 +71,22 @@ That's it !
 To see which version you're running on your system: `grep "VERSION=" /etc/autohosts.conf`
 
 
-### Versions prior to 3.0.0:
+### Non-Debian-based distros or MacOS:
 Due to structural changes in the codebase, an uninstall and reinstall is recommended (unless installed via deb).  You can do this without losing your custom filters.
 ```bash
-git clone https://github.com/angela-d/autohosts.git /tmp/autohosts &&
-cd autohosts &&
-cp ~/autohosts/custom_filters /tmp/custom_filters &&
-sudo ./prior-v2-uninstall
+git clone https://github.com/angela-d/autohosts.git /tmp/autohosts && cd /tmp/autohosts && cp ~/autohosts/custom_filters /tmp/custom_filters
 ```
-Run your preferred method of installation to get v3.0.0.  Once installation completes, restore your custom filters:
+Once installation completes, restore your custom filters:
 ```bash
-rm ~/autohosts/custom_filters &&
-mv /tmp/custom_filters ~/autohosts/custom_filters
+rm ~/autohosts/custom_filters && mv /tmp/custom_filters ~/autohosts/custom_filters
 ```
 
-Debian users: Simply `apt install ./autohosts.deb` to upgrade to the latest version.
+### Debian users
+Simply download the latest .deb & run (in the directory where you put the download):
+```bash
+apt install ./autohosts.deb
+```
+to upgrade to the latest version.
 ***
 
 ## Adding Custom Blacklists or Whitelists
@@ -154,3 +151,6 @@ Vivaldi or Chrome / Chromium:
 Firefox:
 
 - Enter `about:preferences` on your address bar and in the search box, enter `dns` > Settings > scroll to the bottom and un-tick `Enable DNS over HTTPS`
+
+### Known Bugs / To Fix
+manpage on Debian isn't seen.  No manpage at all for non-Debian installs.
