@@ -19,7 +19,6 @@ autocrfl = false
 safecrlf = warn
 trustctime = false
 untrackedCache = true
-fsmonitor = true
 
 [color]
 status = true
@@ -173,7 +172,7 @@ gpgsign = true
 template = ~/.stCommitMsg
 
 [gpg]
-program = /usr/local/bin/gpg
+	program = /opt/homebrew/bin/gpg
 
 [ghq]
 root = ~/Dropbox/Documents/Projects

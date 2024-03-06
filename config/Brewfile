@@ -8,7 +8,6 @@ tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/services"
-tap "kryptco/tap"
 tap "liamg/tfsec"
 tap "noovolari/brew"
 tap "ojford/formulae"
@@ -104,8 +103,6 @@ brew "pinentry-mac"
 brew "pre-commit"
 # OpenBSD and Darwin versions of pgrep, pkill, and pfind
 brew "proctools"
-# Parse HTML at the command-line
-brew "pup"
 # Reattach process (e.g., tmux) to background
 brew "reattach-to-user-namespace"
 # Search tool like grep and The Silver Searcher
@@ -138,8 +135,6 @@ brew "zsh-completions"
 brew "dagger/tap/dagger"
 # Vault
 brew "hashicorp/tap/vault"
-# Krypton command-line client, daemon, and SSH integration
-brew "kryptco/tap/kr"
 # Install Leapp CLI
 brew "noovolari/brew/leapp-cli"
 # Tool for managing login items
