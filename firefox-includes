@@ -153,12 +153,11 @@
 0.0.0.0 globalsiteanalytics.com
 0.0.0.0 cdn.lr-ingest.io
 0.0.0.0 src.ebay-us.com
-0.0.0.0 h-ebay.online-metrix.net
 0.0.0.0 grainify.com
 0.0.0.0 cdn.grainify.com
 0.0.0.0 hubspot.net
 0.0.0.0 cdn2.hubspot.net
-0.0.0.0 servebom.com
+0.0.0.0 c.evidon.com
 
 # wtf is pendio? Their site is typical amorphic marketing drivel that tells you nothing much about what they do.
 # I've seen it load unnecessary 3rd party scripts on enough sites to get suspicious of their intentions, hence addition to the filters
@@ -176,3 +175,13 @@
 # stats collection should not be done without authorization of the user
 0.0.0.0 improving.duckduckgo.com
 
+# junk annoyance/tracking on numerous sites
+0.0.0.0 cookielaw.org
+0.0.0.0 cdn.cookielaw.org
+
+# ecommerce fingerprinting
+0.0.0.0 1ad356638475.cdn4.forter.com
+
+# behavior analytics for marketing purposes
+0.0.0.0 blackcrow.ai
+0.0.0.0 shopify-init.blackcrow.ai
