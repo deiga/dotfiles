@@ -18,11 +18,12 @@ export LESSCHARSET=utf-8
 
 # Customize to your needs...
 BIN_PATH="$HOME/bin:$HOME/local/bin" # Add ~/bin to PATH
-CABAL_PATH="$HOME/.cabal/bin"
+CABAL_PATH="$HOME/.cabal/bin"        # Add cabal binaries to PATH
 STACK_INSTALL_PATH="$HOME/.local/bin/"
-KREW_PATH="${KREW_ROOT:-$HOME/.krew}/bin"
+KREW_PATH="${KREW_ROOT:-$HOME/.krew}/bin" # Add krew to PATH
+GOBIN="$HOME/go/bin"                      # Adds binaries installed with `go install` to PATH
 
-PATH=$CABAL_PATH:$STACK_INSTALL_PATH:$BIN_PATH:$KREW_PATH:$PATH
+PATH=$CABAL_PATH:$STACK_INSTALL_PATH:$BIN_PATH:$KREW_PATH:$GOBIN:$PATH
 PATH="$HOME/.poetry/bin:$PATH"
 
 case $OSTYPE in
