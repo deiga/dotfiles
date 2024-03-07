@@ -54,4 +54,7 @@ alias tfp="tfws production; terraform"
 alias tfs="tfws staging; terraform"
 alias tfq="tfws qa; terraform"
 
+alias tg="terragrunt"
+alias tgp="terragrunt plan -lock=false"
+
 alias mux=tmuxinator
