@@ -115,8 +115,9 @@ namespace :install do
 
   desc "Run macOS configs"
   task :macos do
-    LOGGER.info "\Installing macOS config".blue
-    system './config/.macos' if OSX
+    LOGGER.info "Skipping macOS config".blue
+    # LOGGER.info "Installing macOS config".blue
+    # system './config/.macos' if OSX
   end
 
   desc 'Setup ~/.ssh folder without overwriting currently existing files'
