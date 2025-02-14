@@ -1,3 +1,9 @@
+# Used here and functions.zsh is included later on
+
+git_main_branch() {
+  git remote show origin | sed -n '/HEAD branch/s/.*: //p'
+}
+
 eval "$(hub alias -s)"
 
 # Detect which `ls` flavor is in use
@@ -29,14 +35,14 @@ alias mkdir='mkdir -p'
 
 alias reload="source ~/.zshrc"
 
-alias hax="osascript -e 'Display notification \"WTF R U DOIN\" with title \"Activity Monitor\" subtitle \"System Error\"'"
-
 alias epoch="date +%s"
+
+# Git aliases
 alias g="git"
-alias gtts="gt trunk && gt sync"
-alias gtt="gt trunk"
-alias gts="gt sync"
+alias gtts="g co $(git_main_branch) && g pull && g sync"
+alias gts="g fetch --all && g rebase origin/$(git_main_branch)"
 alias gcl="GIT_TEMPLATE_DIR=$HOME/.git_template g cl"
+# END git
 
 alias time='gtime -f '\''%Us user %Ss system %es real %MkB mem -- %C'\'
 
