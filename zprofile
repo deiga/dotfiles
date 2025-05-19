@@ -20,9 +20,9 @@ export LESSCHARSET=utf-8
 BIN_PATH="$HOME/bin:$HOME/local/bin" # Add ~/bin to PATH
 CABAL_PATH="$HOME/.cabal/bin"        # Add cabal binaries to PATH
 STACK_INSTALL_PATH="$HOME/.local/bin/"
-KREW_PATH="${KREW_ROOT:-$HOME/.krew}/bin"        # Add krew to PATH
 GOBIN="$HOME/go/bin"                             # Adds binaries installed with `go install` to PATH
 PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH" # Adds asdf shims to PATH
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH" # Adds krew to PATH
 
 PATH=$CABAL_PATH:$STACK_INSTALL_PATH:$BIN_PATH:$KREW_PATH:$GOBIN:$PATH
 PATH="$HOME/.poetry/bin:$PATH"
@@ -32,7 +32,7 @@ darwin*)
   COREUTILS_PATH=$BREW_PREFIX/opt/coreutils/libexec/gnubin
   PATH=$COREUTILS_PATH:$PATH
   [ -x $BREW_PREFIX/bin/brew ] && eval "$($BREW_PREFIX/bin/brew shellenv)"
-  export ARCHFLAGS="-arch x86_64"
+  export ARCHFLAGS="-arch arm64"
   ;;
 *) ;;
 
