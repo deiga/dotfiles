@@ -7,7 +7,7 @@ npm_chpwd_hook() {
   fi
   if [ -f package.json ]; then
     PRENPMPATH=$PATH
-    PATH=$(~/.asdf/plugins/nodejs/shims/npm bin):$PATH
+    PATH=$(~/.asdf/plugins/nodejs/shims/npm prefix)/node_modules/.bin:$PATH
   fi
 }
 
